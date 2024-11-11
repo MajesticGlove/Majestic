@@ -1,0 +1,172 @@
+<style type="text/css">
+ #signupFormContent_FLUDQ > div.formbox-editor_FLUDQ {position: absolute;}
+ #signupFormVeil_FLUDQ {opacity: 0;}
+ #signupFormContent_FLUDQ.position-bottom-right > div.formbox-editor_FLUDQ {bottom: 0;right: 0;}
+ #signupFormContainer_FLUDQ, #signupFormContent_FLUDQ {z-index: 888888;position: fixed;width: 100%;height: 100%;border: none;top: 0;left: 0;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;overflow: auto;}
+ #signupFormContainer_FLUDQ {overflow: hidden;}
+ #close-btn_FLUDQ svg {display: block;} 
+
+ #close-btn_FLUDQ path {fill: #393939;}
+#signupFormContainer_FLUDQ > #close-btn_FLUDQ { right: 20px!important; top: 20px!important; } 
+ #close-btn_FLUDQ {position:absolute;cursor: pointer;z-index: 999999;font-size: 20px;display:block; top: 10px; right: 10px;color: #393939;background-color: ;border-radius:0px;} .animation-slideLeft{animation-name: animation-slideLeft; -webkit-animation-name: animation-slideLeft; animation-duration: 1s; -webkit-animation-duration: 1s; animation-timing-function: ease-in-out; -webkit-animation-timing-function: ease-in-out; visibility: visible !important; }
+ @keyframes animation-slideLeft {0% {transform: translateX(150%);} 100% {transform: translateX(0%);} }
+ @-webkit-keyframes animation-slideLeft {0% {-webkit-transform: translateX(150%);} 100% {-webkit-transform: translateX(0%);}}
+ .formbox-editor_FLUDQ fieldset {border: none;margin: 0;padding: 0 40px;position: relative;}
+ .formbox-editor_FLUDQ fieldset > input,.formbox-editor_FLUDQ fieldset > textarea,.formbox-editable-field_FLUDQ {margin: 10px 0;outline: none;}
+ .spacer-block_FLUDQ {min-height: 20px;padding: 10px 0;position: relative;}
+ .spacer-block-line_FLUDQ {position: absolute;top: 50%;left: 40px;right: 40px;display: none;border-top-style: solid;}
+ .formbox-editor_FLUDQ {margin: 0 auto;padding: 0;text-align: left;width: 100%;box-sizing: border-box;}
+ #formbox_screen_subscribe_FLUDQ, #formbox_screen_success_FLUDQ, #formbox_screen_captcha_FLUDQ {padding: 30px 0;} 
+ .formbox-title_FLUDQ, .formbox-text-field_FLUDQ {margin-bottom: 0; font-family: Helvetica, Arial, sans-serif; color: #4b4f54; font-size: 16px; }
+ .formbox-title_FLUDQ a, .formbox-text-field_FLUDQ a  {text-decoration: none;} 
+ .formbox-title_FLUDQ p, .formbox-text-field_FLUDQ p {margin: 0;margin-bottom: 10px;padding: 0; word-break: break-word;}
+
+ label.formbox-field-label_FLUDQ {font-family: Helvetica, Arial, sans-serif; display: block; margin: 10px 0 0; padding: 0; font-size: 16px; text-align: left;line-height: 100%; color: #4b4f54;}
+ label.formbox-label-wrap_FLUDQ {font-family: Helvetica, Arial, sans-serif; display: block; margin: 10px 0 0; padding: 0; font-size: 16px; line-height: 100%; padding-left: 15px; text-indent: -15px; font-style: italic;color: #4b4f54;} label.formbox-label-wrap_FLUDQ:last-of-type {margin-bottom: 10px;}
+ label.formbox-label-wrap_FLUDQ input[type=checkbox], label.formbox-label-wrap_FLUDQ input[type=radio] { width: 13px; height: 13px; padding: 0; margin:0; margin-right: 5px; vertical-align: bottom; position: relative; top: -1px; }
+ select.formbox-field_FLUDQ {background-color: #4b4f54; border: 2px solid #bcbec0; border-radius: 0px; box-sizing: border-box; background-color: #ffffff; font-family: Helvetica, Arial, sans-serif; font-size: 16px; width: 100%; margin: 10px 0; height: auto; padding: 2px 0px;}
+
+ input.formbox-field_FLUDQ {color: #4b4f54; background-color: #ffffff; border: 2px solid #bcbec0; border-radius:0px; font-family: Helvetica, Arial, sans-serif; font-size: 16px; box-sizing: border-box; padding:15px; width: 100%;} input.formbox-field_FLUDQ.text-placeholder {color: #bcbec0; font-weight: normal; font-style: normal; font-family: Helvetica, Arial, sans-serif; font-size: 16px;}
+ .formbox-field_FLUDQ::-webkit-input-placeholder {color: #bcbec0; font-weight: normal; font-style: normal;opacity: 1;}
+ .formbox-field_FLUDQ::-moz-placeholder { color: #bcbec0; font-weight: normal; font-style: normal;opacity: 1;}
+ .formbox-field_FLUDQ:-ms-input-placeholder {color: #bcbec0; font-weight: normal; font-style: normal; opacity: 1;}
+ .formbox-button_FLUDQ {line-height: 100%;  cursor: pointer; margin: 10px 0; }
+ .formbox-button_FLUDQ:hover { background-color:#be3441 !important; }
+ .formbox-button_FLUDQ:active { background-color:#960c19 !important; }
+#popupFormLoader_FLUDQ { display: none; position: absolute; bottom: 10px; right: 10px; width: 20px; height: 20px; background-image: url(https://benchmarkemail.com/images/popup-builder/loadingicon.svg); background-position: center center; background-repeat: no-repeat; background-color: rgb(255, 255, 255); background-color: rgba(255, 255, 255, 0.3);  border-radius: 100%; -webkit-animation-name: spin; -webkit-animation-duration: 800ms; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: linear; -moz-animation-name: spin; -moz-animation-duration: 800ms; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: linear;
+-ms-animation-name: spin;-ms-animation-duration: 800ms;-ms-animation-iteration-count: infinite;-ms-animation-timing-function: linear;animation-name: spin;animation-duration: 800ms;animation-iteration-count: infinite;animation-timing-function: linear;}
+@-moz-keyframes spin {from { -moz-transform: rotate(0deg); }to { -moz-transform: rotate(360deg); }}
+@-webkit-keyframes spin {from { -webkit-transform: rotate(0deg); }to { -webkit-transform: rotate(360deg); }}
+@keyframes spin {from {transform:rotate(0deg);}to {transform:rotate(360deg);}}
+
+</style>
+<div id="signupFormContainer_FLUDQ" style="display: none;">
+<div id="signupFormOverlay_FLUDQ"></div>
+<div id="signupFormContent_FLUDQ" class="animation-slideLeft position-bottom-right">
+<div id="signupFormVeil_FLUDQ"></div>
+
+<div class="formbox-editor_FLUDQ" style="background: #ffffff; max-width: 400px;border-radius:10px; box-sizing: border-box;box-shadow:0px 0px 9px 5px rgba(57,57,57,0.2);"><div id="close-btn_FLUDQ" style="padding: 15px;"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve"><path d="M9.3,7.5l5.4-5.4c0.5-0.5,0.5-1.3,0-1.8c-0.5-0.5-1.3-0.5-1.8,0L7.5,5.7L2.1,0.4c-0.5-0.5-1.3-0.5-1.8,0c-0.5,0.5-0.5,1.3,0,1.8l5.4,5.4l-5.4,5.4c-0.5,0.5-0.5,1.3,0,1.8C0.6,14.9,0.9,15,1.2,15s0.6-0.1,0.9-0.4l5.4-5.4l5.4,5.4c0.2,0.2,0.6,0.4,0.9,0.4c0.3,0,0.6-0.1,0.9-0.4c0.5-0.5,0.5-1.3,0-1.8L9.3,7.5z" data-size="m-close-thick-round" data-selected="close-thick-round"></path></svg></div>
+<div id="formbox_screen_subscribe_FLUDQ" style="display:block;" name="frmLB">
+<input type=hidden name=token_FLUDQ id=token_FLUDQ value="mFcQnoBFKMRKawFep5wSAKjgVtVj7bht26UhNnAjTy67o%2Fsg221XEw%3D%3D" />
+
+<fieldset class="formbox-field_FLUDQ" style="text-align: center; padding: 0px 40px;"><img src="https://images.benchmarkemail.com/client494373/companylogo.jpg?r=0.6570190945937269?r=0.6364889383987391?r=0.14168878753787983"  width="255.99609375px;" style ="max-width: 100%;"></fieldset>
+<fieldset><div class="formbox-title_FLUDQ"><p style="line-height: 1.2; text-align: center; padding-top: 10px;" data-mce-style="line-height: 1.2; text-align: center; padding-top: 10px;"><span style="color: rgb(75, 79, 84); font-size: 16px;" data-mce-style="color: rgb(75, 79, 84); font-size: 16px;">Join our community for the latest Majestic updates and innovations</span></p></div></fieldset>
+<div class="spacer-block_FLUDQ" style="height:20px;"><span class="spacer-block-line_FLUDQ" style="display: block; border-top-color: rgb(171, 31, 45); border-top-style:solid; border-top-width: 1px; margin-top: -1px;"></span></div>
+<fieldset class="formbox-field_FLUDQ"><input type=text placeholder="Email Address *" class="formbox-field_FLUDQ text-placeholder" onfocus="javascript:focusPlaceHolder(this);" onblur="javascript:blurPlaceHolder(this);" id="fldemail_FLUDQ" name="fldemail_FLUDQ" maxlength=100 /></fieldset>
+<fieldset class="formbox-field_FLUDQ"><input type=text placeholder="Name *" class="formbox-field_FLUDQ text-placeholder" onfocus="javascript:focusPlaceHolder(this);" onblur="javascript:blurPlaceHolder(this);" id="fldfirstname_FLUDQ" name="fldfirstname_FLUDQ" maxlength=100 /></fieldset>
+<fieldset class="formbox-field_FLUDQ"><input type=text placeholder="Company Name" class="formbox-field_FLUDQ text-placeholder" onfocus="javascript:focusPlaceHolder(this);" onblur="javascript:blurPlaceHolder(this);" id="fldfield9_FLUDQ" name="fldfield9_FLUDQ" maxlength=100 /></fieldset>
+<fieldset class="formbox-field_FLUDQ"><label class="formbox-field-label_FLUDQ">Please Select Your Role:</label><select class="formbox-field_FLUDQ" id="fldfield24_FLUDQ" name="fldfield24_FLUDQ"><option value="Wholesaler/Distributor">Wholesaler/Distributor</option><option value="User of Safety Equipment">User of Safety Equipment</option></select></fieldset>
+<fieldset style="text-align:center;"><div id="btnSubmit_FLUDQ" onClick="javascript:return submit_FLUDQClick();" style="word-break: break-all; box-sizing: border-box; text-align:center; display: inline-block;padding-left: 15px; padding-right: 15px;padding-top: 15px; padding-bottom: 15px;background-color:rgb(170, 32, 45); border: rgba(0, 0, 0, 0) solid 0px; border-radius: 4px;font-family :Helvetica, Arial, sans-serif; font-size: 16px;color: rgb(255, 255, 255); line-height: 1; letter-spacing:1pxpx;" class="formbox-button_FLUDQ">Subscribe</div></fieldset><div id="popupFormLoader_FLUDQ" style="display: none;"></div>
+</div>
+<div id="formbox_screen_success_FLUDQ" style="display: none;">
+<fieldset class="formbox-field_FLUDQ" style="text-align: center; padding: 0px 40px;"><img src="https://images.benchmarkemail.com/client494373/companylogo.jpg?r=0.6570190945937269?r=0.6364889383987391?r=0.8718425517320876"  width="256px;" style ="max-width: 100%;"></fieldset><fieldset class="formbox-field_FLUDQ"><div class="formbox-editable-field_FLUDQ formbox-text-field_FLUDQ"><p style="line-height: 1.2; text-align: center; padding-top: 10px;"><span style="color: rgb(75, 79, 84); font-size: 16px;">Thank you for joining the Majestic Glove community.</span></p></div></fieldset>
+<div class="spacer-block_FLUDQ" style="height:20px;">
+<span class="spacer-block-line_FLUDQ" style="display: block; border-top-color: rgb(171, 31, 45); border-top-style:solid; border-top-width: 1px; margin-top: -1px;"></span></div><fieldset class="formbox-field_FLUDQ"><div class="formbox-editable-field_FLUDQ formbox-text-field_FLUDQ"><p style="color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.5;" data-mce-style="color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.5;"><span style="font-size: 16px; color: rgb(75, 79, 84);" data-mce-style="font-size: 16px; color: rgb(75, 79, 84);">We sent you a verification email with a confirmation link. After opening this email and clicking the confirmation, your subscription will be active.</span></p></div></fieldset>
+<fieldset class="formbox-field_FLUDQ"><div class="formbox-editable-field_FLUDQ formbox-text-field_FLUDQ"><p style="line-height: 1.5;" data-mce-style="line-height: 1.5;"><span style="font-size: 16px; color: rgb(75, 79, 84);" data-mce-style="font-size: 16px; color: rgb(75, 79, 84);">Thank you again. We're excited to share our upcoming safety releases, news, and insights with you.</span></p></div></fieldset>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+function CheckField_FLUDQ(fldName, frm){var fldObj = document.getElementsByName(fldName);if ( fldObj.length > 1 ) {  for ( var i = 0, l = fldObj.length; i < l; i++ ) {   if ( fldObj[0].type == 'select-one' ) { if( fldObj[i].selected && i==0 && fldObj[i].value == '' ) { return false; }   if ( fldObj[i].selected ) { return true; } }  else { if ( fldObj[i].checked ) { return true; } }; } return false; }  else  { if ( fldObj[0].type == "checkbox" ) { return ( fldObj[0].checked ); }  else if ( fldObj[0].type == "radio" ) { return ( fldObj[0].checked ); }  else { fldObj[0].focus(); return (fldObj[0].value.length > 0); }} }
+function rmspaces(x) {var leftx = 0;var rightx = x.length -1;while ( x.charAt(leftx) == ' ') { leftx++; }while ( x.charAt(rightx) == ' ') { --rightx; }var q = x.substr(leftx,rightx-leftx + 1);if ( (leftx == x.length) && (rightx == -1) ) { q =''; } return(q); }
+
+function checkfield(data) {if (rmspaces(data) == ""){return false;}else {return true;}}
+
+function isemail(data) {var flag = false;if (  data.indexOf("@",0)  == -1 || data.indexOf("\\",0)  != -1 ||data.indexOf("/",0)  != -1 ||!checkfield(data) ||  data.indexOf(".",0)  == -1  ||  data.indexOf("@")  == 0 ||data.lastIndexOf(".") < data.lastIndexOf("@") ||data.lastIndexOf(".") == (data.length - 1)   ||data.lastIndexOf("@") !=   data.indexOf("@") ||data.indexOf(",",0)  != -1 ||data.indexOf(":",0)  != -1 ||data.indexOf(";",0)  != -1  ) {return flag;} else {var temp = rmspaces(data);if (temp.indexOf(' ',0) != -1) { flag = true; }var d3 = temp.lastIndexOf('.') + 4;var d4 = temp.substring(0,d3);var e2 = temp.length  -  temp.lastIndexOf('.')  - 1;var i1 = temp.indexOf('@');if (  (temp.charAt(i1+1) == '.') || ( e2 < 1 ) ) { flag = true; }return !flag;}}
+
+function focusPlaceHolder(obj) { 
+obj.className = "formbox-field_FLUDQ"; }
+function blurPlaceHolder(obj) { 
+if ( obj.value == '' ) { obj.className = "formbox-field_FLUDQ text-placeholder"; } } 
+function isValidDate(year, month, day) { 
+if (year.toString() == '' || month.toString() == '' || day.toString() == '') { return false;} try { year = parseInt(year); month = parseInt(month); day = parseInt(day); } catch (e) { return false;} var d = new Date(year, month - 1, day, 0, 0, 0, 0); return (!isNaN(d) && (d.getDate() == day && d.getMonth() + 1 == month && d.getFullYear() == year));}var submitButton_FLUDQ = document.getElementById("btnSubmit_FLUDQ");
+var subscribeScreen_FLUDQ = document.getElementById("formbox_screen_subscribe_FLUDQ");
+var successScreen_FLUDQ = document.getElementById("formbox_screen_success_FLUDQ");
+var signupFormContainer_FLUDQ = document.getElementById("signupFormContainer_FLUDQ");
+var signupFormVeil_FLUDQ = document.getElementById("signupFormVeil_FLUDQ");
+var signupFormCloseButton_FLUDQ = document.getElementById("close-btn_FLUDQ");
+var signupFormLoader_FLUDQ = document.getElementById("popupFormLoader_FLUDQ");
+function submit_FLUDQClick(){
+ var retVal = true; var contentdata = ""; var frm = document.getElementById("formbox_screen_subscribe_FLUDQ");if ( !isemail(document.getElementsByName("fldemail_FLUDQ")[0].value) ) { 
+   alert("Please enter the Email Address");
+document.getElementById("fldemail_FLUDQ").focus(); retVal = false;}if ( !CheckField_FLUDQ("fldfirstname_FLUDQ", frm) ) { 
+   alert("Please enter the First Name");
+ retVal = false;}if ( !CheckField_FLUDQ("fldfield24_FLUDQ", frm) ) { 
+   alert("Please select the Please Select Your Role:");
+ retVal = false;} if ( retVal == true ) {var data = "token=" + encodeURIComponent(document.getElementById("token_FLUDQ").value);
+data = data + "&" + "fldemail=" + encodeURIComponent(document.getElementById("fldemail_FLUDQ").value);
+data = data + "&" + "fldfirstname=" + encodeURIComponent(document.getElementById("fldfirstname_FLUDQ").value);
+data = data + "&" + "fldfield9=" + encodeURIComponent(document.getElementById("fldfield9_FLUDQ").value);
+data = data + "&" + "fldfield24=" + encodeURIComponent(document.getElementById("fldfield24_FLUDQ").value);
+submitFormData_FLUDQ(data);
+
+if(isemail(document.getElementById("fldemail_FLUDQ").value) && window && window.JB_TRACKER && typeof window.JB_TRACKER.jbSubmitForm === 'function') { 
+ window.JB_TRACKER.jbSubmitForm({ 
+ email: document.getElementById("fldemail_FLUDQ").value, didSubmit: true 
+ }); 
+ }
+
+return retVal; }}var BMESFloaded_FLUDQ= false;
+var popupFormSubmitting_FLUDQ = false;
+function submitFormData_FLUDQ(data){
+if ( BMESFloaded_FLUDQ == false && popupFormSubmitting_FLUDQ == false ) {
+popupFormSubmitting_FLUDQ = true; checkLoading_FLUDQ();
+var oldObj = document.getElementById('img_FLUDQ');
+try{if (oldObj != null ) { document.getElementById('formbox_screen_subscribe_FLUDQ').removeChild(oldObj); } } catch (e){}
+var rand = Math.random(); var objImg = document.createElement('img');
+objImg.id = "img_FLUDQ";
+objImg.onload = function(){ popupFormSubmitting_FLUDQ = false; BMESFloaded_FLUDQ = true; checkLoading_FLUDQ();};
+objImg.onerror = function(e){ popupFormSubmitting_FLUDQ = false; BMESFloaded_FLUDQ = false; checkLoading_FLUDQ(); errorLoading_FLUDQ(e);};
+objImg.src = "https://lb.benchmarkemail.com//code/lbform/api?" + data + "&inst=" + rand;
+objImg.style.display = "none"; 
+checkLoaded_FLUDQ(); 
+document.getElementById('formbox_screen_subscribe_FLUDQ').appendChild(objImg);
+} else if (popupFormSubmitting_FLUDQ == true) { alert("Saving, please wait..."); 
+} }
+function checkLoading_FLUDQ(e){
+  if ( popupFormSubmitting_FLUDQ == true ) { 
+signupFormLoader_FLUDQ.style.display = 'block'; }
+  else { signupFormLoader_FLUDQ.style.display = 'none'; }
+}
+function errorLoading_FLUDQ(e){
+ alert("There was an error. Please try after some time");
+ BMESFloaded_FLUDQ= false;
+}
+function checkLoaded_FLUDQ(){
+if ( BMESFloaded_FLUDQ == false ) { setTimeout(checkLoaded_FLUDQ, 100); 
+} else { 
+ var wd = document.getElementById('img_FLUDQ').width;
+ if ( wd == 1 ) {
+   subscribeScreen_FLUDQ.style.display = 'none';
+  localStorage.setItem('bmePopupFormSignedUp1759114', 'true'); 
+  verticalCenter_FLUDQ(successScreen_FLUDQ);
+ }  else { BMESFloaded_FLUDQ= false; subscribeScreen_FLUDQ.style.display = 'block'; if ( wd == 2 ) { alert("This email address already exists. "); document.getElementById('fldemail_FLUDQ').focus(); 
+ }  else if ( wd == 3 || wd == 4 ) {alert("Invalid email address.");  document.getElementById('fldemail_FLUDQ').focus(); 
+ }  else if ( wd == 6 ) {alert("This email address has previously unsubscribed");  document.getElementById('fldemail_FLUDQ').focus(); 
+ }  else { alert("There was an error. Please try after some time");  document.getElementById('fldemail_FLUDQ').focus(); } 
+} } }
+signupFormCloseButton_FLUDQ.addEventListener("click", function() {signupFormContainer_FLUDQ.style.display = 'none';});
+  var bmePopupFormViewed_FLUDQ = localStorage.getItem('bmePopupFormSignedUp1759114'); 
+  if ( bmePopupFormViewed_FLUDQ != 'true') {
+setTimeout(function () {verticalCenter_FLUDQ(signupFormContainer_FLUDQ); }, 5 * 1000);
+  } 
+function debounce_FLUDQ(func, wait, immediate) {
+var timeout;
+return function() {
+var context = this, args = arguments;
+var later = function() {timeout = null; if (!immediate) func.apply(context, args); };
+var callNow = immediate && !timeout; clearTimeout(timeout); timeout = setTimeout(later, wait); if (callNow) func.apply(context, args); };
+};
+var hasVerticalCenter_FLUDQ = document.getElementsByClassName('position-centered');
+function verticalCenter_FLUDQ(element) { if(element) { element.style.opacity = 0;  element.style.display = 'block';  }
+setTimeout(function () { if (hasVerticalCenter_FLUDQ.length > 0) { var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0); 
+ var formElement_FLUDQ = document.getElementsByClassName('formbox-editor_FLUDQ')[0]; var formHeight_FLUDQ = formElement_FLUDQ.clientHeight; 
+ if (formHeight_FLUDQ < windowHeight) { var newPosition = 0; newPosition = (windowHeight - formHeight_FLUDQ) / 2; formElement_FLUDQ.style.top = newPosition + 'px'; } else { formElement_FLUDQ.style.top = '0px'; } }
+if(element) { element.style.opacity = 1;  }
+ }, 100);
+}
+if (hasVerticalCenter_FLUDQ.length > 0) { var resizeEvent_FLUDQ = debounce_FLUDQ(function() { verticalCenter_FLUDQ(); }, 250); window.addEventListener('resize', resizeEvent_FLUDQ); } 
+
+</script>
