@@ -169,4 +169,21 @@ if(element) { element.style.opacity = 1;  }
 }
 if (hasVerticalCenter_FLUDQ.length > 0) { var resizeEvent_FLUDQ = debounce_FLUDQ(function() { verticalCenter_FLUDQ(); }, 250); window.addEventListener('resize', resizeEvent_FLUDQ); } 
 
+  // Close the form and disable pointer events on the entire page
+  document.getElementById('close-btn_FLUDQ').addEventListener('click', function() {
+    // Disable pointer events on the entire page (makes everything unclickable)
+    document.body.style.pointerEvents = 'none';
+
+    // Optionally, hide the iframe
+    document.getElementById('popupIframe').style.display = 'none';
+  });
+
+  // Re-enable pointer events and show the iframe again (if needed)
+  document.getElementById('reopen-btn').addEventListener('click', function() {
+    // Restore pointer events on the body
+    document.body.style.pointerEvents = 'auto';
+
+    // Optionally, show the iframe again
+    document.getElementById('popupIframe').style.display = 'block';
+  });
 </script>
