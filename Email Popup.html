@@ -38,7 +38,9 @@
 @-moz-keyframes spin {from { -moz-transform: rotate(0deg); }to { -moz-transform: rotate(360deg); }}
 @-webkit-keyframes spin {from { -webkit-transform: rotate(0deg); }to { -webkit-transform: rotate(360deg); }}
 @keyframes spin {from {transform:rotate(0deg);}to {transform:rotate(360deg);}}
-
+#signupFormContainer_FLUDQ {
+    pointer-events: auto; /* Allow interactions initially */
+}
 </style>
 <div id="signupFormContainer_FLUDQ" style="display: none;">
 <div id="signupFormOverlay_FLUDQ"></div>
@@ -178,12 +180,8 @@ if (hasVerticalCenter_FLUDQ.length > 0) { var resizeEvent_FLUDQ = debounce_FLUDQ
     document.getElementById('popupIframe').style.display = 'none';
   });
 
-  // Re-enable pointer events and show the iframe again (if needed)
-  document.getElementById('reopen-btn').addEventListener('click', function() {
-    // Restore pointer events on the body
-    document.body.style.pointerEvents = 'auto';
-
-    // Optionally, show the iframe again
-    document.getElementById('popupIframe').style.display = 'block';
+document.getElementById('close-btn_FLUDQ').addEventListener('click', function() {
+    document.getElementById('signupFormContainer_FLUDQ').style.pointerEvents = 'none';
+    document.getElementById('signupFormContainer_FLUDQ').style.display = 'none'; // Optional: Hide the form after closing
   });
 </script>
