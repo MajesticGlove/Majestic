@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Points</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            gap: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image-container {
+            position: relative;
+        }
+        .info {
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .info h3 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .info p {
+            margin: 10px 0 0;
+            color: #555;
+            font-size: 18px;
+        }
+        .point {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease;
+        }
+        .point:hover {
+            transform: scale(1.1);
+        }
+        /* Positioning each point */
+        .point1 { top: 30%; right: 25%; }
+        .point2 { top: 32%; left: 48%; }
+        .point3 { top: 40%; left: 24%; }
+        .point4 { top: 62%; left: 58%; }
+        .point5 { top: 50%; left: 40%; }
+        .point6 { top: 68%; left: 42%; }
+        .point7 { top: 90%; left: 42%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://d3b3annyeby0cn.cloudfront.net/userfiles/2150dp%20.jpg" alt="Interactive" width="350">
+            <div class="point point1" onclick="showInfo(1)"></div>
+            <div class="point point2" onclick="showInfo(2)"></div>
+            <div class="point point3" onclick="showInfo(3)"></div>
+            <div class="point point4" onclick="showInfo(4)"></div>
+            <div class="point point5" onclick="showInfo(5)"></div>
+            <div class="point point6" onclick="showInfo(6)"></div>
+            <div class="point point7" onclick="showInfo(7)"></div>
+        </div>
+        <div class="info" id="info-box">
+            Click a point on the image to see details.
+        </div>
+    </div>
+    <script>
+        function showInfo(point) {
+            const infoBox = document.getElementById("info-box");
+            const content = {
+                1: "<h3>Double Palm</h3><p>Certain styles are equipped with various reinforcements in the palm of the glove to increase grip, durability, and protection.</p>",
+                2: "<h3>Ring Band</h3><p>The Majestic ring band is a registered trademark and distinguishing characteristic of Majestic quality and craftsmanship.</p>",
+                3: "<h3>Pre-curved</h3><p>All Majestic mechanics gloves feature a pre-curved finger design which follows the hand's natural contours. This minimizes hand fatigue and results in a much more comfortable glove.</p>",
+                4: "<h3>Palm Material</h3><p>Leather and Armor Skin™ Synthetic Leather provides excellent abrasion resistance and protection against hazardous conditions.</p>",
+                5: "<h3>Neoprene Knuckle</h3><p>Most mechanics gloves by Majestic feature a neoprene knuckle to deliver stretch, comfort, and durability in areas of flection.</p>",
+                6: "<h3>Knit Back</h3><p>Stretch knit back material promotes comfort and breathability while maintaining safety and protection. This material is available in various colors.</p>",
+                7: "<h3>Wrist Closure</h3><p>Style options include slip-on or with a Velcro wrist strap.</p>"
+            };
+            infoBox.innerHTML = content[point];
+        }
+    </script>
+</body>
+</html>
