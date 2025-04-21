@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>rPET Journey</title>
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .step.active {
+      display: flex;
+    }
+
+    .step img {
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .step h2 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      margin: 10px 0;
+    }
+
+    .step p {
+      font-size: 1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0 10px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .nav-buttons button {
+      flex: 1;
+      background: #2c3e50;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+      min-width: 120px;
+    }
+
+    .nav-buttons button:hover {
+      background: #1a252f;
+    }
+
+    .hidden {
+      visibility: hidden;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 10px;
+      }
+
+      .step h2 {
+        font-size: 1.4rem;
+      }
+
+      .step p {
+        font-size: 0.95rem;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-buttons button {
+        width: 100%;
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="step active">
+      <img src="https://www.majesticglove.com/userfiles/plastic%20bottles%20(250%20x%20250%20px).png" alt="Plastic Bottles">
+      <h2>Step 1: Plastic Bottles</h2>
+      <p>Used plastic bottles are collected from recycling programs, embarking on a journey toward a new life. These bottles serve as the base material for creating rPET fiber.</p>
+    </div>
+
+    <div class="step">
+      <img src="https://www.majesticglove.com/userfiles/plastic%20flakes%20(250%20x%20250%20px).png" alt="Plastic Flakes">
+      <h2>Step 2: Plastic Flakes</h2>
+      <p>The bottles are meticulously cleaned, sorted, and chopped into small plastic flakes. These flakes become the building blocks for transforming waste into valuable fiber.</p>
+    </div>
+
+    <div class="step">
+      <img src="https://www.majesticglove.com/userfiles/spun%20into%20yarn%20(250%20x%20250%20px).png" alt="Spun Yarn">
+      <h2>Step 3: Spun into Yarn</h2>
+      <p>The plastic flakes are melted down and spun into soft, durable yarn. This rPET yarn is strong and flexible and perfect for creating eco-conscious safety equipment.</p>
+    </div>
+
+    <div class="step">
+      <img src="https://www.majesticglove.com/userfiles/made%20into%20gloves%20(250%20x%20250%20px).png" alt="Majestic Glove">
+      <h2>Step 4: Made into Gloves</h2>
+      <p>Majestic uses rPET yarn to craft high-performance gloves. Each pair contributes to reducing plastic waste and supports a more sustainable future for workers and the planet.</p>
+    </div>
+
+    <div class="nav-buttons">
+      <button id="prevBtn" class="hidden">← Back</button>
+      <button id="nextBtn">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    const steps = document.querySelectorAll('.step');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentStep = 0;
+
+    function updateSteps() {
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index === currentStep);
+      });
+      prevBtn.classList.toggle('hidden', currentStep === 0);
+      nextBtn.textContent = currentStep === steps.length - 1 ? 'Repeat' : 'Next →';
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentStep > 0) {
+        currentStep--;
+        updateSteps();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        updateSteps();
+      } else {
+        currentStep = 0;
+        updateSteps();
+      }
+    });
+  </script>
+</body>
+</html>
