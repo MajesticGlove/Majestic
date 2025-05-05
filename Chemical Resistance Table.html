@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chemical Resistance Guide</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #1e1e1e;
+  color: #fff;
+  padding: 2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+#chemical-selector {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+#chemical-selector label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input#chemical {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #444;
+  background-color: #2a2a2a;
+  color: white;
+}
+
+input#chemical:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00aaff;
+}
+
+ul#suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #333;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+  border: 1px solid #444;
+}
+
+ul#suggestions li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+ul#suggestions li:hover {
+  background: #00aaff;
+  color: #fff;
+}
+
+#result {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #2c2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #444;
+}
+
+th {
+  background-color: #444;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.excellent { color: #4CAF50; font-weight: bold; }
+.good { color: #8BC34A; }
+.fair { color: #FFC107; }
+.poor { color: #FF5722; }
+.not-rec { color: #B0BEC5; }
+.no-data { color: #9E9E9E; }
+
+.hidden {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+
+  <div id="chemical-selector">
+  <label for="chemical">Search for a chemical:</label>
+  <input type="text" id="chemical" placeholder="Start typing...">
+  <ul id="suggestions"></ul>
+</div>
+
+<div id="result" class="hidden">
+  <h3 id="chem-name"></h3>
+  <table>
+    <thead>
+      <tr><th>Material</th><th>Rating</th></tr>
+    </thead>
+    <tbody id="ratings-table"></tbody>
+  </table>
+</div>
+
+
+  <script>
+    const chemicalData = {
+      "Acedaldehyde, 99.5%": { Latex: "Good", Neoprene: "Fair", Nitrile: "Poor", PVC: "Not Recommended" },
+
+"Acetic Acid": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Good" },
+
+"Acetone, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Acetonitrile, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Not Recommended" },
+
+"Acrylic Acid, 99%": { Latex: "Good", Neoprene: "Good", Nitrile: "Fair", PVC: "No Data" },
+
+"Ammonium Flouride, 40%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Excellent" },
+
+"Ammonium Hydroxide, 85%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Excellent" },
+
+"Amyl Acetate, 100%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Fair" },
+
+"Amyl Alcohol, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Fair" },
+
+"Aniline, 99+%": { Latex: "Excellent", Neoprene: "Poor", Nitrile: "Not Recommended", PVC: "Fair" },
+
+"Aqua Regia": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Benzaldehyde, 99.5%": { Latex: "Poor", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Bromopropionis Acid , Sat": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "No Data" },
+
+"Butyl Acetate, 99+%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Fair", PVC: "Not Recommended" },
+
+"Butyl Alcohol, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Butyl Cellosolve, 99%": { Latex: "Excellent", Neoprene: "Good", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Butyrolactone, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Carbon Disfulide, 99.9%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Fair", PVC: "Not Recommended" },
+
+"Carbon Tetrachloride, 99+%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Fair" },
+
+"Cellosolve Acetate, 99+%": { Latex: "Good", Neoprene: "Fair", Nitrile: "Good", PVC: "Not Recommended" },
+
+"Chromic Acid, 50%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Good" },
+
+"Citric Acid, 10%": { Latex: "Excellent", Neoprene: "Good", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Cyclohexanol, 98%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Diacetone Alcohol, 99%": { Latex: "Poor", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Fair" },
+
+"Dibutyl Phthalate, 99%": { Latex: "Good", Neoprene: "Good", Nitrile: "Excellent", PVC: "Fair" },
+
+"Diethylamine, 99%": { Latex: "Not Recommended", Neoprene: "Poor", Nitrile: "Good", PVC: "Not Recommended" },
+
+"Diethylamine, 99%": { Latex: "Not Recommended", Neoprene: "Poor", Nitrile: "Good", PVC: "Not Recommended" },
+
+"Diisobutyl Ketone, 80%": { Latex: "Poor", Neoprene: "Poor", Nitrile: "Excellent", PVC: "Good" },
+
+"Dimethyl Acetamide, 99+%": { Latex: "Poor", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"N.N-Dimethylformamide": { Latex: "Good", Neoprene: "Fair", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Dimethyl Sulfoxide, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Not Recommended" },
+
+"Dioctyl Phthalate, 99%": { Latex: "Poor", Neoprene: "Good", Nitrile: "Good", PVC: "No Data" },
+
+"1,4-Dioxane, 99.9%": { Latex: "Fair", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "Poor" },
+
+"Epichlorohydrin, 99+%": { Latex: "Fair", Neoprene: "Poor", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Ethyl Acetate, 99+%": { Latex: "Good", Neoprene: "Good", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Ethyl Alcohol, 90+%": { Latex: "Excellent", Neoprene: "Fair", Nitrile: "Excellent", PVC: "Fair" },
+
+"Ethyl Ether, 99+%": { Latex: "Fair", Neoprene: "Good", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Ethyl Glycol Ether, 99%": { Latex: "Fair", Neoprene: "Excellent", Nitrile: "Fair", PVC: "No Data" },
+
+"Ethylene Glycol, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Formaldehyde, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Formic Acid, 95+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Poor", PVC: "Excellent" },
+
+"Freon TF, 99+%": { Latex: "Not Recommended", Neoprene: "Good", Nitrile: "Poor", PVC: "Fair" },
+
+"Furfural, 99%": { Latex: "Excellent", Neoprene: "Fair", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Gasoline, White , 100%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Fair" },
+
+"Hexamethyldisilazine, 97%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "No Data" },
+
+"Hexane, 99+%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Hydrazine, 65%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Hydrochloric Acid , 10%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Hydrochloric Acid , 38%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Hydrofluoric Acid, 48%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Excellent" },
+
+"Hydrogen Peroxide, 30%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Hydroquinone, Sat .": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Isobutyl Alcohol, 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Iso-Octane, 99%": { Latex: "Fair", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Isopropyl Alcohol, 99+%": { Latex: "Poor", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Kerosene, 100%": { Latex: "Good", Neoprene: "Fair", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Lactic Acid , 85%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Good" },
+
+"Lauric Acid, 36%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Fair" },
+
+"Maleic Acid, Sat.": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Fair" },
+
+"Methyl Alcohol, 99+%": { Latex: "Excellent", Neoprene: "Good", Nitrile: "Good", PVC: "Excellent" },
+
+"Methylamine, 40%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Methyl Cellosolve , 99%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Fair", PVC: "Fair" },
+
+"Methyl Ethyl Ketone, 99+%": { Latex: "Fair", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Mineral Spirits , Rule66, 100%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Mineral Spirits , Rule66, 100%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Monoethanolamine, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Morpholine,99%": { Latex: "Good", Neoprene: "Poor", Nitrile: "Not Recommended", PVC: "Poor" },
+
+"Muriatic Acid, 100%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Naphtha VM&P, 100%": { Latex: "Not Recommended", Neoprene: "Good", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"N-Methyl-2-Pyrrolidone, 99+%": { Latex: "Fair", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Nitric Acid, 10%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Nitric Acid, 70%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Fair" },
+
+"Nitribenzene, 99%": { Latex: "Poor", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Nitromethane, 99.5%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Not Recommended" },
+
+"Nitropropane , 99.5%": { Latex: "Good", Neoprene: "Good", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Octyl Alcohol, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Oleic Acid, 99+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Oxalic Acid, 12.5%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Palmitic Acid, Sat.": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Pentachlorophenol, 35%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "No Data" },
+
+"Pentane, 98%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Good" },
+
+"Perchloric Acid, 60%": { Latex: "Good", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Phenol, 90%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Good" },
+
+"Phosphoric Acid, 85%": { Latex: "Good", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Propyl Acetate, 99%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Fair", PVC: "Not Recommended" },
+
+"Propyl Alcohol , 96+%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Excellent", PVC: "Excellent" },
+
+"Pyridine, 99%": { Latex: "Fair", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Rubber Solvent, 100%": { Latex: "Not Recommended", Neoprene: "Good", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Sodium Hydroxide, 50%": { Latex: "Excellent", Neoprene: "Excellent", Nitrile: "Good", PVC: "Excellent" },
+
+"Stoddard Solvent, 99%": { Latex: "Not Recommended", Neoprene: "Good", Nitrile: "Excellent", PVC: "Fair" },
+
+"Sulfuric Acid , 47%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Good", PVC: "Excellent" },
+
+"Sulfuric Acid , 95%": { Latex: "Not Recommended", Neoprene: "Excellent", Nitrile: "Not Recommended", PVC: "Good" },
+
+"Tannic Acid, 37.5%": { Latex: "Excellent", Neoprene: "Good", Nitrile: "Excellent", PVC: "Excellent" },
+
+"1,1,2,2-Tetrachloroethane, 99%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Tetrachloroethylene, 100%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "Good" },
+
+"Toluene, 99+%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "Fair" },
+
+"1,1,1-Trichloroethane, 99%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Not Recommended", PVC: "No Data" },
+
+"Tricresyl Phosphate, 90%": { Latex: "Good", Neoprene: "Poor", Nitrile: "Good", PVC: "No Data" },
+
+"Triethanolamine, 85%": { Latex: "Excellent", Neoprene: "Fair", Nitrile: "Good", PVC: "Excellent" },
+
+"Turpentine, 100%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Not Recommended" },
+
+"Xylene, 99%": { Latex: "Not Recommended", Neoprene: "Not Recommended", Nitrile: "Excellent", PVC: "Not Recommended" }
+    };
+
+    const input = document.getElementById("chemical");
+    const suggestionsList = document.getElementById("suggestions");
+
+    input.addEventListener("input", function () {
+      const val = this.value.toLowerCase();
+      suggestionsList.innerHTML = "";
+
+      if (!val) return;
+
+      const matches = Object.keys(chemicalData).filter(c => c.toLowerCase().includes(val));
+      matches.forEach(chem => {
+        const li = document.createElement("li");
+        li.textContent = chem;
+        li.onclick = () => showChemicalRatings(chem);
+        suggestionsList.appendChild(li);
+      });
+    });
+
+    function showChemicalRatings(chem) {
+      document.getElementById("chem-name").textContent = chem;
+      const ratings = chemicalData[chem];
+      const tbody = document.getElementById("ratings-table");
+      tbody.innerHTML = "";
+
+      for (let material in ratings) {
+        const tr = document.createElement("tr");
+        const td1 = document.createElement("td");
+        td1.textContent = material;
+        const td2 = document.createElement("td");
+        td2.textContent = ratings[material];
+        td2.className = ratings[material].toLowerCase().replace(" ", "-");
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tbody.appendChild(tr);
+      }
+
+      document.getElementById("result").classList.remove("hidden");
+      suggestionsList.innerHTML = "";
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
