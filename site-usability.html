@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rate Site Usability</title>
+<style>
+  body {
+    margin: 0; 
+    overflow-x: hidden;
+  }
+  .iframeContainer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 400px;
+    height: 430px;
+    transform: translateX(100%);
+    transition: transform 0.60s ease;
+    z-index: 9999999;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    border-radius: 8px 0 0 0;
+    background: white;
+    overflow: visible;
+  }
+  .iframeContainer.visible {
+    transform: translateX(0);
+  }
+  iframe {
+    width: 400px;
+    height: 430px;
+    border: none;
+    border-radius: 8px 0 0 0;
+    pointer-events: auto;
+  }
+</style>
+</head>
+<body>
+<div class="iframeContainer" id="popupContainer" aria-label="Survey Popup">
+  <iframe
+    src="https://form.jotform.com/251625282742154"
+    title="Survey Form"
+    id="popupIframe"
+  ></iframe>
+</div>
+<script>
+  window.addEventListener('load', function() {
+    var popupContainer = document.getElementById('popupContainer');
+    var storageKey = 'popupShown';
+    if (localStorage.getItem(storageKey) !== 'true') {
+      setTimeout(function() {
+        popupContainer.classList.add('visible');
+        localStorage.setItem(storageKey, 'true');
+      }, 50);
+    }
+  });
+</script>
+</body>
+</html>
