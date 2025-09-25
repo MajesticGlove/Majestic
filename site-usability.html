@@ -5,32 +5,50 @@
 <title>Rate Site Usability</title>
 <style>
   body {
-    margin: 0; 
+    margin: 0;
     overflow-x: hidden;
   }
+
+  /* Popup container */
   .iframeContainer {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 400px;
-    height: 430px;
+    width: 500px;
+    height: 510px;
     transform: translateX(100%);
-    transition: transform 0.60s ease;
+    transition: transform 0.6s ease;
     z-index: 9999999;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    border-radius: 8px 0 0 0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    border-radius: 12px 0 0 0;
     background: white;
-    overflow: visible;
+    overflow: hidden;
   }
+
   .iframeContainer.visible {
     transform: translateX(0);
   }
+
+  /* Iframe styling */
   iframe {
-    width: 400px;
-    height: 430px;
+    width: 100%;
+    height: 100%;
     border: none;
-    border-radius: 8px 0 0 0;
-    pointer-events: auto;
+    border-radius: 12px 0 0 0;
+  }
+
+  /* Mobile adjustments */
+  @media screen and (max-width: 600px) {
+    .iframeContainer {
+      width: 90%;
+      height: 70%;
+      bottom: 10%;
+      right: 5%;
+      border-radius: 12px;
+    }
+    iframe {
+      border-radius: 12px;
+    }
   }
 </style>
 </head>
@@ -42,12 +60,14 @@
     id="popupIframe"
   ></iframe>
 </div>
+
 <script>
   window.addEventListener('load', function() {
-    var popupContainer = document.getElementById('popupContainer');
-    var storageKey = 'popupShown';
+    const popupContainer = document.getElementById('popupContainer');
+    const storageKey = 'popupShown';
+
     if (localStorage.getItem(storageKey) !== 'true') {
-      setTimeout(function() {
+      setTimeout(() => {
         popupContainer.classList.add('visible');
         localStorage.setItem(storageKey, 'true');
       }, 50);
