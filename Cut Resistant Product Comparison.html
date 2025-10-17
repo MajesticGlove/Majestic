@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Majestic Competitor Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <style>
+    canvas { display:block; width:100% !important; }
+    #barChart { height:220px; }
+    #gaugeChart { height:120px; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+  <header class="bg-[#ab1f2d] text-white p-6 shadow-md">
+    <h1 class="text-2xl font-bold">Majestic Competitor Comparison</h1>
+    <p class="text-sm opacity-90">Product-first comparison of safety specs (ANSI ratings, gauge, material, origin).</p>
+  </header>
+
+  <!-- Search -->
+  <section class="p-6 flex justify-center">
+    <div class="w-full max-w-lg">
+      <label class="block text-gray-700 font-semibold mb-2" for="productInput">Competitor Product Number</label>
+      <div class="flex">
+        <input id="productInput" type="text" placeholder="e.g., 34-8743"
+          aria-label="Competitor product number"
+          class="flex-1 px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#ab1f2d]" />
+        <button id="searchBtn"
+          class="bg-[#ab1f2d] text-white px-4 py-2 rounded-r-lg hover:opacity-90 transition"
+          type="button">Search</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <main id="dashboard" class="hidden space-y-6 max-w-6xl mx-auto px-6 pb-10">
+
+    <!-- Top Info Cards -->
+    <section id="topCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <h3 class="text-gray-600 text-xs uppercase mb-1">Competitor</h3>
+        <p id="competitorName" class="text-lg font-bold text-[#707070]">—</p>
+        <p id="competitorPart" class="text-sm text-gray-500">—</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-lg flex items-center space-x-4 md:col-span-1">
+        <img id="majesticImage" src="" alt="Majestic product image"
+          class="h-32 w-auto rounded-lg shadow-sm object-contain bg-white" />
+        <div>
+          <h3 class="text-gray-600 text-xs uppercase">Majestic Part</h3>
+          <p id="majesticPart" class="text-2xl font-bold text-[#ab1f2d]">—</p>
+          <p id="majesticName" class="text-lg font-semibold text-gray-800">—</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow-lg">
+        <p class="text-sm text-gray-500 uppercase mb-1">Comparison Summary</p>
+        <p id="comparisonSummary" class="italic text-gray-700 leading-snug">—</p>
+      </div>
+    </section>
+
+    <!-- Charts + Table -->
+    <section id="chartsAndTable" class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
+      <div class="flex flex-col space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow h-[300px]">
+          <h2 class="text-lg font-semibold mb-3">ANSI/ISEA 105 Comparison</h2>
+          <div class="h-[220px]">
+            <canvas id="barChart" aria-label="ANSI ratings bar chart" role="img"></canvas>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow h-[200px]">
+          <h2 class="text-lg font-semibold mb-3">Glove Gauge Comparison</h2>
+          <div class="h-[120px]">
+            <canvas id="gaugeChart" aria-label="Glove gauge comparison" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <aside class="bg-white p-6 rounded-xl shadow fade-in">
+        <h2 class="text-lg font-semibold mb-4">Product Specs</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="text-sm text-gray-500 border-b">
+                <th class="pb-2">Field</th>
+                <th class="pb-2">Competitor</th>
+                <th class="pb-2">Majestic</th>
+              </tr>
+            </thead>
+            <tbody id="specTableBody" class="text-sm"></tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Bottom Benefit Section -->
+    <section id="benefitSection" class="bg-[#ab1f2d] text-white p-8 rounded-2xl shadow-lg text-center fade-in">
+      <p class="text-lg font-semibold mb-3">Choose Majestic for consistent quality, trusted protection, and superior performance.</p>
+      <p class="text-sm opacity-90 mb-6">Our gloves are engineered to exceed industry standards while helping your team stay safe and productive on every job.</p>
+      <a href="https://www.majesticglove.com" target="_blank" rel="noopener" 
+         class="bg-white text-[#ab1f2d] font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">
+         Learn More
+      </a>
+    </section>
+  </main>
+
+  <script>
+    const MAJESTIC_JSON_URL = "https://majesticglove.github.io/Majestic/products.json";
+    let products = {};
+    const charts = { bar: null, gauge: null };
+
+    async function loadProducts() {
+      try {
+        const res = await fetch(MAJESTIC_JSON_URL);
+        if (!res.ok) throw new Error("Failed to fetch JSON");
+        products = await res.json();
+        console.log("✅ Products loaded:", Object.keys(products).length);
+      } catch (err) {
+        console.error("Error loading products.json:", err);
+        alert("Unable to load product data. Please try again later.");
+      }
+    }
+
+    function ratingToNum(r) {
+      if (typeof r === "number") return r;
+      if (!r && r !== 0) return 0;
+      const m = String(r).trim().toUpperCase().match(/^A?(\d+)$/);
+      return m ? parseInt(m[1], 10) : 0;
+    }
+
+    function destroyCharts() {
+      Object.values(charts).forEach(c => c?.destroy());
+    }
+
+    function renderSpecTable(comp, maj) {
+      const rows = [
+        ["Country of Origin", comp.country, maj.country],
+        ["Material", comp.linerMaterial || comp.material, maj.material],
+        ["Cut (ANSI)", comp.ratings.cut, maj.ratings.cut],
+        ["Abrasion (ANSI)", comp.ratings.abrasion, maj.ratings.abrasion],
+        ["Puncture (ANSI)", comp.ratings.puncture, maj.ratings.puncture],
+        ["Gauge", comp.gauge, maj.gauge]
+      ];
+      const tbody = document.getElementById("specTableBody");
+      tbody.innerHTML = rows.map(([f, c, m]) => `
+        <tr class="border-t">
+          <td class="py-3 pr-4 font-medium">${f || "—"}</td>
+          <td class="py-3 pr-4">${c || "—"}</td>
+          <td class="py-3 pr-4">${m || "—"}</td>
+        </tr>`).join("");
+    }
+
+    function renderBarChart(comp, maj) {
+      const ctx = document.getElementById("barChart").getContext("2d");
+      charts.bar?.destroy();
+      charts.bar = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Cut", "Abrasion", "Puncture"],
+          datasets: [
+            { label: comp.name, data: [ratingToNum(comp.ratings.cut), ratingToNum(comp.ratings.abrasion), ratingToNum(comp.ratings.puncture)], backgroundColor: "#707070", borderRadius: 6 },
+            { label: `Majestic ${maj.part}`, data: [ratingToNum(maj.ratings.cut), ratingToNum(maj.ratings.abrasion), ratingToNum(maj.ratings.puncture)], backgroundColor: "#ab1f2d", borderRadius: 6 }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+          plugins: { legend: { position: "bottom" } }
+        }
+      });
+    }
+
+    function renderGaugeChart(comp, maj) {
+      const ctx = document.getElementById("gaugeChart").getContext("2d");
+      charts.gauge?.destroy();
+      charts.gauge = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [`Majestic ${maj.part}`, comp.part],
+          datasets: [{ data: [maj.gauge, comp.gauge], backgroundColor: ["#ab1f2d", "#707070"], barThickness: 18, borderRadius: 6 }]
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    function showComparison(compKey) {
+      const dashboard = document.getElementById("dashboard");
+      const compObj = products[compKey];
+      if (!compObj) return alert("No data found for that competitor number.");
+      
+      const comp = compObj.competitor;
+      const maj = compObj.majestic;
+
+      dashboard.classList.remove("hidden");
+
+      document.querySelectorAll(".fade-in").forEach(el => {
+        el.classList.remove("show");
+        setTimeout(() => el.classList.add("show"), 100);
+      });
+
+      document.getElementById("competitorName").textContent = comp.name;
+      document.getElementById("competitorPart").textContent = comp.part;
+      document.getElementById("majesticPart").textContent = maj.part;
+      document.getElementById("majesticName").textContent = maj.name;
+      document.getElementById("comparisonSummary").textContent = 
+        compObj.summary || `Majestic ${maj.part} vs ${comp.part} — product-first comparison of specs.`;
+
+      const imgEl = document.getElementById("majesticImage");
+      imgEl.src = maj.image || "";
+      imgEl.alt = maj.name + " image";
+
+      renderSpecTable(comp, maj);
+      destroyCharts();
+      renderBarChart(comp, maj);
+      renderGaugeChart(comp, maj);
+    }
+
+    document.getElementById("searchBtn").addEventListener("click", () => {
+      const val = document.getElementById("productInput").value.trim();
+      if (!val) return alert("Please enter a competitor product number.");
+      showComparison(val);
+    });
+
+    document.getElementById("productInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") document.getElementById("searchBtn").click();
+    });
+
+    loadProducts();
+  </script>
+</body>
+</html>
