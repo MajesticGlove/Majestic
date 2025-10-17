@@ -13,6 +13,7 @@
     "majestic": {
       "part": "35-7465",
       "name": "Cut-Less Korplex Glove",
+      "material": "Korplex",
       "country": "Vietnam",
       "gauge": 18,
       "ratings": { "cut": "A4", "abrasion": "5", "puncture": "3" },
@@ -30,5 +31,6 @@
     "whyMajestic": "Majestic’s 35-7465 glove delivers enhanced comfort, protection, and durability designed to outperform the competition. With superior ANSI ratings and a lightweight 15-gauge Korplex liner, it helps workers stay safe and productive on the job."
   }
 }
+
 
 
