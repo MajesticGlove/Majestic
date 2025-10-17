@@ -1,0 +1,32 @@
+{
+  "PIP-34-8743": {
+    "competitor": {
+      "name": "PIP",
+      "part": "34-8743",
+      "linerMaterial": "Engineered Yarn",
+      "gauge": 18,
+      "coating": "Nitrile",
+      "features": ["Touchscreen Compatible", "Reinforced Thumb Crotch"],
+      "country": "Sri Lanka",
+      "ratings": { "cut": "A2", "abrasion": "3", "puncture": "2" }
+    },
+    "majestic": {
+      "part": "35-7465",
+      "name": "Cut-Less Korplex Glove",
+      "country": "Vietnam",
+      "gauge": 18,
+      "ratings": { "cut": "A4", "abrasion": "5", "puncture": "3" },
+      "coating": "Foam Nitrile",
+      "features": [
+        "Improved sizing and stretch",
+        "Crafted without irritant fibers",
+        "Latex-free",
+        "Sanitized® by Actifresh coating",
+        "Touchscreen Friendly"
+      ],
+      "image": "/UserFiles/Product/Images/35/-7/46/35-7465_Front-Back_small.jpg"
+    },
+    "summary": "Majestic 35-7465 vs 34-8743 — product-first comparison of specs.",
+    "whyMajestic": "Majestic’s 35-7465 glove delivers enhanced comfort, protection, and durability designed to outperform the competition. With superior ANSI ratings and a lightweight 15-gauge Korplex liner, it helps workers stay safe and productive on the job."
+  }
+}
