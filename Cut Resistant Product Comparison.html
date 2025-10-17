@@ -103,15 +103,17 @@
       </aside>
     </section>
 
-    <!-- Bottom Benefit Section -->
-    <section id="benefitSection" class="bg-[#ab1f2d] text-white p-8 rounded-2xl shadow-lg text-center fade-in">
-      <p class="text-lg font-semibold mb-3">Choose Majestic for consistent quality, trusted protection, and superior performance.</p>
-      <p class="text-sm opacity-90 mb-6">Our gloves are engineered to exceed industry standards while helping your team stay safe and productive on every job.</p>
-      <a href="https://www.majesticglove.com" target="_blank" rel="noopener" 
-         class="bg-white text-[#ab1f2d] font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">
-         Learn More
-      </a>
-    </section>
+<!-- Bottom Benefit Section -->
+<section id="benefitSection" class="bg-[#ab1f2d] text-white p-8 rounded-2xl shadow-lg text-center fade-in">
+  <p class="text-lg font-semibold mb-3">Why Choose Majestic?</p>
+  <p id="benefitText" class="text-sm opacity-90 mb-6">
+    <!-- This will be replaced dynamically with whyMajestic from JSON -->
+  </p>
+  <a href="https://www.majesticglove.com" target="_blank" rel="noopener" 
+     class="bg-white text-[#ab1f2d] font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition">
+     Learn More
+  </a>
+</section>
   </main>
 
   <script>
@@ -143,22 +145,27 @@
     }
 
     function renderSpecTable(comp, maj) {
-      const rows = [
-        ["Country of Origin", comp.country, maj.country],
-        ["Material", comp.linerMaterial || comp.material, maj.material],
-        ["Cut (ANSI)", comp.ratings.cut, maj.ratings.cut],
-        ["Abrasion (ANSI)", comp.ratings.abrasion, maj.ratings.abrasion],
-        ["Puncture (ANSI)", comp.ratings.puncture, maj.ratings.puncture],
-        ["Gauge", comp.gauge, maj.gauge]
-      ];
-      const tbody = document.getElementById("specTableBody");
-      tbody.innerHTML = rows.map(([f, c, m]) => `
-        <tr class="border-t">
-          <td class="py-3 pr-4 font-medium">${f || "—"}</td>
-          <td class="py-3 pr-4">${c || "—"}</td>
-          <td class="py-3 pr-4">${m || "—"}</td>
-        </tr>`).join("");
-    }
+  // Build table rows
+  const rows = [
+    ["Country of Origin", comp.country || "—", maj.country || "—"],
+    ["Material", comp.linerMaterial || comp.material || "—", maj.material || "—"],
+    ["Cut (ANSI)", comp.ratings?.cut || "—", maj.ratings?.cut || "—"],
+    ["Abrasion (ANSI)", comp.ratings?.abrasion || "—", maj.ratings?.abrasion || "—"],
+    ["Puncture (ANSI)", comp.ratings?.puncture || "—", maj.ratings?.puncture || "—"],
+    ["Gauge", comp.gauge || "—", maj.gauge || "—"],
+    ["Features", (comp.features || []).join(", ") || "—", (maj.features || []).join(", ") || "—"]
+  ];
+
+  // Populate table body
+  const tbody = document.getElementById("specTableBody");
+  tbody.innerHTML = rows.map(([field, compVal, majVal]) => `
+    <tr class="border-t">
+      <td class="py-3 pr-4 font-medium">${field}</td>
+      <td class="py-3 pr-4">${compVal}</td>
+      <td class="py-3 pr-4">${majVal}</td>
+    </tr>
+  `).join("");
+}
 
     function renderBarChart(comp, maj) {
       const ctx = document.getElementById("barChart").getContext("2d");
@@ -200,37 +207,42 @@
       });
     }
 
-    function showComparison(compKey) {
-      const dashboard = document.getElementById("dashboard");
-      const compObj = products[compKey];
-      if (!compObj) return alert("No data found for that competitor number.");
-      
-      const comp = compObj.competitor;
-      const maj = compObj.majestic;
+   function showComparison(compKey) {
+  const dashboard = document.getElementById("dashboard");
+  const compObj = products[compKey];
+  if (!compObj) return alert("No data found for that competitor number.");
+  
+  const comp = compObj.competitor;
+  const maj = compObj.majestic;
 
-      dashboard.classList.remove("hidden");
+  dashboard.classList.remove("hidden");
 
-      document.querySelectorAll(".fade-in").forEach(el => {
-        el.classList.remove("show");
-        setTimeout(() => el.classList.add("show"), 100);
-      });
+  document.querySelectorAll(".fade-in").forEach(el => {
+    el.classList.remove("show");
+    setTimeout(() => el.classList.add("show"), 100);
+  });
 
-      document.getElementById("competitorName").textContent = comp.name;
-      document.getElementById("competitorPart").textContent = comp.part;
-      document.getElementById("majesticPart").textContent = maj.part;
-      document.getElementById("majesticName").textContent = maj.name;
-      document.getElementById("comparisonSummary").textContent = 
-        compObj.summary || `Majestic ${maj.part} vs ${comp.part} — product-first comparison of specs.`;
+  document.getElementById("competitorName").textContent = comp.name;
+  document.getElementById("competitorPart").textContent = comp.part;
+  document.getElementById("majesticPart").textContent = maj.part;
+  document.getElementById("majesticName").textContent = maj.name;
+  document.getElementById("comparisonSummary").textContent = 
+    compObj.summary || `Majestic ${maj.part} vs ${comp.part} — product-first comparison of specs.`;
 
-      const imgEl = document.getElementById("majesticImage");
-      imgEl.src = maj.image || "";
-      imgEl.alt = maj.name + " image";
+  const imgEl = document.getElementById("majesticImage");
+  imgEl.src = maj.image || "";
+  imgEl.alt = maj.name + " image";
 
-      renderSpecTable(comp, maj);
-      destroyCharts();
-      renderBarChart(comp, maj);
-      renderGaugeChart(comp, maj);
-    }
+  // --- Update benefit text dynamically from JSON ---
+  const benefitTextP = document.getElementById("benefitText");
+  benefitTextP.textContent = compObj.whyMajestic || 
+    "Our gloves are engineered to exceed industry standards while helping your team stay safe and productive on every job.";
+
+  renderSpecTable(comp, maj);
+  destroyCharts();
+  renderBarChart(comp, maj);
+  renderGaugeChart(comp, maj);
+}
 
     document.getElementById("searchBtn").addEventListener("click", () => {
       const val = document.getElementById("productInput").value.trim();
