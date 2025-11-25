@@ -246,7 +246,7 @@ function showComparison(compKey) {
   document.getElementById("whyMajestic").textContent = product.whyMajestic;
 
 const imgEl = document.getElementById("majesticImage");
-imgEl.src = maj.image;
+imgEl.src = "https://" + maj.image.replace(/^https?:\/\//, ""); 
 imgEl.alt = `${maj.name} image`;
 
   // Build prefilled Jotform URL
@@ -297,5 +297,6 @@ inputEl.addEventListener("keydown", e => {
   if (e.key === "Enter") searchBtn.click();
 });
 </script>
+
 
 
