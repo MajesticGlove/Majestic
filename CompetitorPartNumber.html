@@ -171,7 +171,7 @@ function destroyCharts() {
 function renderSpecTable(comp, maj) {
   const rows = [
     ["Country of Origin", comp.country, maj.country],
-    ["Liner Material", comp.linerMaterial, ""],
+    ["Liner Material", comp.linerMaterial, extractLiner(maj.material)],
     ["Material Coating", comp.coating, maj.coating],
     ["Features", (comp.features?.length ? comp.features.join(", ") : null), 
                  (maj.features?.length ? maj.features.join(", ") : null)],
@@ -184,7 +184,7 @@ function renderSpecTable(comp, maj) {
   const tbody = document.getElementById("specTableBody");
   
   tbody.innerHTML = rows
-    .filter(([_, c, m]) => c != null || m != null)  // Only keep rows where at least one side has data
+    .filter(([_, c, m]) => c != null || m != null)
     .map(([f, c, m]) => `
       <tr class="border-t">
         <td class="py-3 pr-4 font-medium">${f}</td>
@@ -193,6 +193,13 @@ function renderSpecTable(comp, maj) {
       </tr>
     `)
     .join("");
+}
+
+// Helper function to try to extract just the liner material
+function extractLiner(materialStr) {
+  if (!materialStr) return "—";
+  const match = materialStr.match(/([^,]*liner[^,]*)/i); // grabs any part containing 'liner'
+  return match ? match[1].trim() : materialStr; // fallback to full material string
 }
 
 
@@ -297,6 +304,3 @@ inputEl.addEventListener("keydown", e => {
   if (e.key === "Enter") searchBtn.click();
 });
 </script>
-
-
-
