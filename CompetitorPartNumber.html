@@ -21,6 +21,36 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .autocomplete-wrapper {
+      position: relative;
+    }
+    #autocompleteList {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: white;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-height: 12rem;
+      overflow-y: auto;
+    }
+
+    #autocompleteList.hidden {
+      display: none !important;
+    }
+
+    #autocompleteList li {
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    #autocompleteList li:hover {
+      background: #f3f4f6;
+    }
   </style>
 </head>
 
@@ -35,16 +65,26 @@
     <div class="w-full max-w-lg">
       <label class="block text-gray-700 font-semibold mb-2" for="productInput">Competitor Product Number</label>
 
-      <div class="flex">
-        <input id="productInput" type="text" placeholder="e.g., 34-8743"
-          class="flex-1 px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#ab1f2d]" />
+      <!-- NEW WRAPPER -->
+      <div class="autocomplete-wrapper">
 
-        <button id="searchBtn"
-          class="bg-[#ab1f2d] text-white px-4 py-2 rounded-r-lg hover:opacity-90 transition"
-          type="button">Search</button>
+        <div class="flex">
+          <input id="productInput" type="text" placeholder="e.g., 34-8743"
+            class="flex-1 px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#ab1f2d]" />
+
+          <button id="searchBtn"
+            class="bg-[#ab1f2d] text-white px-4 py-2 rounded-r-lg hover:opacity-90 transition"
+            type="button">Search</button>
+        </div>
+
+        <!-- FLOATING AUTOCOMPLETE -->
+        <ul id="autocompleteList" class="hidden"></ul>
       </div>
 
-      <!-- Microcopy helper -->
+      <p id="searchError" class="text-red-600 text-sm mt-2 font-semibold hidden">
+        *Product information not found
+      </p>
+
       <p class="text-xs text-gray-500 mt-2">
         Enter a competitor model number to generate a side-by-side comparison.
       </p>
@@ -53,7 +93,7 @@
 
   <!-- Dashboard -->
   <main id="dashboard" class="hidden space-y-6 max-w-6xl mx-auto px-6 pb-10">
-
+    <!-- (NO CHANGES BELOW THIS POINT IN HTML) -->
     <!-- Top Info Cards -->
     <section id="topCards" class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in">
       <div class="bg-white p-6 rounded-2xl shadow-lg h-full flex flex-col">
@@ -81,25 +121,17 @@
     <!-- Charts + Table -->
     <section id="chartsAndTable" class="grid grid-cols-1 md:grid-cols-2 gap-8 fade-in">
       <div class="flex flex-col space-y-6">
-
-        <!-- Bar Chart Card -->
         <div class="bg-white p-6 rounded-2xl shadow-lg h-[300px] flex flex-col">
           <h2 class="text-lg font-semibold mb-3">ANSI/ISEA 105 Comparison</h2>
-          <div class="h-[220px]">
-            <canvas id="barChart"></canvas>
-          </div>
+          <div class="h-[220px]"><canvas id="barChart"></canvas></div>
         </div>
 
-        <!-- Gauge Chart Card -->
         <div class="bg-white p-6 rounded-2xl shadow-lg h-[200px] flex flex-col">
           <h2 class="text-lg font-semibold mb-3">Glove Gauge Comparison</h2>
-          <div class="h-[120px]">
-            <canvas id="gaugeChart"></canvas>
-          </div>
+          <div class="h-[120px]"><canvas id="gaugeChart"></canvas></div>
         </div>
       </div>
 
-      <!-- Table -->
       <aside class="bg-white p-6 rounded-2xl shadow-lg fade-in">
         <h2 class="text-lg font-semibold mb-4">Product Specs</h2>
         <div class="overflow-x-auto">
@@ -117,7 +149,6 @@
       </aside>
     </section>
 
-    <!-- Final CTA -->
     <section id="finalSummary" class="fade-in bg-white rounded-2xl shadow-xl p-10 text-center border border-gray-100">
       <h2 class="text-2xl font-bold text-[#ab1f2d] mb-3">Why Choose Majestic?</h2>
       <p id="whyMajestic" class="text-gray-700 max-w-3xl mx-auto mb-6 leading-relaxed">—</p>
@@ -127,23 +158,21 @@
         Learn More
       </a>
     </section>
-<p class="text-xs text-gray-400 mt-4 italic">
-  Competitor part number information is based on publicly available data as of October 2025. Majestic Glove is not responsible for any errors or omissions. This comparison is for informational purposes to help distributors make safety-informed decisions.
-</p>
+
+    <p class="text-xs text-gray-400 mt-4 italic">
+      Competitor part number information is based on publicly available data as of October 2025.
+      Majestic Glove is not responsible for any errors or omissions.
+    </p>
   </main>
 
   <script>
-    // Override Chart.js default animations (subtle and clean)
     Chart.defaults.animation = {
       duration: 900,
       easing: 'easeOutQuart'
     };
   </script>
-
 </body>
 </html>
-
-
 <script>
 let productsData = {};
 const charts = { bar: null, gauge: null };
@@ -203,6 +232,8 @@ function extractLiner(materialStr) {
 }
 
 
+
+
 function renderBarChart(comp, maj) {
   const ctx = document.getElementById("barChart").getContext("2d");
   charts.bar?.destroy();
@@ -218,7 +249,6 @@ function renderBarChart(comp, maj) {
     options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }, plugins: { legend: { position: "bottom" } } }
   });
 }
-
 function renderGaugeChart(comp, maj) {
   const ctx = document.getElementById("gaugeChart").getContext("2d");
   charts.gauge?.destroy();
@@ -235,7 +265,12 @@ function renderGaugeChart(comp, maj) {
 function showComparison(compKey) {
   const key = compKey.trim().toUpperCase(); // Make search case-insensitive
   const product = Object.entries(productsData).find(([k]) => k.toUpperCase() === key)?.[1];
-  if (!product) return alert("No data found for that product number.");
+  if (!product) {
+  document.getElementById("searchError").textContent = "*Product information not found";
+  document.getElementById("searchError").classList.remove("hidden");
+  return;
+}
+document.getElementById("searchError").classList.add("hidden");
 
   const { competitor: comp, majestic: maj } = product;
   document.getElementById("dashboard").classList.remove("hidden");
@@ -296,12 +331,57 @@ loadProducts().then(() => {
 
 searchBtn.addEventListener("click", () => {
   const val = inputEl.value.trim();
-  if (!val) return alert("Please enter a competitor product number.");
+  if (!val) {
+  document.getElementById("searchError").textContent = "*Please enter a product number";
+  document.getElementById("searchError").classList.remove("hidden");
+  return;
+}
+document.getElementById("searchError").classList.add("hidden");
   showComparison(val);
 });
 
 inputEl.addEventListener("keydown", e => {
   if (e.key === "Enter") searchBtn.click();
 });
-</script>
 
+// AUTOCOMPLETE LOGIC
+inputEl.addEventListener("input", () => {
+  const query = inputEl.value.trim().toUpperCase();
+  const listEl = document.getElementById("autocompleteList");
+
+  // hide if empty
+  if (!query) {
+    listEl.innerHTML = "";
+    listEl.classList.add("hidden");
+    return;
+  }
+
+  // find matches
+  const keys = Object.keys(productsData);
+  const matches = keys
+    .filter(k => k.toUpperCase().includes(query))
+    .slice(0, 4); // top 4 suggestions
+
+  if (matches.length === 0) {
+    listEl.innerHTML = "";
+    listEl.classList.add("hidden");
+    return;
+  }
+
+  // build list
+  listEl.innerHTML = matches
+    .map(m => `<li class="px-4 py-2 cursor-pointer hover:bg-gray-100">${m}</li>`)
+    .join("");
+
+  listEl.classList.remove("hidden");
+
+  // clicking a suggestion
+  Array.from(listEl.children).forEach(li => {
+    li.addEventListener("click", () => {
+      inputEl.value = li.textContent;
+      listEl.classList.add("hidden");
+      searchBtn.click();
+    });
+  });
+});
+</script>
