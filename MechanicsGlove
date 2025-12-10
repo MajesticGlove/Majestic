@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Image Points</title>
     <style>
         body {
@@ -10,68 +10,104 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Raleway', Arial, sans-serif;
+            background: linear-gradient(135deg, #eceff1, #ffffff);
             margin: 0;
         }
+
         .container {
             display: flex;
             gap: 40px;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            max-width: 950px;
+            animation: fadeIn 0.6s ease;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .image-container {
             position: relative;
         }
+
         .info {
-            width: 400px;
-            padding: 20px;
-            border-radius: 10px;
-            background: #ffffff;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            width: 420px;
+            padding: 24px;
+            border-radius: 12px;
+            background: #fafafa;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            font-size: 17px;
+            line-height: 1.65;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .preview-text {
+            color: #888;
             font-size: 16px;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            font-style: italic;
         }
+
         .info h3 {
-            margin-top: 0;
-            font-size: 24px;
-            color: #333;
+            margin: 0;
+            font-size: 26px;
+            font-weight: 700;
+            color: #222;
         }
+
         .info p {
-            margin: 10px 0 0;
-            color: #555;
-            font-size: 18px;
+            margin-top: 10px;
+            color: #444;
+            font-size: 17px;
         }
+
         .point {
             position: absolute;
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             background: white;
-            border: 2px solid #333;
+            border: 2px solid #007aff;
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            transition: transform 0.15s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease, background 0.2s ease;
         }
+
         .point:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            background: #e8f1ff;
         }
-        /* Positioning each point */
-        .point1 { top: 30%; right: 25%; }
-        .point2 { top: 32%; left: 48%; }
-        .point3 { top: 40%; left: 24%; }
-        .point4 { top: 62%; left: 58%; }
+
+        /* Point positions */
+        .point1 { top: 28%; right: 25%; }
+        .point2 { top: 30%; left: 48%; }
+        .point3 { top: 39%; left: 24%; }
+        .point4 { top: 61%; left: 58%; }
         .point5 { top: 50%; left: 40%; }
         .point6 { top: 68%; left: 42%; }
-        .point7 { top: 90%; left: 42%; }
+        .point7 { top: 88%; left: 42%; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="image-container">
-            <img src="https://d3b3annyeby0cn.cloudfront.net/userfiles/2150dp%20.jpg" alt="Interactive" width="350">
+            <img src="https://d3b3annyeby0cn.cloudfront.net/userfiles/2150dp%20.jpg" alt="Interactive" width="350" />
             <div class="point point1" onclick="showInfo(1)"></div>
             <div class="point point2" onclick="showInfo(2)"></div>
             <div class="point point3" onclick="showInfo(3)"></div>
@@ -80,23 +116,56 @@
             <div class="point point6" onclick="showInfo(6)"></div>
             <div class="point point7" onclick="showInfo(7)"></div>
         </div>
+
         <div class="info" id="info-box">
-            Click a point on the image to see details.
+            <div class="preview-text">Hover or click a point to explore glove features</div>
+            <h3>Welcome</h3>
+            <p>Select a highlighted point to learn more about each glove detail.</p>
         </div>
     </div>
+
     <script>
+        const infoBox = document.getElementById("info-box");
+
+        const content = {
+            1: {
+                title: "Double Palm",
+                text: "Certain styles are equipped with palm reinforcements to maximize grip, durability, and protection in tough environments."
+            },
+            2: {
+                title: "Ring Band",
+                text: "The Majestic ring band is a registered trademark and a hallmark of our craftsmanship and glove quality."
+            },
+            3: {
+                title: "Pre-curved Fingers",
+                text: "Ergonomically shaped fingers follow natural hand contours to reduce fatigue and improve comfort."
+            },
+            4: {
+                title: "Palm Material",
+                text: "Armor Skin™ synthetic leather and premium options deliver superior abrasion resistance and durability."
+            },
+            5: {
+                title: "Neoprene Knuckle",
+                text: "Flexible neoprene adds stretch, comfort, and durability in high‑movement areas."
+            },
+            6: {
+                title: "Knit Back",
+                text: "Breathable knit back improves airflow while maintaining structure, flexibility, and protection."
+            },
+            7: {
+                title: "Wrist Closure",
+                text: "Choose between slip‑on or Velcro strap designs for personalized fit and convenience."
+            }
+        };
+
         function showInfo(point) {
-            const infoBox = document.getElementById("info-box");
-            const content = {
-                1: "<h3>Double Palm</h3><p>Certain styles are equipped with various reinforcements in the palm of the glove to increase grip, durability, and protection.</p>",
-                2: "<h3>Ring Band</h3><p>The Majestic ring band is a registered trademark and distinguishing characteristic of Majestic quality and craftsmanship.</p>",
-                3: "<h3>Pre-curved</h3><p>All Majestic mechanics gloves feature a pre-curved finger design which follows the hand's natural contours. This minimizes hand fatigue and results in a much more comfortable glove.</p>",
-                4: "<h3>Palm Material</h3><p>Leather and Armor Skin™ Synthetic Leather provides excellent abrasion resistance and protection against hazardous conditions.</p>",
-                5: "<h3>Neoprene Knuckle</h3><p>Most mechanics gloves by Majestic feature a neoprene knuckle to deliver stretch, comfort, and durability in areas of flection.</p>",
-                6: "<h3>Knit Back</h3><p>Stretch knit back material promotes comfort and breathability while maintaining safety and protection. This material is available in various colors.</p>",
-                7: "<h3>Wrist Closure</h3><p>Style options include slip-on or with a Velcro wrist strap.</p>"
-            };
-            infoBox.innerHTML = content[point];
+            const data = content[point];
+            infoBox.classList.add("visible");
+            infoBox.innerHTML = `
+                <div class="preview-text">Feature Highlight</div>
+                <h3>${data.title}</h3>
+                <p>${data.text}</p>
+            `;
         }
     </script>
 </body>
