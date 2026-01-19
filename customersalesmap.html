@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
 }
 
 @media (min-width: 1080px) {
@@ -196,6 +196,9 @@ body {
 .info-panel img {
   opacity: 1;
   transition: opacity .25s ease;
+}
+  .map-container {
+  aspect-ratio: 14 / 9; /* optional, slightly taller feel */
 }
 </style>
 
@@ -437,3 +440,4 @@ document.querySelectorAll(".region").forEach(region => {
 
 </body>
 </html>
+
