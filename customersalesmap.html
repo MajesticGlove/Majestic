@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Majestic Sales Rep Map</title>
+
+<style>
+body {
+  font-family: 'Raleway', Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (min-width: 1080px) {
+  .container {
+    flex-direction: row;
+  }
+}
+
+.map-container {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* === BACKGROUND LAYERS === */
+.map-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  z-index: 1;
+}
+
+.map-bg.active {
+  opacity: 1;
+}
+
+/* === REGIONS === */
+.region {
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  background-color: transparent;
+  pointer-events: auto;
+}
+
+/* === INFO PANEL === */
+.info-panel {
+  flex: 0 0 300px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.info-panel h2 {
+  margin-top: 0;
+  color: #ab1f2d;
+}
+
+.info-panel img {
+  display: block;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.info-panel h3 {
+  margin: 5px 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ab1f2d;
+}
+
+.info-panel .subtitle {
+  margin: 0 0 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.info-panel p {
+  margin: 5px 0;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info-panel .group {
+  font-size: 14px;
+  font-weight: 550;
+  color: #333;
+}
+
+.email-btn, .call-btn {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+  margin-top: 10px;
+  padding: 10px 18px;
+  width: 200px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid #545454;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+  background: #ab1f2d;
+}
+
+.email-btn, .call-btn {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+  margin-top: 8px;        /* smaller spacing */
+  padding: 8px 12px;      /* smaller padding */
+  width: 200px;           /* slightly smaller width */
+  text-align: center;
+  border-radius: 8px;
+  border: none;           /* no outline */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease;
+}
+
+.email-btn {
+  background: #ab1f2d;    /* RED */
+}
+
+.call-btn {
+  background: #545454;    /* GREY */
+}
+
+.email-btn:hover,
+.call-btn:hover {
+  opacity: 0.92;
+}
+
+/* reduce spacing between buttons */
+.cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;  /* smaller gap */
+}
+
+.group-wrap {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.group {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.group span {
+  display: block;
+  font-weight: 600;
+  color: #ab1f2d;
+  margin-top: 4px;
+}
+
+@media (max-width: 1080px) {
+  .info-panel {
+    min-height: 400px;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+}
+
+.info-panel img {
+  opacity: 1;
+  transition: opacity .25s ease;
+}
+</style>
+
+<body>
+
+<div class="container">
+  <div class="map-container">
+
+    <!-- Backgrounds -->
+    <div class="map-bg active" data-bg="default"
+      style="background-image:url('https://www.majesticglove.com/userfiles/greymap.jpg');"></div>
+      
+    <div class="map-bg" data-bg="Jeff Wilson"
+      style="background-image:url('https://www.majesticglove.com/userfiles/jeffmap.jpg');"></div>
+    <div class="map-bg" data-bg="Tony Sanseri"
+      style="background-image:url('https://www.majesticglove.com/userfiles/tonymap.jpg');"></div>
+    <div class="map-bg" data-bg="John Hartnett"
+      style="background-image:url('https://www.majesticglove.com/userfiles/johnmap.jpg');"></div>
+    <div class="map-bg" data-bg="Jon Matyjas - Central Plains"
+      style="background-image:url('https://www.majesticglove.com/userfiles/jonmap.jpg');"></div>
+    <div class="map-bg" data-bg="Kurt McFadden - Alaska & Hawaii"
+      style="background-image:url('https://www.majesticglove.com/userfiles/kurtmap.jpg');"></div>
+    <div class="map-bg" data-bg="Michael McKenna"
+      style="background-image:url('https://www.majesticglove.com/userfiles/michaelmap.jpg');"></div>
+    <div class="map-bg" data-bg="Peter McNary"
+      style="background-image:url('https://www.majesticglove.com/userfiles/petermap.jpg');"></div>
+    <div class="map-bg" data-bg="Scott Bee - South Central"
+      style="background-image:url('https://www.majesticglove.com/userfiles/sbmap.jpg');"></div>
+    <div class="map-bg" data-bg="Scott Gallant"
+      style="background-image:url('https://www.majesticglove.com/userfiles/sgmap.jpg');"></div>
+
+    <!-- Regions -->
+    <div class="region" data-rep="John Hartnett" style="top:5%; left:5%; width:33%; height:25%;"></div>
+    <div class="region" data-rep="Tony Sanseri" style="top:8%; left:38%; width:12%; height:25%;"></div>
+    <div class="region" data-rep="John Hartnett" style="top:3%; left:1%; width:10%; height:24%;"></div>
+    <div class="region" data-rep="Scott Gallant" style="top:5%; left:80%; width:20%; height:40%;"></div>
+    <div class="region" data-rep="Jon Matyjas - Central Plains" style="top:45%; left:80%; width:10%; height:10%;"></div>
+    <div class="region" data-rep="John Hartnett" style="top:25%; left:10%; width:27%; height:23%;"></div>
+    <div class="region" data-rep="Michael McKenna" style="top:33%; left:37%; width:28%; height:22%;"></div>
+    <div class="region" data-rep="Michael McKenna" style="top:10%; left:50%; width:16%; height:23%;"></div>
+    <div class="region" data-rep="Jeff Wilson" style="top:18%; left:65%; width:15%; height:36%;"></div>
+    <div class="region" data-rep="Jon Matyjas - Central Plains" style="top:54%; left:63%; width:27%; height:41%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:55%; left:37%; width:19%; height:40%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:82%; left:36%; width:1%; height:13%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:72%; left:27%; width:10%; height:10%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:55%; left:56%; width:7%; height:13%;"></div>
+    <div class="region" data-rep="Jon Matyjas - Central Plains" style="top:68%; left:56%; width:7%; height:27%;"></div>
+    <div class="region" data-rep="Kurt McFadden - Alaska & Hawaii" style="top:71%; left:0%; width:23%; height:27%;"></div>
+    <div class="region" data-rep="John Hartnett" style="top:82%; left:23%; width:13%; height:16%;"></div>
+    <div class="region" data-rep="Peter McNary" style="top:70%; left:23%; width:2%; height:12%;"></div>
+    <div class="region" data-rep="John Hartnett" style="top:70%; left:25%; width:2%; height:12%;"></div>
+    <div class="region" data-rep="John Hartnett" style="top:48%; left:25%; width:12%; height:24%;"></div>
+    <div class="region" data-rep="Peter McNary" style="top:27%; left:1%; width:9%; height:44%;"></div>
+    <div class="region" data-rep="Peter McNary" style="top:48%; left:10%; width:15%; height:23%;"></div>
+    <div class="region" data-rep="Tony Sanseri" style="top:28%; left:37%; width:5%; height:5%;"></div>
+  </div>
+
+<div class="info-panel" id="infoPanel">
+  <img id="repImage" src="https://www.majesticglove.com/userfiles/majestic%20profile%20picture%20(150%20x%20150%20px).jpg" alt="">
+  <h3 id="repTitle">Find Your Sales Rep</h3>
+  <p id="repSubtitle" class="subtitle">
+    Click your region to connect with your Majestic Sales Representative
+  </p>
+  <p id="repTerritory"></p>
+<div class="group-wrap">
+  <p id="repGroup" class="group"></p>
+</div>
+  <div class="cta-wrap">
+    <a id="emailBtn" class="email-btn" href="#" style="display:none;">
+      Email Rep
+    </a>
+    <a id="callBtn" class="call-btn" href="#" style="display:none;">
+      Call Rep
+    </a>
+  </div>
+</div>
+
+<script>
+const backgrounds = document.querySelectorAll(".map-bg");
+let selectedRep = null;
+
+const repData = {
+  "John Hartnett": {
+    name:"John Hartnett",
+    group: "Mountain Pacific Sales",
+    title:"Regional Sales Manager - Northwest Region",
+    img:"https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+    email:"john.hartnett@majesticglove.com",
+    phone:"+14253206560"
+  },
+  "Tony Sanseri": {
+    name:"Tony Sanseri",
+    title:"Vice President of Sales & Marketing",
+    img:"https://www.majesticglove.com/userfiles/tony%20sanseri.jpg",
+    email:"tony.sanseri@majesticglove.com",
+    phone:"+12064996610"
+  },
+  "Scott Gallant": {
+    name:"Scott Gallant",
+    group: "Kolstad Associates",
+    title:"Regional Sales Manager - Northeast Region",
+    img:"https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+    email:"scott.gallant@majesticglove.com",
+    phone:"+16035052489"
+  },
+  "Jon Matyjas - Central Plains": {
+    name:"Jon Matyjas",
+    group: "Durable Safety Group",
+    title:"Regional Sales Manager - Southeast Region",
+    img:"https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+    email:"jon.matyjas@majesticglove.com",
+    phone:"+17168643163"
+  },
+  "Jeff Wilson": {
+    name:"Jeff Wilson",
+    title:"Regional Sales Manager - Great Lakes Region",
+    img:"https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+    email:"jeff.wilson@majesticglove.com",
+    phone:"+12489124773"
+  },
+  "Peter McNary": {
+    name:"Peter McNary",
+    title:"Regional Sales Manager - Southwest Region",
+    group: "Mayhew Marketing Group",
+    img:"https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
+    email:"peter.mcnary@majesticglove.com",
+    phone:"+12063008556"
+  },
+  "Kurt McFadden - Alaska & Hawaii": {
+    name:"Kurt McFadden",
+    title:"National Accounts Manager",
+    img:"https://www.majesticglove.com/userfiles/kurt%20mcfadden%20(200x200.jpg",
+    email:"kurt.mcfadden@majesticglove.com",
+    phone:"+12069108675"
+  },
+  "Michael McKenna": {
+    name:"Michael McKenna",
+    title:"Regional Sales Manager - Midwest Region",
+    img:"https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+    email:"michael.mckenna@majesticglove.com",
+    phone:"+15133179682"
+  },
+  "Scott Bee - South Central": {
+    name:"Scott Bee",
+    title:"Regional Sales Manager - Southwest Region",
+    img:"https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
+    email:"scott.bee@majesticglove.com",
+    phone:"+12103945350"
+  }
+};
+
+// Info panel elements
+const repImageEl = document.getElementById("repImage");
+const repTitleEl = document.getElementById("repTitle");
+const repSubtitleEl = document.getElementById("repSubtitle");
+const repTerritoryEl = document.getElementById("repTerritory");
+const repGroupEl = document.getElementById("repGroup");
+const emailBtn = document.getElementById("emailBtn");
+const callBtn = document.getElementById("callBtn");
+
+// Activate map background
+function activateBackground(rep) {
+  backgrounds.forEach(bg => {
+    bg.classList.toggle(
+      "active",
+      bg.dataset.bg === rep || (rep === null && bg.dataset.bg === "default")
+    );
+  });
+}
+
+// get first name
+function getFirstName(fullName) {
+  return fullName.split(" ")[0];
+}
+
+// Update info panel
+function updateInfoPanel(rep) {
+  const data = repData[rep];
+  if (!data) return;
+
+  repImageEl.src = data.img;
+  repTitleEl.textContent = data.name;
+  repSubtitleEl.textContent = data.title;
+  repGroupEl.innerHTML = data.group ? `This region is supported by: <span>${data.group}</span>` : "";
+
+  const displayName = data.name.includes(" ") ? getFirstName(data.name) : data.name;
+
+  emailBtn.style.display = "block";
+  emailBtn.href = `mailto:${data.email}`;
+  emailBtn.textContent = `Email ${displayName}`;
+
+  callBtn.style.display = "block";
+  callBtn.href = `tel:${data.phone}`;
+  callBtn.textContent = `Call ${displayName}`;
+}
+
+function resetInfoPanel() {
+  repImageEl.src = "https://www.majesticglove.com/userfiles/majestic%20profile%20picture%20(200x200).jpg";
+  repTitleEl.textContent = "Find Your Sales Rep";
+  repSubtitleEl.textContent = "Click your region to connect with your Majestic Sales Representative";
+  repTerritoryEl.textContent = "";
+  repGroupEl.textContent = "";
+
+  emailBtn.style.display = "none";
+  callBtn.style.display = "none";
+}
+
+// Event listeners for regions
+document.querySelectorAll(".region").forEach(region => {
+  const rep = region.dataset.rep;
+
+  // Hover
+  region.addEventListener("mouseenter", () => {
+    if (selectedRep) return;
+    updateInfoPanel(rep);
+    activateBackground(rep);
+  });
+
+  region.addEventListener("mouseleave", () => {
+    if (selectedRep) return;
+    resetInfoPanel();
+    activateBackground(null);
+  });
+
+  // Click toggle
+  region.addEventListener("click", () => {
+    if (selectedRep === rep) {
+      selectedRep = null;
+      resetInfoPanel();
+      activateBackground(null);
+    } else {
+      selectedRep = rep;
+      updateInfoPanel(rep);
+      activateBackground(rep);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
