@@ -19,7 +19,7 @@ body {
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
 }
 
 @media (min-width: 1080px) {
@@ -55,7 +55,7 @@ body {
   position: absolute;
   z-index: 2;
   cursor: pointer;
-  background-color: transparent;
+   background-color: transparent;
   pointer-events: auto;
 }
 
@@ -197,9 +197,6 @@ body {
   opacity: 1;
   transition: opacity .25s ease;
 }
-  .map-container {
-  aspect-ratio: 14 / 9; /* optional, slightly taller feel */
-}
 </style>
 
 <body>
@@ -212,13 +209,13 @@ body {
       style="background-image:url('https://www.majesticglove.com/userfiles/greymap.jpg');"></div>
       
     <div class="map-bg" data-bg="Jeff Wilson"
-      style="background-image:url('https://www.majesticglove.com/userfiles/jeffmap.jpg');"></div>
+      style="background-image:url('https://www.majesticglove.com/userfiles/jeffwilsonmap.jpg');"></div>
     <div class="map-bg" data-bg="Tony Sanseri"
       style="background-image:url('https://www.majesticglove.com/userfiles/tonymap.jpg');"></div>
     <div class="map-bg" data-bg="John Hartnett"
       style="background-image:url('https://www.majesticglove.com/userfiles/johnmap.jpg');"></div>
     <div class="map-bg" data-bg="Jon Matyjas - Central Plains"
-      style="background-image:url('https://www.majesticglove.com/userfiles/jonmap.jpg');"></div>
+      style="background-image:url('https://www.majesticglove.com/userfiles/jonmatyjasmap.jpg');"></div>
     <div class="map-bg" data-bg="Kurt McFadden - Alaska & Hawaii"
       style="background-image:url('https://www.majesticglove.com/userfiles/kurtmap.jpg');"></div>
     <div class="map-bg" data-bg="Michael McKenna"
@@ -226,7 +223,7 @@ body {
     <div class="map-bg" data-bg="Peter McNary"
       style="background-image:url('https://www.majesticglove.com/userfiles/petermap.jpg');"></div>
     <div class="map-bg" data-bg="Scott Bee - South Central"
-      style="background-image:url('https://www.majesticglove.com/userfiles/sbmap.jpg');"></div>
+      style="background-image:url('https://www.majesticglove.com/userfiles/scottbeemap.jpg');"></div>
     <div class="map-bg" data-bg="Scott Gallant"
       style="background-image:url('https://www.majesticglove.com/userfiles/sgmap.jpg');"></div>
 
@@ -245,7 +242,9 @@ body {
     <div class="region" data-rep="Scott Bee - South Central" style="top:82%; left:36%; width:1%; height:13%;"></div>
     <div class="region" data-rep="Scott Bee - South Central" style="top:72%; left:27%; width:10%; height:10%;"></div>
     <div class="region" data-rep="Scott Bee - South Central" style="top:55%; left:56%; width:7%; height:13%;"></div>
-    <div class="region" data-rep="Jon Matyjas - Central Plains" style="top:68%; left:56%; width:7%; height:27%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:68%; left:56%; width:5%; height:27%;"></div>
+    <div class="region" data-rep="Scott Bee - South Central" style="top:76%; left:58%; width:5%; height:13%;"></div>
+    <div class="region" data-rep="Jon Matyjas - Central Plains" style="top:68%; left:61%; width:2%; height:13%;"></div>
     <div class="region" data-rep="Kurt McFadden - Alaska & Hawaii" style="top:71%; left:0%; width:23%; height:27%;"></div>
     <div class="region" data-rep="John Hartnett" style="top:82%; left:23%; width:13%; height:16%;"></div>
     <div class="region" data-rep="Peter McNary" style="top:70%; left:23%; width:2%; height:12%;"></div>
@@ -440,4 +439,3 @@ document.querySelectorAll(".region").forEach(region => {
 
 </body>
 </html>
-
