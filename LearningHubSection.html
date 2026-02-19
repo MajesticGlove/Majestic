@@ -1,0 +1,252 @@
+<style>
+/* ---------------- Tabs Container ---------------- */
+.tabs-container {
+  width: 60%;
+  margin: 40px auto 0 auto;
+  display: flex;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  user-select: none;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.tab:hover { color: #AB1F2D; }
+.tab.active { color: #fff; }
+
+.tab-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / 5); /* Adjust to number of tabs */
+  height: 100%;
+  background: #AB1F2D;
+  border-radius: 12px;
+  z-index: 0;
+  transition: transform 0.4s ease, width 0.3s ease;
+}
+
+/* ---------------- Tab Contents ---------------- */
+.tab-contents-wrapper {
+  position: relative;
+  width: 80%;
+  max-width: 1000px;
+  margin: 40px auto;
+  min-height: 250px;
+}
+
+.tab-content {
+  position: absolute; /* Keep absolute so only active shows */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tab-content.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.tab-content .visual {
+  flex: 1;
+  margin-right: 40px;
+}
+
+.tab-content .text {
+  flex: 1;
+}
+
+.tab-content .text p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* ---------------- Responsive ---------------- */
+@media screen and (max-width: 768px) {
+  .tabs-container { width: 90%; flex-direction: column; }
+  .tab { font-size: 14px; padding: 12px 0; }
+
+  .tab-slider {
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    top: auto;
+    border-radius: 0;
+    transform: translateX(0);
+  }
+
+  .tab-contents-wrapper { width: 90%; margin: 20px auto; }
+
+  .tab-content {
+    flex-direction: column;
+  }
+
+  .tab-content .visual { margin-right: 0; margin-bottom: 20px; }
+}
+
+@media screen and (max-width: 768px) {
+  .tab.active {
+    color: #AB1F2D; /* red text for active tab on mobile */
+  }
+}
+</style>
+
+<div class="tabs-container">
+  <div class="tab active" data-tab="saved">Saved Orders</div>
+  <div class="tab" data-tab="product-lists">Product Lists</div>
+  <div class="tab" data-tab="order-history">Order History</div>
+  <div class="tab" data-tab="requisitions">Requisitions</div>
+  <div class="tab" data-tab="user-admin">Accounts</div>
+  <div class="tab-slider"></div>
+</div>
+
+<div class="tab-contents-wrapper">
+  <!-- Saved Orders -->
+  <div class="tab-content active" id="saved">
+    <div class="visual">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20saved%20orders%20(1200%20x%20900%20px).png" alt="Saved Orders Screenshot" style="width:100%; border-radius:12px;">
+    </div>
+    <div class="text">
+      <p><strong>What it does:</strong> Allows buyers to save a cart for future checkout, preserving selected products and quantities.</p>
+<p><strong>Why it matters:</strong> Helps teams plan purchases in advance, review internally, and avoid rebuilding large orders from scratch.</p>
+<p><strong>How to use it:</strong> Add products to your cart, review quantities, then select “Save Order” from the cart page. You can access saved orders later to edit quantities or complete checkout.</p>
+    </div>
+  </div>
+
+  <!-- Product Lists -->
+  <div class="tab-content" id="product-lists">
+    <div class="visual">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20lists%20(1200%20x%20900%20px).png" alt="Product Lists Screenshot" style="width:100%; border-radius:12px;">
+    </div>
+    <div class="text">
+      <p><strong>What it does:</strong> Create and save custom lists of frequently purchased products for easy access.</p>
+<p><strong>Why it matters:</strong> Standardizes purchasing across your team, reduces repetitive searching, and makes ordering faster and more accurate.</p>
+<p><strong>How to use it:</strong> Add products to your cart, review quantities, then select “Add all to list” from the cart page. Access your lists anytime to quickly add multiple items to your cart and adjust quantities before checkout.</p>
+    </div>
+  </div>
+
+  <!-- Order History -->
+  <div class="tab-content" id="order-history">
+    <div class="visual">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20order%20history%20(1200%20x%20900%20px).png" alt="Order History Screenshot" style="width:100%; border-radius:12px;">
+    </div>
+    <div class="text">
+      <p><strong>What it does:</strong> View all past orders, POs, and confirmations in one place.</p>
+      <p><strong>Why it matters:</strong> Helps track patterns, verify pricing, and simplify reorders.</p>
+      <p><strong>How to use it:</strong> Click "Order History", filter by date or PO number, view details, and reorder instantly.</p>
+    </div>
+  </div>
+
+  <!-- Requisitions -->
+  <div class="tab-content" id="requisitions">
+    <div class="visual">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20requisitions%20(1200%20x%20900%20px).png" alt="Requisitions Screenshot" style="width:100%; border-radius:12px;">
+    </div>
+    <div class="text">
+<p><strong>What it does:</strong> Allows authorized users to submit orders for internal approval before final processing.</p>
+<p><strong>Why it matters:</strong> Maintains purchasing control while giving team members flexibility to request items.</p>
+<p><strong>How to use it:</strong> Users with requisition permissions add items to their cart, select "Submit as Requisition," and await approval from designated approvers.</p>
+    </div>
+  </div>
+
+  <!-- User Admin -->
+  <div class="tab-content" id="user-admin">
+    <div class="visual">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20user%20administration%20(1200%20x%20900%20px).png" alt="User Administration Screenshot" style="width:100%; border-radius:12px;">
+    </div>
+    <div class="text">
+      <p><strong>What it does:</strong> Manage user roles, permissions, and approval settings.</p>
+      <p><strong>Why it matters:</strong> Control who can place orders, submit requisitions, or view pricing.</p>
+      <p><strong>How to use it:</strong> Access “User Administration,” add or remove users, assign roles, and set approval requirements (e.g., Buyer 1 requires approval before orders are placed, while Buyer 3 can place orders freely without approval).</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const slider = document.querySelector('.tab-slider');
+const contents = document.querySelectorAll('.tab-content');
+
+function updateSlider(index) {
+  if (window.innerWidth > 768) {
+    slider.style.width = `calc(100% / ${tabs.length})`;
+    slider.style.transform = `translateX(${index * 100}%)`;
+  } else {
+    slider.style.width = `100%`;
+    slider.style.transform = `translateY(0)`; // slider stays static on mobile
+  }
+}
+
+function fadeParagraphsIn(content) {
+  const paragraphs = content.querySelectorAll('p');
+  paragraphs.forEach((p, i) => {
+    setTimeout(() => {
+      p.style.opacity = 1;
+      p.style.transform = 'translateY(0)';
+    }, i * 150);
+  });
+}
+
+function fadeParagraphsOut(content) {
+  const paragraphs = content.querySelectorAll('p');
+  paragraphs.forEach((p, i) => {
+    setTimeout(() => {
+      p.style.opacity = 0;
+      p.style.transform = 'translateY(20px)';
+    }, i * 50);
+  });
+}
+
+function showContent(index) {
+  const newContent = contents[index];
+  const current = document.querySelector('.tab-content.active');
+
+  if (current && current !== newContent) {
+    fadeParagraphsOut(current);
+
+    setTimeout(() => {
+      current.classList.remove('active');
+      newContent.classList.add('active');
+      newContent.querySelectorAll('p').forEach(p => {
+        p.style.opacity = 0;
+        p.style.transform = 'translateY(20px)';
+      });
+      fadeParagraphsIn(newContent);
+    }, 250);
+  }
+}
+
+// Tab click
+tabs.forEach((tab, idx) => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    showContent(idx);
+    updateSlider(idx);
+  });
+});
+
+// Initial load
+updateSlider(0);
+fadeParagraphsIn(contents[0]);
+</script>
