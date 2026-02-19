@@ -79,6 +79,8 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
+  font-size: 16px;  /* increase from default */
+  line-height: 1.5; /* optional, improves readability */
 }
 
 /* ---------------- Responsive ---------------- */
@@ -249,4 +251,5 @@ tabs.forEach((tab, idx) => {
 // Initial load
 updateSlider(0);
 fadeParagraphsIn(contents[0]);
+
 </script>
