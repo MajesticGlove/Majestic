@@ -14,8 +14,9 @@
 .tab {
   flex: 1;
   text-align: center;
-  padding: 15px 0;
+  padding: 16px 0;
   font-weight: 600;
+  font-size: 16px;
   color: #555;
   cursor: pointer;
   position: relative;
@@ -30,25 +31,25 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% / 5); /* Adjust to number of tabs */
+  width: calc(100% / 5);
   height: 100%;
   background: #AB1F2D;
   border-radius: 12px;
   z-index: 0;
-  transition: transform 0.4s ease, width 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
 /* ---------------- Tab Contents ---------------- */
 .tab-contents-wrapper {
   position: relative;
   width: 80%;
-  max-width: 1000px;
-  margin: 40px auto;
-  min-height: 250px;
+  max-width: 1100px;
+  margin: 50px auto;
+  min-height: 300px;
 }
 
 .tab-content {
-  position: absolute; /* Keep absolute so only active shows */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -57,36 +58,72 @@
   justify-content: space-between;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
 .tab-content.active {
   opacity: 1;
   pointer-events: all;
-  transform: translateY(0);
 }
 
+/* ---------------- Visual (Screenshot) ---------------- */
 .tab-content .visual {
   flex: 1;
-  margin-right: 40px;
+  margin-right: 50px;
 }
 
+.tab-content .visual img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab-content .visual img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.2);
+}
+
+/* ---------------- Text ---------------- */
 .tab-content .text {
   flex: 1;
 }
 
-.tab-content .text p {
+.tab-content .text h2 {
+  font-size: 30px;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.tab-content .text ul {
+  padding-left: 22px;
+  margin: 0;
+}
+
+.tab-content .text li {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 18px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
-  font-size: 16px;  /* increase from default */
-  line-height: 1.5; /* optional, improves readability */
+}
+
+.tab-content .text strong {
+  font-weight: 700;
 }
 
 /* ---------------- Responsive ---------------- */
 @media screen and (max-width: 768px) {
-  .tabs-container { width: 90%; flex-direction: column; }
-  .tab { font-size: 14px; padding: 12px 0; }
+  .tabs-container {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 14px 0;
+  }
 
   .tab-slider {
     width: 100%;
@@ -94,162 +131,165 @@
     bottom: 0;
     top: auto;
     border-radius: 0;
-    transform: translateX(0);
   }
 
-  .tab-contents-wrapper { width: 90%; margin: 20px auto; }
+  .tab.active {
+    color: #AB1F2D;
+  }
+
+  .tab-contents-wrapper {
+    width: 90%;
+    margin: 30px auto;
+  }
 
   .tab-content {
     flex-direction: column;
   }
 
-  .tab-content .visual { margin-right: 0; margin-bottom: 20px; }
-}
-
-@media screen and (max-width: 768px) {
-  .tab.active {
-    color: #AB1F2D; /* red text for active tab on mobile */
+  .tab-content .visual {
+    margin-right: 0;
+    margin-bottom: 30px;
   }
 }
 </style>
 
+
 <div class="tabs-container">
-  <div class="tab active" data-tab="saved">Saved Orders</div>
-  <div class="tab" data-tab="product-lists">Product Lists</div>
-  <div class="tab" data-tab="order-history">Order History</div>
-  <div class="tab" data-tab="requisitions">Requisitions</div>
-  <div class="tab" data-tab="user-admin">Accounts</div>
+  <div class="tab active">Saved Orders</div>
+  <div class="tab">Product Lists</div>
+  <div class="tab">Order History</div>
+  <div class="tab">Requisitions</div>
+  <div class="tab">Accounts</div>
   <div class="tab-slider"></div>
 </div>
 
 <div class="tab-contents-wrapper">
+
   <!-- Saved Orders -->
-  <div class="tab-content active" id="saved">
+  <div class="tab-content active">
     <div class="visual">
-      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20saved%20orders%20(1200%20x%20900%20px).png" alt="Saved Orders Screenshot" style="width:100%; border-radius:12px;">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20saved%20orders%20(1200%20x%20900%20px).png" alt="Saved Orders Screenshot">
     </div>
     <div class="text">
-      <p><strong>What it does:</strong> Allows buyers to save a cart for future checkout, preserving selected products and quantities.</p>
-<p><strong>Why it matters:</strong> Helps teams plan purchases in advance, review internally, and avoid rebuilding large orders from scratch.</p>
-<p><strong>How to use it:</strong> Add products to your cart, review quantities, then select “Save Order” from the cart page. You can access saved orders later to edit quantities or complete checkout.</p>
+      <h2>Saved Orders</h2>
+      <ul>
+        <li><strong>What it does:</strong> Save a cart for future checkout with all products and quantities preserved.</li>
+        <li><strong>Why it matters:</strong> Plan purchases in advance, review internally, and avoid rebuilding large orders.</li>
+        <li><strong>How to use it:</strong> Add items to your cart and select “Save Order.” Access and edit anytime before checkout.</li>
+      </ul>
     </div>
   </div>
 
   <!-- Product Lists -->
-  <div class="tab-content" id="product-lists">
+  <div class="tab-content">
     <div class="visual">
-      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20lists%20(1200%20x%20900%20px).png" alt="Product Lists Screenshot" style="width:100%; border-radius:12px;">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20lists%20(1200%20x%20900%20px).png" alt="Product Lists Screenshot">
     </div>
     <div class="text">
-      <p><strong>What it does:</strong> Create and save custom lists of frequently purchased products for easy access.</p>
-<p><strong>Why it matters:</strong> Standardizes purchasing across your team, reduces repetitive searching, and makes ordering faster and more accurate.</p>
-<p><strong>How to use it:</strong> Add products to your cart, review quantities, then select “Add all to list” from the cart page. Access your lists anytime to quickly add multiple items to your cart and adjust quantities before checkout.</p>
+      <h2>Product Lists</h2>
+      <ul>
+        <li><strong>What it does:</strong> Create custom lists of frequently ordered products.</li>
+        <li><strong>Why it matters:</strong> Standardize purchasing and reduce repetitive searching.</li>
+        <li><strong>How to use it:</strong> Add items to cart and select “Add All to List.” Reorder anytime with one click.</li>
+      </ul>
     </div>
   </div>
 
   <!-- Order History -->
-  <div class="tab-content" id="order-history">
+  <div class="tab-content">
     <div class="visual">
-      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20order%20history%20(1200%20x%20900%20px).png" alt="Order History Screenshot" style="width:100%; border-radius:12px;">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20order%20history%20(1200%20x%20900%20px).png" alt="Order History Screenshot">
     </div>
     <div class="text">
-      <p><strong>What it does:</strong> View all past orders, POs, and confirmations in one place.</p>
-      <p><strong>Why it matters:</strong> Helps track patterns, verify pricing, and simplify reorders.</p>
-      <p><strong>How to use it:</strong> Click "Order History", filter by date or PO number, view details, and reorder instantly.</p>
+      <h2>Order History</h2>
+      <ul>
+        <li><strong>What it does:</strong> View all past orders, POs, and confirmations.</li>
+        <li><strong>Why it matters:</strong> Track patterns, verify pricing, and simplify reorders.</li>
+        <li><strong>How to use it:</strong> Filter by date or PO number and reorder instantly.</li>
+      </ul>
     </div>
   </div>
 
   <!-- Requisitions -->
-  <div class="tab-content" id="requisitions">
+  <div class="tab-content">
     <div class="visual">
-      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20requisitions%20(1200%20x%20900%20px).png" alt="Requisitions Screenshot" style="width:100%; border-radius:12px;">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20requisitions%20(1200%20x%20900%20px).png" alt="Requisitions Screenshot">
     </div>
     <div class="text">
-<p><strong>What it does:</strong> Allows authorized users to submit orders for internal approval before final processing.</p>
-<p><strong>Why it matters:</strong> Maintains purchasing control while giving team members flexibility to request items.</p>
-<p><strong>How to use it:</strong> Users with requisition permissions add items to their cart, select "Submit as Requisition," and await approval from designated approvers.</p>
+      <h2>Requisitions</h2>
+      <ul>
+        <li><strong>What it does:</strong> Submit orders for internal approval before processing.</li>
+        <li><strong>Why it matters:</strong> Maintain purchasing control while empowering team members.</li>
+        <li><strong>How to use it:</strong> Add items to cart and select “Submit as Requisition.”</li>
+      </ul>
     </div>
   </div>
 
-  <!-- User Admin -->
-  <div class="tab-content" id="user-admin">
+  <!-- Accounts -->
+  <div class="tab-content">
     <div class="visual">
-      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20user%20administration%20(1200%20x%20900%20px).png" alt="User Administration Screenshot" style="width:100%; border-radius:12px;">
+      <img src="https://www.majesticglove.com/userfiles/majestic%20glove%20user%20administration%20(1200%20x%20900%20px).png" alt="User Administration Screenshot">
     </div>
     <div class="text">
-      <p><strong>What it does:</strong> Manage user roles, permissions, and approval settings.</p>
-      <p><strong>Why it matters:</strong> Control who can place orders, submit requisitions, or view pricing.</p>
-      <p><strong>How to use it:</strong> Access “User Administration,” add or remove users, assign roles, and set approval requirements (e.g., Buyer 1 requires approval before orders are placed, while Buyer 3 can place orders freely without approval).</p>
+      <h2>Accounts</h2>
+      <ul>
+        <li><strong>What it does:</strong> Manage user roles and permissions.</li>
+        <li><strong>Why it matters:</strong> Control who can place orders or submit requisitions.</li>
+        <li><strong>How to use it:</strong> Add or remove users and assign approval requirements.</li>
+      </ul>
     </div>
   </div>
+
 </div>
+
 
 <script>
 const tabs = document.querySelectorAll('.tab');
-const slider = document.querySelector('.tab-slider');
 const contents = document.querySelectorAll('.tab-content');
+const slider = document.querySelector('.tab-slider');
 
 function updateSlider(index) {
   if (window.innerWidth > 768) {
-    slider.style.width = `calc(100% / ${tabs.length})`;
     slider.style.transform = `translateX(${index * 100}%)`;
-  } else {
-    slider.style.width = `100%`;
-    slider.style.transform = `translateY(0)`; // slider stays static on mobile
   }
 }
 
-function fadeParagraphsIn(content) {
-  const paragraphs = content.querySelectorAll('p');
-  paragraphs.forEach((p, i) => {
+function animateListItems(content) {
+  const items = content.querySelectorAll('li');
+  items.forEach((item, i) => {
     setTimeout(() => {
-      p.style.opacity = 1;
-      p.style.transform = 'translateY(0)';
+      item.style.opacity = 1;
+      item.style.transform = 'translateY(0)';
     }, i * 150);
   });
 }
 
-function fadeParagraphsOut(content) {
-  const paragraphs = content.querySelectorAll('p');
-  paragraphs.forEach((p, i) => {
-    setTimeout(() => {
-      p.style.opacity = 0;
-      p.style.transform = 'translateY(20px)';
-    }, i * 50);
+function resetListItems(content) {
+  const items = content.querySelectorAll('li');
+  items.forEach(item => {
+    item.style.opacity = 0;
+    item.style.transform = 'translateY(20px)';
   });
 }
 
-function showContent(index) {
-  const newContent = contents[index];
-  const current = document.querySelector('.tab-content.active');
-
-  if (current && current !== newContent) {
-    fadeParagraphsOut(current);
-
-    setTimeout(() => {
-      current.classList.remove('active');
-      newContent.classList.add('active');
-      newContent.querySelectorAll('p').forEach(p => {
-        p.style.opacity = 0;
-        p.style.transform = 'translateY(20px)';
-      });
-      fadeParagraphsIn(newContent);
-    }, 250);
-  }
-}
-
-// Tab click
-tabs.forEach((tab, idx) => {
+tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => {
+
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    showContent(idx);
-    updateSlider(idx);
+
+    contents.forEach(content => {
+      content.classList.remove('active');
+      resetListItems(content);
+    });
+
+    contents[index].classList.add('active');
+    animateListItems(contents[index]);
+    updateSlider(index);
   });
 });
 
-// Initial load
+// Initial load animation
+animateListItems(contents[0]);
 updateSlider(0);
-fadeParagraphsIn(contents[0]);
-
 </script>
