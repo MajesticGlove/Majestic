@@ -766,7 +766,7 @@
             id="info-photo"
             class="rep-photo"
             src="https://via.placeholder.com/200x200.png?text=Rep"
-            alt="Sales representative portrait"
+            alt=""
           />
           <div class="rep-profile-text">
             <span id="info-rep-name">Not assigned yet</span>
@@ -1428,7 +1428,7 @@
           : "—";
 
         infoPhoto.src = data.photo || "https://via.placeholder.com/200x200.png?text=Rep";
-        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "Sales representative portrait";
+        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "";
 
         const hasSupportBlock = data.supportRep || data.description;
         const hasSupportEmail = data.supportEmail;
@@ -1496,7 +1496,7 @@
         infoSupported2.innerHTML = "";
         infoSupportEmail2.innerHTML = "";
         infoPhoto.src = "https://via.placeholder.com/200x200.png?text=Rep";
-        infoPhoto.alt = "Sales representative portrait";
+        infoPhoto.alt = "";
       }
     };
 
