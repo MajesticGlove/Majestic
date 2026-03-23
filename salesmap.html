@@ -330,6 +330,7 @@
   color: var(--muted);
   line-height: 1.6;
   font-size: 0.85rem;
+  }
 
 .contact-eyebrow {
   display: inline-block;
@@ -350,22 +351,30 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 48px;
-  padding: 12px 18px;
-  border-radius: 12px;
+  min-height: 40px;
+  padding: 10px 18px;
+  border-radius: 999px;
   background: var(--brand);
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 700;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 10px 18px rgba(171, 31, 45, 0.18);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(171, 31, 45, 0.18);
 }
 
 .contact-btn:hover,
 .contact-btn:focus {
   background: var(--brand-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(171, 31, 45, 0.25);
   text-decoration: none;
+}
+
+.contact-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(171, 31, 45, 0.2);
 }
   </style>
 </head>
