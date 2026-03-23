@@ -834,7 +834,7 @@
             id="info-photo"
             class="rep-photo"
             src="https://via.placeholder.com/200x200.png?text=Rep"
-            alt="Sales representative portrait"
+            alt=""
           />
           <div class="rep-profile-text">
             <span id="info-rep-name">Not assigned yet</span>
@@ -1497,7 +1497,7 @@
         infoRepRegion.textContent = data.region || "Region not assigned";
 
         infoPhoto.src = data.photo || "https://via.placeholder.com/200x200.png?text=Rep";
-        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "Sales representative portrait";
+        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "";
 
         const hasSupportBlock = data.supportRep || data.description;
         const hasSupportBlock2 = data.supportRep2 || data.description2;
@@ -1552,7 +1552,7 @@
         infoSupported.innerHTML = "";
         infoSupported2.innerHTML = "";
         infoPhoto.src = "https://via.placeholder.com/200x200.png?text=Rep";
-        infoPhoto.alt = "Sales representative portrait";
+        infoPhoto.alt = "";
       }
     };
 
