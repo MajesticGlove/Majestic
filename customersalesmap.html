@@ -311,6 +311,8 @@
 <body>
   <section class="map-section">
     <div class="map-header">
+      <h2>Find Your Sales Territory</h2>
+      <p>Hover over a state to highlight it. Click a state to reveal details on the right.</p>
     </div>
 
     <div class="map-layout">
@@ -792,668 +794,721 @@
     <strong>Additional Support Email</strong>
     <div id="info-support-email">—</div>
   </div>
+
+  <div id="support-card-2" class="info-item" style="display: none;">
+    <strong>Additional Support</strong>
+    <div id="info-supported-2">—</div>
+  </div>
+
+  <div id="support-email-card-2" class="info-item" style="display: none;">
+    <strong>Additional Support Email</strong>
+    <div id="info-support-email-2">—</div>
+  </div>
 </div>
 
 </aside>
 </div>
 </section>
+<script>
+  const territoryData = {
+    AL: {
+      name: "Alabama",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "Brooks Donnelly",
+      supportEmail: "Bdonnelly@morrismarketing.net"
+    },
+    AK: {
+      name: "Alaska",
+      region: "National Accounts Manager",
+      rep: "Kurt McFadden",
+      email: "Kurt.McFadden@majesticglove.com",
+      phone: "206-910-8675",
+      photo: "https://www.majesticglove.com/userfiles/kurt%20mcfadden%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    AZ: {
+      name: "Arizona",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Peter McNary",
+      email: "Peter.McNary@majesticglove.com",
+      phone: "206-300-8556",
+      photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
+      description: "Mayhew Marketing Group",
+      supportRep: "Jordan Anthony",
+      supportEmail: "Jordan@mmglv.com"
+    },
+    AR: {
+      name: "Arkansas",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Scott Bee",
+      email: "Scott.Bee@majesticglove.com",
+      phone: "425-407-1200",
+      photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    CA: {
+      name: "California",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Peter McNary",
+      email: "Peter.McNary@majesticglove.com",
+      phone: "206-300-8556",
+      photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
+      description: "Mayhew Marketing Group",
+      supportRep: "Chad Maynard",
+      supportEmail: "Chad@mmglv.com",
+            supportRep2: "Brian Erickson",
+      supportEmail2: "info@mmglv.com"
+    },
+    CO: {
+      name: "Colorado",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Henry Dukart",
+      supportEmail: "Henry@mtnpacificsales.com",
+          description2: "Mountain Pacific Sales",
+      supportRep2: "Preston Waters",
+      supportEmail2: "preston@mtnpacificsales.com"
+    },
+    CT: {
+      name: "Connecticut",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "B&B Construction Group",
+      supportRep: "Karl Bertelmann",
+      supportEmail: "Kbertelmann@bbcsgroup.com"
+    },
+    DE: {
+      name: "Delaware",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    FL: {
+      name: "Florida",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    GA: {
+      name: "Georgia",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "Joshua Cordua",
+      supportEmail: "Jcordua@morrismarketing.net"
+    },
+    HI: {
+      name: "Hawaii",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    ID: {
+      name: "Idaho",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Jeremie Wise",
+      supportEmail: "Jeremie@mtnpacificsales.com"
+    },
+    IL: {
+      name: "Illinois",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    IN: {
+      name: "Indiana",
+      region: "Regional Sales Manager - Great Lakes Region",
+      rep: "Jeff Wilson",
+      email: "Jeff.Wilson@majesticglove.com",
+      phone: "800-367-4568",
+      photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    IA: {
+      name: "Iowa",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    KS: {
+      name: "Kansas",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    KY: {
+      name: "Kentucky",
+      region: "Regional Sales Manager - Great Lakes Region",
+      rep: "Jeff Wilson",
+      email: "Jeff.Wilson@majesticglove.com",
+      phone: "800-367-4568",
+      photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    LA: {
+      name: "Louisiana",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Scott Bee",
+      email: "Scott.Bee@majesticglove.com",
+      phone: "425-407-1200",
+      photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    ME: {
+      name: "Maine",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    MD: {
+      name: "Maryland",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    MA: {
+      name: "Massachusetts",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "B&B Construction Group",
+      supportRep: "Karl Bertelmann",
+      supportEmail: "Kbertelmann@bbcsgroup.com"
+    },
+    MI: {
+      name: "Michigan",
+      region: "Regional Sales Manager - Great Lakes Region",
+      rep: "Jeff Wilson",
+      email: "Jeff.Wilson@majesticglove.com",
+      phone: "800-367-4568",
+      photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    MN: {
+      name: "Minnesota",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    MS: {
+      name: "Mississippi",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "Brooks Donnelly",
+      supportEmail: "Bdonnelly@morrismarketing.net"
+    },
+    MO: {
+      name: "Missouri",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    MT: {
+      name: "Montana",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Justin Wise",
+      supportEmail: "Justin@mtnpacificsales.com"
+    },
+    NE: {
+      name: "Nebraska",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    NV: {
+      name: "Nevada",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Peter McNary",
+      email: "Peter.McNary@majesticglove.com",
+      phone: "206-300-8556",
+      photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
+      description: "Mayhew Marketing Group",
+      supportRep: "Ross Finkelstein",
+      supportEmail: "ross@mmglv.com",
+      description2: "Mountain Pacific Sales",
+      supportRep2: "Jeremie Wise",
+      supportEmail2: "jeremie@mtnpacificsales.com"
+    },
+    NH: {
+      name: "New Hampshire",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "B&B Construction Group",
+      supportRep: "Karl Bertelmann",
+      supportEmail: "Kbertelmann@bbcsgroup.com"
+    },
+    NJ: {
+      name: "New Jersey",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    NM: {
+      name: "New Mexico",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Henry Dukart",
+      supportEmail: "Henry@mtnpacificsales.com"
+    },
+    NY: {
+      name: "New York",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "Kolstad Associates",
+      supportRep: "Mike Kolstad",
+      supportEmail: "Mike@kolstadassociates.com"
+    },
+    NC: {
+      name: "North Carolina",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "John Capps",
+      supportEmail: "Jcapps@morrismarketing.net"
+    },
+    ND: {
+      name: "North Dakota",
+      region: "Vice President of Sales",
+      rep: "Tony Sanseri",
+      email: "Tony.Sanseri@majesticglove.com",
+      phone: "206-499-6610",
+      photo: "https://www.majesticglove.com/userfiles/tony%20sanseri.jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    OH: {
+      name: "Ohio",
+      region: "Regional Sales Manager - Great Lakes Region",
+      rep: "Jeff Wilson",
+      email: "Jeff.Wilson@majesticglove.com",
+      phone: "800-367-4568",
+      photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    OK: {
+      name: "Oklahoma",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Scott Bee",
+      email: "Scott.Bee@majesticglove.com",
+      phone: "425-407-1200",
+      photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    OR: {
+      name: "Oregon",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Jeremie Wise",
+      supportEmail: "Jeremie@mtnpacificsales.com"
+    },
+    PA: {
+      name: "Pennsylvania",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    RI: {
+      name: "Rhode Island",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "B&B Construction Group",
+      supportRep: "Karl Bertelmann",
+      supportEmail: "Kbertelmann@bbcsgroup.com"
+    },
+    SC: {
+      name: "South Carolina",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "Brad Hawkins",
+      supportEmail: "Bhawkins@morrismarketing.net"
+    },
+    SD: {
+      name: "South Dakota",
+      region: "Vice President of Sales",
+      rep: "Tony Sanseri",
+      email: "Tony.Sanseri@majesticglove.com",
+      phone: "206-499-6610",
+      photo: "https://www.majesticglove.com/userfiles/tony%20sanseri.jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    TN: {
+      name: "Tennessee",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "Morris Marketing Group",
+      supportRep: "Kyle Vincent",
+      supportEmail: "Kvincent@morrismarketing.net"
+    },
+    TX: {
+      name: "Texas",
+      region: "Regional Sales Manager - Southwest Region",
+      rep: "Scott Bee",
+      email: "Scott.Bee@majesticglove.com",
+      phone: "425-407-1200",
+      photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    UT: {
+      name: "Utah",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "(425) 320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Justin Wise",
+      supportEmail: "Justin@mtnpacificsales.com"
+    },
+    VT: {
+      name: "Vermont",
+      region: "Regional Sales Manager - Northeast Region",
+      rep: "Scott Gallant",
+      email: "Scott.Gallant@majesticglove.com",
+      phone: "603-505-2489",
+      photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    VA: {
+      name: "Virginia",
+      region: "Regional Sales Manager - Southeast Region",
+      rep: "Jon Matyjas",
+      email: "Jon.Matyjas@majesticglove.com",
+      phone: "716-864-3163",
+      photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    WA: {
+      name: "Washington",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Stacy Marable",
+      supportEmail: "stacie@mtnpacificsales.com",
+                description2: "Mountain Pacific Sales",
+      supportRep2: "Todd Rosencrans",
+      supportEmail2: "Todd@mtnpacificsales.com"
+    },
+    WV: {
+      name: "West Virginia",
+      region: "Regional Sales Manager - Great Lakes Region",
+      rep: "Jeff Wilson",
+      email: "Jeff.Wilson@majesticglove.com",
+      phone: "800-367-4568",
+      photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    WI: {
+      name: "Wisconsin",
+      region: "Regional Sales Manager - Midwest Region",
+      rep: "Michael McKenna",
+      email: "Michael.McKenna@majesticglove.com",
+      phone: "513-317-9682",
+      photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
+      description: "",
+      supportRep: "",
+      supportEmail: ""
+    },
+    WY: {
+      name: "Wyoming",
+      region: "Regional Sales Manager - Northwest Region",
+      rep: "John Hartnett",
+      email: "John.Hartnett@majesticglove.com",
+      phone: "425-320-6560",
+      photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
+      description: "Mountain Pacific Sales",
+      supportRep: "Henry Dukart",
+      supportEmail: "Henry@mtnpacificsales.com",
+                      description2: "Mountain Pacific Sales",
+      supportRep2: "Justin Wise",
+      supportEmail2: "justin@mtnpacificsales.com"
+    }
+  };
 
-  <script>
-    const territoryData = {
-      AL: {
-        name: "Alabama",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "Brooks Donnelly",
-    	supportEmail: "Bdonnelly@morrismarketing.net"
-      },
-      AK: {
-        name: "Alaska",
-        region: "National Accounts Manager",
-        rep: "Kurt McFadden",
-        email: "Kurt.McFadden@majesticglove.com",
-        phone: "206-910-8675",
-        photo: "https://www.majesticglove.com/userfiles/kurt%20mcfadden%20(200x200.jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      AZ: {
-        name: "Arizona",
-         region: "Regional Sales Manager - Southwest Region",
-        rep: "Peter McNary",
-        email: "Peter.McNary@majesticglove.com",
-        phone: "206-300-8556",
-        photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
-        description: "Mayhew Marketing Group",
-        supportRep: "Jordan Anthony",
-    	supportEmail: "Jordan@mmglv.com"
-      },
-      AR: {
-        name: "Arkansas",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Scott Bee",
-        email: "Scott.Bee@majesticglove.com",
-        phone: "425-407-1200",
-        photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      CA: {
-        name: "California",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Peter McNary",
-        email: "Peter.McNary@majesticglove.com",
-        phone: "206-300-8556",
-        photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
-        description: "Mayhew Marketing Group",
-        supportRep: "Chad Maynard",
-    	supportEmail: "Chad@mmglv.com"
-      },
-      CO: {
-        name: "Colorado",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Henry Dukart",
-    	supportEmail: "Henry@mtnpacificsales.com"
-      },
-      CT: {
-        name: "Connecticut",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "B&B Construction Group",
-        supportRep: "Karl Bertelmann",
-    	supportEmail: "Kbertelmann@bbcsgroup.com"
-      },
-      DE: {
-        name: "Delaware",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      FL: {
-        name: "Florida",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      GA: {
-        name: "Georgia",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "Joshua Cordua",
-    	supportEmail: "Jcordua@morrismarketing.net"
-      },
-      HI: {
-        name: "Hawaii",
-         region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      ID: {
-        name: "Idaho",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Jeremie Wise",
-    	supportEmail: "Jeremie@mtnpacificsales.com"
-      },
-      IL: {
-        name: "Illinois",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      IN: {
-        name: "Indiana",
-        region: "Regional Sales Manager - Great Lakes Region",
-        rep: "Jeff Wilson",
-        email: "Jeff.Wilson@majesticglove.com",
-        phone: "800-367-4568",
-        photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      IA: {
-        name: "Iowa",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      KS: {
-        name: "Kansas",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      KY: {
-        name: "Kentucky",
-        region: "Regional Sales Manager - Great Lakes Region",
-        rep: "Jeff Wilson",
-        email: "Jeff.Wilson@majesticglove.com",
-        phone: "800-367-4568",
-        photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      LA: {
-        name: "Louisiana",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Scott Bee",
-        email: "Scott.Bee@majesticglove.com",
-        phone: "425-407-1200",
-        photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      ME: {
-        name: "Maine",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      MD: {
-        name: "Maryland",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      MA: {
-        name: "Massachusetts",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "B&B Construction Group",
-        supportRep: "Karl Bertelmann",
-    	supportEmail: "Kbertelmann@bbcsgroup.com"
-      },
-      MI: {
-        name: "Michigan",
-        region: "Regional Sales Manager - Great Lakes Region",
-        rep: "Jeff Wilson",
-        email: "Jeff.Wilson@majesticglove.com",
-        phone: "800-367-4568",
-        photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      MN: {
-        name: "Minnesota",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      MS: {
-        name: "Mississippi",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "Brooks Donnelly",
-    	supportEmail: "Bdonnelly@morrismarketing.net"
-      },
-      MO: {
-        name: "Missouri",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      MT: {
-        name: "Montana",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Justin Wise",
-    	supportEmail: "Justin@mtnpacificsales.com"
-      },
-      NE: {
-        name: "Nebraska",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      NV: {
-        name: "Nevada",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Peter McNary",
-        email: "Peter.McNary@majesticglove.com",
-        phone: "206-300-8556",
-        photo: "https://www.majesticglove.com/userfiles/peter%20mcnary%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Jeremie Wise",
-    	supportEmail: "Jeremie@mtnpacificsales.com"
-      },
-      NH: {
-        name: "New Hampshire",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "B&B Construction Group",
-        supportRep: "Karl Bertelmann",
-    	supportEmail: "Kbertelmann@bbcsgroup.com"
-      },
-      NJ: {
-        name: "New Jersey",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      NM: {
-        name: "New Mexico",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Henry Dukart",
-    	supportEmail: "Henry@mtnpacificsales.com"
-      },
-      NY: {
-        name: "New York",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "Kolstad Associates",
-        supportRep: "Mike Kolstad",
-    	supportEmail: "Mike@kolstadassociates.com"
-      },
-      NC: {
-        name: "North Carolina",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "John Capps",
-    	supportEmail: "Jcapps@morrismarketing.net"
-      },
-      ND: {
-        name: "North Dakota",
-        region: "Vice President of Sales",
-        rep: "Tony Sanseri",
-        email: "Tony.Sanseri@majesticglove.com",
-        phone: "206-499-6610",
-        photo: "https://www.majesticglove.com/userfiles/tony%20sanseri.jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      OH: {
-        name: "Ohio",
-        region: "Regional Sales Manager - Great Lakes Region",
-        rep: "Jeff Wilson",
-        email: "Jeff.Wilson@majesticglove.com",
-        phone: "800-367-4568",
-        photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      OK: {
-        name: "Oklahoma",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Scott Bee",
-        email: "Scott.Bee@majesticglove.com",
-        phone: "425-407-1200",
-        photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      OR: {
-        name: "Oregon",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Jeremie Wise",
-    	supportEmail: "Jeremie@mtnpacificsales.com"
-      },
-      PA: {
-        name: "Pennsylvania",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      RI: {
-        name: "Rhode Island",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "B&B Construction Group",
-        supportRep: "Karl Bertelmann",
-    	supportEmail: "Kbertelmann@bbcsgroup.com"
-      },
-      SC: {
-        name: "South Carolina",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "Brad Hawkins",
-    	supportEmail: "Bhawkins@morrismarketing.net"
-      },
-      SD: {
-        name: "South Dakota",
-        region: "Vice President of Sales",
-        rep: "Tony Sanseri",
-        email: "Tony.Sanseri@majesticglove.com",
-        phone: "206-499-6610",
-        photo: "https://www.majesticglove.com/userfiles/tony%20sanseri.jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      TN: {
-        name: "Tennessee",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "Morris Marketing Group",
-        supportRep: "Kyle Vincent",
-    	supportEmail: "Kvincent@morrismarketing.net"
-      },
-      TX: {
-        name: "Texas",
-        region: "Regional Sales Manager - Southwest Region",
-        rep: "Scott Bee",
-        email: "Scott.Bee@majesticglove.com",
-        phone: "425-407-1200",
-        photo: "https://www.majesticglove.com/userfiles/scott%20bee%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      UT: {
-        name: "Utah",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "(425) 320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Justin Wise",
-    	supportEmail: "Justin@mtnpacificsales.com"
-      },
-      VT: {
-        name: "Vermont",
-        region: "Regional Sales Manager - Northeast Region",
-        rep: "Scott Gallant",
-        email: "Scott.Gallant@majesticglove.com",
-        phone: "603-505-2489",
-        photo: "https://www.majesticglove.com/userfiles/scott%20gallant%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      VA: {
-        name: "Virginia",
-        region: "Regional Sales Manager - Southeast Region",
-        rep: "Jon Matyjas",
-        email: "Jon.Matyjas@majesticglove.com",
-        phone: "716-864-3163",
-        photo: "https://www.majesticglove.com/userfiles/jon%20matyjas%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      WA: {
-        name: "Washington",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Todd Rosencrans",
-    	supportEmail: "Todd@mtnpacificsales.com"
-      },
-      WV: {
-        name: "West Virginia",
-        region: "Regional Sales Manager - Great Lakes Region",
-        rep: "Jeff Wilson",
-        email: "Jeff.Wilson@majesticglove.com",
-        phone: "800-367-4568",
-        photo: "https://www.majesticglove.com/userfiles/jeff%20wilson%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      WI: {
-        name: "Wisconsin",
-        region: "Regional Sales Manager - Midwest Region",
-        rep: "Michael McKenna",
-        email: "Michael.McKenna@majesticglove.com",
-        phone: "513-317-9682",
-        photo: "https://www.majesticglove.com/userfiles/michael%20mckenna%20(200x200).jpg",
-        description: "",
-        supportRep: "",
-    	supportEmail: ""
-      },
-      WY: {
-        name: "Wyoming",
-        region: "Regional Sales Manager - Northwest Region",
-        rep: "John Hartnett",
-        email: "John.Hartnett@majesticglove.com",
-        phone: "425-320-6560",
-        photo: "https://www.majesticglove.com/userfiles/john%20hartnett%20(200x200).jpg",
-        description: "Mountain Pacific Sales",
-        supportRep: "Henry Dukart",
-    	supportEmail: "Henry@mtnpacificsales.com"
+  const infoTitle = document.getElementById("info-title");
+  const infoDescription = document.getElementById("info-description");
+  const infoPhone = document.getElementById("info-phone");
+  const infoEmail = document.getElementById("info-email");
+  const infoSupported = document.getElementById("info-supported");
+  const supportCard = document.getElementById("support-card");
+  const infoPhoto = document.getElementById("info-photo");
+  const infoRepName = document.getElementById("info-rep-name");
+  const infoRepRegion = document.getElementById("info-rep-region");
+  const supportEmailCard = document.getElementById("support-email-card");
+  const infoSupportEmail = document.getElementById("info-support-email");
+  const supportCard2 = document.getElementById("support-card-2");
+  const infoSupported2 = document.getElementById("info-supported-2");
+  const supportEmailCard2 = document.getElementById("support-email-card-2");
+  const infoSupportEmail2 = document.getElementById("info-support-email-2");
+  const states = document.querySelectorAll("#svg path[data-name]");
+
+  states.forEach((state) => {
+    state.classList.add("state");
+    state.setAttribute("tabindex", "0");
+    state.setAttribute("role", "button");
+    state.setAttribute("aria-label", state.getAttribute("data-name"));
+
+    const selectState = () => {
+      states.forEach((s) => s.classList.remove("is-active"));
+      state.classList.add("is-active");
+
+      const stateId = state.id;
+      const fallbackName = state.getAttribute("data-name") || stateId;
+      const data = territoryData[stateId];
+
+      if (data) {
+        infoTitle.textContent = data.name;
+        infoDescription.textContent = data.description
+          ? `Supported by ${data.description}`
+          : data.rep
+          ? `Represented by ${data.rep}`
+          : "No representative assigned";
+
+        infoRepName.textContent = data.rep || "Not assigned yet";
+        infoRepRegion.textContent = data.region || "Region not assigned";
+
+        infoEmail.innerHTML = data.email
+          ? `<a class="info-link" href="mailto:${data.email}">${data.email}</a>`
+          : "—";
+
+        infoPhone.innerHTML = data.phone
+          ? `<a class="info-link" href="tel:${String(data.phone).replace(/[^\d+]/g, "")}">${data.phone}</a>`
+          : "—";
+
+        infoPhoto.src = data.photo || "https://via.placeholder.com/200x200.png?text=Rep";
+        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "Sales representative portrait";
+
+        const hasSupportBlock = data.supportRep || data.description;
+        const hasSupportEmail = data.supportEmail;
+        const hasSupportBlock2 = data.supportRep2 || data.description2;
+        const hasSupportEmail2 = data.supportEmail2;
+
+        if (hasSupportBlock) {
+          supportCard.style.display = "block";
+          infoSupported.innerHTML = `
+            <div class="support-rep">
+              ${data.supportRep ? `<span class="support-name">${data.supportRep}</span>` : ""}
+              ${data.description ? `<span class="support-group">${data.description}</span>` : ""}
+            </div>
+          `;
+        } else {
+          supportCard.style.display = "none";
+          infoSupported.innerHTML = "";
+        }
+
+        if (hasSupportEmail) {
+          supportEmailCard.style.display = "block";
+          infoSupportEmail.innerHTML = `
+            <a class="support-email" href="mailto:${data.supportEmail}">${data.supportEmail}</a>
+          `;
+        } else {
+          supportEmailCard.style.display = "none";
+          infoSupportEmail.innerHTML = "";
+        }
+
+        if (hasSupportBlock2) {
+          supportCard2.style.display = "block";
+          infoSupported2.innerHTML = `
+            <div class="support-rep">
+              ${data.supportRep2 ? `<span class="support-name">${data.supportRep2}</span>` : ""}
+              ${data.description2 ? `<span class="support-group">${data.description2}</span>` : ""}
+            </div>
+          `;
+        } else {
+          supportCard2.style.display = "none";
+          infoSupported2.innerHTML = "";
+        }
+
+        if (hasSupportEmail2) {
+          supportEmailCard2.style.display = "block";
+          infoSupportEmail2.innerHTML = `
+            <a class="support-email" href="mailto:${data.supportEmail2}">${data.supportEmail2}</a>
+          `;
+        } else {
+          supportEmailCard2.style.display = "none";
+          infoSupportEmail2.innerHTML = "";
+        }
+      } else {
+        infoTitle.textContent = fallbackName;
+        infoDescription.textContent = "This state is interactive, but its territory data has not been added yet.";
+        infoRepName.textContent = "Not assigned yet";
+        infoRepRegion.textContent = "Region not assigned";
+        infoEmail.textContent = "—";
+        infoPhone.textContent = "—";
+        supportCard.style.display = "none";
+        supportEmailCard.style.display = "none";
+        supportCard2.style.display = "none";
+        supportEmailCard2.style.display = "none";
+        infoSupported.innerHTML = "";
+        infoSupportEmail.innerHTML = "";
+        infoSupported2.innerHTML = "";
+        infoSupportEmail2.innerHTML = "";
+        infoPhoto.src = "https://via.placeholder.com/200x200.png?text=Rep";
+        infoPhoto.alt = "Sales representative portrait";
       }
     };
 
-    const infoTitle = document.getElementById("info-title");
-const infoDescription = document.getElementById("info-description");
-const infoPhone = document.getElementById("info-phone");
-const infoEmail = document.getElementById("info-email");
-const infoSupported = document.getElementById("info-supported");
-const supportCard = document.getElementById("support-card");
-const infoPhoto = document.getElementById("info-photo");
-const infoRepName = document.getElementById("info-rep-name");
-const infoRepRegion = document.getElementById("info-rep-region");
-const supportEmailCard = document.getElementById("support-email-card");
-const infoSupportEmail = document.getElementById("info-support-email");
+    state.addEventListener("click", selectState);
 
-    const states = document.querySelectorAll("#svg path[data-name]");
-
-    states.forEach((state) => {
-      state.classList.add("state");
-      state.setAttribute("tabindex", "0");
-      state.setAttribute("role", "button");
-      state.setAttribute("aria-label", state.getAttribute("data-name"));
-
-      const selectState = () => {
-        states.forEach((s) => s.classList.remove("is-active"));
-        state.classList.add("is-active");
-
-        const stateId = state.id;
-        const fallbackName = state.getAttribute("data-name") || stateId;
-        const data = territoryData[stateId];
-
-        if (data) {
-  infoTitle.textContent = data.name;
-  infoDescription.textContent = data.description
-  ? `Supported by ${data.description}`
-  : data.rep
-  ? `Represented by ${data.rep}`
-  : "No representative assigned";
-
-  infoRepName.textContent = data.rep || "Not assigned yet";
-  infoRepRegion.textContent = data.region || "Region not assigned";
-
-  infoEmail.innerHTML = data.email
-    ? `<a class="info-link" href="mailto:${data.email}">${data.email}</a>`
-    : "—";
-
-  infoPhone.innerHTML = data.phone
-    ? `<a class="info-link" href="tel:${String(data.phone).replace(/[^\d+]/g, "")}">${data.phone}</a>`
-    : "—";
-
-  infoPhoto.src = data.photo || "https://via.placeholder.com/200x200.png?text=Rep";
-  infoPhoto.alt = data.rep ? `${data.rep} portrait` : "Sales representative portrait";
-
-  const hasSupportBlock = data.supportRep || data.description;
-  const hasSupportEmail = data.supportEmail;
-
-  if (hasSupportBlock) {
-    supportCard.style.display = "block";
-    infoSupported.innerHTML = `
-      <div class="support-rep">
-        ${data.supportRep ? `<span class="support-name">${data.supportRep}</span>` : ""}
-        ${data.description ? `<span class="support-group">${data.description}</span>` : ""}
-      </div>
-    `;
-  } else {
-    supportCard.style.display = "none";
-    infoSupported.innerHTML = "";
-  }
-
-  if (hasSupportEmail) {
-    supportEmailCard.style.display = "block";
-    infoSupportEmail.innerHTML = `
-      <a class="support-email" href="mailto:${data.supportEmail}">${data.supportEmail}</a>
-    `;
-  } else {
-    supportEmailCard.style.display = "none";
-    infoSupportEmail.innerHTML = "";
-  }
-
-} else {
-  infoTitle.textContent = fallbackName;
-  infoDescription.textContent = "This state is interactive, but its territory data has not been added yet.";
-  infoRepName.textContent = "Not assigned yet";
-  infoRepRegion.textContent = "Region not assigned";
-  infoEmail.textContent = "—";
-  infoPhone.textContent = "—";
-  supportCard.style.display = "none";
-  supportEmailCard.style.display = "none";
-  infoSupported.innerHTML = "";
-  infoSupportEmail.innerHTML = "";
-  infoPhoto.src = "https://via.placeholder.com/200x200.png?text=Rep";
-  infoPhoto.alt = "Sales representative portrait";
-}
-       
-      };
-
-      state.addEventListener("click", selectState);
-
-      state.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          selectState();
-        }
-      });
+    state.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selectState();
+      }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
