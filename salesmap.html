@@ -163,16 +163,18 @@
       background: var(--brand-soft);
     }
 
-    .rep-photo {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 3px solid #ffffff;
-      box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
-      background: #f2dfe3;
-    }
+.rep-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
+  background: #ffffff;
+  display: block;
+}
+
 
     .rep-profile-text {
       min-width: 0;
@@ -824,23 +826,23 @@
         </div>
       </div>
 
-      <aside class="info-card">
-        <div class="eyebrow">Sales Territory</div>
-        <h3 id="info-title">Select a state</h3>
-        <p id="info-description">Click a state on the map to load sales territory info.</p>
+<aside class="info-card">
+  <div class="eyebrow">Sales Territory</div>
+  <h3 id="info-title">Sales Rep Information</h3>
+  <p id="info-description">Click the states to the left to reveal sales rep information.</p>
 
-        <div class="rep-profile">
-          <img
-            id="info-photo"
-            class="rep-photo"
-            src="https://via.placeholder.com/200x200.png?text=Rep"
-            alt=""
-          />
-          <div class="rep-profile-text">
-            <span id="info-rep-name">Not assigned yet</span>
-            <div id="info-rep-region" class="rep-subheader">Region not assigned</div>
-          </div>
-        </div>
+  <div class="rep-profile">
+    <img
+  id="info-photo"
+  class="rep-photo is-empty"
+  src=""
+  alt=""
+/>
+    <div class="rep-profile-text">
+      <span id="info-rep-name">Select a state</span>
+      <div id="info-rep-region" class="rep-subheader">Sales territory details will appear here.</div>
+    </div>
+  </div>
 
 <div class="info-meta">
   <div id="support-card" class="info-item" style="display: none;">
@@ -1495,8 +1497,12 @@
         infoRepName.textContent = data.rep || "Not assigned yet";
         infoRepRegion.textContent = data.region || "Region not assigned";
 
-        infoPhoto.src = data.photo || "https://via.placeholder.com/200x200.png?text=Rep";
-        infoPhoto.alt = data.rep ? `${data.rep} portrait` : "";
+        if (data.photo) {
+  infoPhoto.src = data.photo;
+} else {
+  infoPhoto.src = "";
+}
+infoPhoto.alt = "";
 
         const hasSupportBlock = data.supportRep || data.description;
         const hasSupportBlock2 = data.supportRep2 || data.description2;
@@ -1550,7 +1556,7 @@
         contactCard.style.display = "none";
         infoSupported.innerHTML = "";
         infoSupported2.innerHTML = "";
-        infoPhoto.src = "https://via.placeholder.com/200x200.png?text=Rep";
+        infoPhoto.src = "";
         infoPhoto.alt = "";
       }
     };
