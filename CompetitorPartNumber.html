@@ -169,7 +169,7 @@
 
     async function loadProducts() {
       try {
-        const response = await fetch('https://majesticglove.github.io/Majestic/MarchGloveComparison.json');
+        const response = await fetch('https://majesticglove.github.io/Majestic/UpdatedGloveComparison.json');
         productsData = await response.json();
       } catch (err) {
         console.error("Failed to load products.json:", err);
