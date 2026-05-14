@@ -1,14 +1,3 @@
-<!--
-================================================================================
-  MAJESTIC — INTENT ROUTER + JOTFORM SECTION
-  2 tabs:
-    1. "Become a Distributor" — covers sales, quoting, and distributor enquiries
-       JotForm: https://form.jotform.com/252043751845154
-    2. "General Enquiries"    — covers product/spec, press, reorder/order status
-       JotForm: https://form.jotform.com/232485816121050
-================================================================================
--->
-
 <style>
 /* ── Keyframes ────────────────────────────────────────────── */
 @keyframes mjr-fadeSlideIn {
@@ -45,7 +34,7 @@
   border-radius: 12px;
   cursor: pointer;
   text-align: left;
-  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
   transition:
     border-color .18s ease,
     background   .18s ease,
@@ -91,14 +80,14 @@
   letter-spacing: -.015em;
   line-height: 1.25;
   margin-bottom: 5px;
-  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
 }
 .mjr-tab-desc {
-  font-size: 12.5px;
+  font-size: 14px;
   color: #6b7280;
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 400;
-  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
 }
 .mjr-tab[aria-selected="true"] .mjr-tab-desc { color: #991b1b; }
 
@@ -124,13 +113,36 @@
   display: block;
   animation: mjr-fadeSlideIn .3s ease forwards;
 }
+
+/* ── iframe heights — desktop default ────────────────────── */
 .mjr-form-wrap iframe {
   width: 100%;
   border: none;
   display: block;
+  height: 1000px;
 }
 
-/* ── Responsive ───────────────────────────────────────────── */
+/* Tablet: form fields start stacking */
+@media (max-width: 935px) {
+  .mjr-form-wrap iframe {
+    height: 1280px;
+  }
+}
+
+/* Tablet: form fields start stacking */
+@media (max-width: 860px) {
+  .mjr-form-wrap iframe {
+    height: 920px;
+  }
+}
+/* Mobile: fully stacked, more room needed */
+@media (max-width: 595px) {
+  .mjr-form-wrap iframe {
+    height: 1400px;
+  }
+}
+
+/* ── Responsive layout ────────────────────────────────────── */
 @media (max-width: 860px) {
   .mjr-layout {
     grid-template-columns: 1fr;
@@ -142,32 +154,20 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
-  /* Third tab spans full width so it doesn't sit alone in a half column */
-  .mjr-tabs .mjr-tab:nth-child(3) {
-    grid-column: 1 / -1;
-  }
-  .mjr-tab-locked {
-    grid-column: 1 / -1;
-  }
 }
 @media (max-width: 480px) {
   .mjr-tabs {
     grid-template-columns: 1fr;
   }
-  .mjr-tab-locked {
-    grid-column: auto;
-  }
-  .mjr-panel-header { padding: 18px 18px 14px; }
-  .mjr-panel-title  { font-size: 17px; }
 }
 </style>
 
 
 <!-- ── HTML ───────────────────────────────────────────────── -->
-<section style="
+<section id="mc-contact-form" style="
   padding: 80px 0 100px;
   background: #ffffff;
-  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 ">
@@ -189,7 +189,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
     ">
       Get to the right team
       <span style="flex:1;max-width:36px;height:1px;background:#e5e7eb;display:block;"></span>
@@ -203,7 +203,7 @@
       color: #0f0f0f;
       margin: 0 0 12px;
       padding: 0;
-      font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
     ">What brought you here today?</h2>
 
     <p style="
@@ -213,7 +213,7 @@
       line-height: 1.65;
       margin: 0;
       padding: 0;
-      font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
       font-weight: 400;
     ">Pick the path that fits and we will get your message to the right team.</p>
 
@@ -235,14 +235,14 @@
           </div>
           <div>
             <div class="mjr-tab-title">Become a Distributor</div>
-            <div class="mjr-tab-desc">Sales enquiries, quotes, pricing, and distributor applications.</div>
+            <div class="mjr-tab-desc">Sales inquiries, quotes, pricing, and distributor applications.</div>
           </div>
         </button>
 
-        <!-- TAB 2: General Enquiries -->
+        <!-- TAB 2: General Inquiries -->
         <button class="mjr-tab" role="tab" aria-selected="false"
           data-intent="general"
-          data-title="General Enquiries">
+          data-title="General Inquiries">
           <div class="mjr-tab-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="9"/>
@@ -250,15 +250,15 @@
             </svg>
           </div>
           <div>
-            <div class="mjr-tab-title">General Enquiries</div>
+            <div class="mjr-tab-title">General Inquiries</div>
             <div class="mjr-tab-desc">Product or spec questions, press and partnerships, reorders, and order status.</div>
           </div>
         </button>
 
         <!-- TAB 3: Order & Account Support -->
         <button class="mjr-tab" role="tab" aria-selected="false"
-          data-intent="orders"
-          data-title="Order &amp; Account Support">
+          data-intent="support"
+          data-title="Order & Account Support">
           <div class="mjr-tab-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
@@ -267,7 +267,7 @@
           </div>
           <div>
             <div class="mjr-tab-title">Order &amp; Account Support</div>
-            <div class="mjr-tab-desc">Tracking, returns, billing, reorders, and account changes.</div>
+            <div class="mjr-tab-desc">Existing customer help, order status, returns, and account questions.</div>
           </div>
         </button>
 
@@ -283,29 +283,26 @@
             title="Become a Distributor"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
-            style="width:100%;height:1350px;border:none;display:block;"
           ></iframe>
         </div>
 
-        <!-- General enquiries form -->
+        <!-- General inquiries form -->
         <div class="mjr-form-wrap" data-jotform="general">
           <iframe
             src="https://form.jotform.com/232485816121050"
-            title="General Enquiries"
+            title="General Inquiries"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
-            style="width:100%;height:1350px;border:none;display:block;"
           ></iframe>
         </div>
 
-        <!-- Order & account support form -->
-        <div class="mjr-form-wrap" data-jotform="orders">
+        <!-- Order & Account Support form -->
+        <div class="mjr-form-wrap" data-jotform="support">
           <iframe
             src="https://form.jotform.com/260396700219153"
-            title="Order and Account Support"
+            title="Order & Account Support"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
-            style="width:100%;height:1350px;border:none;display:block;"
           ></iframe>
         </div>
 
@@ -318,18 +315,16 @@
 <!-- ── SCRIPT ─────────────────────────────────────────────── -->
 <script>
 (function () {
-  var tabs    = document.querySelectorAll('.mjr-tab[data-intent]');
+  var tabs = document.querySelectorAll('.mjr-tab[data-intent]');
 
   function activateTab(key) {
     var activeBtn = document.querySelector('.mjr-tab[data-intent="' + key + '"]');
     if (!activeBtn) return;
 
-    /* Update tab states */
     tabs.forEach(function (btn) {
       btn.setAttribute('aria-selected', btn.dataset.intent === key ? 'true' : 'false');
     });
 
-    /* Swap form panels */
     document.querySelectorAll('.mjr-form-wrap').forEach(function (el) {
       if (el.dataset.jotform === key) {
         el.classList.remove('mjr-active');
@@ -341,30 +336,20 @@
     });
   }
 
-  /* Click handlers */
   tabs.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      activateTab(btn.dataset.intent);
-    });
+    btn.addEventListener('click', function () { activateTab(btn.dataset.intent); });
   });
 
-  /* Arrow key navigation */
   tabs.forEach(function (btn, i) {
     btn.addEventListener('keydown', function (e) {
       var all = Array.from(tabs);
       var next;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-        next = all[(i + 1) % all.length];
-      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-        next = all[(i - 1 + all.length) % all.length];
-      }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = all[(i + 1) % all.length];
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = all[(i - 1 + all.length) % all.length];
       if (next) { next.focus(); activateTab(next.dataset.intent); e.preventDefault(); }
     });
   });
 
-  /* Init */
   activateTab('distributor');
 }());
 </script>
-
-
