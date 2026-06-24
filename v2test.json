@@ -14,7 +14,8 @@
     "counts": {
       "majestic_pool": 72,
       "competitors": 2365
-    }
+    },
+    "impact_field": "ratings.impact: ANSI/ISEA 138 level (1-3) when published in source data; true when impact/TPR/back-of-hand protection is present but no level is stated; absent for non-impact gloves. Impact gloves are only matched to impact gloves (and vice versa)."
   },
   "majestic": {
     "35-7465": {
@@ -172,7 +173,8 @@
       "name": "Knucklehead Cut Resistant Mechanics Glove with D3O Impact Protection & Palm Padding A5",
       "ratings": {
         "cut": "A5",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "material": "ArmorSkin™, Korplex® Knit",
       "country": "China",
@@ -219,7 +221,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Uncoated",
       "material": "Goatskin Leather, Korplex® Knit",
@@ -364,7 +367,8 @@
       "name": "X-15 Dyneema Glove with Polyurethane Palm, Impact TPR, 13g, ANSI A3",
       "ratings": {
         "cut": "A3",
-        "puncture": 3
+        "puncture": 3,
+        "impact": true
       },
       "coating": "Polyurethane",
       "gauge": 13,
@@ -534,20 +538,6 @@
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-1/30/35-1306_1200_small.jpg"
     },
-    "21285A": {
-      "part": "21285A",
-      "name": "X10 Cut-Less Goatskin Kevlar Drivers",
-      "ratings": {
-        "cut": "A6",
-        "puncture": 3
-      },
-      "material": "Cowhide, Kevlar® Liner",
-      "country": "Pakistan",
-      "features": [
-        "ANSI/ISEA 138-2019 Impact Level 1"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/21/28/5A/21285A_1200_small.jpg"
-    },
     "34-1570": {
       "part": "34-1570",
       "name": "Cut-Less Glove with Crinkle Latex Palm, 10g, ANSI A4",
@@ -681,7 +671,8 @@
       "name": "X-15 Korplex® Glove with Foam Nitrile Palm, Impact TPR, 10g, ANSI A5",
       "ratings": {
         "cut": "A5",
-        "puncture": 3
+        "puncture": 3,
+        "impact": true
       },
       "coating": "Foam Nitrile",
       "gauge": 10,
@@ -762,7 +753,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "coating": "Sandy Nitrile",
       "gauge": 13,
@@ -778,7 +770,8 @@
       "name": "Knucklehead Driller X10 Mechanics Glove with Cotton Palm and Impact Protection",
       "ratings": {
         "cut": "A2",
-        "puncture": 2
+        "puncture": 2,
+        "impact": 2
       },
       "material": "Cotton, Spandex Back",
       "country": "India",
@@ -793,7 +786,8 @@
       "name": "X-15 Korplex® Glove with Sandy Nitrile Palm, Impact TPR, 13g, ANSI A5",
       "ratings": {
         "cut": "A5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -809,7 +803,8 @@
       "name": "X-15 Cut & Impact Resistant Glove with Double Sandy Nitrile Coating",
       "ratings": {
         "cut": "A5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -911,7 +906,8 @@
       "part": "21247HO",
       "name": "Thinsulate Winter Lined Knucklehead X10 Armor Skin Mechanics Glove with Impact Protection",
       "ratings": {
-        "cut": "A3"
+        "cut": "A3",
+        "impact": true
       },
       "material": "ArmorSkin™",
       "country": "China",
@@ -1050,7 +1046,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": true
       },
       "material": "Cowhide, Kevlar® Liner",
       "country": "Pakistan",
@@ -1744,7 +1741,8 @@
       "part": "KS993KOAB",
       "ratings": {
         "cut": "A4",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
@@ -3560,9 +3558,9 @@
       "coating": "none",
       "linerMaterial": "Split Cowhide Leather",
       "country": "India",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the MJVATA, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "16-813": {
       "brand": "PIP",
@@ -6600,7 +6598,8 @@
       "brand": "Radians",
       "part": "RWG50",
       "ratings": {
-        "cut": "A5"
+        "cut": "A5",
+        "impact": 2
       },
       "linerMaterial": "KAMORI® Knit Fabric, Aramid, Goatskin",
       "features": [
@@ -6620,9 +6619,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "KAMORI® Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the RWG52, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "RWG530": {
       "brand": "Radians",
@@ -6786,7 +6785,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "KAMORI Goatskin",
@@ -6960,7 +6960,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Sandy Foam Nitrile",
       "gauge": 13,
@@ -6976,7 +6977,8 @@
       "brand": "Radians",
       "part": "RWG603R",
       "ratings": {
-        "cut": "A5"
+        "cut": "A5",
+        "impact": 2
       },
       "coating": "Sandy Foam Nitrile",
       "gauge": 15,
@@ -6992,7 +6994,8 @@
       "brand": "Radians",
       "part": "RWG604",
       "ratings": {
-        "cut": "A4"
+        "cut": "A4",
+        "impact": 1
       },
       "coating": "Micro nitrile palm",
       "gauge": 7,
@@ -7026,7 +7029,8 @@
       "brand": "Radians",
       "part": "RWG609",
       "ratings": {
-        "cut": "A5"
+        "cut": "A5",
+        "impact": 2
       },
       "coating": "Sandy foam nitrile palm",
       "gauge": 13,
@@ -7144,7 +7148,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Sandy Foam Nitrile",
       "gauge": 13,
@@ -7228,7 +7233,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 10,
@@ -7246,7 +7252,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "KAMORI® Goatskin Leather HPPE Lined Glove with TPR",
@@ -7306,7 +7313,8 @@
       "brand": "Radians",
       "part": "RWGD110",
       "ratings": {
-        "cut": "A4"
+        "cut": "A4",
+        "impact": 1
       },
       "coating": "micro nitrile",
       "gauge": 13,
@@ -7377,7 +7385,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid",
@@ -7395,7 +7404,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -7568,7 +7578,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Nylon, Leather, Polyester, Spandex, Aramid",
       "country": "Indonesia",
@@ -7625,7 +7636,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 6,
-        "puncture": "5"
+        "puncture": "5",
+        "impact": 1
       },
       "linerMaterial": "Nylon, Leather, Polyester, Spandex",
       "country": "Indonesia",
@@ -7650,9 +7662,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the GL204C, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the GL204C, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "GL3012": {
       "brand": "Pyramex",
@@ -7660,7 +7672,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid",
@@ -7694,7 +7707,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -7727,7 +7741,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": "2",
-        "puncture": "2"
+        "puncture": "2",
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "Polyester, Cotton",
@@ -7848,9 +7863,9 @@
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid",
       "country": "Pakistan",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the GL3010, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "GL3006CKFB": {
       "brand": "Pyramex",
@@ -7858,7 +7873,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -7911,9 +7927,9 @@
       "coating": "Uncoated",
       "linerMaterial": "HPPE, Leather",
       "country": "Pakistan",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the GL3007, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "GL610C": {
       "brand": "Pyramex",
@@ -7921,7 +7937,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "6",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Sandy Nitrile",
       "gauge": 13,
@@ -7941,7 +7958,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -7949,9 +7967,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Compared to the GL4004CKB, Majestic’s 21285A delivers equal cut level (A6), and equal impact protection (1) for comparable protection.",
-      "overrideDescription": "Compared to the GL4004CKB, Majestic’s 21285A delivers equal cut level (A6), and equal impact protection (1) for comparable protection."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Compared to the GL4004CKB, Majestic’s 21286 delivers equal cut level (A6), and equal impact protection (1) for comparable protection.",
+      "overrideDescription": "Compared to the GL4004CKB, Majestic’s 21286 delivers equal cut level (A6), and equal impact protection (1) for comparable protection."
     },
     "GL3006CKB": {
       "brand": "Pyramex",
@@ -7959,7 +7977,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -8000,9 +8019,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the GL105C, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "GL402C5": {
       "brand": "Pyramex",
@@ -8112,7 +8131,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "6",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Sandy Nitrile",
       "gauge": 13,
@@ -8171,7 +8191,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 5,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 3
       },
       "coating": "Micro-Foam Nitrile",
       "gauge": 18,
@@ -8213,7 +8234,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 1,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "Corded cotton palm with polyester liner",
@@ -8825,7 +8847,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "HCT® MicroFoam Nitrile",
       "gauge": 15,
@@ -9378,7 +9401,8 @@
       "brand": "Armor Guys",
       "part": "04-314",
       "ratings": {
-        "cut": "A4"
+        "cut": "A4",
+        "impact": 1
       },
       "coating": "HCT® MicroFoam Nitrile",
       "gauge": 13,
@@ -9527,7 +9551,8 @@
       "brand": "Armor Guys",
       "part": "07-002",
       "ratings": {
-        "cut": "A9"
+        "cut": "A9",
+        "impact": true
       },
       "coating": "HCT® MicroFoam Nitrile",
       "gauge": 13,
@@ -9535,9 +9560,9 @@
       "features": [
         "A4 back-of-hand"
       ],
-      "overrideBestMatch": "35-7676",
-      "overrideSummary": "Majestic’s 35-7676 offers better abrasion durability with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 07-002, Majestic’s 35-7676 delivers equal cut level (A9), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "12-400": {
       "brand": "Armor Guys",
@@ -10009,7 +10034,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "Nitrile",
       "gauge": 18,
@@ -10172,7 +10198,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "coating": "Nitrile",
       "gauge": 15,
@@ -10215,8 +10242,8 @@
       "part": "3050",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Nitrile",
       "gauge": 18,
@@ -10511,7 +10538,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -10626,7 +10654,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Sandy Nitrile",
       "linerMaterial": "HPPE/Glass",
@@ -10658,7 +10687,10 @@
       "linerMaterial": "High-Performance Engineered Fiber",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 3758, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 3758, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {
+        "cut": "A4"
+      }
     },
     "3736": {
       "brand": "Cordova",
@@ -10740,16 +10772,18 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 8507, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 8507, Majestic’s 21286 delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "7738": {
       "brand": "Cordova",
       "part": "7738",
       "ratings": {
         "cut": "A5",
-        "abrasion": 6
+        "abrasion": 6,
+        "impact": true,
+        "puncture": 6
       },
       "coating": "Red Sandy Nitrile",
       "gauge": 13,
@@ -10768,7 +10802,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "HPPE/STEEL FABRIC + THINSULATE™LINED",
       "features": [
@@ -10949,7 +10984,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "TUF-COR™ Nitrile Coating",
       "gauge": 18,
@@ -11050,7 +11086,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 3,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "TUF-COR™ Nitrile Coating",
       "gauge": 21,
@@ -11687,7 +11724,8 @@
       "part": "R167",
       "ratings": {
         "cut": "A3",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "linerMaterial": "Synthetic leather",
       "features": [
@@ -11764,7 +11802,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": "5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Polyester",
       "features": [
@@ -11795,7 +11834,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "5",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Nitrile",
       "linerMaterial": "HPPE",
@@ -11827,7 +11867,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "HPPE",
@@ -11880,7 +11921,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "5",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "HPPE",
@@ -12038,7 +12080,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "HPPE",
@@ -12275,9 +12318,9 @@
       },
       "coating": "none",
       "linerMaterial": "HPPE, Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the R665, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the R665, Majestic’s 21286 delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "R259B": {
       "brand": "Ansell",
@@ -12376,9 +12419,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Goatskin leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the R664, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "11-731": {
       "brand": "Ansell",
@@ -12665,7 +12708,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -12738,7 +12782,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "HPPE",
       "features": [
@@ -12841,9 +12886,9 @@
         "puncture": "5"
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather, AireFlex Synthetic Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00121G, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00121G, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "CIA186MF": {
       "brand": "Global Glove",
@@ -12928,9 +12973,9 @@
         "puncture": "3"
       },
       "linerMaterial": "Synthetic Leather, Leather, AireFlex Synthetic Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00054E, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00054E, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "SKG00055D": {
       "brand": "Global Glove",
@@ -12957,9 +13002,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00099A, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00099A, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "SKG00100A": {
       "brand": "Global Glove",
@@ -12971,9 +13016,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00100A, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00100A, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "SKG00101J": {
       "brand": "Global Glove",
@@ -13073,9 +13118,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00117J, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00117J, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "CR6101": {
       "brand": "Global Glove",
@@ -13117,9 +13162,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CIA7000INT, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the CIA7000INT, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "PUG-921": {
       "brand": "Global Glove",
@@ -13209,9 +13254,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Tuffalene® UHMWPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CIA7600, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the CIA7600, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "CIA921NFT": {
       "brand": "Global Glove",
@@ -13253,9 +13298,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CIA7000, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the CIA7000, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "CR3900INT": {
       "brand": "Global Glove",
@@ -13267,9 +13312,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CR3900INT, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "308INT": {
       "brand": "Global Glove",
@@ -13462,9 +13507,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aralene",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CIA4005, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the CIA4005, Majestic’s 21286 delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "CR592": {
       "brand": "Global Glove",
@@ -14310,7 +14355,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": "3",
-        "puncture": "3"
+        "puncture": "3",
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "Cotton, Polyester",
@@ -14327,7 +14373,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": "3",
-        "puncture": "3"
+        "puncture": "3",
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "Cotton, Polyester",
@@ -14344,7 +14391,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "linerMaterial": "Goatskin leather",
       "features": [
@@ -14360,7 +14408,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "linerMaterial": "Goatskin leather",
       "features": [
@@ -14380,9 +14429,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CR3800, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CR3900": {
       "brand": "Global Glove",
@@ -14394,9 +14443,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CR3900, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "300": {
       "brand": "SHOWA",
@@ -14925,7 +14974,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": "3",
-        "puncture": "2"
+        "puncture": "2",
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "Cotton",
@@ -14946,9 +14996,9 @@
       },
       "coating": "none",
       "linerMaterial": "Goatskin leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CR100MTG, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CR18NFT": {
       "brand": "Global Glove",
@@ -15388,9 +15438,9 @@
       "coating": "none",
       "gauge": "7",
       "linerMaterial": "Aramid Fiber, Cowhide leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the K300LF, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "K300LFE": {
       "brand": "Global Glove",
@@ -15609,9 +15659,9 @@
       "coating": "Uncoated",
       "gauge": "7",
       "linerMaterial": "Cowhide Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CR900LF, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CR918MF": {
       "brand": "Global Glove",
@@ -15843,9 +15893,9 @@
         "cut": "A6"
       },
       "linerMaterial": "Synthetic Leather, Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers stronger puncture resistance with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the SKG00035D, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers stronger puncture resistance with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the SKG00035D, Majestic’s 21286 delivers equal cut level (A6), stronger puncture resistance, with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "SKG00025C": {
       "brand": "Global Glove",
@@ -15868,9 +15918,9 @@
         "puncture": "5"
       },
       "linerMaterial": "Synthetic Leather, Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4072, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4067V": {
       "brand": "Hexarmor",
@@ -15934,8 +15984,8 @@
       "part": "2066",
       "ratings": {
         "cut": "A3",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Nitrile",
       "gauge": 15,
@@ -15950,7 +16000,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": "3",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 21,
@@ -15987,23 +16038,23 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4062, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "5050": {
       "brand": "Hexarmor",
       "part": "5050",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5050, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2028X": {
       "brand": "Hexarmor",
@@ -16014,9 +16065,9 @@
         "puncture": "4"
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 2028X, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 2028X, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "3052": {
       "brand": "Hexarmor",
@@ -16053,8 +16104,8 @@
       "part": "9014",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Wrinkle rubber",
       "linerMaterial": "Cotton",
@@ -16098,7 +16149,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 18,
@@ -16134,9 +16186,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4060, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 4060, Majestic’s 21286 delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "4073": {
       "brand": "Hexarmor",
@@ -16148,9 +16200,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4073, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 4073, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "3013IMP": {
       "brand": "Hexarmor",
@@ -16158,7 +16210,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "4",
-        "puncture": "3"
+        "puncture": "3",
+        "impact": 2
       },
       "coating": "Polyurethane",
       "gauge": "18",
@@ -16175,8 +16228,8 @@
       "part": "5039",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -16189,8 +16242,9 @@
       "part": "2025X",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -16207,8 +16261,8 @@
       "part": "4045",
       "ratings": {
         "cut": "A7",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®, Neoprene",
@@ -16278,7 +16332,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": "2",
-        "puncture": "3"
+        "puncture": "3",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 21,
@@ -16295,27 +16350,27 @@
       "part": "2030X",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "Synthetic Leather, Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 2030X, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 2030X, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "5033": {
       "brand": "Hexarmor",
       "part": "5033",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5033, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2052": {
       "brand": "Hexarmor",
@@ -16337,8 +16392,8 @@
       "part": "4022",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -16350,8 +16405,8 @@
       "part": "4023",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "synthetic leather TP-X® palm",
       "linerMaterial": "SuperFabric®",
@@ -16379,8 +16434,8 @@
       "part": "4024",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -16392,8 +16447,8 @@
       "part": "4081",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -16406,8 +16461,8 @@
       "part": "4082",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -16420,8 +16475,8 @@
       "part": "4032",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "Neoprene, Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -16434,7 +16489,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "IR-X® Impact Exoskeleton™, TP-X® palm",
@@ -16454,9 +16510,9 @@
         "puncture": "4"
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4070, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 4070, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "2091": {
       "brand": "Hexarmor",
@@ -16478,21 +16534,21 @@
       "part": "4018",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "Neoprene, Synthetic Leather, Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4018, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4027": {
       "brand": "Hexarmor",
       "part": "4027",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -16505,8 +16561,8 @@
       "part": "4033",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -16518,14 +16574,14 @@
       "part": "5042",
       "ratings": {
         "cut": "A5",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5042, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "1073": {
       "brand": "Hexarmor",
@@ -16547,8 +16603,8 @@
       "part": "4021X",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "linerMaterial": "PVC, Neoprene, Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -16560,8 +16616,9 @@
       "part": "4011",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®, Neoprene",
@@ -16577,8 +16634,9 @@
       "part": "4012",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -16607,8 +16665,9 @@
       "part": "4013",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -16624,8 +16683,9 @@
       "part": "4014",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®, Neoprene",
@@ -16641,8 +16701,8 @@
       "part": "4818",
       "ratings": {
         "cut": "A7",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Latex",
       "linerMaterial": "Latex, Cotton",
@@ -16655,8 +16715,8 @@
       "part": "5022",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Nitrile",
       "linerMaterial": "Nitrile, HPPE",
@@ -16669,8 +16729,8 @@
       "part": "4579",
       "ratings": {
         "cut": "A7",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Latex",
       "linerMaterial": "Latex, HPPE",
@@ -16683,8 +16743,8 @@
       "part": "3159",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -16727,8 +16787,8 @@
       "part": "4041",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Silicone",
       "linerMaterial": "Neoprene",
@@ -16741,8 +16801,8 @@
       "part": "6044",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "linerMaterial": "SuperFabric®",
       "features": [
@@ -16757,8 +16817,8 @@
       "part": "3092",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -16771,8 +16831,8 @@
       "part": "400R6E",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -16814,7 +16874,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": "2",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "TP-X® palm",
@@ -16830,8 +16891,8 @@
       "part": "4086",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -16860,7 +16921,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "IR-X® Impact Exoskeleton™",
@@ -16891,8 +16953,8 @@
       "part": "1095",
       "ratings": {
         "cut": "A1",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "Nitrile",
       "gauge": 15,
@@ -16906,8 +16968,8 @@
       "part": "1974",
       "ratings": {
         "cut": "A4",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -16966,8 +17028,8 @@
       "part": "9032",
       "ratings": {
         "cut": "A9",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Nitrile",
       "linerMaterial": "Nitrile, Polyester",
@@ -17021,8 +17083,8 @@
       "part": "2057",
       "ratings": {
         "cut": "A4",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Polyurethane",
       "linerMaterial": "HPPE",
@@ -17064,13 +17126,13 @@
       "part": "4074",
       "ratings": {
         "cut": "A5",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "Synthetic Leather, Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4074, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2086X": {
       "brand": "Hexarmor",
@@ -17148,8 +17210,8 @@
       "part": "3043",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®",
@@ -17162,8 +17224,8 @@
       "part": "5051",
       "ratings": {
         "cut": "A3",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, Polyester",
@@ -17181,9 +17243,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, HPPE, Polyester",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5054, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "5055": {
       "brand": "Hexarmor",
@@ -17195,9 +17257,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, HPPE, Polyester",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5055, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 5055, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "5058": {
       "brand": "Hexarmor",
@@ -17209,9 +17271,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, HPPE, Polyester",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5058, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3015": {
       "brand": "Hexarmor",
@@ -17262,8 +17324,8 @@
       "part": "2482",
       "ratings": {
         "cut": "A5",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Neoprene foam",
       "gauge": 13,
@@ -17282,9 +17344,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4075, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3060": {
       "brand": "Hexarmor",
@@ -17311,9 +17373,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4075W, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3080": {
       "brand": "Hexarmor",
@@ -17336,7 +17398,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": "4",
-        "puncture": "3"
+        "puncture": "3",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 18,
@@ -17368,8 +17431,8 @@
       "part": "4047",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "linerMaterial": "SuperFabric®",
       "features": [
@@ -17399,7 +17462,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": "3",
-        "puncture": "5"
+        "puncture": "5",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 13,
@@ -17431,8 +17495,9 @@
       "part": "4035IMP",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2,
+        "impact": 2
       },
       "linerMaterial": "Synthetic Leather, Leather",
       "features": [
@@ -17549,7 +17614,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": "4",
-        "puncture": "2"
+        "puncture": "2",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, HPPE",
@@ -17596,7 +17662,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": "2",
-        "puncture": "2"
+        "puncture": "2",
+        "impact": 2
       },
       "coating": "Nitrile",
       "gauge": 18,
@@ -17613,8 +17680,8 @@
       "part": "5726",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "5"
+        "abrasion": 6,
+        "puncture": 5
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
@@ -17627,22 +17694,22 @@
       "part": "2137",
       "ratings": {
         "cut": "A6",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 2137, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "5675": {
       "brand": "Hexarmor",
       "part": "5675",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "3"
+        "abrasion": 6,
+        "puncture": 3
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
@@ -17686,7 +17753,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": "3",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 1
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, Polyester",
@@ -17732,8 +17800,8 @@
       "part": "3022",
       "ratings": {
         "cut": "A5",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Nitrile",
       "gauge": 15,
@@ -17777,8 +17845,8 @@
       "part": "2068X",
       "ratings": {
         "cut": "A2",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Polyurethane",
       "gauge": 13,
@@ -17872,9 +17940,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4061, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3432": {
       "brand": "Hexarmor",
@@ -17901,9 +17969,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, HPPE",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4073W, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 2 protection to help workers stay comfortable and protected.",
+      "overrideDescription": "Compared to the 4073W, Majestic’s 21286 delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 2."
     },
     "2098": {
       "brand": "Hexarmor",
@@ -17954,8 +18022,8 @@
       "part": "4080",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
@@ -17982,8 +18050,9 @@
       "part": "4076IMP",
       "ratings": {
         "cut": "A7",
-        "abrasion": "6",
-        "puncture": "4"
+        "abrasion": 6,
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "none",
       "linerMaterial": "HPPE",
@@ -17999,8 +18068,8 @@
       "part": "4026",
       "ratings": {
         "cut": "A8",
-        "abrasion": "6",
-        "puncture": "2"
+        "abrasion": 6,
+        "puncture": 2
       },
       "linerMaterial": "PVC, Synthetic Leather, Leather",
       "overrideBestMatch": "A2B37B",
@@ -18028,7 +18097,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
@@ -18060,7 +18130,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "IR-X® Impact Exoskeleton™",
@@ -18077,7 +18148,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 6,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "coating": "none",
       "linerMaterial": "SuperFabric®, IR-X® Impact Exoskeleton™",
@@ -18108,7 +18180,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": "4",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, Polyester",
@@ -18129,9 +18202,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, Polyester",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers a more advanced overall design with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 5072, Majestic’s 21285A delivers equal cut level (A6), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "5072IMP": {
       "brand": "Hexarmor",
@@ -18139,7 +18212,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": "5",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber, Polyester",
@@ -18170,7 +18244,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": "5",
-        "puncture": "4"
+        "puncture": "4",
+        "impact": 2
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
@@ -18191,9 +18266,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather, Aramid Fiber",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers higher cut protection with added features and ANSI/ISEA 138-2019 Impact Level 1 protection to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 4059, Majestic’s 21285A delivers higher cut protection (A6 vs A5), with features such as ANSI/ISEA 138-2019 impact level 1."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4916-TPR": {
       "brand": "Ironwear",
@@ -18299,9 +18374,9 @@
       "ratings": {
         "cut": "A6"
       },
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Majestic’s 21285A offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4191-KL6-TPR, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Majestic’s 21286 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
+      "overrideDescription": "Compared to the 4191-KL6-TPR, Majestic’s 21286 delivers equal cut level (A6), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
     },
     "4924": {
       "brand": "Ironwear",
@@ -19657,7 +19732,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 4,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "gauge": 15,
       "features": [
@@ -19725,7 +19801,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 5,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20035,7 +20112,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "gauge": 13,
       "features": [
@@ -20090,7 +20168,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20106,7 +20185,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goat Leather",
       "features": [
@@ -20122,7 +20202,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goat Leather",
       "features": [
@@ -20138,7 +20219,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goat Leather",
       "features": [
@@ -20154,7 +20236,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goat Leather",
       "features": [
@@ -20170,7 +20253,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "gauge": 13,
       "features": [
@@ -20212,7 +20296,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "gauge": 13,
       "features": [
@@ -20531,7 +20616,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "linerMaterial": "Goat Leather",
@@ -20574,7 +20660,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
@@ -20589,7 +20676,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 6,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 3
       },
       "gauge": 13,
       "features": [
@@ -20605,7 +20693,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20621,7 +20710,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20637,7 +20727,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20653,7 +20744,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20669,7 +20761,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20685,7 +20778,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "gauge": 13,
       "features": [
@@ -20740,7 +20834,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "linerMaterial": "Cowhide Leather",
       "features": [
@@ -20756,7 +20851,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
@@ -20771,7 +20867,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "linerMaterial": "Goat Leather",
       "features": [
@@ -20787,7 +20884,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20803,7 +20901,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "gauge": 13,
       "features": [
@@ -20832,7 +20931,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
@@ -20847,7 +20947,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -20911,7 +21012,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -21282,9 +21384,9 @@
         "cut": "A5"
       },
       "linerMaterial": "HPPE",
-      "overrideBestMatch": "35-5575",
-      "overrideSummary": "Majestic’s 35-5575 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the XC800, Majestic’s 35-5575 delivers equal cut level (A5), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "XC500": {
       "brand": "SHOWA",
@@ -21369,7 +21471,8 @@
       "part": "MXVSBE",
       "ratings": {
         "cut": "A2",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "Poly Vinyl Chloride",
       "linerMaterial": "Engineered Yarn",
@@ -21613,7 +21716,8 @@
       "part": "MXVSB",
       "ratings": {
         "cut": "A2",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "features": [
         "High-Visibility Design",
@@ -21659,7 +21763,8 @@
       "part": "378GCXVB",
       "ratings": {
         "cut": "A9",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22176,7 +22281,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22521,7 +22627,8 @@
       "part": "378GOBBFC",
       "ratings": {
         "cut": "A4",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22537,7 +22644,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22553,7 +22661,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "coating": "Foam Nitrile",
       "features": [
@@ -22642,7 +22751,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -22658,7 +22768,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "Foam Nitrile",
       "linerMaterial": "Engineered Yarn",
@@ -22699,7 +22810,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Micropore Latex",
       "linerMaterial": "Polyester",
@@ -22780,7 +22892,8 @@
       "part": "378GTXVBGE",
       "ratings": {
         "cut": "A5",
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22879,7 +22992,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 6,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -22909,7 +23023,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "Latex",
       "features": [
@@ -22925,7 +23040,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22940,7 +23056,8 @@
       "part": "378GTXVBG",
       "ratings": {
         "cut": "A5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -22956,7 +23073,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 3
       },
       "coating": "Foam Nitrile",
       "features": [
@@ -22987,7 +23105,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Micropore NItrile",
       "features": [
@@ -23029,7 +23148,8 @@
       "part": "378GKG4P",
       "ratings": {
         "cut": "A5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 3
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23223,7 +23343,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23281,7 +23402,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23310,7 +23432,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23325,7 +23448,8 @@
       "part": "375GKGVB",
       "ratings": {
         "cut": "A5",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23341,7 +23465,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23394,7 +23519,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 2
       },
       "coating": "Nitrile",
       "features": [
@@ -23412,7 +23538,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -23428,7 +23555,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 3,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -23458,7 +23586,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23601,7 +23730,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Foam Nitrile",
       "features": [
@@ -23617,7 +23747,8 @@
       "part": "378GOTXVB",
       "ratings": {
         "cut": "A6",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23649,7 +23780,8 @@
       "part": "378TXLVBG",
       "ratings": {
         "cut": "A6",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23722,7 +23854,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -23755,7 +23888,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -23821,7 +23955,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -23987,7 +24122,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 3
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24004,7 +24140,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24019,7 +24156,8 @@
       "part": "378GKGTVBE",
       "ratings": {
         "cut": "A6",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24035,7 +24173,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 2
       },
       "features": [
         "ANSI/ISEA 138-2019 Impact 2",
@@ -24063,7 +24202,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24105,7 +24245,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24121,7 +24262,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24161,7 +24303,8 @@
       "part": "378TXTVBE",
       "ratings": {
         "cut": "A7",
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24177,7 +24320,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -24218,7 +24362,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -24246,7 +24391,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24295,7 +24441,8 @@
       "ratings": {
         "cut": "A8",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24311,7 +24458,8 @@
       "ratings": {
         "cut": "A8",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24327,7 +24475,8 @@
       "ratings": {
         "cut": "A8",
         "abrasion": 5,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24359,7 +24508,8 @@
       "ratings": {
         "cut": "A8",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24405,7 +24555,8 @@
       "ratings": {
         "cut": "A8",
         "abrasion": 6,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24460,7 +24611,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "features": [
@@ -24534,16 +24686,17 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "coating": "Foam Nitrile",
       "features": [
         "ANSI/ISEA 138-2019 Impact 1",
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "35-7676",
-      "overrideSummary": "Majestic’s 35-7676 offers better abrasion durability with additional performance benefits to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the S21TXUFNVB, Majestic’s 35-7676 delivers equal cut level (A9), better abrasion durability, stronger puncture resistance."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "399GCXTL5": {
       "brand": "Superior Glove",
@@ -24674,7 +24827,8 @@
       "ratings": {
         "cut": "A9",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Micropore Nitrile",
       "features": [
@@ -24807,7 +24961,8 @@
       "part": "PS15AWPNVB",
       "ratings": {
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Micropore nitrile",
       "gauge": 15,
@@ -24827,7 +24982,8 @@
       "part": "378GTVBE",
       "ratings": {
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Goatskin Leather",
       "country": "Pakistan",
@@ -24859,7 +25015,8 @@
       "part": "S15ALXVB",
       "ratings": {
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "Latex",
       "gauge": 15,
@@ -24877,7 +25034,8 @@
       "part": "378GVBE",
       "ratings": {
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Leather",
       "country": "Pakistan",
@@ -25220,7 +25378,8 @@
       "part": "S13BFNVB",
       "ratings": {
         "abrasion": 4,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "Foam nitrile",
       "gauge": 13,
@@ -25253,7 +25412,8 @@
       "part": "378GKVSB",
       "ratings": {
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "linerMaterial": "Goatskin Leather",
       "country": "Pakistan",
@@ -25316,7 +25476,8 @@
       "part": "MXGCEHVB",
       "ratings": {
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "Leather Goatskin",
       "linerMaterial": "Cotton/Nylon",
@@ -25432,7 +25593,8 @@
       "part": "3006",
       "ratings": {
         "cut": "A1",
-        "abrasion": 4
+        "abrasion": 4,
+        "impact": 2
       },
       "coating": "Sandy Nitrile",
       "gauge": 15,
@@ -25559,7 +25721,8 @@
       ],
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideDescription": "Compared to Cordova, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications.",
+      "ratings": {}
     },
     "DPG217": {
       "brand": "Radians",
@@ -25625,7 +25788,8 @@
       ],
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG740, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG740, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG781": {
       "brand": "Radians",
@@ -25648,7 +25812,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG870, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG870, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG100": {
       "brand": "Radians",
@@ -25661,13 +25826,15 @@
       ],
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG100, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG100, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG122": {
       "brand": "Radians",
       "part": "RWG122",
       "ratings": {
-        "cut": "A2"
+        "cut": "A2",
+        "impact": 1
       },
       "coating": "Cotton Blend",
       "gauge": "-",
@@ -25689,7 +25856,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG35, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG35, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG70": {
       "brand": "Radians",
@@ -25700,7 +25868,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG70, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG70, Majestic’s 30-1000 delivers A1 cut protection(A1 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG72": {
       "brand": "Radians",
@@ -25714,7 +25883,8 @@
       ],
       "overrideBestMatch": "35-1587",
       "overrideSummary": "Majestic’s 35-1587 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG72, Majestic’s 35-1587 delivers higher cut protection (A6), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG72, Majestic’s 35-1587 delivers higher cut protection (A6), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG72T": {
       "brand": "Radians",
@@ -25728,18 +25898,20 @@
       ],
       "overrideBestMatch": "35-1587",
       "overrideSummary": "Majestic’s 35-1587 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG72T, Majestic’s 35-1587 delivers higher cut protection (A6 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG72T, Majestic’s 35-1587 delivers higher cut protection (A6 vs 0), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG73": {
       "brand": "Radians",
       "part": "DPG73",
       "coating": "Nitrile",
-      "gauge": 13,
+      "gauge": 7,
       "linerMaterial": "Nylon/Polyester",
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG73, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG73, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "DPG737": {
       "brand": "Radians",
@@ -25753,7 +25925,8 @@
       ],
       "overrideBestMatch": "1511T",
       "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s winter-lined leather glove is constructed with similar materials and offers comparable protection."
+      "overrideDescription": "Compared to Cordova, Majestic’s winter-lined leather glove is constructed with similar materials and offers comparable protection.",
+      "ratings": {}
     },
     "DPG74": {
       "brand": "Radians",
@@ -25780,7 +25953,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the DPG76, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the DPG76, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG10": {
       "brand": "Radians",
@@ -25794,7 +25968,8 @@
       ],
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG10, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG10, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG11": {
       "brand": "Radians",
@@ -25805,7 +25980,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG11, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG11, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG12": {
       "brand": "Radians",
@@ -25833,7 +26009,8 @@
       ],
       "overrideBestMatch": "35-1587",
       "overrideSummary": "Majestic’s 35-1587 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG13, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG13, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG13B": {
       "brand": "Radians",
@@ -25859,7 +26036,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG13C, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG13C, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG14": {
       "brand": "Radians",
@@ -25870,7 +26048,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG14, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG14, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG15": {
       "brand": "Radians",
@@ -25881,7 +26060,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG15, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG15, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG16": {
       "brand": "Radians",
@@ -25892,7 +26072,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG16, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG16, Majestic’s 30-1005 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG16B": {
       "brand": "Radians",
@@ -25935,14 +26116,16 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG18, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG18, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG21": {
       "brand": "Radians",
       "part": "RWG21",
       "ratings": {
         "abrasion": 4,
-        "puncture": 1
+        "puncture": 1,
+        "impact": 1
       },
       "coating": "Nitrile palm dip",
       "gauge": 13,
@@ -25974,7 +26157,8 @@
       "part": "RWG23",
       "ratings": {
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 2
       },
       "coating": "Sandy foam nitrile palm dip",
       "gauge": 13,
@@ -26000,7 +26184,8 @@
       ],
       "overrideBestMatch": "35-1587",
       "overrideSummary": "Majestic’s 35-1587 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG31, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG31, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG32": {
       "brand": "Radians",
@@ -26014,7 +26199,8 @@
       ],
       "overrideBestMatch": "35-1587",
       "overrideSummary": "Majestic’s 35-1587 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG32, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG32, Majestic’s 35-1587 delivers higher cut protection (A6 vs -), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG33": {
       "brand": "Radians",
@@ -26025,7 +26211,8 @@
       "country": "USA",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG33, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the RWG33, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "RWG35": {
       "brand": "Radians",
@@ -26066,7 +26253,8 @@
       "part": "GL3001KB",
       "ratings": {
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -26084,7 +26272,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 1
       },
       "coating": "-",
       "gauge": "-",
@@ -26152,7 +26341,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -26225,7 +26415,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -26273,7 +26464,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -26331,7 +26523,8 @@
       "ratings": {
         "cut": "A4",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -26350,7 +26543,8 @@
       "ratings": {
         "cut": "A7",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -27113,7 +27307,8 @@
       "linerMaterial": "Polyester/Cotton",
       "overrideBestMatch": "3396HY",
       "overrideSummary": "Majestic’s 3396HY offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 3986P, Majestic’s 3396HY delivers higher cut protection (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 3986P, Majestic’s 3396HY delivers higher cut protection (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {}
     },
     "3895": {
       "brand": "Cordova",
@@ -27133,7 +27328,8 @@
       "linerMaterial": "Spun Polyester",
       "overrideBestMatch": "3396HY",
       "overrideSummary": "Majestic’s 3396HY offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 3896, Majestic’s 3396HY delivers higher cut protection (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 3896, Majestic’s 3396HY delivers higher cut protection (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {}
     },
     "3888": {
       "brand": "Cordova",
@@ -27205,9 +27401,9 @@
       "gauge": "-",
       "linerMaterial": "Para Aramid Lining",
       "country": "-",
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Compared to the 6897, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection.",
-      "overrideDescription": "Compared to the 6897, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "6925": {
       "brand": "Cordova",
@@ -27388,7 +27584,8 @@
       "linerMaterial": "Black Nylon",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 6655, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 6655, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 13), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "3886": {
       "brand": "Cordova",
@@ -27503,7 +27700,8 @@
       "brand": "Cordova",
       "part": "3727TPR",
       "ratings": {
-        "cut": "A4"
+        "cut": "A4",
+        "impact": true
       },
       "coating": "Two-Layer Nitrile",
       "gauge": 13,
@@ -27825,7 +28023,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 3,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 1
       },
       "linerMaterial": "Goatskin Leather",
       "features": [
@@ -27841,7 +28040,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goatskin Leather",
       "features": [
@@ -27857,7 +28057,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 1
       },
       "linerMaterial": "Goatskin Leather",
       "features": [
@@ -28028,7 +28229,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "linerMaterial": "Polyester",
       "features": [
@@ -28045,7 +28247,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": true
       },
       "linerMaterial": "Polyester",
       "features": [
@@ -28062,7 +28265,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Cotton/Polyester",
       "features": [
@@ -28078,7 +28282,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "linerMaterial": "Polyester",
       "features": [
@@ -28094,7 +28299,8 @@
       "ratings": {
         "cut": "A2",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -28112,7 +28318,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": 4,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Polyester / Thinsulate",
       "features": [
@@ -28132,7 +28339,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": 3,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "linerMaterial": "Cotton",
       "features": [
@@ -28149,7 +28357,8 @@
       "ratings": {
         "cut": "A3",
         "abrasion": 5,
-        "puncture": 5
+        "puncture": 5,
+        "impact": 2
       },
       "linerMaterial": "Kevlar",
       "features": [
@@ -28165,15 +28374,16 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Polyester / HPPE / Goatskin Leather / Thinsulate",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Compared to the R668, Majestic’s 21285A delivers equal cut level (A6), and equal impact protection (1) for comparable protection.",
-      "overrideDescription": "Compared to the R668, Majestic’s 21285A delivers equal cut level (A6), and equal impact protection (1) for comparable protection."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Compared to the R668, Majestic’s 21286 delivers equal cut level (A6), and equal impact protection (1) for comparable protection.",
+      "overrideDescription": "Compared to the R668, Majestic’s 21286 delivers equal cut level (A6), and equal impact protection (1) for comparable protection."
     },
     "R667": {
       "brand": "Ansell",
@@ -28181,7 +28391,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 3,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "linerMaterial": "Goatskin Leather / HPPE",
       "features": [
@@ -28197,7 +28408,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 4,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "Nitrile",
       "gauge": 15,
@@ -28216,7 +28428,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -28233,7 +28446,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -28250,7 +28464,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "linerMaterial": "Polyester",
       "features": [
@@ -28266,7 +28481,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 3,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "linerMaterial": "Synthetic Leather",
       "features": [
@@ -29213,7 +29429,11 @@
       ],
       "overrideBestMatch": "35-7465",
       "overrideSummary": "Majestic’s 35-7465 offers higher cut protection with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 56-426, Majestic’s 35-7465 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      "overrideDescription": "Compared to the 56-426, Majestic’s 35-7465 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+      "ratings": {
+        "abrasion": 3,
+        "puncture": 2
+      }
     },
     "34-315": {
       "brand": "PIP",
@@ -29241,7 +29461,12 @@
       ],
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 42-874, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 42-874, Majestic’s 30-1000 delivers A1 cut protection, better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {
+        "cut": "A1",
+        "abrasion": 4,
+        "puncture": 2
+      }
     },
     "33-VRX180": {
       "brand": "PIP",
@@ -30874,7 +31099,10 @@
       "country": "Pakistan",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Majestic’s 1510 glove is made with Grade A leather and similar construction, providing comparable protection and safety for similar applications."
+      "overrideDescription": "Majestic’s 1510 glove is made with Grade A leather and similar construction, providing comparable protection and safety for similar applications.",
+      "ratings": {
+        "impact": 2
+      }
     },
     "68-105": {
       "brand": "PIP",
@@ -31322,7 +31550,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 5,
-        "puncture": 2
+        "puncture": 2,
+        "impact": 1
       },
       "coating": "Foam Nitrile Palm with TPU Impact Protection",
       "gauge": 15,
@@ -31342,7 +31571,8 @@
       "ratings": {
         "cut": "A1",
         "abrasion": 6,
-        "puncture": 3
+        "puncture": 3,
+        "impact": true
       },
       "coating": "Double-Dipped Mach Finish Nitrile with TPU Impact Protection",
       "gauge": 13,
@@ -31416,7 +31646,8 @@
       "part": "CIA3600",
       "ratings": {
         "abrasion": 4,
-        "puncture": 3
+        "puncture": 3,
+        "impact": 2
       },
       "coating": "-",
       "gauge": "-",
@@ -32202,7 +32433,8 @@
       ],
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
-      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected."
+      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
+      "ratings": {}
     },
     "2100": {
       "brand": "Global Glove",
@@ -32253,7 +32485,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the SG6600, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the SG6600, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "AV805": {
       "brand": "Global Glove",
@@ -32263,7 +32498,8 @@
       "linerMaterial": "Cotton",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the AV805, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the AV805, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "AV1160": {
       "brand": "Global Glove",
@@ -32273,7 +32509,8 @@
       "linerMaterial": "Cotton/Nylon",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the AV1160, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 10), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the AV1160, Majestic’s 30-1000 delivers A1 cut protection (A1), better abrasion durability, stronger puncture resistance, higher gauge for a better tactile feel (15 vs 10), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "6518": {
       "brand": "Global Glove",
@@ -32692,7 +32929,8 @@
       "brand": "Global Glove",
       "part": "950",
       "ratings": {
-        "cut": "A2"
+        "cut": "A2",
+        "impact": 2
       },
       "coating": "Synthetic Leather",
       "gauge": "-",
@@ -32712,7 +32950,8 @@
       "brand": "Global Glove",
       "part": "928",
       "ratings": {
-        "cut": "A2"
+        "cut": "A2",
+        "impact": 2
       },
       "gauge": "-",
       "linerMaterial": "Nylon & Spandex",
@@ -32731,7 +32970,8 @@
       "part": "965",
       "ratings": {
         "cut": "A6",
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Goatskin Leather",
       "gauge": "-",
@@ -32750,7 +32990,8 @@
       "ratings": {
         "cut": "A6",
         "abrasion": 5,
-        "puncture": 4
+        "puncture": 4,
+        "impact": 2
       },
       "coating": "Sandy Foam Nitrile",
       "gauge": 13,
@@ -32768,7 +33009,8 @@
       "brand": "Global Glove",
       "part": "G4518TPR",
       "ratings": {
-        "puncture": 1
+        "puncture": 1,
+        "impact": 1
       },
       "gauge": "-",
       "linerMaterial": "Cotton & Polyester",
@@ -32785,7 +33027,8 @@
       "brand": "Global Glove",
       "part": "F4518TPR",
       "ratings": {
-        "puncture": 1
+        "puncture": 1,
+        "impact": 1
       },
       "gauge": "-",
       "linerMaterial": "Cotton & Polyester",
@@ -32801,7 +33044,8 @@
       "brand": "Global Glove",
       "part": "920",
       "ratings": {
-        "cut": "A2"
+        "cut": "A2",
+        "impact": 2
       },
       "gauge": "-",
       "linerMaterial": "Nylon, Synthetic Leather",
@@ -33066,7 +33310,11 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4638BK, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4638BK, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {
+        "cut": "A1",
+        "puncture": 2
+      }
     },
     "4639GBK": {
       "brand": "Global Glove",
@@ -33077,7 +33325,8 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4639GBK, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4639GBK, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "P4638BK": {
       "brand": "Global Glove",
@@ -33269,7 +33518,11 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4638, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4638, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {
+        "cut": "A1",
+        "puncture": 2
+      }
     },
     "4639": {
       "brand": "Global Glove",
@@ -33280,7 +33533,8 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4639, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4639, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "4639G": {
       "brand": "Global Glove",
@@ -33291,7 +33545,8 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4639G, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4639G, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {}
     },
     "P4639G": {
       "brand": "Global Glove",
@@ -33392,7 +33647,12 @@
       "country": "-",
       "overrideBestMatch": "33-1500",
       "overrideSummary": "Majestic’s 33-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4640, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideDescription": "Compared to the 4640, Majestic’s 33-1500 delivers higher cut protection (A4), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+      "ratings": {
+        "cut": "A2",
+        "abrasion": 4,
+        "puncture": 2
+      }
     },
     "P4640": {
       "brand": "Global Glove",
@@ -33695,7 +33955,8 @@
       "part": "4841",
       "ratings": {
         "cut": "A1",
-        "abrasion": 2
+        "abrasion": 6,
+        "puncture": 2
       },
       "coating": "Silicone dipped palm & fingers",
       "gauge": 15,
@@ -33759,7 +34020,8 @@
       "ratings": {
         "cut": "A5",
         "abrasion": 4,
-        "puncture": 4
+        "puncture": 4,
+        "impact": true
       },
       "coating": "-",
       "gauge": "-",
@@ -33985,7 +34247,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4196-TPR, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4196-TPR, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4195B-OFT": {
       "brand": "Ironwear",
@@ -34129,7 +34394,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4191-TPR-TL, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4191-TPR-TL, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4196-A6": {
       "brand": "Ironwear",
@@ -34262,7 +34530,8 @@
       ],
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
-      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected."
+      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
+      "ratings": {}
     },
     "4168": {
       "brand": "Ironwear",
@@ -34389,7 +34658,8 @@
       ],
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
-      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected."
+      "overrideDescription": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
+      "ratings": {}
     },
     "4160-TPR": {
       "brand": "Ironwear",
@@ -34403,13 +34673,17 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4160-TPR, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4160-TPR, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4191-A6-TPR": {
       "brand": "Ironwear",
       "part": "4191-A6-TPR",
       "ratings": {
-        "cut": "A6"
+        "cut": "A6",
+        "impact": 3
       },
       "coating": "-",
       "gauge": "-",
@@ -34426,7 +34700,8 @@
       "brand": "Ironwear",
       "part": "4196-A6-TPR",
       "ratings": {
-        "cut": "A6"
+        "cut": "A6",
+        "impact": 3
       },
       "coating": "-",
       "gauge": "-",
@@ -34444,7 +34719,8 @@
       "part": "4212",
       "ratings": {
         "cut": "A6",
-        "puncture": "X"
+        "puncture": "X",
+        "impact": 3
       },
       "coating": "-",
       "gauge": "-",
@@ -34453,9 +34729,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 3"
       ],
-      "overrideBestMatch": "21285A",
-      "overrideSummary": "Compared to the 4212, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection.",
-      "overrideDescription": "Compared to the 4212, Majestic’s 21285A delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection."
+      "overrideBestMatch": "21286",
+      "overrideSummary": "Compared to the 4212, Majestic’s 21286 delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection.",
+      "overrideDescription": "Compared to the 4212, Majestic’s 21286 delivers equal cut level (A6), stronger puncture resistance, and equal impact protection (1) for comparable protection."
     },
     "4214": {
       "brand": "Ironwear",
@@ -34488,7 +34764,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4895, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4895, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4264": {
       "brand": "Ironwear",
@@ -34502,7 +34781,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4264, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4264, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4265": {
       "brand": "Ironwear",
@@ -34516,7 +34798,10 @@
       ],
       "overrideBestMatch": "21262HO",
       "overrideSummary": "Majestic’s 21262HO offers higher cut protection with a high visibility design to help workers stay seen in low light conditions.",
-      "overrideDescription": "Compared to the 4265, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideDescription": "Compared to the 4265, Majestic’s 21262HO delivers higher cut protection (A2), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+      "ratings": {
+        "impact": true
+      }
     },
     "4897": {
       "brand": "Ironwear",
@@ -34546,6 +34831,15 @@
       "overrideBestMatch": "35-7465",
       "overrideSummary": "Majestic’s 35-7465 features touchscreen compatibility and Sanitized® by Actifresh treatment, helping workers stay comfortable, connected and protected on the job.",
       "overrideDescription": "Compared to the CRBN3, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+    },
+    "4196-A8-TPR": {
+      "brand": "Ironwear",
+      "part": "4196-A8-TPR",
+      "ratings": {
+        "cut": "A8",
+        "puncture": 4,
+        "impact": 3
+      }
     }
   }
 }
