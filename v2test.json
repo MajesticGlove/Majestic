@@ -4446,13 +4446,15 @@
         "abrasion": 6,
         "puncture": 3
       },
-      "coating": "Nitrile",
+      "coating": "Foam Nitrile",
       "gauge": 13,
-      "linerMaterial": "Dyneema Phoenix",
-      "country": "China",
-      "overrideBestMatch": "33-1500",
-      "overrideSummary": "Majestic’s 33-1500 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 19-D334, Majestic’s 33-1500 delivers equal cut level (A4), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "linerMaterial": "Dyneema",
+      "country": null,
+      "features": [],
+      "productName": "G-Tek® ECO Series™ A4 — Dyneema® Phoenix, Foam Nitrile, 13G (Coreless)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "34-8743-3P": {
       "brand": "PIP",
@@ -44743,6 +44745,526 @@
         "Reinforced Thumb Crotch"
       ],
       "productName": "G-Tek® PolyKor® Coreless A4 — Foam Nitrile Grip, 18G",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS24-7518B": {
+      "brand": "PIP",
+      "part": "CS24-7518B",
+      "ratings": {
+        "cut": "A4",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Oil Resistant",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A4 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS25-7518B": {
+      "brand": "PIP",
+      "part": "CS25-7518B",
+      "ratings": {
+        "cut": "A5",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Oil Resistant",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A5 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF23-0118N": {
+      "brand": "PIP",
+      "part": "NPF23-0118N",
+      "ratings": {
+        "cut": "A3",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A3 — PU Flat, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF22-0118N": {
+      "brand": "PIP",
+      "part": "NPF22-0118N",
+      "ratings": {
+        "cut": "A2",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A2 — PU Flat, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF24-0118N": {
+      "brand": "PIP",
+      "part": "NPF24-0118N",
+      "ratings": {
+        "cut": "A4",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A4 — PU Flat, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS26-7518B": {
+      "brand": "PIP",
+      "part": "CS26-7518B",
+      "ratings": {
+        "cut": "A6",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A6 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS29-7518B-V": {
+      "brand": "PIP",
+      "part": "CS29-7518B-V",
+      "ratings": {
+        "cut": "A9",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A9 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS26-7518B-V": {
+      "brand": "PIP",
+      "part": "CS26-7518B-V",
+      "ratings": {
+        "cut": "A6",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Micro-Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A6 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF25-0118N": {
+      "brand": "PIP",
+      "part": "NPF25-0118N",
+      "ratings": {
+        "cut": "A5",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A5 — PU Flat, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS28-7518B-V": {
+      "brand": "PIP",
+      "part": "CS28-7518B-V",
+      "ratings": {
+        "cut": "A8",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A8 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF26-0118N": {
+      "brand": "PIP",
+      "part": "NPF26-0118N",
+      "ratings": {
+        "cut": "A6",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A6 — PU Flat, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS27-7518B": {
+      "brand": "PIP",
+      "part": "CS27-7518B",
+      "ratings": {
+        "cut": "A7",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A7 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS28-7518B": {
+      "brand": "PIP",
+      "part": "CS28-7518B",
+      "ratings": {
+        "cut": "A8",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A8 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF26-0118N-V": {
+      "brand": "PIP",
+      "part": "NPF26-0118N-V",
+      "ratings": {
+        "cut": "A6",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A6 — PU Flat, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS23-7518B-V": {
+      "brand": "PIP",
+      "part": "CS23-7518B-V",
+      "ratings": {
+        "cut": "A3",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A3 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF24-0118N-V": {
+      "brand": "PIP",
+      "part": "NPF24-0118N-V",
+      "ratings": {
+        "cut": "A4",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A4 — PU Flat, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS25-7518B-V": {
+      "brand": "PIP",
+      "part": "CS25-7518B-V",
+      "ratings": {
+        "cut": "A5",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A5 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF25-0118N-V": {
+      "brand": "PIP",
+      "part": "NPF25-0118N-V",
+      "ratings": {
+        "cut": "A5",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A5 — PU Flat, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS23-7518B": {
+      "brand": "PIP",
+      "part": "CS23-7518B",
+      "ratings": {
+        "cut": "A3",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A3 — Foam Nitrile, 18G (ESD)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS24-7518B-V": {
+      "brand": "PIP",
+      "part": "CS24-7518B-V",
+      "ratings": {
+        "cut": "A4",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A4 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF22-0118N-V": {
+      "brand": "PIP",
+      "part": "NPF22-0118N-V",
+      "ratings": {
+        "cut": "A2",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A2 — PU Smooth, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "NPF23-0118N-V": {
+      "brand": "PIP",
+      "part": "NPF23-0118N-V",
+      "ratings": {
+        "cut": "A3",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Polyurethane",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® Perfect Fit® A3 — PU Flat, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS27-7518B-V": {
+      "brand": "PIP",
+      "part": "CS27-7518B-V",
+      "ratings": {
+        "cut": "A7",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A7 — Foam Nitrile, 18G (ESD, Vend-Ready)",
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
+    },
+    "CS22-7518B": {
+      "brand": "PIP",
+      "part": "CS22-7518B",
+      "ratings": {
+        "cut": "A2",
+        "abrasion": 3,
+        "puncture": 3
+      },
+      "coating": "Foam Nitrile",
+      "gauge": 18,
+      "linerMaterial": "HPPE",
+      "country": null,
+      "features": [
+        "Touchscreen Compatible",
+        "Reinforced Thumb Crotch",
+        "Silicone Free"
+      ],
+      "productName": "G-Tek® CoreShield® A2 — Foam Nitrile, 18G (ESD)",
       "overrideBestMatch": null,
       "overrideSummary": null,
       "overrideDescription": null
