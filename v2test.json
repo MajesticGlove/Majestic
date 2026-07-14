@@ -7777,8 +7777,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -7925,8 +7925,8 @@
         "puncture": 4,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -7943,8 +7943,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -7958,8 +7958,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -8010,8 +8010,8 @@
         "puncture": 4,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pigskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -8029,8 +8029,8 @@
         "puncture": 4,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -8047,8 +8047,8 @@
         "abrasion": 4,
         "puncture": 3
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -15087,8 +15087,8 @@
         "abrasion": 5,
         "puncture": 5
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Aralene Aramid Liner",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -25480,7 +25480,7 @@
         "abrasion": 3,
         "puncture": 2
       },
-      "coating": "-",
+      "coating": null,
       "linerMaterial": "Cotton/Nylon",
       "country": "Pakistan",
       "features": [
@@ -25691,7 +25691,7 @@
     "DPG20": {
       "brand": "Radians",
       "part": "DPG20",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "overrideBestMatch": "2139BK",
@@ -25701,7 +25701,7 @@
     "DPG200": {
       "brand": "Radians",
       "part": "DPG200",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "overrideBestMatch": "2139BK",
@@ -25711,7 +25711,7 @@
     "DPG201": {
       "brand": "Radians",
       "part": "DPG201",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25724,7 +25724,7 @@
     "DPG210": {
       "brand": "Radians",
       "part": "DPG210",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "PVC/Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25737,7 +25737,7 @@
     "DPG211": {
       "brand": "Radians",
       "part": "DPG211",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25750,7 +25750,7 @@
     "DPG212": {
       "brand": "Radians",
       "part": "DPG212",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25763,7 +25763,7 @@
     "DPG216": {
       "brand": "Radians",
       "part": "DPG216",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Split Cowhide Leather",
       "country": "USA",
       "features": [
@@ -25777,7 +25777,7 @@
     "DPG217": {
       "brand": "Radians",
       "part": "DPG217",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25790,7 +25790,7 @@
     "DPG218": {
       "brand": "Radians",
       "part": "DPG218",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "overrideBestMatch": "2139BK",
@@ -25800,7 +25800,7 @@
     "DPG222": {
       "brand": "Radians",
       "part": "DPG222",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "overrideBestMatch": "2139BK",
@@ -25810,7 +25810,7 @@
     "DPG230": {
       "brand": "Radians",
       "part": "DPG230",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "overrideBestMatch": "2139BK",
@@ -25820,7 +25820,7 @@
     "DPG250": {
       "brand": "Radians",
       "part": "DPG250",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "USA",
       "overrideBestMatch": "2510P",
@@ -25830,7 +25830,7 @@
     "DPG740": {
       "brand": "Radians",
       "part": "DPG740",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Fleece",
       "country": "USA",
       "features": [
@@ -25844,7 +25844,7 @@
     "DPG781": {
       "brand": "Radians",
       "part": "DPG781",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "country": "USA",
       "features": [
@@ -25857,7 +25857,7 @@
     "DPG870": {
       "brand": "Radians",
       "part": "DPG870",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Spandex",
       "country": "USA",
       "overrideBestMatch": "30-1000",
@@ -25868,7 +25868,7 @@
     "RWG100": {
       "brand": "Radians",
       "part": "RWG100",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic",
       "country": "USA",
       "features": [
@@ -25887,7 +25887,7 @@
         "impact": 1
       },
       "coating": "Uncoated",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cotton/Spandex",
       "country": "USA",
       "features": [
@@ -25913,7 +25913,7 @@
       "brand": "Radians",
       "part": "DPG70",
       "coating": "Textured Rubber",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon",
       "country": "USA",
       "overrideBestMatch": "30-1000",
@@ -25966,7 +25966,7 @@
     "DPG737": {
       "brand": "Radians",
       "part": "DPG737",
-      "coating": "-",
+      "coating": null,
       "gauge": 7,
       "linerMaterial": "Brushed Acrylic Knit",
       "country": "USA",
@@ -26025,7 +26025,7 @@
       "brand": "Radians",
       "part": "RWG11",
       "coating": "Micro-Foam Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon/Spandex",
       "country": "USA",
       "overrideBestMatch": "30-1000",
@@ -26040,7 +26040,7 @@
         "abrasion": 6
       },
       "coating": "3/4 Foam Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon/Spandex",
       "country": "USA",
       "overrideBestMatch": "35-7765",
@@ -26081,7 +26081,7 @@
       "brand": "Radians",
       "part": "RWG13C",
       "coating": "Foam Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester",
       "country": "USA",
       "overrideBestMatch": "30-1005",
@@ -26306,8 +26306,8 @@
         "puncture": 3,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -26325,8 +26325,8 @@
         "puncture": 5,
         "impact": 1
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
@@ -26338,8 +26338,8 @@
     "GL2002K": {
       "brand": "Pyramex",
       "part": "GL2002K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s Pigskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26348,8 +26348,8 @@
     "GL2003K": {
       "brand": "Pyramex",
       "part": "GL2003K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s Pigskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26358,8 +26358,8 @@
     "GL2005K": {
       "brand": "Pyramex",
       "part": "GL2005K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26368,8 +26368,8 @@
     "GL4003K": {
       "brand": "Pyramex",
       "part": "GL4003K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pigskin Leather",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Compared to Cordova, Majestic’s Pigskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26378,8 +26378,8 @@
     "GL2006K": {
       "brand": "Pyramex",
       "part": "GL2006K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s Pigskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26394,8 +26394,8 @@
         "puncture": 3,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -26407,8 +26407,8 @@
     "GL2007K": {
       "brand": "Pyramex",
       "part": "GL2007K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Cordova, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26417,8 +26417,8 @@
     "GL4001K": {
       "brand": "Pyramex",
       "part": "GL4001K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pigskin Leather",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Compared to Ansell, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26427,8 +26427,8 @@
     "GL2004K": {
       "brand": "Pyramex",
       "part": "GL2004K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Ansell, Majestic’s Cotton, Spandex Back, TPR glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26442,8 +26442,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26452,8 +26452,8 @@
     "GL2001K": {
       "brand": "Pyramex",
       "part": "GL2001K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Ansell, Majestic’s Cotton, Spandex Back, TPR glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26468,8 +26468,8 @@
         "puncture": 4,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -26486,8 +26486,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26501,8 +26501,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26517,8 +26517,8 @@
         "puncture": 4,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -26535,8 +26535,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26550,8 +26550,8 @@
         "abrasion": 4,
         "puncture": 5
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers an advanced design with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26560,8 +26560,8 @@
     "GL2002KF": {
       "brand": "Pyramex",
       "part": "GL2002KF",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to PIP, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26576,8 +26576,8 @@
         "puncture": 3,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2",
@@ -26596,8 +26596,8 @@
         "puncture": 5,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -26614,8 +26614,8 @@
         "abrasion": 4,
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "NFPA 70E Category 4 Arc-Flash"
@@ -26627,8 +26627,8 @@
     "GL3001K": {
       "brand": "Pyramex",
       "part": "GL3001K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -26637,8 +26637,8 @@
     "GL2008K": {
       "brand": "Pyramex",
       "part": "GL2008K",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s ArmorSkin™ glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26647,8 +26647,8 @@
     "GL2004": {
       "brand": "Pyramex",
       "part": "GL2004",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26657,8 +26657,8 @@
     "GL1004W": {
       "brand": "Pyramex",
       "part": "GL1004W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26667,8 +26667,8 @@
     "GL1008W": {
       "brand": "Pyramex",
       "part": "GL1008W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26677,8 +26677,8 @@
     "GL1005W": {
       "brand": "Pyramex",
       "part": "GL1005W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s ArmorSkin™ glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26687,8 +26687,8 @@
     "GL1010W": {
       "brand": "Pyramex",
       "part": "GL1010W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26697,8 +26697,8 @@
     "GL1003W": {
       "brand": "Pyramex",
       "part": "GL1003W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s ArmorSkin™ glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26707,8 +26707,8 @@
     "GL1001W": {
       "brand": "Pyramex",
       "part": "GL1001W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s ArmorSkin™ glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26717,8 +26717,8 @@
     "GL1006W": {
       "brand": "Pyramex",
       "part": "GL1006W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Goatskin Leather glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -26727,8 +26727,8 @@
     "GL1002W": {
       "brand": "Pyramex",
       "part": "GL1002W",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Compared to Global Glove, Majestic’s Nylon glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -27126,8 +27126,8 @@
     "3100": {
       "brand": "Global Glove",
       "part": "3100",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide/Split Cowhide Palm Patch",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -27447,8 +27447,8 @@
       "ratings": {
         "cut": "A6"
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Para Aramid Lining",
       "country": "-",
       "overrideBestMatch": null,
@@ -28810,7 +28810,7 @@
         "abrasion": 3,
         "puncture": 2
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Mesh Fabric/Synthetic Leather",
       "features": [
         "Touchscreen Compatible"
@@ -31711,8 +31711,8 @@
         "puncture": 3,
         "impact": 2
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
@@ -31724,8 +31724,8 @@
     "2950HVDC": {
       "brand": "Global Glove",
       "part": "2950HVDC",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "High-Visibility Design"
@@ -31738,7 +31738,7 @@
       "brand": "Global Glove",
       "part": "HR2800INT",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "3M Thinsulate/Goatskin Leather",
       "features": [
         "Winter Lined"
@@ -31750,8 +31750,8 @@
     "3150G": {
       "brand": "Global Glove",
       "part": "3150G",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -31760,8 +31760,8 @@
     "2950": {
       "brand": "Global Glove",
       "part": "2950",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "features": [
         "Winter Lined"
@@ -31773,8 +31773,8 @@
     "2950HVKW": {
       "brand": "Global Glove",
       "part": "2950HVKW",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "features": [
         "Winter Lined",
@@ -31787,8 +31787,8 @@
     "3100SW": {
       "brand": "Global Glove",
       "part": "3100SW",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -31797,7 +31797,7 @@
     "HR8200": {
       "brand": "Global Glove",
       "part": "HR8200",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather",
       "features": [
         "Reinforced Thumb Crotch",
@@ -31810,8 +31810,8 @@
     "2950KW": {
       "brand": "Global Glove",
       "part": "2950KW",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "features": [
         "Winter Lined"
@@ -31824,7 +31824,7 @@
       "brand": "Global Glove",
       "part": "HR3008",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Spandex",
       "features": [
         "Reinforced Thumb Crotch"
@@ -31836,8 +31836,8 @@
     "2300-LT": {
       "brand": "Global Glove",
       "part": "2300-LT",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -31846,8 +31846,8 @@
     "3200DTHB": {
       "brand": "Global Glove",
       "part": "3200DTHB",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Deerskin",
       "overrideBestMatch": "1541B",
       "overrideSummary": "Majestic’s 1541B is made with Grade B leather and similar construction, making it a like-for-like option to keep workers comfortable and protected.",
@@ -31860,8 +31860,8 @@
         "abrasion": 4,
         "puncture": 3
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "features": [
         "Winter Lined"
@@ -31873,8 +31873,8 @@
     "3300DSIN": {
       "brand": "Global Glove",
       "part": "3300DSIN",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Deerskin",
       "features": [
         "Winter Lined"
@@ -31891,7 +31891,7 @@
         "puncture": 3
       },
       "coating": "Goatskin Palm / Synthetic Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Alycore/AireFlex",
       "features": [
         "Reinforced Thumb Crotch",
@@ -31909,7 +31909,7 @@
         "puncture": 3
       },
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cowhide/Alycore",
       "features": [
         "ASTM F2878 Needlestick Level 5 Palm"
@@ -31921,7 +31921,7 @@
     "HR3200": {
       "brand": "Global Glove",
       "part": "HR3200",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex",
       "features": [
         "Reinforced Thumb Crotch"
@@ -31934,7 +31934,7 @@
       "brand": "Global Glove",
       "part": "HR4008",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Spandex",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -31943,7 +31943,7 @@
     "HR9000": {
       "brand": "Global Glove",
       "part": "HR9000",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex",
       "features": [
         "Reinforced Thumb Crotch"
@@ -31955,7 +31955,7 @@
     "HR9000VIS": {
       "brand": "Global Glove",
       "part": "HR9000VIS",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex",
       "features": [
         "High-Visibility Design",
@@ -31969,7 +31969,7 @@
       "brand": "Global Glove",
       "part": "SG5200INT",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cowhide/Cold Keep Insulation/Spandex",
       "features": [
         "Winter Lined",
@@ -31983,7 +31983,7 @@
       "brand": "Global Glove",
       "part": "SG5308",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Spandex",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -31992,7 +31992,7 @@
     "SG7200INT": {
       "brand": "Global Glove",
       "part": "SG7200INT",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Deerskin/Spandex/Cold Keep Insulation",
       "features": [
         "Winter Lined",
@@ -32005,7 +32005,7 @@
     "SG7700IN": {
       "brand": "Global Glove",
       "part": "SG7700IN",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Deerskin/Spandex/3M Thinsulate Insulation",
       "features": [
         "Winter Lined"
@@ -32021,7 +32021,7 @@
         "abrasion": 6,
         "puncture": 2
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex",
       "features": [
         "Reinforced Thumb Crotch"
@@ -32033,8 +32033,8 @@
     "2805": {
       "brand": "Global Glove",
       "part": "2805",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "features": [
         "Winter Lined"
@@ -32046,8 +32046,8 @@
     "3200-T": {
       "brand": "Global Glove",
       "part": "3200-T",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32056,8 +32056,8 @@
     "3200DTH": {
       "brand": "Global Glove",
       "part": "3200DTH",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Deerskin",
       "features": [
         "Winter Lined"
@@ -32069,8 +32069,8 @@
     "524": {
       "brand": "Global Glove",
       "part": "524",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide",
       "features": [
         "Winter Lined"
@@ -32082,8 +32082,8 @@
     "591F": {
       "brand": "Global Glove",
       "part": "591F",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide",
       "features": [
         "Winter Lined"
@@ -32095,8 +32095,8 @@
     "2950HV": {
       "brand": "Global Glove",
       "part": "2950HV",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "features": [
         "Winter Lined"
@@ -32108,8 +32108,8 @@
     "3100GHV": {
       "brand": "Global Glove",
       "part": "3100GHV",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -32118,8 +32118,8 @@
     "594MIT": {
       "brand": "Global Glove",
       "part": "594MIT",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide",
       "features": [
         "Winter Lined"
@@ -32131,8 +32131,8 @@
     "1100GHV": {
       "brand": "Global Glove",
       "part": "1100GHV",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -32141,8 +32141,8 @@
     "2800F": {
       "brand": "Global Glove",
       "part": "2800F",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cold Keep Insulation",
       "features": [
         "Winter Lined"
@@ -32154,8 +32154,8 @@
     "3200CTH": {
       "brand": "Global Glove",
       "part": "3200CTH",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide/Cold Keep Insulation",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32164,8 +32164,8 @@
     "3200SRF": {
       "brand": "Global Glove",
       "part": "3200SRF",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Fleece",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32174,7 +32174,7 @@
     "HR3200INT": {
       "brand": "Global Glove",
       "part": "HR3200INT",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex/Cold Keep Insulation",
       "features": [
         "Winter Lined",
@@ -32191,7 +32191,7 @@
         "abrasion": 4,
         "puncture": 3
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather/Spandex/Cold Keep Insulation",
       "features": [
         "Reinforced Thumb Crotch",
@@ -32204,8 +32204,8 @@
     "100MTC": {
       "brand": "Global Glove",
       "part": "100MTC",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32214,8 +32214,8 @@
     "100MTG": {
       "brand": "Global Glove",
       "part": "100MTG",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -32224,8 +32224,8 @@
     "1200E": {
       "brand": "Global Glove",
       "part": "1200E",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Thermal-Knit Cotton",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32234,8 +32234,8 @@
     "1200GE": {
       "brand": "Global Glove",
       "part": "1200GE",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Thermal-Knit Cotton",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32244,8 +32244,8 @@
     "1200KB": {
       "brand": "Global Glove",
       "part": "1200KB",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Thermal-Knit Cotton",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32254,8 +32254,8 @@
     "1900": {
       "brand": "Global Glove",
       "part": "1900",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32264,8 +32264,8 @@
     "2000": {
       "brand": "Global Glove",
       "part": "2000",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32274,8 +32274,8 @@
     "2120": {
       "brand": "Global Glove",
       "part": "2120",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32284,8 +32284,8 @@
     "2190": {
       "brand": "Global Glove",
       "part": "2190",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32294,8 +32294,8 @@
     "2190DP": {
       "brand": "Global Glove",
       "part": "2190DP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32304,8 +32304,8 @@
     "2250": {
       "brand": "Global Glove",
       "part": "2250",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32314,8 +32314,8 @@
     "2250DP": {
       "brand": "Global Glove",
       "part": "2250DP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32324,8 +32324,8 @@
     "2250FC": {
       "brand": "Global Glove",
       "part": "2250FC",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Full Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32334,8 +32334,8 @@
     "2300": {
       "brand": "Global Glove",
       "part": "2300",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32344,8 +32344,8 @@
     "2300DP": {
       "brand": "Global Glove",
       "part": "2300DP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32354,8 +32354,8 @@
     "2300GC": {
       "brand": "Global Glove",
       "part": "2300GC",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32364,8 +32364,8 @@
     "2300KW": {
       "brand": "Global Glove",
       "part": "2300KW",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32374,8 +32374,8 @@
     "2350PP": {
       "brand": "Global Glove",
       "part": "2350PP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Cotton Canvas",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32384,8 +32384,8 @@
     "3200": {
       "brand": "Global Glove",
       "part": "3200",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32394,8 +32394,8 @@
     "3200B": {
       "brand": "Global Glove",
       "part": "3200B",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32404,8 +32404,8 @@
     "3200BS": {
       "brand": "Global Glove",
       "part": "3200BS",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide Palm/Split Cowhide Back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32414,8 +32414,8 @@
     "3200D": {
       "brand": "Global Glove",
       "part": "3200D",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Deerskin",
       "overrideBestMatch": "1541B",
       "overrideSummary": "Majestic’s 1541B is made with Grade B leather and similar construction, making it a like-for-like option to keep workers comfortable and protected.",
@@ -32424,8 +32424,8 @@
     "3200G": {
       "brand": "Global Glove",
       "part": "3200G",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -32434,8 +32434,8 @@
     "3200GE": {
       "brand": "Global Glove",
       "part": "3200GE",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Goatskin Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -32444,8 +32444,8 @@
     "3200PP": {
       "brand": "Global Glove",
       "part": "3200PP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide Palm/Split Cowhide Back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32454,8 +32454,8 @@
     "3200S": {
       "brand": "Global Glove",
       "part": "3200S",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32464,8 +32464,8 @@
     "3200WH": {
       "brand": "Global Glove",
       "part": "3200WH",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Grain Cowhide",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32474,8 +32474,8 @@
     "1200KB-LH": {
       "brand": "Global Glove",
       "part": "1200KB-LH",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide/Thermal-Knit Cotton Lining",
       "features": [
         "Reinforced Thumb Crotch"
@@ -32487,8 +32487,8 @@
     "AV2000": {
       "brand": "Global Glove",
       "part": "AV2000",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather/Spandex",
       "features": [
         "Reinforced Thumb Crotch"
@@ -32501,8 +32501,8 @@
     "2100": {
       "brand": "Global Glove",
       "part": "2100",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide Palm/Cotton Canvas Back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -32511,7 +32511,7 @@
     "SG3300": {
       "brand": "Global Glove",
       "part": "SG3300",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather",
       "features": [
         "Touchscreen Compatible",
@@ -32524,7 +32524,7 @@
     "SG6000": {
       "brand": "Global Glove",
       "part": "SG6000",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather",
       "features": [
         "Touchscreen Compatible",
@@ -32538,7 +32538,7 @@
       "brand": "Global Glove",
       "part": "SG6600",
       "coating": "Synthetic Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "AireFlex Synthetic Leather",
       "features": [
         "TPR Impact Protection",
@@ -32556,7 +32556,7 @@
       "brand": "Global Glove",
       "part": "AV805",
       "coating": "Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cotton",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -32566,7 +32566,7 @@
     "AV1160": {
       "brand": "Global Glove",
       "part": "AV1160",
-      "coating": "-",
+      "coating": null,
       "gauge": 10,
       "linerMaterial": "Cotton/Nylon",
       "overrideBestMatch": "30-1000",
@@ -32577,8 +32577,8 @@
     "6518": {
       "brand": "Global Glove",
       "part": "6518",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "features": [
@@ -32591,8 +32591,8 @@
     "6958": {
       "brand": "Global Glove",
       "part": "6958",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "features": [
@@ -32605,8 +32605,8 @@
     "8447": {
       "brand": "Global Glove",
       "part": "8447",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -32616,8 +32616,8 @@
     "I6157": {
       "brand": "Global Glove",
       "part": "I6157",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32627,8 +32627,8 @@
     "6447": {
       "brand": "Global Glove",
       "part": "6447",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32638,8 +32638,8 @@
     "6147": {
       "brand": "Global Glove",
       "part": "6147",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32649,8 +32649,8 @@
     "I6147": {
       "brand": "Global Glove",
       "part": "I6147",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32660,8 +32660,8 @@
     "I6147F": {
       "brand": "Global Glove",
       "part": "I6147F",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32671,8 +32671,8 @@
     "6140": {
       "brand": "Global Glove",
       "part": "6140",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32682,8 +32682,8 @@
     "6928": {
       "brand": "Global Glove",
       "part": "6928",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Deerskin Leather",
       "country": "-",
       "overrideBestMatch": "1541B",
@@ -32693,8 +32693,8 @@
     "8544": {
       "brand": "Global Glove",
       "part": "8544",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "features": [
@@ -32707,7 +32707,7 @@
     "8247": {
       "brand": "Global Glove",
       "part": "8247",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -32717,7 +32717,7 @@
     "7010": {
       "brand": "Global Glove",
       "part": "7010",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -32727,7 +32727,7 @@
     "8354": {
       "brand": "Global Glove",
       "part": "8354",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -32737,7 +32737,7 @@
     "6817": {
       "brand": "Global Glove",
       "part": "6817",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32747,7 +32747,7 @@
     "6504": {
       "brand": "Global Glove",
       "part": "6504",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32757,7 +32757,7 @@
     "6108": {
       "brand": "Global Glove",
       "part": "6108",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32767,7 +32767,7 @@
     "6117": {
       "brand": "Global Glove",
       "part": "6117",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32777,7 +32777,7 @@
     "6004": {
       "brand": "Global Glove",
       "part": "6004",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32787,7 +32787,7 @@
     "6118": {
       "brand": "Global Glove",
       "part": "6118",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32797,7 +32797,7 @@
     "6918": {
       "brand": "Global Glove",
       "part": "6918",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32807,7 +32807,7 @@
     "6427R": {
       "brand": "Global Glove",
       "part": "6427R",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32817,7 +32817,7 @@
     "6827": {
       "brand": "Global Glove",
       "part": "6827",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32827,7 +32827,7 @@
     "6487": {
       "brand": "Global Glove",
       "part": "6487",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32837,7 +32837,7 @@
     "6427": {
       "brand": "Global Glove",
       "part": "6427",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32847,7 +32847,7 @@
     "6127": {
       "brand": "Global Glove",
       "part": "6127",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32857,7 +32857,7 @@
     "6124": {
       "brand": "Global Glove",
       "part": "6124",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32867,7 +32867,7 @@
     "7007": {
       "brand": "Global Glove",
       "part": "7007",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32877,7 +32877,7 @@
     "6217": {
       "brand": "Global Glove",
       "part": "6217",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32887,7 +32887,7 @@
     "6227": {
       "brand": "Global Glove",
       "part": "6227",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32897,7 +32897,7 @@
     "7217": {
       "brand": "Global Glove",
       "part": "7217",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32907,7 +32907,7 @@
     "I6137": {
       "brand": "Global Glove",
       "part": "I6137",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32917,7 +32917,7 @@
     "6137": {
       "brand": "Global Glove",
       "part": "6137",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32927,7 +32927,7 @@
     "I6137F": {
       "brand": "Global Glove",
       "part": "I6137F",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32937,7 +32937,7 @@
     "6130": {
       "brand": "Global Glove",
       "part": "6130",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32947,7 +32947,7 @@
     "I6130": {
       "brand": "Global Glove",
       "part": "I6130",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32957,7 +32957,7 @@
     "7017": {
       "brand": "Global Glove",
       "part": "7017",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32967,7 +32967,7 @@
     "6227T": {
       "brand": "Global Glove",
       "part": "6227T",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -32977,7 +32977,7 @@
     "6837": {
       "brand": "Global Glove",
       "part": "6837",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "features": [
@@ -32995,7 +32995,7 @@
         "impact": 2
       },
       "coating": "Synthetic Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon, Synthetic Leather",
       "country": "-",
       "features": [
@@ -33015,7 +33015,7 @@
         "cut": "A2",
         "impact": 2
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon & Spandex",
       "country": "-",
       "features": [
@@ -33036,7 +33036,7 @@
         "impact": 2
       },
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Aramid/Steel",
       "country": "-",
       "features": [
@@ -33074,7 +33074,7 @@
         "puncture": 1,
         "impact": 1
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cotton & Polyester",
       "country": "-",
       "features": [
@@ -33092,7 +33092,7 @@
         "puncture": 1,
         "impact": 1
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cotton & Polyester",
       "country": "-",
       "features": [
@@ -33109,7 +33109,7 @@
         "cut": "A2",
         "impact": 2
       },
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Nylon, Synthetic Leather",
       "country": "-",
       "features": [
@@ -33756,7 +33756,7 @@
       "brand": "Ironwear",
       "part": "4861",
       "coating": "Breathable coated palm",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Seamless Knit Liner",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33769,7 +33769,7 @@
         "cut": "A1"
       },
       "coating": "Smooth foam nitrile/PU palm and knuckles",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Seamless Knit Liner",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers better abrasion durability with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33779,7 +33779,7 @@
       "brand": "Ironwear",
       "part": "4857",
       "coating": "Nitrile-coated palm",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33802,7 +33802,7 @@
       "brand": "Ironwear",
       "part": "4855",
       "coating": "Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33827,7 +33827,7 @@
       "brand": "Ironwear",
       "part": "4805",
       "coating": "Sandy nitrile palm (3/4 dipped)",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Acrylic/Polyester",
       "features": [
         "Winter Lined"
@@ -33873,7 +33873,7 @@
         "cut": "A1"
       },
       "coating": "Dotted foam nitrile palm and knuckles",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Seamless Knit Liner",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers better abrasion durability with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33901,7 +33901,7 @@
       "brand": "Ironwear",
       "part": "4540",
       "coating": "Fully dipped smooth nitrile (4-layer)",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Jersey Knit",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33911,7 +33911,7 @@
       "brand": "Ironwear",
       "part": "4877",
       "coating": "Latex palm coating (VisComb pattern)",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester/Spandex",
       "features": [
         "High-Visibility Design"
@@ -33924,7 +33924,7 @@
       "brand": "Ironwear",
       "part": "4830",
       "coating": "Latex",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester",
       "features": [
         "High-Visibility Design"
@@ -33937,7 +33937,7 @@
       "brand": "Ironwear",
       "part": "4835",
       "coating": "Rubber",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Cotton/Polyester",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33947,7 +33947,7 @@
       "brand": "Ironwear",
       "part": "4541",
       "coating": "Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Jersey Knit",
       "features": [
         "Winter Lined"
@@ -33960,7 +33960,7 @@
       "brand": "Ironwear",
       "part": "4820",
       "coating": "Latex",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester/Cotton",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -33970,7 +33970,7 @@
       "brand": "Ironwear",
       "part": "4856",
       "coating": "3/4 dipped nitrile palm",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -34034,7 +34034,7 @@
       "brand": "Ironwear",
       "part": "4550",
       "coating": "Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Fleece-Lined Jersey",
       "overrideBestMatch": "30-1000",
       "overrideSummary": "Majestic’s 30-1000 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -34085,8 +34085,8 @@
         "puncture": 4,
         "impact": true
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "country": "-",
       "features": [
@@ -34099,7 +34099,7 @@
     "4890": {
       "brand": "Ironwear",
       "part": "4890",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Synthetic Leather",
       "overrideBestMatch": "2139BK",
       "overrideSummary": "Majestic’s 2139BK offers a more advanced overall design with additional performance benefits to help workers stay comfortable and protected.",
@@ -34108,7 +34108,7 @@
     "4870-DP": {
       "brand": "Ironwear",
       "part": "4870-DP",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Leather/Spandex",
       "features": [
         "High-Visibility Design"
@@ -34120,7 +34120,7 @@
     "4875": {
       "brand": "Ironwear",
       "part": "4875",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester, Synthetic Leather",
       "overrideBestMatch": "30-1005",
       "overrideSummary": "Majestic’s 30-1005 offers A1 cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
@@ -34130,7 +34130,7 @@
       "brand": "Ironwear",
       "part": "4870",
       "coating": "Leather",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Split Leather/Spandex",
       "features": [
         "High-Visibility Design"
@@ -34143,7 +34143,7 @@
       "brand": "Ironwear",
       "part": "4880",
       "coating": "Silicone dotted palm",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "-",
       "features": [
         "High-Visibility Design"
@@ -34155,8 +34155,8 @@
     "4872": {
       "brand": "Ironwear",
       "part": "4872",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather, Nylon",
       "country": "-",
       "overrideBestMatch": "1555WRK",
@@ -34166,8 +34166,8 @@
     "4189": {
       "brand": "Ironwear",
       "part": "4189",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Buffalo Grain Leather",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Majestic’s 2510P glove is made with a similar construction to deliver comparable protection, providing comparable protection and safety for similar applications.",
@@ -34176,8 +34176,8 @@
     "4195-B": {
       "brand": "Ironwear",
       "part": "4195-B",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34186,8 +34186,8 @@
     "4195B-OFTP": {
       "brand": "Ironwear",
       "part": "4195B-OFTP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34196,8 +34196,8 @@
     "4201": {
       "brand": "Ironwear",
       "part": "4201",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34206,8 +34206,8 @@
     "4196-FL": {
       "brand": "Ironwear",
       "part": "4196-FL",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34216,8 +34216,8 @@
     "4189-OFTP": {
       "brand": "Ironwear",
       "part": "4189-OFTP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Buffalo Grain Leather",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Majestic’s 2510P glove is made with a similar construction to deliver comparable protection, providing comparable protection and safety for similar applications.",
@@ -34226,8 +34226,8 @@
     "4199": {
       "brand": "Ironwear",
       "part": "4199",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34240,8 +34240,8 @@
         "cut": "A4",
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Aluminized back with Kevlar lining",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers better abrasion durability with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -34250,8 +34250,8 @@
     "4198": {
       "brand": "Ironwear",
       "part": "4198",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34260,8 +34260,8 @@
     "4173": {
       "brand": "Ironwear",
       "part": "4173",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -34270,8 +34270,8 @@
     "4140": {
       "brand": "Ironwear",
       "part": "4140",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers and palm with cotton back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34280,8 +34280,8 @@
     "4190-OFTB": {
       "brand": "Ironwear",
       "part": "4190-OFTB",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pig Grain Leather",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Majestic’s 2510P is made with similar materials and a similar construction, making it a like-for-like option to keep workers comfortable and protected.",
@@ -34290,8 +34290,8 @@
     "4195": {
       "brand": "Ironwear",
       "part": "4195",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34300,8 +34300,8 @@
     "4196-TPR": {
       "brand": "Ironwear",
       "part": "4196-TPR",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "country": "-",
       "features": [
@@ -34317,8 +34317,8 @@
     "4195B-OFT": {
       "brand": "Ironwear",
       "part": "4195B-OFT",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34327,8 +34327,8 @@
     "4195B-LFTP": {
       "brand": "Ironwear",
       "part": "4195B-LFTP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34337,8 +34337,8 @@
     "4194": {
       "brand": "Ironwear",
       "part": "4194",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34347,8 +34347,8 @@
     "4195B-LM": {
       "brand": "Ironwear",
       "part": "4195B-LM",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34357,8 +34357,8 @@
     "4192": {
       "brand": "Ironwear",
       "part": "4192",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34367,8 +34367,8 @@
     "4193": {
       "brand": "Ironwear",
       "part": "4193",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split Cowhide Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34377,8 +34377,8 @@
     "4145": {
       "brand": "Ironwear",
       "part": "4145",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers and palm with cotton back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34387,8 +34387,8 @@
     "4115": {
       "brand": "Ironwear",
       "part": "4115",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers and palm with reinforced patch and cotton back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34397,8 +34397,8 @@
     "4172": {
       "brand": "Ironwear",
       "part": "4172",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -34407,8 +34407,8 @@
     "4120": {
       "brand": "Ironwear",
       "part": "4120",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather palm",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34417,8 +34417,8 @@
     "4185": {
       "brand": "Ironwear",
       "part": "4185",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers, double palm and index finger with canvas back",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34427,8 +34427,8 @@
     "4151": {
       "brand": "Ironwear",
       "part": "4151",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather palm, fingers and palm with canvas back",
       "overrideBestMatch": "2510P",
       "overrideSummary": "Majestic’s 2510P glove is made with a similar construction to deliver comparable protection, providing comparable protection and safety for similar applications.",
@@ -34437,8 +34437,8 @@
     "4203": {
       "brand": "Ironwear",
       "part": "4203",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Grain Leather palm & index finger, split cow leather back & cuff",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34447,8 +34447,8 @@
     "4191-TPR-TL": {
       "brand": "Ironwear",
       "part": "4191-TPR-TL",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Grain Leather",
       "features": [
         "Winter Lined",
@@ -34468,8 +34468,8 @@
         "cut": "A6",
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34482,8 +34482,8 @@
         "cut": "A6",
         "puncture": 4
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Grain Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers better abrasion durability with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -34492,8 +34492,8 @@
     "4196-TL": {
       "brand": "Ironwear",
       "part": "4196-TL",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "features": [
         "Winter Lined"
@@ -34505,8 +34505,8 @@
     "4147": {
       "brand": "Ironwear",
       "part": "4147",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide Leather",
       "overrideBestMatch": "1510",
       "overrideSummary": "Majestic’s 1510 glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
@@ -34518,8 +34518,8 @@
       "ratings": {
         "abrasion": "High"
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Grain Leather",
       "overrideBestMatch": "1555WRK",
       "overrideSummary": "Majestic’s 1555WRK offers higher cut protection with added features like PPE Level 3 arc resistance to help workers stay protected.",
@@ -34528,8 +34528,8 @@
     "4195B-OFTB": {
       "brand": "Ironwear",
       "part": "4195B-OFTB",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34539,8 +34539,8 @@
     "4200": {
       "brand": "Ironwear",
       "part": "4200",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Kevlar",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -34550,8 +34550,8 @@
     "4180": {
       "brand": "Ironwear",
       "part": "4180",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers, double palm and index finger with cotton back",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34561,8 +34561,8 @@
     "4204": {
       "brand": "Ironwear",
       "part": "4204",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Driver glove",
       "country": "-",
       "overrideBestMatch": "30-1000",
@@ -34572,8 +34572,8 @@
     "4167": {
       "brand": "Ironwear",
       "part": "4167",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat leather work gloves with reflective tape",
       "country": "-",
       "overrideBestMatch": "1555WRK",
@@ -34583,8 +34583,8 @@
     "4171": {
       "brand": "Ironwear",
       "part": "4171",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "country": "-",
       "features": [
@@ -34598,8 +34598,8 @@
     "4168": {
       "brand": "Ironwear",
       "part": "4168",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather work glove",
       "country": "-",
       "overrideBestMatch": "2510P",
@@ -34609,8 +34609,8 @@
     "4160": {
       "brand": "Ironwear",
       "part": "4160",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather fingers, double palm and index finger with cotton back",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34620,8 +34620,8 @@
     "4100": {
       "brand": "Ironwear",
       "part": "4100",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Split cowhide leather palm with cotton back",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34631,8 +34631,8 @@
     "4190": {
       "brand": "Ironwear",
       "part": "4190",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pig Grain Leather",
       "country": "-",
       "overrideBestMatch": "2510P",
@@ -34642,8 +34642,8 @@
     "4190-OFTP": {
       "brand": "Ironwear",
       "part": "4190-OFTP",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Pig Grain Leather",
       "country": "-",
       "overrideBestMatch": "2510P",
@@ -34653,8 +34653,8 @@
     "4150": {
       "brand": "Ironwear",
       "part": "4150",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather palm fingers and palm with canvas back",
       "country": "-",
       "overrideBestMatch": "2510P",
@@ -34664,8 +34664,8 @@
     "4202": {
       "brand": "Ironwear",
       "part": "4202",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34675,8 +34675,8 @@
     "4894": {
       "brand": "Ironwear",
       "part": "4894",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Polyester/Spandex liner",
       "country": "-",
       "overrideBestMatch": "30-1005",
@@ -34686,8 +34686,8 @@
     "4197": {
       "brand": "Ironwear",
       "part": "4197",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Leather",
       "country": "-",
       "features": [
@@ -34700,8 +34700,8 @@
     "4165": {
       "brand": "Ironwear",
       "part": "4165",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide Leather",
       "country": "-",
       "overrideBestMatch": "1510",
@@ -34711,8 +34711,8 @@
     "4170": {
       "brand": "Ironwear",
       "part": "4170",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goatskin Leather",
       "country": "-",
       "features": [
@@ -34726,8 +34726,8 @@
     "4160-TPR": {
       "brand": "Ironwear",
       "part": "4160-TPR",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cowhide Leather",
       "country": "-",
       "features": [
@@ -34747,8 +34747,8 @@
         "cut": "A6",
         "impact": 3
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Goat Grain Leather",
       "country": "-",
       "features": [
@@ -34765,8 +34765,8 @@
         "cut": "A6",
         "impact": 3
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Grain Leather",
       "country": "-",
       "features": [
@@ -34784,8 +34784,8 @@
         "puncture": "X",
         "impact": 3
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Mixed Yarn Liner",
       "country": "-",
       "features": [
@@ -34803,8 +34803,8 @@
         "abrasion": 3,
         "puncture": 5
       },
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cow Split Leather glove",
       "country": "-",
       "features": [
@@ -34817,8 +34817,8 @@
     "4895": {
       "brand": "Ironwear",
       "part": "4895",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "features": [
@@ -34835,7 +34835,7 @@
       "brand": "Ironwear",
       "part": "4264",
       "coating": "Uncoated",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "Polyester/Spandex",
       "country": "-",
       "features": [
@@ -34851,8 +34851,8 @@
     "4265": {
       "brand": "Ironwear",
       "part": "4265",
-      "coating": "-",
-      "gauge": "-",
+      "coating": null,
+      "gauge": null,
       "linerMaterial": "Cotton",
       "country": "-",
       "features": [
@@ -34869,7 +34869,7 @@
       "brand": "Ironwear",
       "part": "4897",
       "coating": "Foam Nitrile",
-      "gauge": "-",
+      "gauge": null,
       "linerMaterial": "-",
       "country": "-",
       "features": [
