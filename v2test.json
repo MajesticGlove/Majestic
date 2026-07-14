@@ -7291,9 +7291,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the RWG816, Majestic’s 21286 delivers equal cut level (A6) while meeting the ANSI/ISEA 138-2019 impact level 2 standard.",
-      "overrideDescription": "Compared to the RWG816, Majestic’s 21286 delivers equal cut level (A6) while meeting the ANSI/ISEA 138-2019 Impact 2 standard."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "RWG86": {
       "brand": "Radians",
@@ -11145,9 +11145,9 @@
         "ANSI/ISEA 138-2019 Impact 2",
         "Reinforced Thumb Crotch"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 6680TPR, Majestic’s 21286 delivers higher cut protection (A6 vs A7), better abrasion durability while meeting the ANSI/ISEA 138-2019 impact level 2 standard.",
-      "overrideDescription": "Compared to the 6680TPR, Majestic’s 21286 delivers higher cut protection (A6 vs A7), better abrasion durabilitywhile meeting the ANSI/ISEA 138-2019 Impact 2 standard."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3732HV": {
       "brand": "Cordova",
@@ -16058,9 +16058,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 3027IMP, Majestic’s 21286 provides improved abrasion durability (Level 4 vs. Level 3) with the same Level 2 impact protection, though at a slightly lower cut level (A6 vs. A7).",
-      "overrideDescription": "Majestic’s 21286 offers higher abrasion resistance (Level 4 vs. Level 3) while maintaining ANSI/ISEA 138-2019 Level 2 impact protection and strong puncture performance."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "1050": {
       "brand": "Hexarmor",
@@ -16207,9 +16207,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 3014IMP, Majestic’s 21286 delivers equal cut level (A6) while meeting the same ANSI/ISEA 138-2019 impact level 2 standard.",
-      "overrideDescription": "Compared to the 3014IMP, Majestic’s 21286 delivers equal cut level (A6) while meeting the same ANSI/ISEA 138-2019 Impact 2 standard."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4067": {
       "brand": "Hexarmor",
@@ -16268,9 +16268,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 3013IMP, Majestic’s 21286 provides equal cut protection (A6), stronger puncture resistance (4 vs. 3).",
-      "overrideDescription": "Majestic’s 21286 delivers equal A6 cut resistance with higher puncture resistance (4 vs. 3) and equivalent ANSI/ISEA 138-2019 Level 2 impact protection."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "5039": {
       "brand": "Hexarmor",
@@ -16390,9 +16390,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 3026IMP, Majestic’s 21286 provides higher abrasion resistance (4 vs. 2) and stronger puncture resistance (4 vs. 3), though at a slightly lower cut level (A6 vs. A7).",
-      "overrideDescription": "Compared to the 3026IMP, Majestic’s 21286 provides higher abrasion resistance (4 vs. 2) and stronger puncture resistance (4 vs. 3) while maintaining the same level of impact resistance."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2030X": {
       "brand": "Hexarmor",
@@ -17456,9 +17456,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the 3062IMP, Majestic’s 21286 provides stronger puncture resistance (4 vs. 3), though at a lower cut level (A6 vs. A9).",
-      "overrideDescription": "Majestic’s 21286 delivers equal ANSI/ISEA 138-2019 Level 2 impact protection with stronger puncture resistance (4 vs. 3)."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "1862": {
       "brand": "Hexarmor",
@@ -25074,9 +25074,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "21286",
-      "overrideSummary": "Compared to the S15ALXVB, Majestic’s 21286 delivers higher cut protection (A6 vs ), better abrasion durability, stronger puncture resistance while meeting the ANSI/ISEA 138-2019 impact level 2 standard.",
-      "overrideDescription": "Compared to the S15ALXVB, Majestic’s 21286 delivers higher cut protection (A6 vs ), better abrasion durability, stronger puncture resistance while meeting the ANSI/ISEA 138-2019 Impact 2 standard."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "378GVBE": {
       "brand": "Superior Glove",
