@@ -554,22 +554,6 @@
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/34/-1/57/34-1570_1200_small.jpg"
     },
-    "37-1505": {
-      "part": "37-1505",
-      "name": "Cut-Less Dyneema Glove with Polyurethane Palm, 13g, ANSI A4",
-      "ratings": {
-        "cut": "A4",
-        "puncture": 3
-      },
-      "coating": "Polyurethane",
-      "gauge": 13,
-      "material": "Dyneema® Diamond Knit",
-      "country": "China",
-      "features": [
-        "Touchscreen Compatible"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/37/-1/50/37-1505_1200_small.jpg"
-    },
     "30-1000": {
       "part": "30-1000",
       "name": "Superdex Premium Foam Nitrile Glove",
@@ -619,22 +603,6 @@
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/31/42/6-/31426-18THSO_1200_small.jpg"
     },
-    "35-3367": {
-      "part": "35-3367",
-      "name": "Cut-Less Korplex® Glove with Micro Foam Palm, 18g, ANSI A2",
-      "ratings": {
-        "cut": "A2",
-        "puncture": 2
-      },
-      "coating": "Foam Nitrile",
-      "gauge": 18,
-      "material": "Korplex® Knit",
-      "country": "Pakistan",
-      "features": [
-        "Touchscreen Compatible"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-3/36/35-3367_1200_small.jpg"
-    },
     "35-1565": {
       "part": "35-1565",
       "name": "Cut-Less Korplex® Glove with Foam Nitrile Palm, 13g, ANSI A4",
@@ -666,23 +634,6 @@
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-4/56/35-4565_1200_small.jpg"
     },
-    "35-5567": {
-      "part": "35-5567",
-      "name": "X-15 Korplex® Glove with Foam Nitrile Palm, Impact TPR, 10g, ANSI A5",
-      "ratings": {
-        "cut": "A5",
-        "puncture": 3,
-        "impact": true
-      },
-      "coating": "Foam Nitrile",
-      "gauge": 10,
-      "material": "Korplex® Knit, Acrylic",
-      "country": "China",
-      "features": [
-        "Touchscreen Compatible"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-5/56/35-5567_1200_small.jpg"
-    },
     "37-3435": {
       "part": "37-3435",
       "name": "Cut-Less Dyneema Glove with Polyurethane Palm, 13g, ANSI A3",
@@ -698,21 +649,6 @@
         "Sanitized by Actifresh Treatment"
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/37/-3/43/37-3435_1200_small.jpg"
-    },
-    "3399KNY": {
-      "part": "3399KNY",
-      "name": "Emperor Penguin Winter Lined Nylon Glove with 3/4 Sandy Nitrile Palm",
-      "ratings": {
-        "cut": "A2"
-      },
-      "coating": "Nitrile",
-      "gauge": 10,
-      "material": "Nylon, Acrylic",
-      "country": "China",
-      "features": [
-        "High-Visibility Design"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/33/99/KN/3399KNY_lighter_1200_small.jpg"
     },
     "35-7466": {
       "part": "35-7466",
@@ -747,24 +683,6 @@
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/34/-1/55/34-1550_1200_small.jpg"
     },
-    "35-5675": {
-      "part": "35-5675",
-      "name": "X-15 Korplex® Glove with Sandy Nitrile Palm, Impact TPR,13g, ANSI A6",
-      "ratings": {
-        "cut": "A6",
-        "abrasion": 4,
-        "puncture": 4,
-        "impact": true
-      },
-      "coating": "Sandy Nitrile",
-      "gauge": 13,
-      "material": "Korplex® Knit",
-      "country": "Malaysia",
-      "features": [
-        "Sanitized by Actifresh Treatment"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-5/67/35-5675_1200_small.jpg"
-    },
     "21262HO": {
       "part": "21262HO",
       "name": "Knucklehead Driller X10 Mechanics Glove with Cotton Palm and Impact Protection",
@@ -797,23 +715,6 @@
         "Touchscreen Compatible"
       ],
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-5/57/35-5575_1200_small.jpg"
-    },
-    "35-557Y": {
-      "part": "35-557Y",
-      "name": "X-15 Cut & Impact Resistant Glove with Double Sandy Nitrile Coating",
-      "ratings": {
-        "cut": "A5",
-        "puncture": 4,
-        "impact": true
-      },
-      "coating": "Nitrile",
-      "gauge": 13,
-      "material": "Korplex® Knit",
-      "country": "China",
-      "features": [
-        "High-Visibility Design"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-5/57/35-557Y_1200_small.jpg"
     },
     "30-1001": {
       "part": "30-1001",
@@ -901,20 +802,6 @@
       "material": "Korplex® Knit",
       "country": "United States",
       "img_url": "https://majesticglove.com/UserFiles/Product/Images/31/47/-1/3147-14_1200_small.jpg"
-    },
-    "21247HO": {
-      "part": "21247HO",
-      "name": "Thinsulate Winter Lined Knucklehead X10 Armor Skin Mechanics Glove with Impact Protection",
-      "ratings": {
-        "cut": "A3",
-        "impact": true
-      },
-      "material": "ArmorSkin™",
-      "country": "China",
-      "features": [
-        "High-Visibility Design"
-      ],
-      "img_url": "https://majesticglove.com/UserFiles/Product/Images/21/24/7H/21247HO_1200_small.jpg"
     },
     "30-1005": {
       "part": "30-1005",
@@ -5837,9 +5724,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "37-1505",
-      "overrideSummary": "Majestic’s 37-1505 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 19-D526B, Majestic’s 37-1505 delivers equal cut level (A4), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "MATA503HA": {
       "brand": "PIP",
@@ -7052,9 +6939,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
       ],
-      "overrideBestMatch": "35-5567",
-      "overrideSummary": "Majestic’s 35-5567 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the RWG604, Majestic’s 35-5567 delivers higher cut protection (A5 vs A4), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "RWG605": {
       "brand": "Radians",
@@ -8190,9 +8077,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": "35-5675",
-      "overrideSummary": "Majestic’s 35-5675 offers a more advanced overall design with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the GL609C, Majestic’s 35-5675 delivers equal cut level (A6), with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "GL407C": {
       "brand": "Pyramex",
@@ -9282,9 +9169,9 @@
       "coating": "HCT® MicroFoam Nitrile",
       "gauge": 13,
       "linerMaterial": "Salt & Pepper HDPE Basetek",
-      "overrideBestMatch": "35-557Y",
-      "overrideSummary": "Majestic’s 35-557Y offers higher cut protection with added features like high-visibility design to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 02-040, Majestic’s 35-557Y delivers higher cut protection (A5 vs A4), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "04-001": {
       "brand": "Armor Guys",
@@ -10679,9 +10566,9 @@
       "coating": "Polyurethane",
       "gauge": 13,
       "linerMaterial": "HPPE/Glass",
-      "overrideBestMatch": "37-1505",
-      "overrideSummary": "Majestic’s 37-1505 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 3734PU, Majestic’s 37-1505 delivers equal cut level (A4), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3734SN": {
       "brand": "Cordova",
@@ -11735,9 +11622,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "35-557Y",
-      "overrideSummary": "Majestic’s 35-557Y offers a more advanced overall design with added features like high-visibility design to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the R085, Majestic’s 35-557Y delivers higher cut protection (A5 vs A6), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "80-658": {
       "brand": "Ansell",
@@ -12747,9 +12634,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "21247HO",
-      "overrideSummary": "Majestic’s 21247HO offers a more advanced overall design with added features like high-visibility design to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the R266, Majestic’s 21247HO delivers equal cut level (A3), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "R267": {
       "brand": "Ansell",
@@ -13946,9 +13833,9 @@
       "coating": "Xtreme Foam Technology",
       "gauge": "15",
       "linerMaterial": "Nylon/Spandex",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 578XFT, Majestic’s 35-3367 delivers higher cut protection (A2 vs A1), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "870-SC": {
       "brand": "Global Glove",
@@ -13993,9 +13880,9 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 568XFT-TS, Majestic’s 35-3367 delivers higher cut protection (A2 vs A1), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CIA388XFT": {
       "brand": "Global Glove",
@@ -14636,9 +14523,9 @@
       },
       "coating": "Rubber",
       "linerMaterial": "Unlined",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 190ETC, Majestic’s 35-3367 delivers higher cut protection (A2 vs A1), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2000DP": {
       "brand": "Global Glove",
@@ -14720,9 +14607,9 @@
       "coating": "Rubber",
       "gauge": "15",
       "linerMaterial": "Gripster elastic fiber",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 360HV, Majestic’s 35-3367 delivers higher cut protection (A2 vs A1), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "500KV": {
       "brand": "Global Glove",
@@ -14885,9 +14772,9 @@
       "coating": "Latex",
       "gauge": "10",
       "linerMaterial": "Latex, Foam",
-      "overrideBestMatch": "35-5567",
-      "overrideSummary": "Majestic’s 35-5567 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the CIA300INT, Majestic’s 35-5567 delivers higher cut protection (A5 vs A4), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CIA501MF": {
       "brand": "Global Glove",
@@ -14915,9 +14802,9 @@
       "coating": "Nitrile",
       "gauge": "13",
       "linerMaterial": "Aralene (enhanced aramid fiber)",
-      "overrideBestMatch": "35-557Y",
-      "overrideSummary": "Majestic’s 35-557Y offers stronger puncture resistance with added features like high-visibility design to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the CIA609MF, Majestic’s 35-557Y delivers equal cut level (A5), stronger puncture resistance, with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CIA617V": {
       "brand": "Global Glove",
@@ -15367,9 +15254,9 @@
       "coating": "Polyurethane",
       "gauge": "13",
       "linerMaterial": "Tuffalene UHMWPE",
-      "overrideBestMatch": "37-1505",
-      "overrideSummary": "Majestic’s 37-1505 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the PUG-617, Majestic’s 37-1505 delivers equal cut level (A4), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "PUG-88": {
       "brand": "Global Glove",
@@ -15723,9 +15610,9 @@
       "coating": "Nitrile",
       "gauge": "18",
       "linerMaterial": "Tuffalene Platinum UHMWPE",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the CR918MF, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "CR919": {
       "brand": "Global Glove",
@@ -17123,9 +17010,9 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "Leather",
-      "overrideBestMatch": "21247HO",
-      "overrideSummary": "Majestic’s 21247HO offers a more advanced overall design with added features like high-visibility design to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 2023X, Majestic’s 21247HO delivers equal cut level (A3), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2057": {
       "brand": "Hexarmor",
@@ -17335,9 +17222,9 @@
       "coating": "Nitrile",
       "gauge": 21,
       "linerMaterial": "Nitrile, Foam, HPPE",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 3015, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "3071": {
       "brand": "Hexarmor",
@@ -18169,9 +18056,9 @@
       "coating": "Nitrile",
       "gauge": 18,
       "linerMaterial": "Nitrile, Foam, Nylon",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 553, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "2021": {
       "brand": "Hexarmor",
@@ -18446,9 +18333,9 @@
       "ratings": {
         "cut": "A2"
       },
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4833, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4906": {
       "brand": "Ironwear",
@@ -18713,9 +18600,9 @@
         "cut": "A2"
       },
       "linerMaterial": "HPPE",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4910, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4900": {
       "brand": "Ironwear",
@@ -18978,9 +18865,9 @@
       "ratings": {
         "cut": "A2"
       },
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4710, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4936": {
       "brand": "Liberty",
@@ -19150,9 +19037,9 @@
       "ratings": {
         "cut": "A2"
       },
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4892, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "4208": {
       "brand": "Ironwear",
@@ -19182,9 +19069,9 @@
       },
       "gauge": 18,
       "linerMaterial": "Proprietary Engineered Yarn",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the F4901HG, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "F4900HG": {
       "brand": "Liberty",
@@ -19194,9 +19081,9 @@
       },
       "gauge": 18,
       "linerMaterial": "Proprietary Engineered Yarn",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the F4900HG, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "F4902HG": {
       "brand": "Liberty",
@@ -19206,9 +19093,9 @@
       },
       "gauge": 18,
       "linerMaterial": "Proprietary Engineered Yarn",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the F4902HG, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "KV4729": {
       "brand": "Liberty",
@@ -19230,9 +19117,9 @@
       },
       "gauge": 18,
       "linerMaterial": "Proprietary Engineered Yarn",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 4908HG, Majestic’s 35-3367 delivers equal cut level (A2), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "A4938": {
       "brand": "Liberty",
@@ -19692,9 +19579,9 @@
         "puncture": 2
       },
       "gauge": 18,
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 90780, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "9218M13": {
       "brand": "MCR",
@@ -19732,9 +19619,9 @@
       },
       "gauge": 18,
       "linerMaterial": "Synthetic Leather",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 963, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "9672DT2": {
       "brand": "MCR",
@@ -19758,9 +19645,9 @@
         "puncture": 2
       },
       "gauge": 18,
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 9693PU, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "9828PU": {
       "brand": "MCR",
@@ -20020,9 +19907,9 @@
         "puncture": 3
       },
       "gauge": 18,
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 92728HV, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "92718NF": {
       "brand": "MCR",
@@ -20224,9 +20111,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
       ],
-      "overrideBestMatch": "35-5567",
-      "overrideSummary": "Majestic’s 35-5567 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the UT1956, Majestic’s 35-5567 delivers equal cut level (A5), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "36136HP": {
       "brand": "MCR",
@@ -20566,9 +20453,9 @@
         "puncture": 4
       },
       "gauge": 18,
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 92718PU, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "9672DT5": {
       "brand": "MCR",
@@ -20749,9 +20636,9 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 1"
       ],
-      "overrideBestMatch": "35-5675",
-      "overrideSummary": "Majestic’s 35-5675 offers higher cut protection with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the UT1952, Majestic’s 35-5675 delivers higher cut protection (A6 vs A4), with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "UT1953": {
       "brand": "MCR",
@@ -21311,9 +21198,9 @@
         "puncture": 3
       },
       "linerMaterial": "HPPE, Seamless Knit",
-      "overrideBestMatch": "35-3367",
-      "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-      "overrideDescription": "Compared to the 545, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      "overrideBestMatch": null,
+      "overrideSummary": null,
+      "overrideDescription": null
     },
     "542X": {
       "brand": "SHOWA",
