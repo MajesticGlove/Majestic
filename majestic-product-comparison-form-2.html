@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Majestic Competitor Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#ab1f2d; --brand-press:#8a1923; --brand-tint:#fbeaec; --brand-tint-2:#f6d8db;
+      --ink:#16181d; --ink-mute:#6c7480; --ink-soft:#9aa1ab;
+      --steel:#5b6573;
+      --paper:#f4f5f6; --surface:#ffffff;
+      --line:#e4e6ea; --line-strong:#d2d6dd;
+      /* Rank as intensity: the top match is the brand; alternates are graphite. */
+      --best:var(--brand); --better:#4a5564; --good:#7e8893;
+      --font:"Nunito Sans", Arial, Helvetica, sans-serif;
+      --shadow-card:0 1px 2px rgba(16,18,29,.05), 0 1px 1px rgba(16,18,29,.03);
+      --shadow-lift:0 16px 34px -18px rgba(16,18,29,.30);
+      --shadow-hero:0 18px 40px -20px rgba(171,31,45,.38);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      font-family:"Nunito Sans", Arial, Helvetica, sans-serif;
+      background:var(--paper); color:var(--ink); margin:0; -webkit-font-smoothing:antialiased;
+    }
+    canvas{ display:block; width:100% !important; }
+    #gaugeChart{ height:96px; }
+
+    /* Masthead */
+    .masthead{ background:var(--surface); border-bottom:1px solid var(--line); }
+    .masthead-inner{ display:flex; align-items:center; gap:.65rem; padding:.95rem 0; }
+    .brandmark{ display:flex; align-items:center; gap:.65rem; }
+    .brandmark .word{ font-weight:900; font-size:1.3rem; letter-spacing:.02em; color:var(--brand); line-height:1; }
+    .brandmark .word sup{ font-size:.5em; font-weight:800; top:-.75em; }
+    .brandmark .rule{ width:1px; height:1.3rem; background:var(--line-strong); }
+    .brandmark .sub{ font-weight:700; font-size:.82rem; color:var(--ink); letter-spacing:.01em; }
+    .brand-accent{ height:6px; background:#ab1f2d; box-shadow:0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); }
+
+    /* Hero / search (centered) */
+    .hero{ padding:2.5rem 0 2rem; text-align:center; }
+    .hero h1{ font-size:clamp(1.55rem, 1.1rem + 1.7vw, 2.15rem); font-weight:900; letter-spacing:-.012em; line-height:1.1; margin:0 0 .5rem; color:var(--ink); }
+    .hero h1 em{ font-style:normal; color:var(--brand); }
+    .hero .lede{ color:var(--ink-mute); font-size:.96rem; line-height:1.5; margin:0 auto 1.3rem; max-width:34rem; }
+
+    .hero .autocomplete-wrapper{ margin-left:auto; margin-right:auto; }
+    .search{ position:relative; display:flex; gap:.55rem; width:100%; }
+    .search-box{ position:relative; flex:1; min-width:0; }
+    .search-ic{ position:absolute; left:.9rem; top:50%; transform:translateY(-50%); width:1.05rem; height:1.05rem; color:var(--ink-soft); pointer-events:none; }
+    .search-field{
+      width:100%; font:inherit; font-weight:700; color:var(--ink); text-align:left;
+      padding:.74rem .9rem .74rem 2.6rem; border:1.5px solid var(--line-strong); border-radius:.6rem;
+      background:var(--surface); transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .search-field::placeholder{ font-family:var(--font); font-weight:500; color:var(--ink-soft); }
+    .search-field:focus-visible{ outline:none; border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-tint); }
+
+    .btn{ font:inherit; font-weight:800; letter-spacing:.01em; border:none; border-radius:.6rem; cursor:pointer; white-space:nowrap; transition:background .15s ease, transform .05s ease; }
+    .btn:disabled{ opacity:.55; cursor:default; }
+    .btn--primary{ background:var(--brand); color:#fff; padding:.74rem 1.35rem; }
+    .btn--primary:hover:not(:disabled){ background:var(--brand-press); }
+    .btn--primary:active:not(:disabled){ transform:translateY(1px); }
+    .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--brand-tint); }
+
+    .field-error{ font-size:.83rem; color:var(--brand); font-weight:700; margin:.7rem 0 0; }
+    .examples{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.4rem; margin-top:1rem; }
+    .examples .lbl{ font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+    .example-chip{ font-family:var(--font); font-size:.78rem; font-weight:600; color:var(--ink); background:var(--surface);
+      border:1px solid var(--line-strong); padding:.22rem .6rem; border-radius:.42rem; cursor:pointer;
+      transition:border-color .15s ease, color .15s ease, background .15s ease; }
+    .example-chip:hover{ border-color:var(--brand); color:var(--brand); background:var(--brand-tint); }
+    .example-chip:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--brand-tint); border-color:var(--brand); }
+    .did-you-mean{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; font-weight:800; cursor:pointer; background:none; border:none; padding:0; font:inherit; }
+
+    /* Panels */
+    .panel{ background:var(--surface); border:1px solid var(--line); border-radius:.7rem; box-shadow:var(--shadow-card); }
+    .panel-pad{ padding:1.35rem 1.4rem; }
+    .section-title{ font-size:.95rem; font-weight:800; color:var(--ink); margin:0 0 .85rem; }
+    .panel-sub{ font-weight:600; color:var(--ink-soft); font-size:.8rem; font-family:var(--font); }
+
+    /* Competitor identity bar (centered) */
+    .cmp-bar{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:.6rem; }
+    .cmp-name{ font-size:1.34rem; font-weight:900; color:var(--steel); line-height:1.18; margin:0; }
+    .cmp-sku{ font-size:.9rem; font-weight:600; color:var(--ink-mute); margin:.25rem 0 0; }
+    .impact-badge{ align-items:center; gap:.42rem; font-size:.68rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+      color:#8a4b00; background:#fdf2e3; border:1px solid #f1d6ac; padding:.42rem .72rem; border-radius:999px; }
+    .impact-badge svg{ width:.95rem; height:.95rem; }
+
+    /* Tier cards */
+    .tier-good{ --tier:var(--good); } .tier-better{ --tier:var(--better); } .tier-best{ --tier:var(--best); }
+    .tier-card{ position:relative; background:var(--surface); border:1px solid var(--line); border-radius:.7rem;
+      padding:1.15rem 1.2rem 1.25rem; box-shadow:var(--shadow-card); cursor:pointer; overflow:hidden;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .tier-card::before{ content:''; position:absolute; left:0; right:0; top:0; height:3px; background:var(--tier); }
+    .tier-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lift); }
+    .tier-card:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--brand-tint), var(--shadow-lift); }
+    .tier-card.selected{ border-color:var(--tier); box-shadow:0 0 0 1.5px var(--tier), var(--shadow-lift); }
+    .tier-card--best{ background:linear-gradient(180deg, var(--brand-tint) 0, var(--surface) 70px); }
+    .tier-card--best::before{ height:4px; }
+    .tier-card--best.selected{ box-shadow:0 0 0 1.5px var(--brand), var(--shadow-hero); }
+
+    .tier-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; margin-bottom:.95rem; }
+    .tier-headl{ display:flex; align-items:center; gap:.1rem; flex-wrap:wrap; min-width:0; }
+    .tier-label{ font-size:.64rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--tier); }
+
+    .match-ring{ --pct:0; --size:50px; width:var(--size); height:var(--size); border-radius:50%; flex:none;
+      background:conic-gradient(var(--tier) calc(var(--pct)*1%), var(--line) 0); display:grid; place-items:center; position:relative; }
+    .match-ring::after{ content:''; position:absolute; inset:4.5px; background:var(--surface); border-radius:50%; }
+    .match-ring > span{ position:relative; z-index:1; font-weight:800; font-size:.8rem; color:var(--tier); font-variant-numeric:tabular-nums; }
+    .tier-card--best .match-ring::after{ background:#fff; }
+
+    .tier-prod{ display:flex; align-items:center; gap:.75rem; margin-bottom:.2rem; }
+    .tier-prod img{ height:3.4rem; width:3.4rem; object-fit:contain; border-radius:.42rem; background:#fff; border:1px solid var(--line); flex:none; }
+    .tier-part{ font-family:var(--font); font-weight:700; font-size:.98rem; color:var(--brand); line-height:1.1; margin:0; }
+    .tier-pname{ font-size:.82rem; color:var(--ink); line-height:1.28; margin:.14rem 0 0;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .tier-price{ font-size:.74rem; color:var(--ink-mute); margin:.2rem 0 0; font-variant-numeric:tabular-nums; }
+
+    .wins{ list-style:none; margin:.95rem 0 0; padding:.9rem 0 0; border-top:1px dashed var(--line); display:grid; gap:.45rem; }
+    .win{ display:flex; align-items:flex-start; gap:.45rem; font-size:.78rem; font-weight:600; color:var(--ink); }
+    .win svg{ width:.95rem; height:.95rem; color:var(--tier); flex:none; margin-top:.06rem; }
+    .win span{ font-variant-numeric:tabular-nums; }
+
+    .pin-badge{ display:inline-flex; align-items:center; gap:.26rem; margin-left:.45rem; vertical-align:middle;
+      font-size:.58rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#fff; background:var(--brand);
+      padding:.16rem .44rem; border-radius:999px; }
+    .pin-badge svg{ width:.66rem; height:.66rem; }
+
+    /* Spec table — plain, Majestic header in brand red (no column highlight) */
+    .spec{ width:100%; border-collapse:collapse; }
+    .spec thead th{ font-size:.66rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left;
+      padding:0 .85rem .7rem; color:var(--ink-mute); border-bottom:1.5px solid var(--line-strong); }
+    .spec thead th.h-comp{ color:var(--steel); }
+    .spec thead th.h-maj{ color:var(--brand); }
+    .spec tbody td{ padding:.62rem .85rem; font-size:.83rem; border-bottom:1px solid var(--line); vertical-align:top; }
+    .spec tbody tr:last-child td{ border-bottom:none; }
+    .spec .f{ font-weight:700; color:var(--ink); width:42%; }
+    .spec .v-comp{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+    .spec .v-maj{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+
+    /* Why panel + CTA (centered) */
+    .why{ text-align:center; }
+    .why h2{ font-size:1.32rem; font-weight:900; color:var(--brand); margin:0 0 .75rem; }
+    .why h2 .p{ font-family:var(--font); font-weight:800; font-size:.9em; }
+    #whyMajestic{ color:var(--ink); font-size:.95rem; line-height:1.65; margin:0 auto 1.4rem; max-width:46rem; }
+    .cta{ display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:#fff; font-weight:800;
+      padding:.74rem 1.3rem; border-radius:.6rem; text-decoration:none; transition:background .15s ease, transform .05s ease; }
+    .cta:hover{ background:var(--brand-press); }
+    .cta:active{ transform:translateY(1px); }
+    .cta:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--brand-tint); }
+    .cta svg{ width:1rem; height:1rem; }
+
+    .disclaimer{ font-size:.74rem; color:var(--ink-soft); line-height:1.55; padding-top:.5rem; text-align:center; max-width:52rem; margin:0 auto; }
+
+    /* Data notice banner */
+    .notice{ border-radius:.6rem; border:1px solid; padding:.72rem .9rem; font-size:.84rem; font-weight:600; }
+    .notice--warn{ background:#fdf2e3; color:#8a4b00; border-color:#f1d6ac; }
+    .notice--info{ background:var(--brand-tint); color:var(--brand-press); border-color:var(--brand-tint-2); }
+    .notice code{ font-family:var(--font); font-size:.82em; background:rgba(0,0,0,.05); padding:.05rem .3rem; border-radius:.25rem; }
+
+    /* Autocomplete */
+    .autocomplete-wrapper{ position:relative; }
+    #autocompleteList{ position:absolute; top:calc(100% + .35rem); left:0; right:0; z-index:50; background:var(--surface);
+      border:1px solid var(--line-strong); border-radius:.55rem; box-shadow:var(--shadow-lift); max-height:14rem; overflow-y:auto; padding:.25rem; list-style:none; margin:0; text-align:left; }
+    #autocompleteList.hidden{ display:none !important; }
+    #autocompleteList li{ padding:.5rem .65rem; cursor:pointer; border-radius:.42rem; transition:background .12s ease; font-size:.85rem; }
+    #autocompleteList li:hover, #autocompleteList li.bg-gray-100{ background:var(--paper) !important; }
+    #autocompleteList li .p{ font-family:var(--font); font-weight:700; color:var(--ink); }
+    #autocompleteList li .n{ color:var(--ink-mute); font-size:.82rem; }
+
+    /* Motion + reveal */
+    .fade-in{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
+    .fade-in.show{ opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+      .fade-in{ opacity:1; transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="brand-accent"></div>
+
+  <!-- Search / hero -->
+  <section class="max-w-6xl mx-auto px-6 hero">
+    <div>
+      <p class="lede">Enter a competitor part number, or a Majestic part, to see the three closest Majestic gloves, ranked by how their protection specs line up.</p>
+
+      <div class="autocomplete-wrapper" style="max-width:30rem">
+        <div class="search">
+          <div class="search-box">
+            <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="productInput" type="text" placeholder="e.g. 34-8743" autocomplete="off" autofocus
+              role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="autocompleteList"
+              aria-label="Competitor part number" class="search-field" />
+          </div>
+          <button id="searchBtn" type="button" class="btn btn--primary">Search</button>
+        </div>
+        <ul id="autocompleteList" class="hidden" role="listbox" aria-label="Matching competitor parts"></ul>
+      </div>
+
+      <p id="searchError" class="field-error hidden" role="alert">Enter a part number to compare.</p>
+      <div id="exampleChips" class="examples"></div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <main id="dashboard" class="hidden max-w-6xl mx-auto px-6 pb-14 space-y-5">
+
+    <!-- Competitor identity -->
+    <section class="fade-in panel panel-pad cmp-bar">
+      <div>
+        <p class="cmp-name" id="competitorName">&mdash;</p>
+        <p class="cmp-sku">Part&nbsp;#<span id="competitorPart">&mdash;</span></p>
+      </div>
+      <span id="impactBadge" class="impact-badge hidden">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V5l-8-3Z"/></svg>Impact rated
+      </span>
+    </section>
+
+    <!-- Tier cards -->
+    <section id="tierCards" class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in"></section>
+
+    <!-- Detail: ratings + spec sheet for the selected match -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 fade-in">
+      <div class="flex flex-col gap-5">
+        <div class="panel panel-pad flex-1 flex flex-col min-h-0">
+          <p class="section-title">ANSI/ISEA 105-2024 Ratings <span id="barChartSub" class="panel-sub"></span></p>
+          <div class="flex-1 min-h-[210px]"><canvas id="barChart"></canvas></div>
+        </div>
+        <div id="gaugeChartSection" class="panel panel-pad">
+          <p class="section-title">Glove Gauge</p>
+          <div class="h-[96px]"><canvas id="gaugeChart"></canvas></div>
+        </div>
+      </div>
+
+      <aside class="panel panel-pad">
+        <p class="section-title">Product Specs <span id="specSub" class="panel-sub"></span></p>
+        <div style="overflow-x:auto">
+          <table class="spec">
+            <thead>
+              <tr><th class="f">Specification</th><th class="h-comp" id="specCompHead">Competitor</th><th class="h-maj">Majestic</th></tr>
+            </thead>
+            <tbody id="specTableBody"></tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Why this match -->
+    <section class="fade-in panel panel-pad why">
+      <h2>Why <span class="p" id="whyPart">Majestic</span>?</h2>
+      <p id="whyMajestic">&mdash;</p>
+      <a id="learnMoreLink" href="#" target="_blank" rel="noopener noreferrer" class="cta">
+        Connect with Our Team
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </section>
+
+    <p class="disclaimer">
+      Comparison data was compiled from publicly available manufacturer sources as of October&nbsp;2025 and is provided for general informational and comparison purposes only. Product specifications, ANSI/ISEA and EN safety ratings, and availability are set by each manufacturer and change over time &mdash; always confirm against the manufacturer&rsquo;s current datasheet before selecting or purchasing a glove for any task. Published ratings reflect performance under standardized test conditions and are not a guarantee of protection or a warranty of fitness for a particular purpose; selecting the appropriate glove for a specific hazard remains the responsibility of the user. All third&#8209;party brand names, part numbers, and trademarks are the property of their respective owners and are used for identification and comparison only. Majestic Glove assumes no responsibility for errors or omissions.
+    </p>
+  </main>
+  <script>
+  /* ============================================================================
+     DATA SOURCE
+     The tool loads its catalog from the hosted JSON below (same shape as
+     comparison-data-v2.json). Set DATA_URL to wherever you host that file.
+     If the fetch fails (e.g. the file is opened locally rather than over http),
+     it falls back to the small DEMO set further down so the UI still works.
+  ============================================================================ */
+  const DATA_URL = "https://raw.githubusercontent.com/MajesticGlove/Majestic/main/v2test.json"; // <-- set to your hosted file
+
+  let DATA = { majestic: {}, competitors: {} };
+
+  // Demo fallback ONLY — used if DATA_URL can't be loaded. Already in the tool's internal shape.
+  const DEMO = {
+    "majestic": {
+      "21286": {
+        "name": "X10 Cut-Less Drivers Glove",
+        "default_price": "",
+        "img_url": "https://www.majesticglove.com/UserFiles/Product/Images/21/28/6_/21286_1200_medium.jpg",
+        "ratings": {
+          "cut": "A6",
+          "abrasion": 4,
+          "puncture": 4
+        },
+        "coating": "Uncoated",
+        "gauge": 0,
+        "priceTier": "",
+        "features": [
+          "ANSI/ISEA 138-2019 Impact 2"
+        ],
+        "material": "Goatskin Leather, Korplex® Knit",
+        "linerMaterial": "",
+        "country": "Pakistan",
+        "short_description": ""
+      },
+      "30-1000": {
+        "name": "Superdex Premium Foam Nitrile Glove",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/30/-1/00/30-1000_1200_small.jpg",
+        "ratings": {
+          "cut": "A1",
+          "abrasion": 4,
+          "puncture": 2
+        },
+        "coating": "Foam Nitrile",
+        "gauge": 15,
+        "priceTier": "",
+        "features": [
+          "Touchscreen Compatible",
+          "Sanitized by Actifresh Treatment",
+          "Machine Washable"
+        ],
+        "material": "Nylon",
+        "linerMaterial": "",
+        "country": "Pakistan",
+        "short_description": ""
+      },
+      "3396HO": {
+        "name": "Polar Penguin Winter Lined Napped Terry Glove with Foam Latex Dipped Palm",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/33/96/HO/3396HO_1200_small.jpg",
+        "ratings": {
+          "cut": "A2"
+        },
+        "coating": "Foam Latex",
+        "gauge": 10,
+        "priceTier": "",
+        "features": [
+          "High-Visibility Design"
+        ],
+        "material": "Acrylic",
+        "linerMaterial": "",
+        "country": "Vietnam",
+        "short_description": ""
+      },
+      "3396HY": {
+        "name": "Polar Penguin Winter Lined Napped Terry Glove with Foam Latex Dipped Palm",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/33/96/HY/3396HY_1200_small.jpg",
+        "ratings": {
+          "cut": "A2"
+        },
+        "coating": "Foam Latex",
+        "gauge": 10,
+        "priceTier": "",
+        "features": [
+          "High-Visibility Design"
+        ],
+        "material": "Acrylic",
+        "linerMaterial": "",
+        "country": "Vietnam",
+        "short_description": ""
+      },
+      "35-1500": {
+        "name": "Cut-Less Korplex® Glove with Polyurethane Palm, 13g, ANSI A5",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-1/50/35-1500_1200_small.jpg",
+        "ratings": {
+          "cut": "A5",
+          "abrasion": 6,
+          "puncture": 4
+        },
+        "coating": "Polyurethane",
+        "gauge": 13,
+        "priceTier": "",
+        "features": [
+          "Touchscreen Compatible"
+        ],
+        "material": "Korplex® Knit",
+        "linerMaterial": "",
+        "country": "Vietnam",
+        "short_description": ""
+      },
+      "35-3367": {
+        "name": "Cut-Less Korplex® Glove with Micro Foam Palm, 18g, ANSI A2",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-3/36/35-3367_1200_small.jpg",
+        "ratings": {
+          "cut": "A2",
+          "puncture": 2
+        },
+        "coating": "Foam Nitrile",
+        "gauge": 18,
+        "priceTier": "",
+        "features": [
+          "Touchscreen Compatible"
+        ],
+        "material": "Korplex® Knit",
+        "linerMaterial": "",
+        "country": "Pakistan",
+        "short_description": ""
+      },
+      "35-7465": {
+        "name": "Cut-Less Korplex® Glove with Foam Nitrile Palm, 18g, ANSI A4",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-7/46/35-7465_Front-Back_small.jpg",
+        "ratings": {
+          "cut": "A4",
+          "abrasion": 5,
+          "puncture": 3
+        },
+        "coating": "Foam Nitrile",
+        "gauge": 18,
+        "priceTier": "",
+        "features": [
+          "Sanitized by Actifresh Treatment",
+          "Reinforced Thumb Crotch",
+          "Touchscreen Compatible"
+        ],
+        "material": "Korplex® Knit",
+        "linerMaterial": "",
+        "country": "Vietnam",
+        "short_description": ""
+      },
+      "35-7676": {
+        "name": "Cut-Less Korplex® Glove",
+        "default_price": "",
+        "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-7/67/35-7676_1200_small.jpg",
+        "ratings": {
+          "cut": "A9",
+          "abrasion": 4,
+          "puncture": 5
+        },
+        "coating": "Sandy Nitrile",
+        "gauge": 13,
+        "priceTier": "",
+        "features": [
+          "Touchscreen Compatible",
+          "High Visbility Design"
+        ],
+        "material": "Korplex® Knit",
+        "linerMaterial": "",
+        "country": "Malaysia",
+        "short_description": ""
+      }
+    },
+    "competitors": {
+      "34-8743": {
+        "part_number": "34-8743",
+        "brand": "PIP",
+        "name": "",
+        "ratings": {
+          "cut": "A2",
+          "abrasion": 3,
+          "puncture": 2
+        },
+        "coating": "Nitrile",
+        "gauge": 18,
+        "linerMaterial": "Engineered Yarn",
+        "country": "Sri Lanka",
+        "features": [
+          "Touchscreen Compatible",
+          "Reinforced Thumb Crotch"
+        ],
+        "overrideBestMatch": "35-7465",
+        "overrideSummary": "Majestic’s 35-7465 offers higher cut protection with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the 34-8743, Majestic’s 35-7465 delivers higher cut protection (A4 vs A2), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+        "overrideComparison": "Compared to the 34-8743, Majestic’s 35-7465 delivers higher cut protection (A4 vs A2), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      },
+      "44-3745": {
+        "part_number": "44-3745",
+        "brand": "PIP",
+        "name": "",
+        "ratings": {
+          "cut": "A3",
+          "abrasion": 3,
+          "puncture": 3
+        },
+        "coating": "Nitrile",
+        "gauge": 15,
+        "linerMaterial": "Engineered Yarn",
+        "country": "Sri Lanka",
+        "features": [
+          "Touchscreen Compatible",
+          "Reinforced Thumb Crotch"
+        ],
+        "overrideBestMatch": "35-7465",
+        "overrideSummary": "Majestic’s 35-7465 offers higher cut protection with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the 44-3745, Majestic’s 35-7465 delivers higher cut protection (A4 vs A3), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+        "overrideComparison": "Compared to the 44-3745, Majestic’s 35-7465 delivers higher cut protection (A4 vs A3), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      },
+      "11-591": {
+        "part_number": "11-591",
+        "brand": "Ansell",
+        "name": "",
+        "ratings": {
+          "cut": "A9",
+          "abrasion": "5",
+          "puncture": 4
+        },
+        "coating": "Nitrile",
+        "gauge": "13",
+        "linerMaterial": "HPPE, Nylon, Spandex, Steel, Graphene, Tungsten",
+        "country": "",
+        "features": [
+          "Touchscreen Compatible"
+        ],
+        "overrideBestMatch": "35-7676",
+        "overrideSummary": "Majestic’s 35-7676 offers stronger puncture resistance with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
+        "overrideDescription": "Compared to the 11-591, Majestic’s 35-7676 delivers equal cut level (A9), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+        "overrideComparison": "Compared to the 11-591, Majestic’s 35-7676 delivers equal cut level (A9), stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      },
+      "3070": {
+        "part_number": "3070",
+        "brand": "Hexarmor",
+        "name": "",
+        "ratings": {
+          "cut": "A2",
+          "abrasion": "4",
+          "puncture": "4"
+        },
+        "coating": "Latex",
+        "gauge": 18,
+        "linerMaterial": "Latex, Foam, HPPE",
+        "country": "",
+        "features": [],
+        "overrideBestMatch": "35-3367",
+        "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
+        "overrideDescription": "Compared to the 3070, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+        "overrideComparison": "Compared to the 3070, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      },
+      "CR924": {
+        "part_number": "CR924",
+        "brand": "Global Glove",
+        "name": "",
+        "ratings": {
+          "cut": "A4",
+          "abrasion": "5",
+          "puncture": "2"
+        },
+        "coating": "Nitrile",
+        "gauge": "24",
+        "linerMaterial": "Nitrile, Foam",
+        "country": "",
+        "features": [],
+        "overrideBestMatch": "35-7465",
+        "overrideSummary": "Majestic’s 35-7465 offers stronger puncture resistance with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the CR924, Majestic’s 35-7465 delivers equal cut level (A4), stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+        "overrideComparison": "Compared to the CR924, Majestic’s 35-7465 delivers equal cut level (A4), stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      },
+      "S18HVLX": {
+        "part_number": "S18HVLX",
+        "brand": "Superior Glove",
+        "name": "",
+        "ratings": {
+          "cut": "A2",
+          "abrasion": 3,
+          "puncture": 2
+        },
+        "coating": "Crinkle Latex",
+        "gauge": 0,
+        "linerMaterial": "Polyester",
+        "country": "",
+        "features": [
+          "High-Visibility Design"
+        ],
+        "overrideBestMatch": "3396HY",
+        "overrideSummary": "Majestic’s 3396HY offers a more advanced overall design with added features like high-visibility design to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the S18HVLX, Majestic’s 3396HY delivers equal cut level (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+        "overrideComparison": "Compared to the S18HVLX, Majestic’s 3396HY delivers equal cut level (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      },
+      "7760": {
+        "part_number": "7760",
+        "brand": "Cordova",
+        "name": "",
+        "ratings": {
+          "cut": "A2",
+          "abrasion": 4,
+          "puncture": 3
+        },
+        "coating": "Nitrile",
+        "gauge": 18,
+        "linerMaterial": "CRX-2 fiber",
+        "country": "",
+        "features": [
+          "ANSI/ISEA 138-2019 Impact 1"
+        ],
+        "overrideBestMatch": "21286",
+        "overrideSummary": "Compared to the 7760, Majestic’s 21286 delivers higher cut protection (A6 vs A2), stronger puncture resistance while meeting the ANSI/ISEA 138-2019 impact level 2 standard.",
+        "overrideDescription": "Compared to the 7760, Majestic’s 21286 delivers higher cut protection (A6 vs A2), stronger puncture resistance while meeting the ANSI/ISEA 138-2019 Impact 2 standard.",
+        "overrideComparison": "Compared to the 7760, Majestic’s 21286 delivers higher cut protection (A6 vs A2), stronger puncture resistance while meeting the ANSI/ISEA 138-2019 Impact 2 standard."
+      },
+      "92721": {
+        "part_number": "92721",
+        "brand": "MCR",
+        "name": "",
+        "ratings": {
+          "cut": "A4",
+          "abrasion": 3,
+          "puncture": 2
+        },
+        "coating": "",
+        "gauge": 21,
+        "linerMaterial": "",
+        "country": "",
+        "features": [],
+        "overrideBestMatch": "35-7465",
+        "overrideSummary": "Majestic’s 35-7465 offers better abrasion durability with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the 92721, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+        "overrideComparison": "Compared to the 92721, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      },
+      "DPG572": {
+        "part_number": "DPG572",
+        "brand": "Radians",
+        "name": "",
+        "ratings": {
+          "cut": "A3",
+          "abrasion": 4,
+          "puncture": 3
+        },
+        "coating": "Polyurethane",
+        "gauge": 13,
+        "linerMaterial": "polyester",
+        "country": "",
+        "features": [],
+        "overrideBestMatch": "35-1500",
+        "overrideSummary": "Majestic’s 35-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
+        "overrideDescription": "Compared to the DPG572, Majestic’s 35-1500 delivers higher cut protection (A5 vs A3), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
+        "overrideComparison": "Compared to the DPG572, Majestic’s 35-1500 delivers higher cut protection (A5 vs A3), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+      },
+      "GL504": {
+        "part_number": "GL504",
+        "brand": "Pyramex",
+        "name": "",
+        "ratings": {
+          "cut": "A2",
+          "abrasion": "3",
+          "puncture": "2"
+        },
+        "coating": "Sandy Latex",
+        "gauge": 10,
+        "linerMaterial": "Acrylic",
+        "country": "China",
+        "features": [],
+        "overrideBestMatch": "3396HO",
+        "overrideSummary": "Majestic’s 3396HO offers a more advanced overall design with added features like high-visibility design to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the GL504, Majestic’s 3396HO delivers equal cut level (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions.",
+        "overrideComparison": "Compared to the GL504, Majestic’s 3396HO delivers equal cut level (A2), with added features, such as a high-visibility design that helps keep workers visible in low-light conditions."
+      },
+      "4916-TPR": {
+        "part_number": "4916-TPR",
+        "brand": "Ironwear",
+        "name": "",
+        "ratings": {
+          "cut": "A4",
+          "abrasion": 4,
+          "puncture": 3
+        },
+        "coating": "PU",
+        "gauge": 0,
+        "linerMaterial": "",
+        "country": "",
+        "features": [],
+        "overrideBestMatch": "35-7465",
+        "overrideSummary": "Majestic’s 35-7465 offers better abrasion durability with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
+        "overrideDescription": "Compared to the 4916-TPR, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves.",
+        "overrideComparison": "Compared to the 4916-TPR, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      },
+      "00-001": {
+        "part_number": "00-001",
+        "brand": "Armor Guys",
+        "name": "",
+        "ratings": {
+          "cut": "A1",
+          "abrasion": 6,
+          "puncture": 2
+        },
+        "coating": "Nitrile",
+        "gauge": 15,
+        "linerMaterial": "Kyorene® Graphene",
+        "country": "China",
+        "features": [
+          "Touchscreen Compatible"
+        ],
+        "overrideBestMatch": "30-1000",
+        "overrideSummary": "Majestic’s 30-1000 offers a similar overall design, with added features such as touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
+        "overrideDescription": "Compared to the 00-001, Majestic’s 30-1000 delivers the same cut level (A1) with touchscreen-compatible fingertips, allowing workers to perform daily tasks without removing their gloves.",
+        "overrideComparison": "Compared to the 00-001, Majestic’s 30-1000 delivers the same cut level (A1) with touchscreen-compatible fingertips, allowing workers to perform daily tasks without removing their gloves."
+      }
+    }
+  };
+
+  /* ============================================================================
+     SCORING  (weights & impact rule carried over from the v3 we built)
+  ============================================================================ */
+  // Priority order: cut > coating (palm) > gauge > material > features > abrasion > puncture.
+  const SPEC_WEIGHTS = { cut:30, coating:25, gauge:18, material:12, features:8, abrasion:4, puncture:3 };
+  const IMPACT_WEIGHT = 20;   // contributes to the % for impact gloves; impact match is also enforced as a hard filter
+  // Impact signal: the literal words, plus "back-of-hand" (any hyphen/spacing) and "ANSI/ISEA 138"
+  // (the impact standard, including "Level N" phrasings that omit the word "impact").
+  const IMPACT_RE = /(impact|tpr|back[\s-]?of[\s-]?hand|knuckle|(?:ansi|isea)[\s\/]*138)/i;
+
+  // Gauge as a real number. Some source records carry a placeholder ("-", "", "N/A") rather than a
+  // value; those are NOT a gauge, and treating them as one produced NaN scores. 0 = no gauge (leather).
+  const gaugeNum = g => { const n = parseInt(String(g == null ? "" : g).replace(/[^0-9]/g, ""), 10); return Number.isFinite(n) && n > 0 ? n : 0; };
+
+  // Blank = null, undefined, empty/whitespace, or a placeholder dash
+  const isBlank = v => { const s = v == null ? "" : String(v).trim();
+    return s === "" || s === "—" || s === "-" || s === "--" || s.toLowerCase() === "n/a"; };
+
+  // Pull the numeric level out of any rating format: "A4", "4", or a full standard
+  // string like "ANSI/ISEA 105-2024 Cut Level A4" (ignores the 105 / 138 / year digits).
+  function levelFromString(r){
+    const s = String(r || "").toUpperCase();
+    const a = s.match(/A(\d+)/);                 // explicit ANSI cut code, e.g. A4
+    if(a) return parseInt(a[1], 10);
+    const nums = (s.match(/\d+/g) || []).filter(n => !["105","138"].includes(n) && n.length < 4);
+    return nums.length ? parseInt(nums[nums.length - 1], 10) : 0;
+  }
+  const ratingNum = levelFromString; // back-compat alias
+
+  // Resolve a rating from an entry: structured `ratings` object first, then fall back
+  // to a full-string `short_description` (cut only, e.g. "...Cut Level A4"). Null-safe.
+  function rawRating(entry, axis){
+    const r = entry && entry.ratings ? entry.ratings[axis] : undefined;
+    if(!isBlank(r)) return String(r).trim();
+    const sd = (entry && entry.short_description) || "";
+    if(axis === "cut" && /cut\s*level\s*a\d/i.test(sd)) return sd.trim();
+    return "";
+  }
+  const getRating = (entry, axis) => levelFromString(rawRating(entry, axis)); // numeric level for charts/scoring
+  function getRatingDisplay(entry, axis){            // clean label for the spec table
+    const raw = rawRating(entry, axis);
+    if(isBlank(raw)) return "";
+    const lvl = levelFromString(raw);
+    if(!lvl) return "";
+    return axis === "cut" ? "A" + lvl : String(lvl);  // cut uses the A-prefix; abrasion/puncture are plain numbers
+  }
+
+  function hasImpact(e){
+    const lvl = e.ratings && e.ratings.impact;                       // ANSI/ISEA 138 level, when recorded
+    if(lvl != null && String(lvl).trim() !== "" && String(lvl).trim() !== "0") return true;
+    // Scan the product NAME as well as features: several impact gloves (the X-15 and Knucklehead
+    // lines) carry the signal only in the name, with no feature tag and no structured rating.
+    const hay = [(e.name || e.product_title || ""), (e.features||[]).join(" "), (e.short_description||"")].join(" ");
+    return IMPACT_RE.test(hay);
+  }
+  // Sleeves are arm protection, a different product category from gloves. Every Majestic sleeve carries
+  // "Sleeve" in its product name and no glove does, so the name is a reliable, variant-proof signal.
+  function isSleeve(e){
+    return String(e.name || e.product_title || "").toLowerCase().includes("sleeve");
+  }
+  function coatingFamily(c){
+    const s = String(c||"").toLowerCase();
+    if(s.includes("nitrile")) return "nitrile";
+    if(s.includes("polyurethane")||/\bpu\b/.test(s)) return "pu";
+    if(s.includes("latex")) return "latex";
+    if(s.includes("pvc")) return "pvc";
+    if(s.includes("leather")) return "leather";
+    if(!s) return "none";
+    return s;
+  }
+  // Closeness on a 0-N safety axis. Exact match is ideal (100). Over-spec is penalized by
+  // distance — an A9 glove for an A2 competitor is far more protective and a much different
+  // glove, so it scores low even though it "clears." Under-spec is penalized harder, so a
+  // meet-or-exceed option is preferred ("avoid lower safety whenever possible").
+  function scoreCloseness(m, c){
+    // No published cut rating on the competitor = a GENERAL-PURPOSE glove. The right match is another
+    // general-purpose glove (unrated, or A1-A2) — not a high-cut glove that happens to share a coating.
+    if(!c) return m ? Math.max(0, 100 - m * 16) : 100;
+    const d = m - c;
+    if(d === 0) return 100;                          // exact spec — ideal
+    // More protective than needed: 1-2 levels above is fine, but the penalty accelerates beyond that.
+    // A glove many cut levels above the competitor is a different protection class (e.g. A2 vs A9) and
+    // must not rank near a close match just because it happens to share coating or gauge.
+    if(d > 0)   return Math.max(0, 100 - d * 12 - (d > 2 ? (d - 2) * 16 : 0));
+    return Math.max(5, 100 - Math.abs(d) * 22);      // less protective: penalized harder than over-spec
+  }
+  // Secondary safety ratings (abrasion, puncture). Exact is ideal, but EXCEEDING is desirable and
+  // only lightly penalized (more protection is welcome); falling short is penalized. Low weight.
+  function scoreSafetySecondary(m, c){
+    const d = m - c;
+    if(d === 0) return 100;                          // exact
+    if(d > 0)   return Math.max(75, 100 - d * 5);    // higher than competitor: only a small step below exact
+    return Math.max(15, 100 - Math.abs(d) * 18);     // lower than competitor: penalized
+  }
+  function scoreCoating(maj, comp){
+    if(!maj || !comp) return 0;
+    if(String(maj).toLowerCase().trim() === String(comp).toLowerCase().trim()) return 100; // exact coating
+    return coatingFamily(maj) === coatingFamily(comp) ? 60 : 0;                              // same polymer family, else a real miss
+  }
+  // Features (touchscreen, reinforced thumb, antimicrobial, etc.): what share of the competitor's
+  // listed features does the Majestic glove also have? Matched fuzzily on significant tokens.
+  function scoreFeatures(maj, comp){
+    const cf = (comp.features||[]).map(f=>String(f).toLowerCase()).filter(Boolean);
+    if(cf.length === 0) return 100;                  // nothing to match (treated as "not compared" upstream)
+    const mf = (maj.features||[]).map(f=>String(f).toLowerCase()).join(" | ");
+    let hits = 0;
+    for(const f of cf){
+      const tokens = f.split(/[^a-z0-9]+/).filter(t=>t.length>3);
+      if(tokens.length && tokens.some(t => mf.includes(t))) hits++;
+    }
+    return Math.round((hits/cf.length)*100);
+  }
+  function scoreGauge(maj, comp){
+    if(!maj || !comp) return 0;
+    const d = maj - comp;   // higher gauge number = finer knit, treated as matching-or-exceeding
+    if(d === 0) return 100;
+    if(d > 0)   return Math.max(60, 100 - d * 5);    // finer than the competitor (exceeds): small penalty
+    return Math.max(25, 100 - Math.abs(d) * 10);     // coarser than the competitor (falls short): penalized more
+  }
+  function scoreMaterial(majMat, compMat){
+    const a = String(majMat||"").toLowerCase().trim(), b = String(compMat||"").toLowerCase().trim();
+    if(!a || !b) return 0;
+    if(a === b) return 100;                                  // exact liner match
+    const tokens = b.split(/[^a-z]+/).filter(t=>t.length>3);
+    return tokens.some(t => a.includes(t)) ? 60 : 0;         // shares a significant material term, else a miss
+  }
+  function scoreImpact(maj, comp){
+    const m = hasImpact(maj), c = hasImpact(comp);
+    if(c && m) return 100;
+    if(c && !m) return 0;     // competitor needs impact, Majestic lacks it → critical miss
+    if(!c && m) return 80;    // mild over-spec
+    return 100;               // neither relevant
+  }
+
+  function computeMatch(maj, comp){
+    const compImpact = hasImpact(comp);
+    const has = (e, axis) => !isBlank(rawRating(e, axis));
+    const UNKNOWN = 35;   // competitor publishes this spec but the Majestic glove doesn't — can't confirm a match
+
+    // Compare across every spec the COMPETITOR publishes. 100% means the Majestic glove matches
+    // all of them exactly — a literally identical glove. A spec the competitor doesn't list isn't
+    // part of the match; a spec it lists but the Majestic glove lacks counts against the score.
+    const dims = {};
+    const add = (name, weight, compHas, majHas, subFn) => {
+      if(compHas) dims[name] = { w: weight, sub: majHas ? subFn() : UNKNOWN };
+    };
+    // Cut is ALWAYS scored, even when the competitor publishes no rating: the ABSENCE of a cut rating
+    // is itself a signal (general-purpose glove). Skipping the axis let high-cut gloves win on coating.
+    dims.cut = { w: SPEC_WEIGHTS.cut,
+      sub: has(comp,'cut') ? (has(maj,'cut') ? scoreCloseness(getRating(maj,'cut'), getRating(comp,'cut')) : UNKNOWN)
+                           : scoreCloseness(getRating(maj,'cut'), 0) };
+    add('coating',  SPEC_WEIGHTS.coating,  !!comp.coating,       !!maj.coating,       () => scoreCoating(maj.coating, comp.coating));
+    // Gauge also signals glove TYPE: a glove with no gauge is generally a leather/coated glove rather
+    // than a knit glove. Both knit -> compare the gauge value; both gauge-less -> same type (e.g. leather
+    // to leather), no penalty; one of each (knit vs leather) -> a big mismatch in both directions.
+    const majKnit = !!maj.gauge, compKnit = !!comp.gauge;
+    dims.gauge = { w: SPEC_WEIGHTS.gauge,
+      sub: (majKnit && compKnit) ? scoreGauge(maj.gauge, comp.gauge)
+         : (!majKnit && !compKnit) ? 100
+         : 12 };
+    add('abrasion', SPEC_WEIGHTS.abrasion, has(comp,'abrasion'), has(maj,'abrasion'), () => scoreSafetySecondary(getRating(maj,'abrasion'), getRating(comp,'abrasion')));
+    add('puncture', SPEC_WEIGHTS.puncture, has(comp,'puncture'), has(maj,'puncture'), () => scoreSafetySecondary(getRating(maj,'puncture'), getRating(comp,'puncture')));
+    add('material', SPEC_WEIGHTS.material, !!comp.linerMaterial, !!maj.material,      () => scoreMaterial(maj.material, comp.linerMaterial));
+    const compFeatures = (comp.features||[]).filter(f=>String(f).trim());
+    if(compFeatures.length) dims.features = { w: SPEC_WEIGHTS.features, sub: scoreFeatures(maj, comp) };
+    if(compImpact)          dims.impact   = { w: IMPACT_WEIGHT,         sub: scoreImpact(maj, comp) };
+
+    let total = 0, wsum = 0;
+    for(const k in dims){ total += dims[k].w * dims[k].sub; wsum += dims[k].w; }
+    const score = wsum ? Math.round(total / wsum) : 0;
+
+    const safetyMet = getRating(maj,'cut') >= getRating(comp,'cut')
+                      && (!compImpact || hasImpact(maj));
+    return { score, safetyMet, dims, compImpact, comparedCount: Object.keys(dims).length };
+  }
+
+  /* Win pills — concise advantages of this Majestic option over the competitor */
+  function buildWins(maj, comp){
+    const wins = [];
+    const noData = (e, axis) => isBlank(rawRating(e, axis));   // competitor simply has no value for this rating
+    // Cut
+    const cM = getRating(maj,'cut'), cC = getRating(comp,'cut');
+    if(!noData(maj,'cut')){
+      if(noData(comp,'cut'))      wins.push(`Cut A${cM}`);                // competitor cut unknown — just show ours
+      else if(cM > cC)            wins.push(`Cut A${cM} vs A${cC}`);
+      else if(cM === cC)          wins.push(`Matches A${cM} cut`);
+    }
+    if(hasImpact(comp) && hasImpact(maj)) wins.push("Impact protection");
+    if(maj.coating && comp.coating && String(maj.coating).toLowerCase() === String(comp.coating).toLowerCase())
+      wins.push("Same coating");
+    // Abrasion
+    const aM = getRating(maj,'abrasion'), aC = getRating(comp,'abrasion');
+    if(!noData(maj,'abrasion')){
+      if(noData(comp,'abrasion')) wins.push(`Abrasion ${aM}`);           // competitor abrasion unknown — just show ours
+      else if(aM > aC)            wins.push(`Abrasion ${aM} vs ${aC}`);
+    }
+    // Puncture
+    const pM = getRating(maj,'puncture'), pC = getRating(comp,'puncture');
+    if(!noData(maj,'puncture')){
+      if(noData(comp,'puncture')) wins.push(`Puncture ${pM}`);           // competitor puncture unknown — just show ours
+      else if(pM > pC)            wins.push(`Puncture ${pM} vs ${pC}`);
+    }
+    return wins.slice(0,3);
+  }
+
+  /* Auto-generated pitch — a quick at-a-glance summary of the differences */
+  function generatePitch(maj, comp, majPart){
+    const who = maj.name || maj.product_title || "this glove";
+    const compName = comp.__self ? `Majestic ${comp.part_number}`
+      : (`${comp.brand || ""}${comp.name ? " " + comp.name : (comp.part_number ? " " + comp.part_number : "")}`).trim() || "the competitor";
+    const majRef = majPart ? `Majestic's ${majPart}` : `The ${who}`;
+    const A105 = "ANSI/ISEA 105-2024";     // cut, abrasion, puncture
+    const A138 = "ANSI/ISEA 138-2019";     // impact (its own standard)
+
+    const cM = getRating(maj,'cut'),      cC = getRating(comp,'cut');
+    const aM = getRating(maj,'abrasion'), aC = getRating(comp,'abrasion');
+    const pM = getRating(maj,'puncture'), pC = getRating(comp,'puncture');
+    const mI = hasImpact(maj), cI = hasImpact(comp);
+    const gM = maj.gauge, gC = comp.gauge;
+    const feats = (maj.features || []).map(f => String(f).toLowerCase());
+
+    // 1) CUT headline. A lower Majestic cut is framed constructively, never as a shortfall.
+    let headline = "";
+    if(cM && cC){
+      if(cM > cC)       headline = `The ${who} offers higher cut resistance than the ${compName} (${A105} A${cM} vs A${cC}), for greater protection against cuts.`;
+      else if(cM === cC) headline = `The ${who} matches the ${compName}'s ${A105} A${cM} cut rating.`;
+      else              headline = `The ${who} shares a similar design with the ${compName} but carries a lower cut rating (${A105} A${cM} vs A${cC}); if ${A105} A${cM} satisfies your safety requirements, it may serve as a suitable alternative.`;
+    } else if(cM){
+      headline = `The ${who} carries an ${A105} A${cM} cut rating.`;
+    }
+
+    // 2) ADVANTAGES — meaningful differentiators and features, each with the practical worker benefit.
+    const hasF = sub => feats.some(f => f.includes(sub));
+    const adv = [];
+    if(gM && gC && gM > gC) adv.push(`Its ${gM}-gauge construction provides enhanced dexterity and comfort for precision handling tasks.`);
+    if(hasF('touchscreen')) adv.push(`It also features touchscreen-compatible fingertips, allowing workers to operate mobile devices and scanners without removing their gloves.`);
+    if(hasF('sanitized')) adv.push(`The glove includes a Sanitized® by Actifresh® treatment to help prevent the buildup of bacteria and maintain freshness during extended wear.`);
+    if(hasF('thumb')) adv.push(`The reinforced thumb crotch improves durability in high-wear areas, helping extend glove life.`);
+    const abrUp = aM && aC && aM > aC, puncUp = pM && pC && pM > pC;
+    if(abrUp && puncUp) adv.push(`It also carries higher abrasion and puncture ratings (${A105} Level ${aM} vs ${aC} and Level ${pM} vs ${pC}) for added durability.`);
+    else if(abrUp) adv.push(`It also carries a higher abrasion rating (${A105} Level ${aM} vs ${aC}) for added durability and longer wear life.`);
+    else if(puncUp) adv.push(`It also provides a higher puncture rating (${A105} Level ${pM} vs ${pC}) for added puncture protection.`);
+    if(hasF('visib')) adv.push(`Its hi-vis coloration improves worker visibility on busy and low-light worksites.`);
+    if(mI && !cI) adv.push(`It adds ${A138} impact protection to help guard against back-of-hand impacts.`);
+    else if(mI && cI) adv.push(`It also provides matching ${A138} impact protection.`);
+    if(hasF('winter')) adv.push(`The winter lining adds warmth and comfort for cold-weather work.`);
+    if(hasF('waterproof')) adv.push(`Its waterproof construction keeps hands dry in wet conditions.`);
+    else if(hasF('water resist') || hasF('water repel') || hasF('water and oil')) adv.push(`It also offers water-resistant protection for damp handling.`);
+    if(hasF('oil resist') || hasF('oil repel') || hasF('water and oil')) adv.push(`Its oil-resistant grip helps maintain control in oily environments.`);
+    if(hasF('antimicrob')) adv.push(`An antimicrobial treatment helps reduce odor and bacteria during extended wear.`);
+    if(hasF('needlestick')) adv.push(`It also provides ASTM F2878 needlestick resistance for added protection against sharps.`);
+    if(hasF('arc') || hasF('nfpa')) adv.push(`It also offers arc-flash protection for electrical work.`);
+    if(hasF('en 511') || hasF('en511') || hasF('contact cold')) adv.push(`It also offers EN 511 contact-cold protection for cold-environment handling.`);
+    if(hasF('padded')) adv.push(`Its padded palm helps reduce vibration and impact for added comfort.`);
+    if(hasF('hook')) adv.push(`A hook-and-loop wrist closure provides a secure, adjustable fit.`);
+    if(hasF('silicone') && hasF('free')) adv.push(`Its silicone-free construction suits paint, finishing, and cleanroom environments.`);
+    if(hasF('dot')) adv.push(`Textured grip dots improve control of small or slippery parts.`);
+
+    // Neutral coating differentiator — lower priority, only surfaced if there's room.
+    const majCoat = maj.coating ? String(maj.coating).toLowerCase() : "";
+    const realCoat = majCoat && !["uncoated","none","-","leather"].includes(majCoat);
+    const coatingNote = (realCoat && comp.coating && majCoat !== String(comp.coating).toLowerCase())
+      ? `${majRef} uses a ${majCoat} palm coating instead of ${String(comp.coating).toLowerCase()}.` : "";
+
+    // 3) Assemble — advantages come first. Lower ratings are only mentioned when there is
+    // nothing more compelling to highlight.
+    const out = [];
+    if(headline) out.push(headline);
+    if(adv.length){
+      const picked = adv.slice(0, 4);
+      // "also" only makes sense following another statement. If there's no cut headline (a few gloves
+      // carry no cut rating), don't let the paragraph open with "It also ...".
+      if(!headline) picked[0] = picked[0].replace(/^It also /, "It ");
+      out.push(...picked);
+      if(coatingNote && out.length < 5) out.push(coatingNote);
+    } else {
+      if(coatingNote) out.push(coatingNote);
+      if(aM && aC && aM < aC) out.push(`It carries a lower abrasion rating (${A105} Level ${aM} vs ${aC}).`);
+      if(pM && pC && pM < pC) out.push(`It carries a lower puncture rating (${A105} Level ${pM} vs ${pC}).`);
+      if(cI && !mI) out.push(`Note that it does not carry the ${compName}'s ${A138} impact rating.`);
+    }
+    if(!out.length) return `The ${who} matches the ${compName} on the specifications available.`;
+    return out.join(" ");
+  }
+
+  /* ============================================================================
+     RECOMMENDATIONS
+     - Position 1 = overrideBestMatch (if valid), else the top-scored Majestic glove.
+     - Positions 2 & 3 = next-best scored gloves (price-tier diversified), excluding #1.
+  ============================================================================ */
+  function getRecommendations(comp){
+    // When the input IS a Majestic glove, exclude it from its own results (it would score 100%).
+    const allScored = Object.entries(DATA.majestic)
+      .filter(([part]) => part !== comp.__self)
+      .map(([part,data]) => ({ part, data, ...computeMatch(data, comp) }));
+    // Sleeves and gloves are different product categories and must never cross-match. The override is
+    // our signal for which one this competitor is: if it pins a sleeve, recommend ONLY sleeves;
+    // otherwise recommend only gloves (sleeves are excluded from every glove result).
+    const ov = comp.overrideBestMatch;
+    const wantSleeve = isSleeve(comp) || !!(ov && DATA.majestic[ov] && isSleeve(DATA.majestic[ov]));
+    const scored = allScored.filter(s => isSleeve(s.data) === wantSleeve);
+    // Impact is non-negotiable AND symmetric: an impact competitor only ever gets impact gloves, and a
+    // non-impact competitor only ever gets non-impact gloves — impact gloves are matched with impact
+    // gloves, period. If nothing in-category matches the impact side, widen back as a safety net.
+    let eligible = scored.filter(s => hasImpact(s.data) === hasImpact(comp));
+    // General purpose is its own class: a NON-IMPACT competitor with no published cut rating is a
+    // general-purpose glove (in practice unrated, A1 or A2). Keep the match in that class instead of
+    // offering an A9. An IMPACT glove with no published cut rating is a mechanics glove with missing
+    // data, not a general-purpose glove — the impact filter already scopes it. Require at least 3 so
+    // the narrowing can never leave a short card set.
+    if(!hasImpact(comp) && isBlank(rawRating(comp,'cut'))){
+      const gp = eligible.filter(s => getRating(s.data,'cut') <= 2);
+      if(gp.length >= 3) eligible = gp;
+    }
+    const base = eligible.length ? eligible : scored;       // safety net if no impact-matched glove exists
+    const safe = base.filter(s => s.safetyMet);
+    const pool = safe.length >= 3 ? safe : base;
+    const sorted = [...pool].sort((a,b) => b.score - a.score);
+
+    // Position 1 — the override is a deliberate, curated pick and always leads as #1. Impact pairing is
+    // enforced for the algorithm's like-for-like alternatives (#2/#3), not imposed on a hand-set pin.
+    let pos1;
+    const ovRow = (ov && DATA.majestic[ov]) ? scored.find(s => s.part === ov) : null;
+    if(ovRow){
+      pos1 = { ...ovRow, pinned:true };
+    } else {
+      pos1 = { ...sorted[0], pinned:false };
+    }
+
+    // Positions 2 & 3 — the next-highest-scored Majestic gloves, excluding #1
+    const rest = sorted.filter(s => s.part !== pos1.part);
+    const picks = rest.slice(0, 2);
+
+    const labels = ["best","better","good"];
+    return [pos1, ...picks].slice(0,3).map((s,i) => ({ ...s, tier: labels[i] }));
+  }
+
+  function pitchFor(rec, comp){
+    if(rec.pinned){
+      // Prefer the human-written "why Majestic" description, then the short summary.
+      const desc = comp.overrideDescription || comp.overrideComparison;
+      if(typeof desc === "string" && desc.trim()) return desc;
+      const sum = comp.overrideSummary;
+      if(typeof sum === "string" && sum.trim()) return sum;
+    }
+    return generatePitch(rec.data, comp, rec.part);
+  }
+
+  /* ============================================================================
+     CHARTS  (bar + gauge — carried over verbatim in spirit from the current tool)
+  ============================================================================ */
+  Chart.defaults.animation = { duration: 800, easing: "easeOutQuart" };
+  Chart.defaults.font.family = '"Nunito Sans", Arial, Helvetica, sans-serif';
+  Chart.defaults.font.size = 12;
+  Chart.defaults.font.weight = 600;
+  Chart.defaults.color = "#6c7480";
+  const charts = { bar:null, gauge:null };
+  function destroyCharts(){ Object.values(charts).forEach(c => c?.destroy()); }
+
+  function renderBarChart(comp, maj, majPart){
+    const ctx = document.getElementById("barChart").getContext("2d");
+    charts.bar?.destroy();
+    charts.bar = new Chart(ctx, {
+      type:"bar",
+      data:{ labels:["Cut","Abrasion","Puncture"], datasets:[
+        { label: comp.name, data:[getRating(comp,'cut'),getRating(comp,'abrasion'),getRating(comp,'puncture')], backgroundColor:"#5b6573", borderRadius:5, maxBarThickness:42 },
+        { label:`Majestic ${majPart}`, data:[getRating(maj,'cut'),getRating(maj,'abrasion'),getRating(maj,'puncture')], backgroundColor:"#ab1f2d", borderRadius:5, maxBarThickness:42 }
+      ]},
+      options:{ responsive:true, maintainAspectRatio:false,
+        scales:{
+          y:{ beginAtZero:true, ticks:{ stepSize:1, color:"#9aa1ab" }, grid:{ color:"#eceef1", drawBorder:false }, border:{ display:false } },
+          x:{ ticks:{ color:"#16181d", font:{ weight:700 } }, grid:{ display:false }, border:{ color:"#d2d6dd" } }
+        },
+        plugins:{ legend:{ position:"bottom", labels:{ boxWidth:11, boxHeight:11, padding:16, color:"#6c7480", font:{ weight:700 } } },
+          tooltip:{ backgroundColor:"#16181d", padding:10, cornerRadius:6, titleFont:{ weight:800 } } }
+      }
+    });
+  }
+  function renderGaugeChart(comp, maj, majPart){
+    const ctx = document.getElementById("gaugeChart").getContext("2d");
+    charts.gauge?.destroy();
+    charts.gauge = new Chart(ctx, {
+      type:"bar",
+      data:{ labels:[`Majestic ${majPart}`, comp.part_number], datasets:[
+        { data:[maj.gauge, comp.gauge], backgroundColor:["#ab1f2d","#5b6573"], barThickness:16, borderRadius:5 }
+      ]},
+      options:{ indexAxis:"y", responsive:true, maintainAspectRatio:false,
+        scales:{
+          x:{ beginAtZero:true, ticks:{ color:"#9aa1ab", stepSize:5 }, grid:{ color:"#eceef1", drawBorder:false }, border:{ display:false } },
+          y:{ ticks:{ color:"#16181d", font:{ weight:700 } }, grid:{ display:false }, border:{ display:false } }
+        },
+        plugins:{ legend:{ display:false },
+          tooltip:{ backgroundColor:"#16181d", padding:10, cornerRadius:6, titleFont:{ weight:800 } } }
+      }
+    });
+  }
+
+  /* ============================================================================
+     RENDER
+  ============================================================================ */
+  let currentComp = null, currentRecs = [];
+
+  function renderSpecTable(comp, maj){
+    const rows = [
+      ["Country of Origin", comp.country, maj.country],
+      ["Liner Material", comp.linerMaterial || comp.material, maj.material || maj.linerMaterial],
+      ["Coating", comp.coating, maj.coating],
+      ["Cut Resistance (ANSI/ISEA 105-2024)", getRatingDisplay(comp,'cut'), getRatingDisplay(maj,'cut')],
+      ["Abrasion (ANSI/ISEA 105-2024)", getRatingDisplay(comp,'abrasion'), getRatingDisplay(maj,'abrasion')],
+      ["Puncture (ANSI/ISEA 105-2024)", getRatingDisplay(comp,'puncture'), getRatingDisplay(maj,'puncture')],
+      ["Gauge", comp.gauge || "", maj.gauge || ""],
+      ["Features", (comp.features?.length ? comp.features.join(", ") : ""), (maj.features?.length ? maj.features.join(", ") : "")]
+    ];
+    // Show a row only if at least one side has a value. A row blank on BOTH sides is
+    // dropped entirely, so empty fields (e.g. a cleared-out country) simply don't appear.
+    document.getElementById("specTableBody").innerHTML = rows
+      .filter(([_,c,m]) => !isBlank(c) || !isBlank(m))
+      .map(([f,c,m]) => `<tr><td class="f">${f}</td><td class="v-comp">${isBlank(c) ? "—" : c}</td><td class="v-maj">${isBlank(m) ? "—" : m}</td></tr>`)
+      .join("");
+  }
+
+  function renderTierCards(recs, comp){
+    const TIER_LABELS = { best:"Top match", better:"Strong match", good:"Alternative" };
+    const check = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>`;
+    document.getElementById("tierCards").innerHTML = recs.map((r,i) => {
+      const wins = buildWins(r.data, comp);
+      const winHtml = wins.length
+        ? `<ul class="wins">${wins.map(w => `<li class="win">${check}<span>${w}</span></li>`).join("")}</ul>`
+        : "";
+      const label = r.pinned ? "Recommended" : (TIER_LABELS[r.tier] || r.tier);
+      return `
+        <article class="tier-card tier-${r.tier} ${r.tier === 'best' ? 'tier-card--best' : ''} ${i===0?'selected':''}" data-idx="${i}" role="button" tabindex="0" aria-pressed="${i===0}" aria-label="${label}: ${r.part}, ${r.score} percent fit. Select to view the full comparison.">
+          <div class="tier-head">
+            <div class="tier-headl"><span class="tier-label">${label}</span></div>
+            <div class="match-ring tier-${r.tier}" style="--pct:${r.score}"><span>${r.score}%</span></div>
+          </div>
+          <div class="tier-prod">
+            <img src="${r.data.img_url}" alt="" onerror="this.style.visibility='hidden'"/>
+            <div class="min-w-0">
+              <p class="tier-part">${r.part}</p>
+              <p class="tier-pname">${r.data.name}</p>
+            </div>
+          </div>
+          ${winHtml}
+        </article>`;
+    }).join("");
+
+    document.querySelectorAll("#tierCards .tier-card").forEach(card => {
+      const pick = () => selectRecommendation(parseInt(card.dataset.idx, 10));
+      card.addEventListener("click", pick);
+      card.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " "){ e.preventDefault(); pick(); } });
+    });
+  }
+
+  function selectRecommendation(idx){
+    const rec = currentRecs[idx], comp = currentComp, maj = rec.data;
+    document.querySelectorAll("#tierCards .tier-card").forEach((c,i) => { const sel = i===idx; c.classList.toggle("selected", sel); c.setAttribute("aria-pressed", sel); });
+
+    document.getElementById("barChartSub").textContent = `· ${comp.part_number} vs ${rec.part}`;
+    document.getElementById("specSub").textContent = `· ${rec.part}`;
+
+    renderSpecTable(comp, maj);
+    destroyCharts();
+    renderBarChart(comp, maj, rec.part);
+
+    const gaugeSection = document.getElementById("gaugeChartSection");
+    if((!comp.gauge) && (!maj.gauge)){ gaugeSection.style.display = "none"; }
+    else { gaugeSection.style.display = "block"; renderGaugeChart(comp, maj, rec.part); }
+
+    document.getElementById("whyPart").textContent = rec.part;
+    document.getElementById("whyMajestic").textContent = pitchFor(rec, comp);
+    const link = document.getElementById("learnMoreLink");
+    // Customized Jotform contact URL, pre-filled with the competitor and the recommended Majestic match.
+    const compLabel = `${comp.brand ? comp.brand + " " : ""}${comp.part_number}`.trim();
+    const majLabel = `${maj.name} ${rec.part}`;
+    const whatChallenges = `We are interested in learning more about the differences between the ${compLabel} and the ${majLabel}.`;
+    link.href = `https://form.jotform.com/252043751845154?whatChallenges=${encodeURIComponent(whatChallenges)}&whatSafety=${encodeURIComponent(compLabel)}&doYou=${encodeURIComponent("Yes")}`;
+  }
+
+  // Normalize a part number for matching: uppercase, strip dashes/spaces/punctuation.
+  // So "357465", "35-7465", "35 7465" and "35-7465 " all compare equal.
+  const normalizeKey = s => String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+  function findCompetitor(query){
+    const nq = normalizeKey(query);
+    if(!nq) return null;
+    const hit = Object.entries(DATA.competitors)
+      .find(([k, v]) => normalizeKey(v.part_number || k) === nq || normalizeKey(k) === nq);
+    if(hit) return hit;
+    // Majestic-to-Majestic: entering one of our own parts compares it against the rest of the line,
+    // so a rep can find alternatives to a Majestic glove. It's adapted to the competitor shape and
+    // flagged with __self so it's never recommended against itself.
+    const own = Object.entries(DATA.majestic).find(([k]) => normalizeKey(k) === nq);
+    if(own){
+      const [part, v] = own;
+      return [part, { ...v, brand: "Majestic", part_number: part,
+        linerMaterial: v.linerMaterial || v.material || "",
+        overrideBestMatch: null, overrideSummary: null, overrideDescription: null,
+        __self: part }];
+    }
+    return null;
+  }
+
+  function showComparison(query){
+    const entry = findCompetitor(query);
+    const err = document.getElementById("searchError");
+    if(!entry){
+      const sugg = (typeof rankSuggestions === "function" ? rankSuggestions(query) : []).slice(0, 3);
+      if(sugg.length){
+        err.innerHTML = `No exact match for “${query}”. Did you mean: ` +
+          sugg.map(s => `<button type="button" class="did-you-mean" data-part="${s.part}">${s.part}</button>`).join(", ") + "?";
+        err.querySelectorAll(".did-you-mean").forEach(b => b.addEventListener("click", () => {
+          inputEl.value = b.dataset.part; closeAutocomplete(); showComparison(b.dataset.part);
+        }));
+      } else {
+        err.textContent = `No product found for “${query}”.`;
+      }
+      err.classList.remove("hidden");
+      return;
+    }
+    err.classList.add("hidden");
+
+    const comp = { ...entry[1], part_number: entry[1].part_number || entry[0] };
+    currentComp = comp;
+    currentRecs = getRecommendations(comp);
+
+    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("competitorName").textContent = `${comp.brand || ""}${comp.name ? " " + comp.name : ""}`.trim() || comp.part_number;
+    document.getElementById("competitorPart").textContent = comp.part_number;
+    const compHead = document.getElementById("specCompHead");
+    if(compHead) compHead.textContent = comp.__self ? "Selected" : "Competitor";
+    document.getElementById("impactBadge").classList.toggle("hidden", !hasImpact(comp));
+    document.getElementById("impactBadge").classList.toggle("inline-flex", hasImpact(comp));
+
+    renderTierCards(currentRecs, comp);
+    selectRecommendation(0);
+
+    document.querySelectorAll(".fade-in").forEach(el => { el.classList.remove("show"); setTimeout(() => el.classList.add("show"), 60); });
+    document.getElementById("dashboard").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  /* ============================================================================
+     SEARCH + AUTOCOMPLETE
+  ============================================================================ */
+  const searchBtn = document.getElementById("searchBtn");
+  const inputEl = document.getElementById("productInput");
+  const listEl = document.getElementById("autocompleteList");
+  searchBtn.disabled = true;
+  searchBtn.textContent = "Loading…";
+
+  // Rank suggestions: exact part match, then part prefix, then part contains, then brand/name.
+  // Matching is punctuation/case-insensitive, so "3574" surfaces "35-7465".
+  function rankSuggestions(query){
+    const nq = normalizeKey(query);
+    const upper = query.trim().toUpperCase();
+    const out = [];
+    for(const [k, v] of Object.entries(DATA.competitors)){
+      const part = v.part_number || k;
+      const pn = normalizeKey(part);
+      const hay = ((v.brand || "") + " " + (v.name || "")).toUpperCase();
+      let rank = -1;
+      if(nq && pn === nq) rank = 0;
+      else if(nq && pn.startsWith(nq)) rank = 1;
+      else if(nq && pn.includes(nq)) rank = 2;
+      else if(upper && hay.includes(upper)) rank = 3;
+      if(rank >= 0) out.push({ part, brand: v.brand || "", name: v.name || "", rank });
+    }
+    for(const [k, v] of Object.entries(DATA.majestic)){
+      const pn = normalizeKey(k);
+      const hay = ("MAJESTIC " + (v.name || "")).toUpperCase();
+      let rank = -1;
+      if(nq && pn === nq) rank = 0;
+      else if(nq && pn.startsWith(nq)) rank = 1;
+      else if(nq && pn.includes(nq)) rank = 2;
+      else if(upper && hay.includes(upper)) rank = 3;
+      if(rank >= 0) out.push({ part: k, brand: "Majestic", name: v.name || "", rank });
+    }
+    out.sort((a, b) => a.rank - b.rank || a.part.localeCompare(b.part));
+    return out.slice(0, 6);
+  }
+
+  let acItems = [], acIndex = -1;
+  function closeAutocomplete(){
+    acItems = []; acIndex = -1; listEl.classList.add("hidden"); listEl.innerHTML = "";
+    inputEl.setAttribute("aria-expanded", "false"); inputEl.removeAttribute("aria-activedescendant");
+  }
+  function highlight(){
+    Array.from(listEl.children).forEach((li, i) => { const on = i === acIndex; li.classList.toggle("bg-gray-100", on); li.setAttribute("aria-selected", on); });
+    if(acIndex >= 0) inputEl.setAttribute("aria-activedescendant", "ac-opt-" + acIndex);
+    else inputEl.removeAttribute("aria-activedescendant");
+  }
+  function chooseSuggestion(i){
+    const it = acItems[i]; if(!it) return;
+    inputEl.value = it.part; closeAutocomplete(); showComparison(it.part);
+  }
+  function renderAutocomplete(){
+    if(!acItems.length){ closeAutocomplete(); return; }
+    listEl.innerHTML = acItems.map((it, i) =>
+      `<li id="ac-opt-${i}" role="option" aria-selected="${i === acIndex}" class="${i === acIndex ? 'bg-gray-100' : ''}"><span class="p">${it.part}</span> <span class="n">${it.brand} ${it.name}</span></li>`).join("");
+    listEl.classList.remove("hidden");
+    inputEl.setAttribute("aria-expanded", "true");
+    Array.from(listEl.children).forEach((li, i) => {
+      li.addEventListener("mousedown", e => { e.preventDefault(); chooseSuggestion(i); }); // mousedown so input doesn't blur first
+      li.addEventListener("mouseover", () => { acIndex = i; highlight(); });
+    });
+  }
+
+  searchBtn.addEventListener("click", () => {
+    const v = inputEl.value.trim();
+    const err = document.getElementById("searchError");
+    if(!v){ err.textContent = "Enter a part number to compare."; err.classList.remove("hidden"); return; }
+    err.classList.add("hidden");
+    closeAutocomplete();
+    showComparison(v);
+  });
+
+  inputEl.addEventListener("input", () => {
+    if(!inputEl.value.trim()){ closeAutocomplete(); return; }
+    acItems = rankSuggestions(inputEl.value);
+    acIndex = -1;
+    renderAutocomplete();
+  });
+
+  inputEl.addEventListener("keydown", e => {
+    const open = acItems.length > 0 && !listEl.classList.contains("hidden");
+    if(e.key === "ArrowDown" && open){ e.preventDefault(); acIndex = (acIndex + 1) % acItems.length; highlight(); }
+    else if(e.key === "ArrowUp" && open){ e.preventDefault(); acIndex = (acIndex - 1 + acItems.length) % acItems.length; highlight(); }
+    else if(e.key === "Enter"){ e.preventDefault(); (open && acIndex >= 0) ? chooseSuggestion(acIndex) : searchBtn.click(); }
+    else if(e.key === "Escape"){ closeAutocomplete(); }
+  });
+
+  document.addEventListener("click", e => {
+    if(!inputEl.contains(e.target) && !listEl.contains(e.target)) closeAutocomplete();
+  });
+
+  /* ============================================================================
+     LOAD DATA from the hosted JSON  (normalize JSON shape -> tool's internal shape)
+  ============================================================================ */
+  function normalizeMajestic(json){
+    const out = {};
+    for(const [part, e] of Object.entries(json || {})){
+      out[part] = {
+        name: e.name || e.product_title || part,   // JSON catalog uses product_title
+        default_price: e.default_price || "",
+        img_url: e.img_url || "",
+        ratings: e.ratings || {},
+        coating: isBlank(e.coating) ? "" : e.coating,
+        gauge: gaugeNum(e.gauge),
+        priceTier: e.priceTier || "",
+        features: e.features || e.bullets || [],    // JSON catalog uses bullets
+        material: e.material || "",
+        linerMaterial: e.linerMaterial || "",
+        country: e.country || "",
+        short_description: e.short_description || ""
+      };
+    }
+    return out;
+  }
+  function normalizeCompetitors(json){
+    const out = {};
+    for(const [part, e] of Object.entries(json || {})){
+      if(e && e._comment) continue;                 // skip any template placeholder
+      out[part] = {
+        ...e,
+        part_number: (e && (e.part || e.part_number)) || part,   // v2 keys competitors by `part`
+        brand: (e && e.brand) || "",
+        name: (e && e.name) || "",                  // v2 has no competitor product name (brand + part only)
+        gauge: gaugeNum(e && e.gauge),               // placeholder "-" is not a gauge
+        coating: isBlank(e && e.coating) ? "" : e.coating,
+        overrideComparison: (e && (e.overrideComparison || e.overrideDescription || e.overrideSummary)) || null
+      };
+    }
+    return out;
+  }
+  function showNotice(msg, kind){
+    let el = document.getElementById("dataNotice");
+    if(!el){
+      el = document.createElement("div");
+      el.id = "dataNotice";
+      el.className = "max-w-6xl mx-auto px-6 pt-4";
+      const main = document.getElementById("dashboard");
+      main.parentNode.insertBefore(el, main);
+    }
+    const tone = kind === "error" ? "notice--warn" : "notice--info";
+    el.innerHTML = `<div class="notice ${tone}">${msg}</div>`;
+  }
+  async function loadData(){
+    try{
+      const res = await fetch(DATA_URL, { cache: "no-store" });
+      if(!res.ok) throw new Error("HTTP " + res.status);
+      const json = await res.json();
+      DATA = { majestic: normalizeMajestic(json.majestic), competitors: normalizeCompetitors(json.competitors) };
+      const nM = Object.keys(DATA.majestic).length, nC = Object.keys(DATA.competitors).length;
+      if(nC === 0)
+        showNotice(`Loaded ${nM} Majestic products from the JSON, but it has no competitor entries yet — add competitors to the file (see the COMP-0001 template) to enable search.`, "error");
+    }catch(err){
+      console.warn("Could not load DATA_URL, using demo fallback:", err);
+      DATA = DEMO;
+      showNotice(`Showing demo data — couldn't load <code>${DATA_URL}</code>. Host the file (or serve it over http) to load your real catalog.`, "error");
+    }
+    searchBtn.disabled = false;
+    searchBtn.textContent = "Search";
+    populateExamples();
+  }
+
+  // Hand-picked showcase competitors: each has a close Majestic match (same coating, similar gauge)
+  // where Majestic wins on several ratings — strong, concrete "switch to Majestic" demonstrations.
+  // Falls back to the first few competitors if a curated part isn't in the loaded dataset.
+  const CURATED_EXAMPLES = ["GPD280", "10491", "GPD844", "11-542"];
+  function populateExamples(){
+    const el = document.getElementById("exampleChips");
+    if(!el) return;
+    let parts = CURATED_EXAMPLES.filter(p => findCompetitor(p));
+    if(!parts.length) parts = Object.values(DATA.competitors).map(c => c.part_number).filter(Boolean).slice(0, 4);
+    if(!parts.length){ el.innerHTML = ""; return; }
+    el.innerHTML = `<span class="lbl">Try</span>` +
+      parts.map(p => `<button type="button" class="example-chip" data-part="${p}">${p}</button>`).join("");
+    el.querySelectorAll(".example-chip").forEach(b => b.addEventListener("click", () => {
+      inputEl.value = b.dataset.part; closeAutocomplete(); showComparison(b.dataset.part);
+    }));
+  }
+  loadData();
+  </script>
+</body>
+</html>
