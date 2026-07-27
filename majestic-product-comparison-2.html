@@ -378,25 +378,6 @@
         "country": "Vietnam",
         "short_description": ""
       },
-      "35-3367": {
-        "name": "Cut-Less Korplex® Glove with Micro Foam Palm, 18g, ANSI A2",
-        "default_price": "",
-        "img_url": "https://majesticglove.com/UserFiles/Product/Images/35/-3/36/35-3367_1200_small.jpg",
-        "ratings": {
-          "cut": "A2",
-          "puncture": 2
-        },
-        "coating": "Foam Nitrile",
-        "gauge": 18,
-        "priceTier": "",
-        "features": [
-          "Touchscreen Compatible"
-        ],
-        "material": "Korplex® Knit",
-        "linerMaterial": "",
-        "country": "Pakistan",
-        "short_description": ""
-      },
       "35-7465": {
         "name": "Cut-Less Korplex® Glove with Foam Nitrile Palm, 18g, ANSI A4",
         "default_price": "",
@@ -521,10 +502,10 @@
         "linerMaterial": "Latex, Foam, HPPE",
         "country": "",
         "features": [],
-        "overrideBestMatch": "35-3367",
-        "overrideSummary": "Majestic’s 35-3367 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.",
-        "overrideDescription": "Compared to the 3070, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves.",
-        "overrideComparison": "Compared to the 3070, Majestic’s 35-3367 delivers equal cut level (A2), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."
+        "overrideBestMatch": null,
+        "overrideSummary": null,
+        "overrideDescription": null,
+        "overrideComparison": null
       },
       "CR924": {
         "part_number": "CR924",
@@ -897,7 +878,6 @@
     const who = maj.name || maj.product_title || "this glove";
     const compName = comp.__self ? `Majestic ${comp.part_number}`
       : (`${comp.brand || ""}${comp.name ? " " + comp.name : (comp.part_number ? " " + comp.part_number : "")}`).trim() || "the competitor";
-    const majRef = majPart ? `Majestic's ${majPart}` : `The ${who}`;
     const A105 = "ANSI/ISEA 105-2024";     // cut, abrasion, puncture
     const A138 = "ANSI/ISEA 138-2019";     // impact (its own standard)
 
@@ -945,12 +925,6 @@
     if(hasF('silicone') && hasF('free')) adv.push(`Its silicone-free construction suits paint, finishing, and cleanroom environments.`);
     if(hasF('dot')) adv.push(`Textured grip dots improve control of small or slippery parts.`);
 
-    // Neutral coating differentiator — lower priority, only surfaced if there's room.
-    const majCoat = maj.coating ? String(maj.coating).toLowerCase() : "";
-    const realCoat = majCoat && !["uncoated","none","-","leather"].includes(majCoat);
-    const coatingNote = (realCoat && comp.coating && majCoat !== String(comp.coating).toLowerCase())
-      ? `${majRef} uses a ${majCoat} palm coating instead of ${String(comp.coating).toLowerCase()}.` : "";
-
     // 3) Assemble — advantages come first. Lower ratings are only mentioned when there is
     // nothing more compelling to highlight.
     const out = [];
@@ -961,9 +935,7 @@
       // carry no cut rating), don't let the paragraph open with "It also ...".
       if(!headline) picked[0] = picked[0].replace(/^It also /, "It ");
       out.push(...picked);
-      if(coatingNote && out.length < 5) out.push(coatingNote);
     } else {
-      if(coatingNote) out.push(coatingNote);
       if(aM && aC && aM < aC) out.push(`It carries a lower abrasion rating (${A105} Level ${aM} vs ${aC}).`);
       if(pM && pC && pM < pC) out.push(`It carries a lower puncture rating (${A105} Level ${pM} vs ${pC}).`);
       if(cI && !mI) out.push(`Note that it does not carry the ${compName}'s ${A138} impact rating.`);
