@@ -340,7 +340,7 @@
         <!-- Distributor form -->
         <div class="mjr-form-wrap mjr-active" data-jotform="distributor">
           <iframe
-            src="https://form.jotform.com/252043751845154"
+            data-src="https://form.jotform.com/252043751845154"
             title="Become a Distributor"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
@@ -350,7 +350,7 @@
         <!-- General inquiries form -->
         <div class="mjr-form-wrap" data-jotform="general">
           <iframe
-            src="https://form.jotform.com/232485816121050"
+            data-src="https://form.jotform.com/232485816121050"
             title="General Inquiries"
             scrolling="no"
             allow="geolocation; microphone; camera; fullscreen"
@@ -365,6 +365,42 @@
 
 <!-- ── SCRIPT ─────────────────────────────────────────────── -->
 <script>
+/* ── Attribution relay ─────────────────────────────────────
+   This page is loaded inside an iframe on majesticglove.com. GTM appends
+   the visitor's source to THIS page's URL; this block forwards it down to
+   the JotForm iframes so it lands in their hidden fields.
+
+   The iframes carry data-src rather than src so they load exactly once,
+   with the parameters already attached — a second load would double-count
+   JotForm's form-view events.
+
+   If no parameters arrive, the forms load clean. Don't add a fallback
+   value here; GTM already sets one a level up, and two layers guessing
+   means a real source can get overwritten by a placeholder.
+   ───────────────────────────────────────────────────────── */
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'landing_page', 'referrer'];
+  var qs = '';
+
+  try {
+    var incoming = new URLSearchParams(window.location.search);
+    var out = new URLSearchParams();
+    KEYS.forEach(function (k) {
+      var v = incoming.get(k);
+      if (v) out.set(k, v);
+    });
+    qs = out.toString();
+  } catch (e) {
+    qs = '';
+  }
+
+  // Load the forms regardless of whether attribution was found.
+  document.querySelectorAll('iframe[data-src]').forEach(function (f) {
+    var base = f.getAttribute('data-src');
+    f.src = qs ? base + (base.indexOf('?') > -1 ? '&' : '?') + qs : base;
+  });
+}());
+
 (function () {
   var tabs = document.querySelectorAll('.mjr-tab[data-intent]');
 
@@ -404,5 +440,3 @@
   activateTab('distributor');
 }());
 </script>
-
-
