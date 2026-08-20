@@ -269,6 +269,19 @@
   }
   .colorwarn svg{width:14px;height:14px;flex:none;margin-top:1px}
   .colorwarn b{font-weight:700}
+  .helprow{
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px;padding-top:15px;
+    border-top:1px solid var(--line)
+  }
+  .helprow .txt{flex:1;min-width:210px;font-size:11.5px;color:var(--faint);line-height:1.5}
+  .helprow .txt b{display:block;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:2px}
+  .mailbtn{
+    display:inline-flex;gap:7px;align-items:center;text-decoration:none;white-space:nowrap;
+    font-size:12px;font-weight:600;padding:8px 14px;border-radius:var(--pill);
+    background:var(--card);border:1px solid var(--line);color:var(--ink);transition:all .16s var(--ease)
+  }
+  .mailbtn:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+  .mailbtn svg{width:14px;height:14px}
   .colorwarn button{
     background:none;border:0;padding:0;margin-left:3px;font:inherit;font-weight:700;
     color:inherit;text-decoration:underline;cursor:pointer
@@ -281,6 +294,21 @@
   .methodbox span{display:block;font-size:10.5px;color:var(--faint);line-height:1.4;margin-top:2px}
   .methodbox.sp{background:var(--brand-soft);border-color:var(--brand-line)}
   .methodbox.sp b{color:var(--brand)}
+  .methodpick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .mopt{
+    position:relative;text-align:left;padding:9px 11px 10px;border-radius:var(--r-sm);cursor:pointer;
+    background:var(--card);border:1px solid var(--line);transition:all .16s var(--ease);font:inherit
+  }
+  .mopt:hover{border-color:var(--line-2)}
+  .mopt.on{border-color:var(--brand);background:var(--brand-soft);box-shadow:var(--ring)}
+  .mopt b{display:block;font-size:12px;font-weight:700;color:var(--ink)}
+  .mopt.on b{color:var(--brand)}
+  .mopt .p{display:block;font-family:var(--mono);font-size:15px;font-weight:700;color:var(--ink);margin-top:3px;letter-spacing:-.02em}
+  .mopt .s{display:block;font-size:10px;color:var(--faint);margin-top:2px;line-height:1.35}
+  .mopt .tag{
+    position:absolute;top:-7px;right:8px;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:800;padding:2px 6px;border-radius:99px;background:#1c6b34;color:#fff
+  }
   .szgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:7px;margin-top:9px}
   .szc{text-align:center}
   .szc span{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--faint);margin-bottom:3px}
@@ -695,12 +723,9 @@
           <div class="card-head"><span class="step">3</span><h3>Your order</h3><span class="spacer"></span><span class="sub">Drives the quote</span></div>
 
           <div class="ordrow">
-            <div class="ordf">
+            <div class="ordf" style="flex-basis:100%">
               <label>Personalization method</label>
-              <div class="methodbox" id="ordMethod" aria-live="polite">
-                <b id="ordMethodName">Heat Transfer</b>
-                <span id="ordMethodWhy"></span>
-              </div>
+              <div id="ordMethod" aria-live="polite"></div>
             </div>
             <div class="ordf">
               <label for="ordColors">Colors in your logo</label>
@@ -790,6 +815,17 @@
           </div>
           <div class="qnote" id="bgNote"></div>
         </div>
+      </div>
+
+      <div class="helprow">
+        <div class="txt">
+          <b>Need a hand with your artwork?</b>
+          Our graphics team can clean up a logo, recreate it in vector, or answer anything about proofing.
+        </div>
+        <a class="mailbtn" id="gfxMail" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          Email graphics
+        </a>
       </div>
     </div>
   </div>
@@ -1198,7 +1234,8 @@ const PRODUCTS = {
     viewLabels:{ sleeve:'Sleeve' },
     zones:{
       front:{
-        leftChest: {label:'Left chest',  nx:.6259,ny:.3235,wIn:2.5,hIn:3,maxIn:2.5,defIn:2.3, group:'body', anchor:'top', note:'On the chest pocket — tape crosses the pocket, so 2.5″ clears it (guide says 3″)'}
+        leftChest: {label:'Left chest',  nx:.6259,ny:.3235,wIn:2.5,hIn:3,maxIn:2.5,defIn:2.3, group:'body', anchor:'top', note:'Chest area — tape crosses here, so 2.5″ clears it (guide says 3″)'},
+        pocket:    {label:'Front pocket',nx:.3741,ny:.3235,wIn:2.5,hIn:2.5,maxIn:2.5,defIn:2.2, group:'body', anchor:'top', note:'Square patch pocket — print sits inside the pocket panel, clear of the seam and the hem tape'}
       },
       back:{
         upperBack: {label:'Upper back',  nx:.5091,ny:.3280,wIn:7, hIn:11,maxIn:7, defIn:6.5,group:'body', note:'9.5″ clears between the vertical striping; guide allows 7″'},
@@ -1286,7 +1323,8 @@ const PRODUCTS = {
           sleeve:{ lime: ART_BASE+'jacket-sleeve.webp',orange:'' } },
     zones:{
       front:{
-        leftChest: {label:'Left chest',  nx:.6070,ny:.3200,wIn:2, hIn:3, maxIn:2, defIn:2,  group:'body', note:'Over the chest pocket flap', anchor:'top'},
+        leftChest: {label:'Left chest',  nx:.6070,ny:.3200,wIn:2, hIn:3, maxIn:2, defIn:2,  group:'body', note:'Chest area above the pocket', anchor:'top'},
+        pocket:    {label:'Front pocket',nx:.5650,ny:.3060,wIn:2.6,hIn:1.5,maxIn:2.6,defIn:2.2,group:'body', anchor:'top', note:'On the pocket flap — keep it shallow so the print doesn’t cross the fold'},
         rightChest:{label:'Right chest', nx:.3930,ny:.3800,wIn:3, hIn:8, maxIn:3, defIn:3,  group:'body', note:'No pocket — measurement is the chest area', anchor:'top'}
       },
       back:{
@@ -1395,24 +1433,42 @@ const SCREEN_PRINT_MAX_COLORS = 2;
 function methodDecision(){
   const p = P(), qty = orderQty(), colors = S.order.colors;
   if(p.screenPrint === false)
-    return { method:'Heat Transfer', locked:true,
+    return { method:'Heat Transfer', eligible:false,
              why:'Screen printing isn\u2019t offered on gloves.' };
   if(S.sku && PRICING.screenPrint.excludedStyles.indexOf(S.sku) >= 0)
-    return { method:'Heat Transfer', locked:true,
+    return { method:'Heat Transfer', eligible:false,
              why:`Style ${S.sku} can\u2019t be screen printed \u2014 fabric and liner seam.` };
+
+  /* At 50+ pieces and no more than two colours, both processes are open and
+     neither wins outright: screen print has volume tiers but charges set-up per
+     colour per location, heat transfer is flat but priced by area. Which is
+     cheaper depends on the artwork, so the customer picks — with both totals in
+     front of them. Outside that window heat transfer is the only option. */
   if(qty >= SCREEN_PRINT_MIN_QTY && colors <= SCREEN_PRINT_MAX_COLORS)
-    return { method:'Screen Print', locked:false,
-             why:`${qty} pieces at ${colors} colo${colors>1?'urs':'ur'} \u2014 screen print is the cheaper process here.` };
+    return { method: S.order.methodChoice || 'Screen Print', eligible:true,
+             why:`${qty} pieces at ${colors} colo${colors>1?'urs':'ur'} \u2014 either process works. Pick whichever suits you.` };
+
   const miss = [];
   if(qty < SCREEN_PRINT_MIN_QTY)
     miss.push(qty ? `${qty} pieces (screen print needs ${SCREEN_PRINT_MIN_QTY}+)`
                   : `${SCREEN_PRINT_MIN_QTY}+ pieces`);
   if(colors > SCREEN_PRINT_MAX_COLORS)
     miss.push(`${colors} colours (screen print takes ${SCREEN_PRINT_MAX_COLORS} max)`);
-  return { method:'Heat Transfer', locked:false, why:miss.join(' \u00b7 ') };
+  return { method:'Heat Transfer', eligible:false, why:miss.join(' \u00b7 ') };
 }
-/* Keep S.order.method in step so the quote, the form and the proof all agree. */
-function syncMethod(){ S.order.method = methodDecision().method; return S.order.method; }
+/* Keep S.order.method in step so the quote, the form and the proof all agree.
+   A choice made while both were open is dropped as soon as the order stops
+   qualifying, so it can't linger and quote a process that no longer applies. */
+function syncMethod(){
+  const md = methodDecision();
+  if(!md.eligible) S.order.methodChoice = null;
+  S.order.method = md.method;
+  return S.order.method;
+}
+function pickMethod(m){
+  S.order.methodChoice = m;
+  syncMethod(); renderQuote();
+}
 
 /* ---------- Order state helpers ---------- */
 function orderQty(){ return SIZES.reduce((t,z)=>t + (S.order.sizes[z]||0), 0); }
@@ -1438,7 +1494,7 @@ function zoneBlockedBySize(zone){
    Returns everything the customer, the form and the proof need. Anything the
    sheet can't price comes back quotable:false with a plain-English reason
    instead of a number we'd have to walk back later. */
-function computeQuote(){
+function computeQuote(forceMethod){
   const p = P(), o = S.order;
   const q = {
     quotable:false, blocks:[], notes:[], lines:[],
@@ -1450,7 +1506,8 @@ function computeQuote(){
 
   if(!q.locations)      q.blocks.push({stop:true,  t:'Add at least one logo placement to see pricing.'});
   if(!q.qty)            q.blocks.push({stop:true,  t:'Enter how many pieces you need.'});
-  o.method = q.method = methodDecision().method;   // derived, never chosen
+  q.method = forceMethod || methodDecision().method;
+  if(!forceMethod) o.method = q.method;
   if(tapeConflicts().length)
                         q.blocks.push({stop:true,  t:'Your logo is on the reflective tape. Nothing can be printed over striping \u2014 move it onto the fluorescent fabric.'});
   if(q.blocks.length) return q;
@@ -1458,7 +1515,7 @@ function computeQuote(){
   const totalSqIn = S.placements.reduce((t,pl)=> t + plInW(pl)*plInH(pl), 0);
 
   /* ---- screen print ---- */
-  if(o.method === 'Screen Print'){
+  if(q.method === 'Screen Print'){
     if(p.screenPrint === false){
       q.blocks.push({stop:true, t:'Screen printing isn\u2019t offered on gloves \u2014 switch to heat transfer.'});
       return q;
@@ -1580,9 +1637,25 @@ function renderQuote(){
   const md = methodDecision();
   const mb = document.getElementById('ordMethod');
   if(mb){
-    mb.className = 'methodbox' + (md.method==='Screen Print' ? ' sp' : '');
-    document.getElementById('ordMethodName').textContent = md.method;
-    document.getElementById('ordMethodWhy').textContent  = md.why;
+    if(md.eligible){
+      /* Price both so the choice is informed rather than a coin flip. */
+      const opts = ['Screen Print','Heat Transfer'].map(m=>{
+        const q = computeQuote(m);
+        return { m, ok:q.quotable, total:q.total, per:q.perUnit, setup:q.setup };
+      });
+      const best = opts.filter(o=>o.ok).sort((a,b)=>a.total-b.total)[0];
+      mb.className = 'methodpick';
+      mb.innerHTML = opts.map(o=>`
+        <button type="button" class="mopt${o.m===md.method?' on':''}" onclick="pickMethod('${o.m}')" aria-pressed="${o.m===md.method}">
+          <b>${o.m}</b>
+          <span class="p">${o.ok ? money(o.total) : '\u2014'}</span>
+          <span class="s">${o.ok ? money(o.setup)+' set-up + '+money(o.per)+'/ea' : 'not available'}</span>
+          ${best && o.m===best.m && opts.filter(z=>z.ok).length>1 ? '<span class="tag">Lower cost</span>' : ''}
+        </button>`).join('');
+    } else {
+      mb.className = 'methodbox' + (md.method==='Screen Print' ? ' sp' : '');
+      mb.innerHTML = `<b>${md.method}</b><span>${md.why}</span>`;
+    }
   }
   renderColorWarning();
   const q = computeQuote();
@@ -1614,7 +1687,12 @@ function renderQuote(){
 const JF_LOCATION = {
   leftChest:'Left Chest', rightChest:'Right Chest',
   upperBack:'Upper Back', lowerBack:'Lower Back',
-  backHand:'Back of Hand', cuff:'Cuff'
+  backHand:'Back of Hand', cuff:'Cuff',
+  /* The live JotForm dropdown has no Pocket option yet — until it does, a
+     pocket placement reports as Left Chest and the exact spot is carried in
+     Placement Details and the design payload. Add "Pocket" to the field and
+     change this line. */
+  pocket:'Left Chest'
 };
 function jfLocation(view, zone){
   if(JF_LOCATION[zone]) return JF_LOCATION[zone];
@@ -1689,7 +1767,7 @@ const ART_BOX = { x:56, y:26, w:488, h:624 };
    uploads once and drops it wherever they need it. */
 let plSeq = 0;
 const S = {
-  order:{ sizes:{}, colors:1, method:'', customPms:false },
+  order:{ sizes:{}, colors:1, method:'', methodChoice:null, customPms:false },
   product:'vest-zip', view:'front', color:'lime', sku:'75-3201',
   logo:{ href:null, aspect:2.4, name:'sample-mark.svg', natW:240, natH:100, isSample:true },
   placements:[],       // [{id, view, zone, T:{x,y,scale,rot}}]
@@ -3723,10 +3801,31 @@ bgDrop.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.prev
 bgDrop.addEventListener('drop', e=>{ const f=e.dataTransfer.files[0]; if(f) bgLoad(f); });
 bgInput.addEventListener('change', e=>{ const f=e.target.files[0]; if(f) bgLoad(f); });
 
+/* Mail link is built at click time so the reference and whatever they've
+   configured so far travel with the message — graphics can pull the proof
+   without asking them to describe it. */
+function graphicsMailto(){
+  const p = P(), q = computeQuote();
+  const lines = [
+    '', '', '\u2014\u2014\u2014',
+    'Reference: ' + proofRef(),
+    'Style: ' + (S.sku || '\u2014') + '  ' + p.label,
+    'Artwork: ' + (S.logo.isSample ? '(none uploaded yet)' : S.logo.name),
+    'Placements: ' + (locationLines().join(' | ') || '\u2014'),
+    q.quotable ? 'Estimate: ' + money(q.total) + ' (' + q.method + ', rate sheet ' + PRICING.version + ')' : '',
+    proofUrl() ? 'Proof: ' + proofUrl() : ''
+  ].filter(l => l !== '');
+  return 'mailto:graphics@majesticglove.com'
+       + '?subject=' + encodeURIComponent('Personalization help \u2014 ' + proofRef())
+       + '&body='    + encodeURIComponent(lines.join('\n'));
+}
+const gfxMail = document.getElementById('gfxMail');
+if(gfxMail) gfxMail.addEventListener('click', e => { gfxMail.href = graphicsMailto(); });
+
 /* expose for inline handlers */
 Object.assign(window, {
   onSizeQty, onOrderField, renderQuote, computeQuote, viewsFor,
-  toggleBgTool, useCutout, downloadCutout, acceptDetectedColors,
+  toggleBgTool, useCutout, downloadCutout, acceptDetectedColors, pickMethod, graphicsMailto,
   setMode, setProduct, setView, setColor, applySku, lookupSku,
   toggleZone, addCombo, selectPlacement, removePlacement, toggleGuides,
   designPayload, loadDesign,
