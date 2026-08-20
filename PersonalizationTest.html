@@ -1633,6 +1633,22 @@ function buildSizeGrid(){
     `oninput="onSizeQty('${z}', this.value)"></label>`
   ).join('');
 }
+/* Push S.order back into the controls. Everything else in the order card is
+   rendered from state on every pass, but the size boxes and the colour select
+   are real inputs the user types into, so they only reflect state when we put
+   it there — which matters when a rebuild link changes state with no typing. */
+function syncOrderInputs(){
+  const sel = document.getElementById('ordColors');
+  if(sel) sel.value = String(S.order.colors || 1);
+  SIZES.forEach(z=>{
+    const el = document.querySelector(`#szGrid input[data-size="${z}"]`);
+    if(!el) return;
+    const n = S.order.sizes[z] || 0;
+    el.value = n || '';
+    el.classList.toggle('has', n > 0);
+  });
+}
+
 function onSizeQty(z, v){
   syncMethod();
   const n = Math.max(0, parseInt(v, 10) || 0);
@@ -3401,6 +3417,7 @@ function loadDesign(str){
     S.order.sizes  = d.order.sizes  || {};
     S.order.colors = d.order.colors || 1;
     S.order.method = d.order.method || '';
+    syncOrderInputs();
   }
   S.color = d.color === 'orange' ? 'orange' : 'lime';
   setState(document.getElementById('swLime'),   S.color==='lime');
@@ -3804,7 +3821,7 @@ if(gfxMail) gfxMail.addEventListener('click', e => { gfxMail.href = graphicsMail
 
 /* expose for inline handlers */
 Object.assign(window, {
-  onSizeQty, onOrderField, renderQuote, computeQuote, viewsFor,
+  onSizeQty, onOrderField, renderQuote, computeQuote, viewsFor, syncOrderInputs,
   toggleBgTool, useCutout, downloadCutout, acceptDetectedColors, pickMethod, graphicsMailto,
   setMode, setProduct, setView, setColor, applySku, lookupSku,
   toggleZone, addCombo, selectPlacement, removePlacement, toggleGuides,
