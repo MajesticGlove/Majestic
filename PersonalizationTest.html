@@ -907,7 +907,12 @@
 //     https page, so every URL here is forced to https
 //   - www and the bare domain were mixed; one canonical host avoids a
 //     redirect on every image request
-const ART_BASE = 'https://www.majesticglove.com/userfiles/';
+/* Garment art lives alongside this file, NOT on the storefront.
+   Same-origin matters: a cross-origin image renders fine on screen but taints
+   the canvas, and every export (mockup PNG, proof sheet, the R2 upload) then
+   throws. Serving the art from the same host as the tool sidesteps CORS
+   entirely. Relative, so it follows the tool wherever it's deployed. */
+const ART_BASE = 'art/';
 
 /* ---------- Fluorescent colorways ---------- */
 const COLORS = {
