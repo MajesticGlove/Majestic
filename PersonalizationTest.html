@@ -654,6 +654,19 @@
           <div class="picker" id="picker" role="group" aria-label="Product"></div>
         </div>
 
+        <div class="card hidden" id="rebuildBanner" style="border-color:var(--brand-line);background:var(--brand-soft)">
+          <div style="display:flex;gap:10px;align-items:flex-start">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:none;margin-top:1px"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--brand)">Design restored — <span id="rebuildRef">—</span></div>
+              <div style="font-size:11.5px;color:var(--ink-2);line-height:1.5;margin-top:3px">
+                Garment, placements, sizing and quote are exactly as the customer submitted them.
+                Artwork isn't carried in the link — attach their logo from the JotForm submission to see the finished proof.
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-head"><span class="step">1</span><h3>Your logo</h3><span class="spacer"></span><span class="sub" id="artHint">PNG · transparent</span></div>
           <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload logo">
@@ -909,8 +922,7 @@
 //     redirect on every image request
 /* Garment art lives alongside this file, NOT on the storefront.
    Same-origin matters: a cross-origin image renders fine on screen but taints
-   the canvas, and every export (mockup PNG, proof sheet, the R2 upload) then
-   throws. Serving the art from the same host as the tool sidesteps CORS
+   the canvas, and every export (mockup PNG, proof sheet, PDF) then throws. Serving the art from the same host as the tool sidesteps CORS
    entirely. Relative, so it follows the tool wherever it's deployed. */
 const ART_BASE = 'art/';
 
@@ -3235,20 +3247,17 @@ async function renderAllViewsPNG(scale){
    fields   : JotForm field UNIQUE NAMES (Gear icon > Advanced > Field
               Details) mapped to what this tool sends. Delete a line to
               stop sending that value.
-   uploadTo : optional endpoint (e.g. a Cloudflare Worker writing to R2)
-              that accepts multipart {logo, mockup} and returns
-              {logoUrl, mockupUrl}. With this set, the customer's logo
-              rides along and they never upload it twice. Without it,
-              everything except the artwork carries over.
+   The artwork itself is NOT sent from here — the customer attaches it to
+   the JotForm upload field, which stays the system of record for anything
+   production needs. Everything else carries over prefilled.
    ============================================================ */
 const TOOL_VERSION = '2026.08.10';
 
 /* ---- Proof correlation ID ----------------------------------------------
-   One ID per design session. It rides along to JotForm as a hidden field and
-   is the key everything else hangs off: the R2 object holding the rendered
-   proof, the spec JSON, and the audit trail. Minted once on load so an
-   abandoned session and a submitted one are the same record.
-   Regenerated only when the customer explicitly starts over. */
+   One ID per design session. It rides along to JotForm as a hidden field, is
+   stamped on the proof sheet, and is carried inside the rebuild link so a
+   reconstructed design still matches the submission it came from. Minted once
+   on load and kept for the life of the session. */
 function newProofId(){
   try{ if(crypto && crypto.randomUUID) return crypto.randomUUID(); }catch(e){}
   const b = new Uint8Array(16);
@@ -3262,87 +3271,32 @@ let PROOF_ID = newProofId();
 /* ---- Where rendered proofs go -----------------------------------------
    Empty string disables uploading entirely; the tool works exactly as
    before, so a broken or unconfigured endpoint can never block a customer. */
-const PROOF_ENDPOINT = 'https://majestic-proofs.ryan-lundberg.workers.dev';
+/* ---- Rebuild link -------------------------------------------------------
+   The whole design is ~900 characters of JSON, so instead of storing a
+   rendered image anywhere we hand graphics a URL that reconstructs it. They
+   click it, the tool opens on the customer's exact design, and they drop the
+   logo in from the JotForm attachment. Better than a stored screenshot: it's
+   live, so a revision is a nudge and a re-export rather than a redraw.
 
-let _uploadedHash = null;      // design payload at the time of the last upload
-let _uploading    = false;
-
-function proofUrl(){ return PROOF_ENDPOINT ? PROOF_ENDPOINT + '/p/' + PROOF_ID : ''; }
-
-/* Cheap non-cryptographic hash — only needs to answer "did anything change
-   since we last uploaded", so collisions cost a redundant upload, not data. */
-function hashOf(str){
-  let h = 5381;
-  for(let i=0;i<str.length;i++) h = ((h<<5)+h+str.charCodeAt(i))|0;
-  return String(h);
+   base64url — the standard alphabet's + / = get mangled in query strings and
+   in the mail clients that rewrite links. */
+function b64url(str){
+  const b = btoa(String.fromCharCode(...new TextEncoder().encode(str)));
+  return b.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
-
-function dataUriToBlob(uri){
-  const [head, b64] = uri.split(',');
-  const mime = (head.match(/:(.*?);/) || [,'image/png'])[1];
-  const bin = atob(b64), a = new Uint8Array(bin.length);
+function unb64url(str){
+  let b = str.replace(/-/g,'+').replace(/_/g,'/');
+  while(b.length % 4) b += '=';
+  const bin = atob(b), a = new Uint8Array(bin.length);
   for(let i=0;i<bin.length;i++) a[i] = bin.charCodeAt(i);
-  return new Blob([a], { type: mime });
+  return new TextDecoder().decode(a);
 }
-
-/* Upload the rendered sheet plus the spec that produced it.
-
-   Fired when the customer reaches the proof step, not when they submit: the
-   design is settled by then and they linger to read the quote, whereas a
-   submit-time upload races the tab closing. It also means an abandoned design
-   still leaves a record, which is often the more interesting one.
-
-   Never awaited by anything the customer is waiting on, and every failure is
-   swallowed — the JotForm submission carries the full spec regardless, so a
-   missing upload degrades the audit trail, not the order. */
-async function uploadProof(state){
-  if(!PROOF_ENDPOINT || _uploading) return;
-  const payload = designPayload();
-  const h = hashOf(payload);
-  if(state === 'draft' && h === _uploadedHash) return;   // nothing changed
-  _uploading = true;
+function rebuildUrl(){
   try{
-    const sheet = await renderSheetPNG(1.6);
-    const fd = new FormData();
-    fd.append('proofId', PROOF_ID);
-    fd.append('ref',     proofRef());
-    fd.append('state',   state || 'draft');
-    fd.append('spec',    payload);
-    fd.append('sheet',   dataUriToBlob(sheet), proofRef() + '.png');
-    const res = await fetch(PROOF_ENDPOINT + '/v1/proof', { method:'POST', body:fd, mode:'cors' });
-    if(res.ok) _uploadedHash = h;
-    else console.warn('proof upload rejected', res.status);
-  }catch(e){
-    console.warn('proof upload failed', e);
-  }finally{
-    _uploading = false;
-  }
+    return location.origin + location.pathname + '?d=' + b64url(designPayload());
+  }catch(e){ return ''; }
 }
 
-/* The sheet is already in the bucket by submit time, so flipping it to
-   "submitted" is a few hundred bytes. sendBeacon survives page unload;
-   a fetch here would usually be killed mid-flight. */
-function markSubmitted(){
-  if(!PROOF_ENDPOINT) return;
-  try{
-    const fd = new FormData();
-    fd.append('proofId', PROOF_ID);
-    fd.append('state', 'submitted');
-    if(navigator.sendBeacon) navigator.sendBeacon(PROOF_ENDPOINT + '/v1/proof/state', fd);
-    else fetch(PROOF_ENDPOINT + '/v1/proof/state', { method:'POST', body:fd, mode:'cors', keepalive:true });
-  }catch(e){}
-}
-
-/* JotForm's iframe posts progress messages to the parent. They are not a
-   documented API and the payload shape has changed before, so match loosely
-   and treat a miss as cosmetic: the proof is already uploaded either way, it
-   just stays labelled "draft". */
-window.addEventListener('message', ev => {
-  if(!/jotform\.com$/.test((()=>{ try{ return new URL(ev.origin).hostname; }catch(e){ return ''; } })())) return;
-  const raw = typeof ev.data === 'string' ? ev.data
-            : (ev.data && (ev.data.action || ev.data.type)) || '';
-  if(/submission-completed|submitted|thankyou/i.test(String(raw))) markSubmitted();
-});
 /* Short, readable form for anything a human has to read out or search for.
    Collisions don't matter — the full UUID is the key. */
 function proofRef(){ return 'MP-' + PROOF_ID.slice(0,8).toUpperCase(); }
@@ -3382,9 +3336,9 @@ const JOTFORM = {
     quotePerUnit:   'quotePerUnit',
     quoteTotal:     'quoteTotal',
     priceSheet:     'priceSheet',
-    proofId:      'proofid',            // full UUID — R2 object key
+    proofId:      'proofid',            // full UUID
     proofRef:     'typeA42',            // MP-XXXXXXXX — the human-readable one
-    proofUrl:     'proofUrl',           // deep link graphics clicks from the submission
+    rebuildUrl:   'rebuildUrl',         // reopens this exact design in the tool
     toolVersion:  'toolversion',
     utm_source:   'utm_source',
     utm_medium:   'utm_medium',
@@ -3511,7 +3465,7 @@ function quoteValues(){
     tapeFlag: tapeConflicts().length ? 'Yes' : 'No',
     proofId: PROOF_ID,
     proofRef: proofRef(),
-    proofUrl: proofUrl(),
+    rebuildUrl: rebuildUrl(),
     toolVersion: TOOL_VERSION,
     ...trackingParams()
   };
@@ -3634,9 +3588,6 @@ async function buildProof(){
   document.getElementById('proofSampleAlert').classList.toggle('hidden', !S.logo.isSample);
   mountQuoteForm();
 
-  // Capture the record now, while the design is settled and the customer is
-  // reading the quote. Deliberately not awaited: nothing here blocks them.
-  uploadProof('draft');
 
   const rows = [
     ['Style number', S.sku || 'Custom'],
@@ -3795,6 +3746,30 @@ function init(){
   window.addEventListener('resize', updateReadouts);
   // calibration + art-loading tools are staff-only: open the tool with ?setup=1
   if(/[?&]setup=1/.test(location.search)) document.getElementById('artCard').classList.remove('hidden');
+
+  /* A rebuild link restores everything except the artwork, which never leaves
+     the customer's browser — it's attached to the JotForm submission instead.
+     Say so plainly rather than letting the sample mark look like their logo. */
+  const dParam = new URLSearchParams(location.search).get('d');
+  if(dParam){
+    let json = null;
+    try{ json = unb64url(dParam); }catch(e){ toast('That rebuild link is damaged'); }
+    if(json && loadDesign(json)){
+      /* Carry the original ID across. A rebuilt design that minted a fresh ref
+         would no longer match the submission it came from, which defeats the
+         point of having a reference at all. */
+      try{
+        const d = JSON.parse(json);
+        if(d.proofId) PROOF_ID = d.proofId;
+      }catch(e){}
+      syncMethod(); renderQuote();
+      const b = document.getElementById('rebuildBanner');
+      if(b){
+        document.getElementById('rebuildRef').textContent = proofRef();
+        b.classList.remove('hidden');
+      }
+    }
+  }
 }
 init();
 
@@ -3818,7 +3793,7 @@ function graphicsMailto(){
     'Artwork: ' + (S.logo.isSample ? '(none uploaded yet)' : S.logo.name),
     'Placements: ' + (locationLines().join(' | ') || '\u2014'),
     q.quotable ? 'Estimate: ' + money(q.total) + ' (' + q.method + ', rate sheet ' + PRICING.version + ')' : '',
-    proofUrl() ? 'Proof: ' + proofUrl() : ''
+    'Rebuild: ' + rebuildUrl()
   ].filter(l => l !== '');
   return 'mailto:graphics@majesticglove.com'
        + '?subject=' + encodeURIComponent('Personalization help \u2014 ' + proofRef())
