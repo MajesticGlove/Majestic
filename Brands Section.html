@@ -50,7 +50,6 @@
 	}
 	.mj-board__tab:hover { background: #f1f1f1 }
 	.mj-board__tab.is-active { background: var(--mj-panel-head); color: #fff }
-	.mj-board__tab-num { font-size: 11px; font-weight: 700; letter-spacing: .12em; font-variant-numeric: tabular-nums; opacity: .7 }
 	.mj-board__tab-name { font-size: 20px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1 }
 	.mj-board__tab-hazard { font-size: 12px; line-height: 1.35; opacity: .75 }
 
@@ -78,10 +77,9 @@
 		color: rgba(10, 10, 10, .6); border-bottom: 1px solid var(--mj-line);
 	}
 	.mj-board__feature {
-		display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 0 16px; align-content: center;
+		display: grid; grid-template-columns: minmax(0, 1fr); align-content: center;
 		padding: 26px 36px; border-bottom: 1px solid var(--mj-line); flex: 1 1 auto;
 	}
-	.mj-board__feature-num { padding-top: 4px; font-size: 14px; font-weight: 700; letter-spacing: .08em; font-variant-numeric: tabular-nums; color: var(--mj-accent) }
 	.mj-board__feature-title { margin: 0 0 10px; font-size: 22px; line-height: 1.18; letter-spacing: -.015em; font-weight: 700 }
 	.mj-board__feature-text { margin: 0; font-size: 16px; line-height: 1.65; color: rgba(10, 10, 10, .78); max-width: 62ch }
 
@@ -129,32 +127,26 @@
 
 		<div class="mj-board__tabs" role="tablist" aria-label="Majestic brands">
 			<button type="button" class="mj-board__tab is-active" role="tab" id="mj-tab-eagle" aria-selected="true" aria-controls="mj-panel-eagle" data-target="eagle">
-				<span class="mj-board__tab-num">01</span>
 				<span class="mj-board__tab-name">Bald Eagle</span>
 				<span class="mj-board__tab-hazard">Rough handling, cold</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-cutless" aria-selected="false" aria-controls="mj-panel-cutless" data-target="cutless">
-				<span class="mj-board__tab-num">02</span>
 				<span class="mj-board__tab-name">Cut-Less<sup>&reg;</sup></span>
 				<span class="mj-board__tab-hazard">Cuts and lacerations</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-superdex" aria-selected="false" aria-controls="mj-panel-superdex" data-target="superdex">
-				<span class="mj-board__tab-num">03</span>
 				<span class="mj-board__tab-name">SuperDex</span>
 				<span class="mj-board__tab-hazard">Hand strain, fatigue</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-x10" aria-selected="false" aria-controls="mj-panel-x10" data-target="x10">
-				<span class="mj-board__tab-num">04</span>
 				<span class="mj-board__tab-name">Knucklehead X10<sup>&reg;</sup></span>
 				<span class="mj-board__tab-hazard">Impact, pinch points</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-hivis" aria-selected="false" aria-controls="mj-panel-hivis" data-target="hivis">
-				<span class="mj-board__tab-num">05</span>
 				<span class="mj-board__tab-name">Majestic Hi-Vis</span>
 				<span class="mj-board__tab-hazard">Low visibility</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-resistex" aria-selected="false" aria-controls="mj-panel-resistex" data-target="resistex">
-				<span class="mj-board__tab-num">06</span>
 				<span class="mj-board__tab-name">ResisTEX</span>
 				<span class="mj-board__tab-hazard">Contamination, splash</span>
 			</button>
@@ -177,21 +169,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">Key features of mechanics gloves</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">Premium grade leather</h4>
 							<p class="mj-board__feature-text">Crafted with premium A-grade pigskin, goatskin, cowhide and deerskin, each pair delivers a unique fit and feel while ensuring the highest level of safety.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">Stretch knit back &amp; neoprene knuckle</h4>
 							<p class="mj-board__feature-text">A stretch knit back pairs with a reinforced neoprene knuckle, offering comfort and flexibility while keeping hands protected.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Versatile cuff designs</h4>
 							<p class="mj-board__feature-text">From easy slip-on styles to secure hook-and-loop closures, the range matches the demands of different jobs and ensures a dependable fit.</p>
@@ -231,21 +220,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">Innovative cut resistant materials</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">Award-winning safety</h4>
 							<p class="mj-board__feature-text">Industry-recognized protection, including the 35-7505 glove, the 35-1589 winter-lined glove and the 31426-18THSO sleeve, all OH&amp;S Best New Product of the Year winners.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">Reliable cut protection</h4>
 							<p class="mj-board__feature-text">Every glove begins with Korplex<sup>&reg;</sup> or Dyneema<sup>&reg;</sup> and then undergoes rigorous third-party testing against ANSI/ISEA 105-2024.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Expert craftsmanship</h4>
 							<p class="mj-board__feature-text">Drawing on decades of experience, Majestic crafts Cut-Less<sup>&reg;</sup> arm and hand protection for demanding industries.</p>
@@ -285,21 +271,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">Comfortable &amp; versatile hand protection</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">Unmatched dexterity and comfort</h4>
 							<p class="mj-board__feature-text">The result of years of innovation in knit, palm-coated work gloves, ergonomically crafted to reduce strain on tasks requiring precision and prolonged use.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">High gauge for precision</h4>
 							<p class="mj-board__feature-text">Typically 15 or 18 gauge: more fibers per inch means a finer, tighter knit and a thinner, stronger glove with better tactile sensitivity.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Antimicrobial treatment</h4>
 							<p class="mj-board__feature-text">Select styles carry a Sanitized<sup>&reg;</sup> with Actifresh<sup>&reg;</sup> coating, using zinc pyrithione to prevent bacterial growth and reduce odor.</p>
@@ -339,21 +322,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">Built for protection, grip and comfort</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">Superior impact protection</h4>
 							<p class="mj-board__feature-text">Thermoplastic rubber across fingers and the back of the hand absorbs impact force and meets ANSI/ISEA 138 for pinch and impact hazards.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">Enhanced grip</h4>
 							<p class="mj-board__feature-text">Armor Skin<sup>&reg;</sup> synthetic leather palms with PVC anti-slip patches improve traction on tools and materials, even in wet or oily conditions.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Secure &amp; comfortable fit</h4>
 							<p class="mj-board__feature-text">Engineered for all-day wear, with a form-fitting design that contours to the hand without restricting movement.</p>
@@ -393,21 +373,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">High visibility for peak performance</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">Versatile and functional design</h4>
 							<p class="mj-board__feature-text">From vests to shirts and jackets, with practical features: ample storage, adjustable fits and innovative fabrics.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">Confidence during every shift</h4>
 							<p class="mj-board__feature-text">Meets ANSI/ISEA 107-2020 visibility standards, with added features that enhance comfort and mobility.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Comfort for all-day wear</h4>
 							<p class="mj-board__feature-text">When gear isn't comfortable, workers are less likely to wear it, so the range runs from moisture-wicking t-shirts to waterproof rain jackets.</p>
@@ -447,21 +424,18 @@
 				<div class="mj-board__detail">
 					<span class="mj-board__detail-label">Disposable barrier protection</span>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">01</span>
 						<div>
 							<h4 class="mj-board__feature-title">EN ISO 14116 Type 5/6</h4>
 							<p class="mj-board__feature-text">Certified protection against hazardous aerosols and light liquid splashes in environments with airborne contaminants.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">02</span>
 						<div>
 							<h4 class="mj-board__feature-title">Airborne &amp; solid particulates</h4>
 							<p class="mj-board__feature-text">Durable tri-laminate fabric blocks fine dust and particles while resisting low-pressure splashes.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
-						<span class="mj-board__feature-num">03</span>
 						<div>
 							<h4 class="mj-board__feature-title">Lightweight and breathable</h4>
 							<p class="mj-board__feature-text">Designed for comfort during extended use in demanding environments.</p>
