@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Majestic &mdash; the materials</title>
+<title>Majestic: the materials</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <!--
   Drop-in block: paste the <style> and the <section class="mj-mat"> into your
@@ -18,7 +18,7 @@
 <body style="margin:0;background:#f7f7f7">
 <style>
 	.mj-mat {
-		/* — dark band (default) — */
+		/* dark band (default) */
 		--mj-bg: #14171a;            /* section background */
 		--mj-surface: #1c2025;       /* card background */
 		--mj-surface-hover: #232830;
@@ -34,7 +34,7 @@
 		font-family: "Nunito Sans", Arial, Helvetica, sans-serif; color: var(--mj-ink); background: var(--mj-bg); padding: 72px 0;
 	}
 
-	/* — light off-white variant: same block, swap the tokens — */
+	/* light off-white variant: same block, swap the tokens */
 	.mj-mat--light {
 		--mj-bg: #eef0f2;
 		--mj-surface: #fff;
@@ -52,6 +52,9 @@
 	.mj-mat *, .mj-mat *::before, .mj-mat *::after { box-sizing: border-box }
 	.mj-mat__inner { max-width: 95.625rem; margin: 0 auto; padding: 0 50px }
 
+	/* keeps the raised marks from stretching line height */
+	.mj-mat sup { font-size: .62em; line-height: 0; vertical-align: super }
+
 	.mj-mat__kicker {
 		display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mj-accent); margin: 0 0 10px;
 	}
@@ -59,7 +62,7 @@
 	.mj-mat__title { margin: 0 0 14px; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; letter-spacing: -.02em; font-weight: 700; color: var(--mj-ink) }
 	.mj-mat__intro { margin: 0 0 48px; max-width: 68ch; font-size: 17px; line-height: 1.6; color: var(--mj-ink-soft) }
 
-	/* — the three material cards — */
+	/* the three material cards */
 	.mj-mat__cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px }
 	.mj-mat__card {
 		display: flex; flex-direction: column; border: 1px solid var(--mj-line); border-top: 3px solid var(--mj-accent-rule);
@@ -86,7 +89,7 @@
 	}
 	.mj-mat__stat-value { display: block; font-size: 14px; font-weight: 700; letter-spacing: -.005em; color: var(--mj-ink) }
 
-	/* — comparison table — */
+	/* comparison table */
 	.mj-mat__compare { margin-top: 56px }
 	.mj-mat__compare-title { margin: 0 0 6px; font-size: 20px; font-weight: 700; letter-spacing: -.015em; color: var(--mj-ink) }
 	.mj-mat__compare-note { margin: 0 0 20px; font-size: 14px; line-height: 1.5; color: var(--mj-ink-mute) }
@@ -120,12 +123,12 @@
 		<span class="mj-mat__kicker">The materials</span>
 		<hr class="mj-mat__rule">
 		<h2 class="mj-mat__title">The protection is knit into the product</h2>
-		<p class="mj-mat__intro">Majestic engineers the materials before it builds the glove. Korplex&reg;, Armor Skin&trade; and Alycore&trade; are knit and cut directly into the products above &mdash; integrating some of the strongest fibers on earth to meet ANSI/ISEA standards while keeping workers comfortable and in control.</p>
+		<p class="mj-mat__intro">Majestic engineers the materials before it builds the glove. Korplex<sup>&reg;</sup>, Armor Skin<sup>&trade;</sup> and Alycore<sup>&trade;</sup> are knit and cut directly into the products above, integrating some of the strongest fibers on earth to meet ANSI/ISEA standards while keeping workers comfortable and in control.</p>
 
 		<div class="mj-mat__cards">
 			<article class="mj-mat__card">
 				<header class="mj-mat__card-head">
-					<h3 class="mj-mat__card-name">Korplex&reg;</h3>
+					<h3 class="mj-mat__card-name">Korplex<sup>&reg;</sup></h3>
 				</header>
 				<p class="mj-mat__card-lede">An engineered yarn created by blending some of the strongest fibers available. Knit into hand and arm protection, it keeps tactility, flexibility and a comfortable stretch.</p>
 				<ul class="mj-mat__points">
@@ -135,7 +138,7 @@
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Protection in the knit</h4>
-						<p class="mj-mat__point-text">Integrated directly into the knit, so durability and protection are structural &mdash; not a coating.</p>
+						<p class="mj-mat__point-text">Integrated directly into the knit, so durability and protection are structural, not a coating.</p>
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Light and agile</h4>
@@ -153,13 +156,13 @@
 					</div>
 					<div class="mj-mat__stat">
 						<span class="mj-mat__stat-label">Found in</span>
-						<span class="mj-mat__stat-value">Cut-Less&reg;</span>
+						<span class="mj-mat__stat-value">Cut-Less<sup>&reg;</sup></span>
 					</div>
 				</footer>
 			</article>
 			<article class="mj-mat__card">
 				<header class="mj-mat__card-head">
-					<h3 class="mj-mat__card-name">Armor Skin&trade;</h3>
+					<h3 class="mj-mat__card-name">Armor Skin<sup>&trade;</sup></h3>
 				</header>
 				<p class="mj-mat__card-lede">Superior wear and abrasion resistance that outlasts traditional leather, in a lighter, more flexible alternative that does not sacrifice strength.</p>
 				<ul class="mj-mat__points">
@@ -169,7 +172,7 @@
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Built for long shifts</h4>
-						<p class="mj-mat__point-text">Engineered for an exceptional fit and feel &mdash; comfort and dexterity hour after hour.</p>
+						<p class="mj-mat__point-text">Engineered for an exceptional fit and feel, with comfort and dexterity hour after hour.</p>
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Takes insulation or TPR</h4>
@@ -187,13 +190,13 @@
 					</div>
 					<div class="mj-mat__stat">
 						<span class="mj-mat__stat-label">Found in</span>
-						<span class="mj-mat__stat-value">Knucklehead X10&reg;</span>
+						<span class="mj-mat__stat-value">Knucklehead X10<sup>&reg;</sup></span>
 					</div>
 				</footer>
 			</article>
 			<article class="mj-mat__card">
 				<header class="mj-mat__card-head">
-					<h3 class="mj-mat__card-name">Alycore&trade;</h3>
+					<h3 class="mj-mat__card-name">Alycore<sup>&trade;</sup></h3>
 				</header>
 				<p class="mj-mat__card-lede">A patented technology made from ultra-thin threads of iron and carbon, offering best-in-class resistance to cuts, punctures and hypodermic needles.</p>
 				<ul class="mj-mat__points">
@@ -203,7 +206,7 @@
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Tested beyond EN 388</h4>
-						<p class="mj-mat__point-text">ASTM F2878 forces a 25-gauge needle through the material at fixed speed &mdash; the sharps hazards EN 388 misses.</p>
+						<p class="mj-mat__point-text">ASTM F2878 forces a 25-gauge needle through the material at fixed speed, covering the sharps hazards EN 388 misses.</p>
 					</li>
 					<li class="mj-mat__point">
 						<h4 class="mj-mat__point-title">Lightweight and washable</h4>
@@ -243,21 +246,21 @@
 					</thead>
 					<tbody>
 					<tr>
-						<th scope="row">Korplex&reg;</th>
+						<th scope="row">Korplex<sup>&reg;</sup></th>
 						<td>Engineered yarn blending high-strength fibers, knit into the glove</td>
 						<td>Cut resistance</td>
 						<td class="mj-mat__table-std">ANSI/ISEA 105-2024</td>
-						<td>Cut-Less&reg;</td>
+						<td>Cut-Less<sup>&reg;</sup></td>
 					</tr>
 					<tr>
-						<th scope="row">Armor Skin&trade;</th>
+						<th scope="row">Armor Skin<sup>&trade;</sup></th>
 						<td>Synthetic leather that outlasts traditional leather at lighter weight</td>
 						<td>Abrasion, cut, puncture</td>
 						<td class="mj-mat__table-std">ANSI/ISEA 105-2024</td>
-						<td>Knucklehead X10&reg;, mechanics</td>
+						<td>Knucklehead X10<sup>&reg;</sup>, mechanics</td>
 					</tr>
 					<tr>
-						<th scope="row">Alycore&trade;</th>
+						<th scope="row">Alycore<sup>&trade;</sup></th>
 						<td>Patented ultra-thin iron and carbon threads</td>
 						<td>Needle and puncture</td>
 						<td class="mj-mat__table-std">ASTM F2878 &middot; ANSI/ISEA 105-2024</td>
