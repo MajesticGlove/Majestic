@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Majestic: start with the hazard</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body style="margin:0">
 <style>
@@ -19,39 +18,37 @@
 	/* keeps the raised marks from stretching line height */
 	.mj-board sup { font-size: .62em; line-height: 0; vertical-align: super }
 
-	.mj-board__kicker {
-		display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mj-accent); margin: 0 0 10px;
-	}
 	.mj-board__rule { height: 1px; border: 0; margin: 0 0 24px; background: var(--mj-line) }
 	.mj-board__title {
 		margin: 0 0 12px; font-size: clamp(28px, 3vw, 40px); line-height: 1.1; letter-spacing: -.02em; font-weight: 700;
 	}
 	.mj-board__intro { margin: 0 0 24px; max-width: 62ch; font-size: 16px; line-height: 1.55; color: rgba(10, 10, 10, .78) }
 
-	/* hazard chips */
-	.mj-board__hazards { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px }
-	.mj-board__hazard {
-		font: inherit; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 9px 14px; cursor: pointer;
-		background: #fff; color: var(--mj-ink); border: 1px solid var(--mj-line); border-radius: 4px;
-		transition: background .15s ease, color .15s ease, border-color .15s ease;
-	}
-	.mj-board__hazard:hover { border-color: rgba(10, 10, 10, .4) }
-	.mj-board__hazard.is-active { background: var(--mj-accent); border-color: var(--mj-accent); color: #fff }
-	.mj-board__hazard:focus-visible, .mj-board__tab:focus-visible { outline: 2px solid var(--mj-accent); outline-offset: 2px }
-
-	/* the 3 x 2 brand board */
+	/* the brand board. Lines are drawn per tab rather than by letting a grey
+	   container bleed through the gaps, so an odd brand count leaves a clean
+	   white cell instead of a grey hole at whatever column count is active.
+	   A 12-column base lets the seven brands sit 4 across the top (span 3) and
+	   3 across the bottom (span 4) with no leftover cell. The container draws
+	   only the top and left edge; each tab draws its own right and bottom, so
+	   the rectangle closes at exactly 1px with nothing clipping focus rings. */
 	.mj-board__tabs {
-		display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--mj-line);
-		border: 1px solid var(--mj-line); margin: 0 0 40px;
+		display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1px; background: #fff;
+		border-top: 1px solid var(--mj-line); border-left: 1px solid var(--mj-line); margin: 0 0 40px;
 	}
 	.mj-board__tab {
 		font: inherit; text-align: left; display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; cursor: pointer;
 		border: 0; background: #fff; color: var(--mj-ink); transition: background .15s ease, color .15s ease;
+		box-shadow: 1px 0 0 0 var(--mj-line), 0 1px 0 0 var(--mj-line);
 	}
+	/* top row: four tabs, quarter width each. bottom row: three, a third each.
+	   If an eighth brand lands, delete both rules and use repeat(4) above. */
+	.mj-board__tab { grid-column: span 3 }
+	.mj-board__tab:nth-child(n + 5) { grid-column: span 4 }
 	.mj-board__tab:hover { background: #f1f1f1 }
 	.mj-board__tab.is-active { background: var(--mj-panel-head); color: #fff }
 	.mj-board__tab-name { font-size: 20px; font-weight: 700; letter-spacing: -.02em; line-height: 1.1 }
 	.mj-board__tab-hazard { font-size: 12px; line-height: 1.35; opacity: .75 }
+
 
 	/* the detail panel */
 	.mj-board__panel { border: 1px solid var(--mj-line); background: #fff }
@@ -91,6 +88,36 @@
 	}
 	.mj-board__chip-text { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(10, 10, 10, .74) }
 
+	/* ------------------------------------------------------------------
+	   NEW: the styles band. Full-width row under the two-column body, used
+	   only on lines that actually have named styles under them (mechanics,
+	   impact). Keeps the birds a tier below the brand rather than beside it.
+	   ------------------------------------------------------------------ */
+	.mj-board__styles { border-top: 1px solid var(--mj-line) }
+	.mj-board__styles-label {
+		display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline;
+		padding: 14px 36px; border-bottom: 1px solid var(--mj-line);
+		font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(10, 10, 10, .6);
+	}
+	.mj-board__styles-note { font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; color: rgba(10, 10, 10, .5) }
+	.mj-board__styles-grid {
+		display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1px; background: var(--mj-line);
+	}
+	.mj-board__style { background: #fff; padding: 22px 24px; display: flex; flex-direction: column; gap: 8px }
+	.mj-board__style-name { margin: 0; font-size: 17px; line-height: 1.2; letter-spacing: -.01em; font-weight: 700 }
+	.mj-board__style-kind {
+		align-self: flex-start; padding: 3px 9px; border: 1px solid var(--mj-line); border-radius: 3px;
+		font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: rgba(10, 10, 10, .58);
+	}
+	/* the kind tag carries the real differentiator. For mechanics that is the
+	   palm: the bird name tracks the palm color, so the tag is tinted to match. */
+	.mj-board__style-kind--natural { border-color: rgba(150, 116, 74, .45); color: #7a5a34 }
+	.mj-board__style-kind--gold { border-color: rgba(176, 137, 20, .5); color: #8a6a12 }
+	.mj-board__style-kind--black { border-color: rgba(10, 10, 10, .45); color: #0a0a0a }
+	.mj-board__style-kind--insulated { border-color: rgba(31, 92, 171, .35); color: #1f5cab }
+	.mj-board__style-text { margin: 0; font-size: 14px; line-height: 1.55; color: rgba(10, 10, 10, .74) }
+
 	@media (max-width: 1540px) { .mj-board__inner { padding: 0 20px } }
 	@media (max-width: 1100px) {
 		.mj-board__body { grid-template-columns: 1fr }
@@ -100,13 +127,19 @@
 	@media (max-width: 780px) {
 		.mj-board { padding: 48px 0 }
 		.mj-board__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+		.mj-board__tab, .mj-board__tab:nth-child(n + 5) { grid-column: auto }
+		.mj-board__tab:last-child { grid-column: span 2 }
 		.mj-board__lede, .mj-board__feature, .mj-board__chips { padding-left: 20px; padding-right: 20px }
 		.mj-board__detail-label { padding-left: 20px; padding-right: 20px }
-		.mj-board__feature, .mj-board__chips { padding-left: 20px; padding-right: 20px }
+		.mj-board__styles-label { padding-left: 20px; padding-right: 20px }
+		.mj-board__style { padding-left: 20px; padding-right: 20px }
 		.mj-board__titlebar-name, .mj-board__titlebar-cell { padding: 10px 20px; flex: 1 0 100%; border-left: 0 }
 		.mj-board__titlebar-cell { border-top: 1px solid var(--mj-line) }
 	}
-	@media (max-width: 480px) { .mj-board__tabs { grid-template-columns: 1fr } }
+	@media (max-width: 480px) {
+		.mj-board__tabs { grid-template-columns: 1fr }
+		.mj-board__tab, .mj-board__tab:last-child { grid-column: auto }
+	}
 </style>
 
 <section class="mj-board" id="brands">
@@ -114,21 +147,16 @@
 
 		<hr class="mj-board__rule">
 		<h2 class="mj-board__title">Start with the hazard</h2>
-		<p class="mj-board__intro">Pick what the job throws at your crew and the board pulls the line built for it, or select a brand directly.</p>
-
-		<div class="mj-board__hazards" role="group" aria-label="Filter by hazard">
-			<button type="button" class="mj-board__hazard is-active" data-target="eagle">Rough handling</button>
-			<button type="button" class="mj-board__hazard" data-target="cutless">Cuts</button>
-			<button type="button" class="mj-board__hazard" data-target="superdex">Hand strain</button>
-			<button type="button" class="mj-board__hazard" data-target="x10">Impact</button>
-			<button type="button" class="mj-board__hazard" data-target="hivis">Visibility</button>
-			<button type="button" class="mj-board__hazard" data-target="resistex">Contamination</button>
-		</div>
+		<p class="mj-board__intro">Seven brands, each built for a different thing the job throws at your crew. Pick the hazard and the board pulls the line made for it.</p>
 
 		<div class="mj-board__tabs" role="tablist" aria-label="Majestic brands">
-			<button type="button" class="mj-board__tab is-active" role="tab" id="mj-tab-eagle" aria-selected="true" aria-controls="mj-panel-eagle" data-target="eagle">
-				<span class="mj-board__tab-name">Bald Eagle</span>
-				<span class="mj-board__tab-hazard">Rough handling, cold</span>
+			<button type="button" class="mj-board__tab is-active" role="tab" id="mj-tab-mechanics" aria-selected="true" aria-controls="mj-panel-mechanics" data-target="mechanics">
+				<span class="mj-board__tab-name">Majestic Mechanics</span>
+				<span class="mj-board__tab-hazard">Rough handling, abrasion</span>
+			</button>
+			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-penguin" aria-selected="false" aria-controls="mj-panel-penguin" data-target="penguin">
+				<span class="mj-board__tab-name">Penguin</span>
+				<span class="mj-board__tab-hazard">Cold, wet conditions</span>
 			</button>
 			<button type="button" class="mj-board__tab" role="tab" id="mj-tab-cutless" aria-selected="false" aria-controls="mj-panel-cutless" data-target="cutless">
 				<span class="mj-board__tab-name">Cut-Less<sup>&reg;</sup></span>
@@ -152,16 +180,17 @@
 			</button>
 		</div>
 
-		<div class="mj-board__panel" id="mj-panel-eagle" role="tabpanel" aria-labelledby="mj-tab-eagle">
+		<!-- ============ MECHANICS (the bird family lives here) ============ -->
+		<div class="mj-board__panel" id="mj-panel-mechanics" role="tabpanel" aria-labelledby="mj-tab-mechanics">
 			<header class="mj-board__titlebar">
-				<span class="mj-board__titlebar-name">Eagle Mechanics Gloves</span>
-				<span class="mj-board__titlebar-cell">Bald Eagle</span>
-				<span class="mj-board__titlebar-cell">A-grade leather</span>
+				<span class="mj-board__titlebar-name">Mechanics Gloves</span>
+				<span class="mj-board__titlebar-cell">Eagle, Hawk</span>
+				<span class="mj-board__titlebar-cell">Palm options by style</span>
 			</header>
 			<div class="mj-board__body">
 				<div class="mj-board__lede">
 					<h3 class="mj-board__lede-title">Made for every industry</h3>
-					<p class="mj-board__lede-text">Majestic's mechanics-style industrial work gloves combine traditional craftsmanship with the latest material advances, reducing hand injuries in the roughest conditions while keeping comfort and dexterity.</p>
+					<p class="mj-board__lede-text">Majestic's mechanics-style industrial work gloves combine traditional craftsmanship with the latest material advances, reducing hand injuries in the roughest conditions while keeping comfort and dexterity. One glove does not fit every job, so the line runs from A-grade leather palms to Armor Skin<sup>&trade;</sup> synthetic.</p>
 					<figure class="mj-board__figure">
 						<img src="https://www.majesticglove.com/userfiles/white%20eagle%20mechanics%20glove%20image%20(800x800).jpg" alt="Majestic Eagle mechanics glove" loading="lazy" width="800" height="800">
 					</figure>
@@ -188,21 +217,134 @@
 					</div>
 					<div class="mj-board__chips">
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Bald Eagle</span>
-							<p class="mj-board__chip-text">Durability and protection with A-grade leather palms and a breathable stretch knit back.</p>
+							<span class="mj-board__chip-tag">Armor Skin<sup>&trade;</sup></span>
+							<p class="mj-board__chip-text">Synthetic leather engineered to outperform traditional leather in wear and abrasion resistance while staying light and flexible.</p>
 						</div>
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Premium Leather</span>
-							<p class="mj-board__chip-text">Exceptional durability and flexibility for reliable hand protection.</p>
+							<span class="mj-board__chip-tag">Thinsulate<sup>&trade;</sup></span>
+							<p class="mj-board__chip-text">A 40g liner on select styles delivers warmth without bulk in cold conditions.</p>
 						</div>
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Winter Hawk</span>
-							<p class="mj-board__chip-text">Durable synthetic leather with flexible winter lining to keep hands warm in cold weather.</p>
+							<span class="mj-board__chip-tag">Heatlok<sup>&trade;</sup></span>
+							<p class="mj-board__chip-text">High-performance insulation on select Armor Skin<sup>&trade;</sup> gloves for added warmth.</p>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- The Eagle / Hawk styles. The bird name tracks the palm: Golden Eagle
+			     is gold leather, Black Hawk is a black palm that hides dirt. Winter
+			     Hawk is the exception, named for its lining. -->
+			<div class="mj-board__styles">
+				<span class="mj-board__styles-label">
+					Styles in this line
+					<span class="mj-board__styles-note">Same glove architecture, different palm</span>
+				</span>
+				<div class="mj-board__styles-grid">
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Bald Eagle</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--natural">Natural leather palm</span>
+						<p class="mj-board__style-text">Durability and protection with A-grade leather palms and a breathable stretch knit back.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Golden Eagle</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--gold">Gold leather palm</span>
+						<p class="mj-board__style-text">The same mechanics build on a yellow-gold leather palm.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Black Hawk</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--black">Black palm</span>
+						<p class="mj-board__style-text">A black palm for dirty work, so grease and grime do not show across a shift.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Winter Hawk</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--insulated">Winter lined</span>
+						<p class="mj-board__style-text">Durable synthetic leather with a flexible winter lining to keep hands warm and protected in cold weather.</p>
+					</div>
+					<!-- add further Eagle / Hawk styles here; the grid reflows on its own -->
+				</div>
+			</div>
 		</div>
+
+		<!-- ============ PENGUIN (cold weather) ============ -->
+		<div class="mj-board__panel" id="mj-panel-penguin" role="tabpanel" aria-labelledby="mj-tab-penguin" hidden>
+			<header class="mj-board__titlebar">
+				<span class="mj-board__titlebar-name">Penguin Winter Lined Gloves</span>
+				<span class="mj-board__titlebar-cell">Penguin</span>
+				<span class="mj-board__titlebar-cell">EN 511 and A2 on select styles</span>
+			</header>
+			<div class="mj-board__body">
+				<div class="mj-board__lede">
+					<h3 class="mj-board__lede-title">Built for winter and freezer work</h3>
+					<p class="mj-board__lede-text">Cold is its own hazard. Hands stiffen and lose grip long before the rest of the body complains, and a glove that solves warmth by adding bulk trades one problem for another. Penguin runs from a light three-season knit up to a waterproof insulated build, all on the same pre-curved fit.</p>
+					<figure class="mj-board__figure">
+						<img src="https://www.majesticglove.com/userfiles/polar%20penguin%20glove%20(800x800).jpg" alt="Majestic Polar Penguin winter lined glove 3396" loading="lazy" width="800" height="800">
+					</figure>
+				</div>
+				<div class="mj-board__detail">
+					<span class="mj-board__detail-label">Key features of Penguin gloves</span>
+					<div class="mj-board__feature">
+						<div>
+							<h4 class="mj-board__feature-title">Grip that survives wet and cold</h4>
+							<p class="mj-board__feature-text">Every style is latex coated at the palm, from crinkled and foam latex for grip and wear resistance up to a closed-cell dip with a sandy latex overlay that repels water on the wettest work.</p>
+						</div>
+					</div>
+					<div class="mj-board__feature">
+						<div>
+							<h4 class="mj-board__feature-title">Insulation in the liner, not in bulk</h4>
+							<p class="mj-board__feature-text">Warmth comes from the knit itself: a heavyweight napped terry with an acrylic liner, or a brushed 10-gauge insulated acrylic under a 13-gauge nylon shell. Pre-curved fingers keep the hand relaxed through a full shift.</p>
+						</div>
+					</div>
+					<div class="mj-board__feature">
+						<div>
+							<h4 class="mj-board__feature-title">Seen in low light</h4>
+							<p class="mj-board__feature-text">Hi-vis orange and yellow knits run through the line, and the 3396 hi-vis colors are built from ANSI 107 approved materials for visibility on short winter days.</p>
+						</div>
+					</div>
+					<div class="mj-board__chips">
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">Super Grip</span>
+							<p class="mj-board__chip-text">Grip and wear resistance from black foam latex-coated palms.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">EN 511</span>
+							<p class="mj-board__chip-text">Convective and contact cold resistance, plus water permeability, rated on the Emperor Penguin.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">ANSI/ISEA 105-2024</span>
+							<p class="mj-board__chip-text">A2 cut resistance on select styles, with level 3 puncture on the Emperor Penguin.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Summer / Polar / Emperor, ordered lightest to warmest -->
+			<div class="mj-board__styles">
+				<span class="mj-board__styles-label">
+					Styles in this line
+					<span class="mj-board__styles-note">Lightest to warmest</span>
+				</span>
+				<div class="mj-board__styles-grid">
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Summer Penguin</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--insulated">3397, cool conditions</span>
+						<p class="mj-board__style-text">A hi-vis knit liner with a black crinkled latex palm for grip. The three-season option, for cool work rather than freezing.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Polar Penguin</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--insulated">3396, winter lined</span>
+						<p class="mj-board__style-text">Heavyweight napped terry knit over an acrylic liner, with a black foam latex palm. Hi-vis colors use ANSI 107 approved materials, and it meets A2 cut resistance.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Emperor Penguin</h4>
+						<span class="mj-board__style-kind mj-board__style-kind--insulated">3398, waterproof</span>
+						<p class="mj-board__style-text">A 13-gauge nylon shell over brushed 10-gauge insulated acrylic, sealed with a closed-cell latex dip and a sandy latex palm. EN 511 rated for cold, with A2 cut and level 3 puncture.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ============ CUT-LESS ============ -->
 		<div class="mj-board__panel" id="mj-panel-cutless" role="tabpanel" aria-labelledby="mj-tab-cutless" hidden>
 			<header class="mj-board__titlebar">
 				<span class="mj-board__titlebar-name">Cut-Less<sup>&reg;</sup> Gloves &amp; Sleeves</span>
@@ -239,21 +381,23 @@
 					</div>
 					<div class="mj-board__chips">
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Cut-Less<sup>&reg;</sup></span>
-							<p class="mj-board__chip-text">Gloves and sleeves crafted using advanced materials for top-level performance.</p>
-						</div>
-						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">Korplex<sup>&reg;</sup></span>
 							<p class="mj-board__chip-text">Blends strong fibers for ultimate cut resistance while keeping tactility, flexibility and comfort.</p>
 						</div>
 						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">Dyneema<sup>&reg;</sup></span>
-							<p class="mj-board__chip-text">Diamond Technology fibers 15 times stronger than steel, with comfort and durability.</p>
+							<p class="mj-board__chip-text">Diamond Technology fibers 15 times stronger than steel, with hand-cooling comfort and durability.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">Palm coatings</span>
+							<p class="mj-board__chip-text">Touchscreen-friendly polyurethane and foam nitrile palms for grip without sacrificing flexibility.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- ============ SUPERDEX ============ -->
 		<div class="mj-board__panel" id="mj-panel-superdex" role="tabpanel" aria-labelledby="mj-tab-superdex" hidden>
 			<header class="mj-board__titlebar">
 				<span class="mj-board__titlebar-name">SuperDex All-Purpose Gloves</span>
@@ -294,21 +438,23 @@
 							<p class="mj-board__chip-text">Grip and wear resistance from black foam latex-coated palms.</p>
 						</div>
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">SuperDex</span>
-							<p class="mj-board__chip-text">Advanced knit technology and ergonomic design that reduce hand strain and fatigue.</p>
-						</div>
-						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">Sanitized<sup>&reg;</sup> by Actifresh</span>
 							<p class="mj-board__chip-text">Zinc pyrithione prevents bacterial growth, keeping gloves fresh, clean and odor-free.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">High gauge knit</span>
+							<p class="mj-board__chip-text">A finer, tighter knit for thinner gloves with better tactile sensitivity.</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<!-- ============ IMPACT (X10 + Concussion) ============ -->
 		<div class="mj-board__panel" id="mj-panel-x10" role="tabpanel" aria-labelledby="mj-tab-x10" hidden>
 			<header class="mj-board__titlebar">
 				<span class="mj-board__titlebar-name">Knucklehead X10<sup>&reg;</sup> Impact Gloves</span>
-				<span class="mj-board__titlebar-cell">X10<sup>&reg;</sup></span>
+				<span class="mj-board__titlebar-cell">X10<sup>&reg;</sup>, Concussion</span>
 				<span class="mj-board__titlebar-cell">ANSI/ISEA 138</span>
 			</header>
 			<div class="mj-board__body">
@@ -330,7 +476,7 @@
 					<div class="mj-board__feature">
 						<div>
 							<h4 class="mj-board__feature-title">Enhanced grip</h4>
-							<p class="mj-board__feature-text">Armor Skin<sup>&reg;</sup> synthetic leather palms with PVC anti-slip patches improve traction on tools and materials, even in wet or oily conditions.</p>
+							<p class="mj-board__feature-text">Armor Skin<sup>&trade;</sup> synthetic leather palms with PVC anti-slip patches improve traction on tools and materials, even in wet or oily conditions.</p>
 						</div>
 					</div>
 					<div class="mj-board__feature">
@@ -341,12 +487,12 @@
 					</div>
 					<div class="mj-board__chips">
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Knucklehead X10<sup>&reg;</sup></span>
-							<p class="mj-board__chip-text">High-performance hand protection with impact resistance, durability and comfort.</p>
-						</div>
-						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">Armor Skin<sup>&trade;</sup></span>
 							<p class="mj-board__chip-text">Durable synthetic leather protection with flexibility and enhanced grip.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">D3O<sup>&reg;</sup></span>
+							<p class="mj-board__chip-text">Free-flowing molecules lock together on impact, giving 50% more protection than traditional TPR.</p>
 						</div>
 						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">ANSI/ISEA 138</span>
@@ -355,7 +501,28 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="mj-board__styles">
+				<span class="mj-board__styles-label">
+					Styles in this line
+					<span class="mj-board__styles-note">Two levels of impact protection</span>
+				</span>
+				<div class="mj-board__styles-grid">
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Knucklehead X10<sup>&reg;</sup></h4>
+						<span class="mj-board__style-kind">TPR</span>
+						<p class="mj-board__style-text">Full-finger and back-of-hand thermoplastic rubber on an Armor Skin<sup>&trade;</sup> palm, to ANSI/ISEA 138.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Concussion</h4>
+						<span class="mj-board__style-kind">D3O<sup>&reg;</sup></span>
+						<p class="mj-board__style-text">A D3O<sup>&reg;</sup> exoskeleton over hand, fingers and knuckles for 50% more impact protection than traditional TPR, on a Korplex<sup>&reg;</sup> cut-resistant liner.</p>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<!-- ============ HI-VIS ============ -->
 		<div class="mj-board__panel" id="mj-panel-hivis" role="tabpanel" aria-labelledby="mj-tab-hivis" hidden>
 			<header class="mj-board__titlebar">
 				<span class="mj-board__titlebar-name">Majestic High Visibility Apparel</span>
@@ -396,17 +563,42 @@
 							<p class="mj-board__chip-text">Solid, chainsaw, segmented, contrast and glow-in-the-dark striping.</p>
 						</div>
 						<div class="mj-board__chip">
-							<span class="mj-board__chip-tag">Majestic Hi-Vis</span>
-							<p class="mj-board__chip-text">Innovated and tested for safety, durability and performance.</p>
-						</div>
-						<div class="mj-board__chip">
 							<span class="mj-board__chip-tag">ANSI/ISEA 107-2020</span>
 							<p class="mj-board__chip-text">The visibility standard that gives workers confidence they are seen.</p>
+						</div>
+						<div class="mj-board__chip">
+							<span class="mj-board__chip-tag">Class 2 and Class 3</span>
+							<p class="mj-board__chip-text">Coverage levels matched to traffic speed and how exposed the crew is.</p>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			<!-- Hi-vis has no named sub-brands, so this band lists garment types.
+			     It is the one styles band that is not brand-level. -->
+			<div class="mj-board__styles">
+				<span class="mj-board__styles-label">
+					Styles in this line
+					<span class="mj-board__styles-note">Garment types, all to the same visibility standard</span>
+				</span>
+				<div class="mj-board__styles-grid">
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Vests</h4>
+						<p class="mj-board__style-text">The everyday layer, worn over whatever the crew already has on.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Shirts</h4>
+						<p class="mj-board__style-text">Moisture-wicking t-shirts and long sleeves for warm-weather shifts.</p>
+					</div>
+					<div class="mj-board__style">
+						<h4 class="mj-board__style-name">Jackets &amp; coats</h4>
+						<p class="mj-board__style-text">Waterproof and insulated outerwear for rain, wind and cold.</p>
+					</div>
+				</div>
+			</div>
 		</div>
+
+		<!-- ============ RESISTEX ============ -->
 		<div class="mj-board__panel" id="mj-panel-resistex" role="tabpanel" aria-labelledby="mj-tab-resistex" hidden>
 			<header class="mj-board__titlebar">
 				<span class="mj-board__titlebar-name">ResisTEX Disposable Clothing</span>
@@ -418,7 +610,7 @@
 					<h3 class="mj-board__lede-title">Reliable protection without compromise</h3>
 					<p class="mj-board__lede-text">Essential protection where cleanliness and safety are critical, including healthcare, pharmaceuticals and hazardous material handling. ResisTEX coveralls form a barrier against dust, liquids and chemicals.</p>
 					<figure class="mj-board__figure">
-						<img src="https://www.majesticglove.com/userfiles/resistex%20feature%20(800%20x%20700%20px).jpg" alt="Majestic ResisTEX disposable coverall" loading="lazy" width="800" height="800">
+						<img src="https://www.majesticglove.com/userfiles/resistex%20feature%20(800%20x%20700%20px).jpg" alt="Majestic ResisTEX disposable coverall" loading="lazy" width="800" height="700">
 					</figure>
 				</div>
 				<div class="mj-board__detail">
@@ -474,12 +666,22 @@
 				t.classList.toggle('is-active', on);
 				t.setAttribute('aria-selected', on ? 'true' : 'false');
 			});
-			board.querySelectorAll('.mj-board__hazard').forEach(function (h) {
-				h.classList.toggle('is-active', h.getAttribute('data-target') === id);
-			});
 			board.querySelectorAll('.mj-board__panel').forEach(function (p) {
 				p.hidden = p.id !== 'mj-panel-' + id;
 			});
+		});
+		/* arrow keys move across the brand board, as a tablist is expected to */
+		board.addEventListener('keydown', function (e) {
+			var keys = { ArrowLeft: -1, ArrowRight: 1, Home: 'first', End: 'last' };
+			if (!(e.key in keys) || !e.target.classList.contains('mj-board__tab')) return;
+			var tabs = Array.prototype.slice.call(board.querySelectorAll('.mj-board__tab'));
+			var i = tabs.indexOf(e.target), step = keys[e.key], next;
+			if (step === 'first') next = tabs[0];
+			else if (step === 'last') next = tabs[tabs.length - 1];
+			else next = tabs[(i + step + tabs.length) % tabs.length];
+			e.preventDefault();
+			next.focus();
+			next.click();
 		});
 	})();
 </script>
