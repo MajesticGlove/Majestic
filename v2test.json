@@ -16075,7 +16075,10 @@
       "coating": "Polyurethane",
       "gauge": 13,
       "linerMaterial": "HPPE",
-      "overrideBestMatch": null,
+      "features": [
+        "ANSI/ISEA 138-2019 Impact 2"
+      ],
+      "overrideBestMatch": 35-5665,
       "overrideSummary": null,
       "overrideDescription": null
     },
@@ -17832,9 +17835,12 @@
       "coating": "Nitrile",
       "gauge": 21,
       "linerMaterial": "Nitrile, Foam, HPPE",
-      "overrideBestMatch": "35-7465",
-      "overrideSummary": "Majestic’s 35-7465 offers better abrasion durability with added features like a Sanitized® by Actifresh treatment to help workers stay comfortable and protected.",
-      "overrideDescription": "Compared to the 3016, Majestic’s 35-7465 delivers equal cut level (A4), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."
+      "features": [
+        "ANSI/ISEA 138-2019 Impact 2"
+      ],
+      "overrideBestMatch": "35-5665",
+      "overrideSummary": null,
+      "overrideDescription": null,
     },
     "3012": {
       "brand": "Hexarmor",
