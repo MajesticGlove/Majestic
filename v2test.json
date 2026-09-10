@@ -16078,7 +16078,7 @@
       "features": [
         "ANSI/ISEA 138-2019 Impact 2"
       ],
-      "overrideBestMatch": 35-5665,
+      "overrideBestMatch": "35-5665",
       "overrideSummary": null,
       "overrideDescription": null
     },
@@ -17840,7 +17840,7 @@
       ],
       "overrideBestMatch": "35-5665",
       "overrideSummary": null,
-      "overrideDescription": null,
+      "overrideDescription": null
     },
     "3012": {
       "brand": "Hexarmor",
