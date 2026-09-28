@@ -8202,9 +8202,7 @@
       "features": [
         "Reinforced Thumb Crotch"
       ],
-      "overrideBestMatch": "35-7467",
-      "overrideSummary": "Majestic’s 35-7467 offers a similar feel to the 34-8443, but with a foam nitrile palm for better breathability and grip in oily or wet conditions.",
-      "overrideDescription": "Compared to the 34-8443, Majestic’s 35-7467 delivers higher cut protection (A4 vs A2), better abrasion durability, stronger puncture resistance. In addition, the foam nitrile palm of this glove is breathable and offers better grip in oily and wet conditions."
+      "overrideBestMatch": "35-7467"
     },
     "GL602C3": {
       "brand": "Pyramex",
@@ -12099,9 +12097,7 @@
       "coating": "Uncoated",
       "gauge": "10",
       "linerMaterial": "Kevlar",
-      "overrideBestMatch": "3145",
-      "overrideSummary": "Majestic’s 3145 offers the same level of cut resistance with a higher-gauge knit, so workers can stay comfortable while protected from cut risks.",
-      "overrideDescription": "Compared to the 70-118, Majestic’s 3145 delivers equal cut level (A3) with a higher gauge knit for an overall better feel."
+      "overrideBestMatch": "3145"
     },
     "11-928": {
       "brand": "Ansell",
@@ -15418,9 +15414,7 @@
       },
       "coating": "Uncoated",
       "linerMaterial": "DuPont Kevlar fiber",
-      "overrideBestMatch": "3145-TH",
-      "overrideSummary": "Majestic’s 3145 offers the same level of cut resistance with a 13-gauge knit, so workers can stay comfortable while protected from cut risks.",
-      "overrideDescription": "Compared to the 70-118, Majestic’s 3145 delivers equal cut level (A3) with a 13-gauge knit for a comfortable feel."
+      "overrideBestMatch": "3145-TH"
     },
     "CR492": {
       "brand": "Global Glove",
@@ -16986,9 +16980,7 @@
         "puncture": 5
       },
       "linerMaterial": "Cowhide Leather",
-      "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideBestMatch": "1510"
     },
     "6195": {
       "brand": "Hexarmor",
@@ -24694,9 +24686,7 @@
       "features": [
         "Touchscreen Compatible"
       ],
-      "overrideBestMatch": "35-7676",
-      "overrideSummary": "Majestic’s 35-7676 offers similar protection with a  sandy nitrile palm to improve worker grip.",
-      "overrideDescription": "Compared to the S18TXNT, Majestic’s 35-7676 delivers equal cut level (A9) but with a sandy nitrile palm that can improve worker grip."
+      "overrideBestMatch": "35-7676"
     },
     "378GOBTX": {
       "brand": "Superior Glove",
@@ -25062,9 +25052,7 @@
       "coating": "Leather",
       "linerMaterial": "Cowgrain leather",
       "country": "India",
-      "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Superior Glove, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Superior Glove, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideBestMatch": "1510"
     },
     "F225FLNV": {
       "brand": "Superior Glove",
@@ -25666,8 +25654,6 @@
         "Reinforced Thumb Crotch"
       ],
       "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications.",
       "ratings": {}
     },
     "DPG217": {
@@ -25719,9 +25705,7 @@
       "gauge": null,
       "linerMaterial": "Leather",
       "country": "USA",
-      "overrideBestMatch": "2510P",
-      "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s glove is constructed with similar materials and offers comparable protection."
+      "overrideBestMatch": "2510P"
     },
     "DPG740": {
       "brand": "Radians",
@@ -25870,8 +25854,6 @@
         "Winter Lined"
       ],
       "overrideBestMatch": "1511T",
-      "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s winter-lined leather glove is constructed with similar materials and offers comparable protection.",
       "ratings": {}
     },
     "DPG74": {
@@ -26257,9 +26239,7 @@
       "coating": null,
       "gauge": null,
       "linerMaterial": "Cowhide",
-      "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Cordova, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Cordova, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideBestMatch": "1510"
     },
     "GL4003K": {
       "brand": "Pyramex",
@@ -27687,9 +27667,7 @@
       "brand": "Cordova",
       "part": "8235A",
       "linerMaterial": "Cowhide Leather",
-      "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Ironwear, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Ironwear, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideBestMatch": "1510"
     },
     "8215": {
       "brand": "Cordova",
@@ -27703,9 +27681,7 @@
       "brand": "Cordova",
       "part": "8240",
       "linerMaterial": "Cowhide Leather",
-      "overrideBestMatch": "1510",
-      "overrideSummary": "Compared to Ironwear, Majestic’s  glove is made from similar materials and construction, providing comparable protection to keep workers safe.",
-      "overrideDescription": "Compared to Ironwear, Majestic’s leather glove is made with Grade A leather, offering similar protection and safety for comparable applications."
+      "overrideBestMatch": "1510"
     },
     "8255WYH": {
       "brand": "Cordova",
