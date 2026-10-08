@@ -2,7 +2,7 @@
  "_README": {
   "purpose": "Competitor-to-Majestic high-visibility apparel cross-reference. A rep enters a competitor part number; the tool returns the three closest Majestic garments as Good / Better / Best.",
   "structure": "Two tables, matching the glove dataset. 'majestic' is the pool of Majestic hi-vis products. 'competitors' is keyed by part number and carries its specs plus override fields.",
-  "hard_gate": "Compare Group is a HARD filter, not a score. A Type R Class 2 upper garment is only ever matched against another Type R Class 2 upper garment \u2014 ANSI 107 classes are not interchangeable. Garment Type is the second gate (a vest is not a t-shirt).",
+  "hard_gate": "Compare Group is a HARD filter, not a score. A Type R Class 2 upper garment is only ever matched against another Type R Class 2 upper garment — ANSI 107 classes are not interchangeable. Garment Type is the second gate (a vest is not a t-shirt).",
   "matching_logic": "Match #1 comes from 'overrideBestMatch' (human-verified). Matches #2 and #3 are scored at runtime against the Majestic pool within the gate, excluding #1.",
   "overrides": "Curated #1 pins are NOT stored in this file. This file is regenerated from the source spreadsheets whenever a brand is added, so anything kept here is destroyed on the next rebuild. They live in comparison-overrides.json, which no script writes.",
   "altParts": "Size and colour SKUs that resolve to the same style row, so a rep can type any of them.",
@@ -10,7 +10,8 @@
   "counts": {
    "majestic": 88,
    "competitors": 1862
-  }
+  },
+  "images": "Majestic product image, taken from the PIM's Product Images export: the lowest sort order among rows that carry a Small Image path. Rows of type 360 carry no still and are skipped."
  },
  "majestic": {
   "75-3239": {
@@ -32,7 +33,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3239_Front_small.jpg"
   },
   "75-3213": {
    "garmentType": "Vest",
@@ -52,7 +54,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with Black Bottom, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3213_Front_small.jpg"
   },
   "75-3209": {
    "garmentType": "Vest",
@@ -73,7 +76,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3209_Updated_1200_small.jpg"
   },
   "75-5303": {
    "garmentType": "Shirt",
@@ -92,7 +96,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Short Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/30/75-5303_Front_small.jpg"
   },
   "75-5003": {
    "garmentType": "Shirt",
@@ -106,7 +111,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "Site Safety Short Sleeve Shirt",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/00/75-5003_Front_small.jpg"
   },
   "75-5325": {
    "garmentType": "Sweatshirt",
@@ -127,7 +133,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Hooded Sweatshirt with Zipper Closure, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/32/75-5325_Front_small.jpg"
   },
   "75-3225": {
    "garmentType": "Vest",
@@ -147,7 +154,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Vest with Two-Tone DOT Striping and D-Ring Pass Thru, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3225_Front_small.jpg"
   },
   "75-3207": {
    "garmentType": "Vest",
@@ -168,7 +176,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Heavy Duty Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3207_Front_small.jpg"
   },
   "75-5331": {
    "garmentType": "Sweatshirt",
@@ -188,7 +197,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "High Visibility Hooded Sweatshirt with non-PFAS Fabric Protector, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/33/75-5331_Front_small.jpg"
   },
   "75-3217": {
    "garmentType": "Vest",
@@ -209,7 +219,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3217_Front_1200_small.jpg"
   },
   "75-1351": {
    "garmentType": "Jacket",
@@ -230,7 +241,8 @@
    "country": "Bangladesh",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Jacket, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/35/75-1351_Front_small.jpg"
   },
   "75-7351": {
    "garmentType": "Pants",
@@ -248,7 +260,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Waist Pants with DOT Striping, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-7/35/75-7351_1200_small.jpg"
   },
   "75-2353": {
    "garmentType": "Bib",
@@ -264,7 +277,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Bib Overall, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2353_Updated_1200_small.jpg"
   },
   "75-7303": {
    "garmentType": "Coat",
@@ -284,7 +298,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Coat with DOT Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-7/30/75-7303_1200_small.jpg"
   },
   "75-5355": {
    "garmentType": "Shirt",
@@ -303,7 +318,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Long Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5355_Front_small.jpg"
   },
   "71-2000": {
    "garmentType": "Set",
@@ -319,7 +335,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "2-Piece Hooded Waterproof Rain Suit",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/71/-2/00/71-2000_1_1200_small.jpg"
   },
   "75-5327": {
    "garmentType": "Sweatshirt",
@@ -339,7 +356,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Hooded Pullover Sweatshirt, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/32/75-5327_Front_small.jpg"
   },
   "75-2351": {
    "garmentType": "Pants",
@@ -356,7 +374,8 @@
    "country": "Bangladesh",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Pants, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2351_Updated_1200_small.jpg"
   },
   "75-2391 / 75-2392": {
    "garmentType": "Gaiter",
@@ -372,7 +391,8 @@
    "country": "Bangladesh",
    "packed": "50PR",
    "name": "High Visibility Gaiters, Yellow",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/39/75-2391_1200_small.jpg"
   },
   "75-5215": {
    "garmentType": "Shirt",
@@ -392,7 +412,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5215_Front_small.jpg"
   },
   "75-3237": {
    "garmentType": "Vest",
@@ -412,7 +433,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Heavy Duty Surveyor's Vest with Contrasting Stripes, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3237_Front_small.jpg"
   },
   "75-3235": {
    "garmentType": "Vest",
@@ -432,7 +454,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Heavy Duty Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3235_Updated_1200_small.jpg"
   },
   "75-3325": {
    "garmentType": "Vest",
@@ -453,7 +476,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Vest with Two-Tone DOT Striping and D-Ring Pass Thru, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/32/75-3325_Front_small.jpg"
   },
   "75-5217": {
    "garmentType": "Shirt",
@@ -473,7 +497,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Snag Resistant Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5217_Front_small.jpg"
   },
   "75-3231": {
    "garmentType": "Vest",
@@ -494,7 +519,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3231_Front_1200_small.jpg"
   },
   "75-7353": {
    "garmentType": "Bib",
@@ -512,7 +538,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Bib Overalls with DOT Striping, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-7/35/75-7353_1200_small.jpg"
   },
   "75-3313": {
    "garmentType": "Vest",
@@ -532,7 +559,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/31/75-3313_Front_1200_small.jpg"
   },
   "75-3301": {
    "garmentType": "Vest",
@@ -553,7 +581,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/30/75-3301_Front_small.jpg"
   },
   "75-7301": {
    "garmentType": "Jacket",
@@ -573,7 +602,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Jacket with DOT Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-7/30/75-7301_Front_small.jpg"
   },
   "75-1305": {
    "garmentType": "Jacket",
@@ -594,7 +624,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Rain Jacket with Nylon Mesh Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/30/75-1305_1200_small.jpg"
   },
   "75-3283": {
    "garmentType": "Vest",
@@ -614,7 +645,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "Self Extinguishing High Visibility Safety Vest, ANSI 2",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/28/75-3283_Front_small.jpg"
   },
   "75-1303": {
    "garmentType": "Parka",
@@ -635,7 +667,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Parka with Quilted Lining, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/30/75-1303_1200_small.jpg"
   },
   "75-5257": {
    "garmentType": "Shirt",
@@ -654,7 +687,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Long Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/25/75-5257_Update_1200_small.jpg"
   },
   "75-3221": {
    "garmentType": "Vest",
@@ -675,7 +709,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3221_Front_small.jpg"
   },
   "75-3223W": {
    "garmentType": "Vest",
@@ -696,7 +731,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3223W_Front_1200_small.jpg"
   },
   "75-2357": {
    "garmentType": "Bib",
@@ -714,7 +750,8 @@
    "country": "China",
    "packed": "5EA",
    "name": "High Visibility Waterproof Bib Overall with Quilted Insulation, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2357_1200_small.jpg"
   },
   "75-3201": {
    "garmentType": "Vest",
@@ -735,7 +772,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3201_Front_small.jpg"
   },
   "75-2501": {
    "garmentType": "Pants",
@@ -753,7 +791,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Pants with DOT Striping, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/50/75-2501_Updated_1200_small.jpg"
   },
   "75-3305": {
    "garmentType": "Vest",
@@ -774,7 +813,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Breakaway Vest with DOT Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/30/75-3305_Front_small.jpg"
   },
   "75-1307": {
    "garmentType": "Parka",
@@ -794,7 +834,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "High Visibility Waterproof Parka with Liner Options, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/30/75-1307_1200_small.jpg"
   },
   "75-1311": {
    "garmentType": "Jacket",
@@ -815,7 +856,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Jacket with Removable Fleece Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1311_Front_small.jpg"
   },
   "75-1313": {
    "garmentType": "Jacket",
@@ -836,7 +878,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Jacket with Quilted Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1313_Front_small.jpg"
   },
   "75-3243": {
    "garmentType": "Vest",
@@ -857,7 +900,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3243_Front_small.jpg"
   },
   "75-3223": {
    "garmentType": "Vest",
@@ -878,7 +922,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3223_Front_small.jpg"
   },
   "75-3203": {
    "garmentType": "Vest",
@@ -899,7 +944,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3203_Front_small.jpg"
   },
   "75-3209W": {
    "garmentType": "Vest",
@@ -920,7 +966,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3209W_Front_temp_small.jpg"
   },
   "75-3211": {
    "garmentType": "Vest",
@@ -940,7 +987,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3211_Front_small.jpg"
   },
   "75-3239W": {
    "garmentType": "Vest",
@@ -961,7 +1009,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3239W_1200_small.jpg"
   },
   "75-3210": {
    "garmentType": "Vest",
@@ -982,7 +1031,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3210_small.jpg"
   },
   "75-3256": {
    "garmentType": "Vest",
@@ -1002,7 +1052,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "Hi Vis Breakaway Mesh Vest, Orange",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/25/75-3256_1200_small.jpg"
   },
   "75-5326": {
    "garmentType": "Sweatshirt",
@@ -1023,7 +1074,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Hooded Sweatshirt with Zipper Closure, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/32/75-5326_1200_small.jpg"
   },
   "75-1314": {
    "garmentType": "Jacket",
@@ -1044,7 +1096,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Jacket with Quilted Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1314_1200_small.jpg"
   },
   "75-1373": {
    "garmentType": "Jacket",
@@ -1064,7 +1117,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "High Visibility Water Resistant Jacket, ANSI 3, R, Yellow",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/37/75-1373_1200_small.jpg"
   },
   "75-3240": {
    "garmentType": "Vest",
@@ -1085,7 +1139,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3240_1200_small.jpg"
   },
   "75-5258": {
    "garmentType": "Shirt",
@@ -1104,7 +1159,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High visibility long sleeve shirt with reflective chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/25/75-5258_1200_small.jpg"
   },
   "75-3202": {
    "garmentType": "Vest",
@@ -1125,7 +1181,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3202_new_1200_small.jpg"
   },
   "75-5218": {
    "garmentType": "Shirt",
@@ -1144,7 +1201,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Snag Resistant Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5218_1200_small.jpg"
   },
   "75-3257": {
    "garmentType": "Vest",
@@ -1164,7 +1222,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "High Visibility Glow-in-the-Dark Black Bottom Surveyors Vest, Class 2",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/25/75-3257_Update_1200_small.jpg"
   },
   "75-5332": {
    "garmentType": "Sweatshirt",
@@ -1184,7 +1243,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "High Visibility Hooded Sweatshirt with non-PFAS Fabric Protector, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/33/75-5332_1200_small.jpg"
   },
   "75-2352": {
    "garmentType": "Pants",
@@ -1202,7 +1262,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Pants, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2352_1200_small.jpg"
   },
   "75-3302": {
    "garmentType": "Vest",
@@ -1223,7 +1284,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/30/75-3302_close_1200_small.jpg"
   },
   "75-3208": {
    "garmentType": "Vest",
@@ -1244,7 +1306,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Heavy Duty Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3208_close_1200_small.jpg"
   },
   "75-1383": {
    "garmentType": "Jacket",
@@ -1265,7 +1328,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility 8-in-1 Waterproof Jacket with High Visibility Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/38/75-1383_1200_small.jpg"
   },
   "71-2040": {
    "garmentType": "Set",
@@ -1280,7 +1344,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "2-Piece Hooded Waterproof Rain Suit",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/71/-2/04/71-2040_1_1200_small.jpg"
   },
   "75-5216": {
    "garmentType": "Shirt",
@@ -1300,7 +1365,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5213_1200_small.jpg"
   },
   "75-3255": {
    "garmentType": "Vest",
@@ -1320,7 +1386,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "Hi Vis Breakaway Mesh Vest",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/25/75-3259_Updated_1200_small.jpg"
   },
   "75-3249": {
    "garmentType": "Vest",
@@ -1340,7 +1407,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, Class 2",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3249_Front_small.jpg"
   },
   "75-3226": {
    "garmentType": "Vest",
@@ -1360,7 +1428,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Vest with Two-Tone DOT Striping and D-Ring Pass Thru, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3226_new_1200_small.jpg"
   },
   "75-3222": {
    "garmentType": "Vest",
@@ -1380,7 +1449,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3222_new_1200_small.jpg"
   },
   "75-1384": {
    "garmentType": "Jacket",
@@ -1401,7 +1471,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility 8-in-1 Waterproof Jacket with High Visibility Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/38/75-1384_1200_small.jpg"
   },
   "75-5356": {
    "garmentType": "Shirt",
@@ -1420,7 +1491,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Long Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5356_1200_small.jpg"
   },
   "71-2010": {
    "garmentType": "Set",
@@ -1435,7 +1507,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "2-Piece Hooded Waterproof Rain Suit",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/71/-2/01/71-2010_1200_small.jpg"
   },
   "75-2355": {
    "garmentType": "Bib",
@@ -1452,7 +1525,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Black Bottom Waterproof Bib Overall, ANSI E",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2355_1200_small.jpg"
   },
   "75-3224": {
    "garmentType": "Vest",
@@ -1473,7 +1547,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3224_new_1200_small.jpg"
   },
   "75-3244": {
    "garmentType": "Vest",
@@ -1494,7 +1569,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "High Visibility Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3244_new_1200_small.jpg"
   },
   "75-5306": {
    "garmentType": "Shirt",
@@ -1514,7 +1590,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Short Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/30/75-5306_1200_small.jpg"
   },
   "75-1312": {
    "garmentType": "Jacket",
@@ -1535,7 +1612,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Jacket with Removable Fleece Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1312-Single_1200_small.jpg"
   },
   "75-3236": {
    "garmentType": "Vest",
@@ -1555,7 +1633,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Heavy Duty Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3236_new_1200_small.jpg"
   },
   "75-1352": {
    "garmentType": "Jacket",
@@ -1575,7 +1654,8 @@
    "country": "China",
    "packed": "20EA",
    "name": "High Visibility Waterproof Rain Jacket, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/35/75-1352-Single_1200_small.jpg"
   },
   "75-2392": {
    "garmentType": "Gaiter",
@@ -1589,7 +1669,8 @@
    "country": "China",
    "packed": "50PR",
    "name": "High Visibility Gaiters, Orange",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/39/75-2392_1200_small.jpg"
   },
   "75-3003 / 75-3004": {
    "garmentType": "Vest",
@@ -1602,7 +1683,8 @@
    "country": "China",
    "packed": "50EA",
    "name": "Site Safety Mesh Vest, NON ANSI",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/00/75-3003_new_1200_small.jpg"
   },
   "75-5337": {
    "garmentType": "Jacket",
@@ -1622,7 +1704,8 @@
    "country": "China",
    "packed": "10EA",
    "name": "High-Pile Fleece Jacket, Yellow, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/33/75-5337_1200_small.jpg"
   },
   "75-1309": {
    "garmentType": "Parka",
@@ -1642,7 +1725,8 @@
    "country": "Bangladesh",
    "packed": "10EA",
    "name": "High Visibility Waterproof Parka with Mesh Liner, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/30/75-1309_1200_small.jpg"
   },
   "75-5357": {
    "garmentType": "Shirt",
@@ -1661,7 +1745,8 @@
    "country": "Bangladesh",
    "packed": "25EA",
    "name": "High Visibility Shirt with Reflective Chainsaw Striping, ANSI 3, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5357_1200_small.jpg"
   },
   "75-5231": {
    "garmentType": "T-Shirt",
@@ -1680,7 +1765,8 @@
    "country": "China",
    "packed": "25EA",
    "name": "High Visibility Cooling T-Shirt, Class 2",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/23/75-5231_pocket_small.jpg"
   },
   "75-3245": {
    "garmentType": "Vest",
@@ -1700,7 +1786,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "Zipper Front High Visibility Heavy Duty Mesh Vest, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3245_1200_small.jpg"
   },
   "75-3247": {
    "garmentType": "Vest",
@@ -1720,7 +1807,8 @@
    "country": "Bangladesh",
    "packed": "50EA",
    "name": "Zipper Front High Visibility Heavy Duty Surveyor's Vest with Contrasting Stripes, ANSI 2, R",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3247_1200_small.jpg"
   },
   "75-5359": {
    "garmentType": "Shirt",
@@ -1739,7 +1827,8 @@
    "country": "China",
    "packed": "25EA",
    "name": "Lightweight High Visibility Hooded Long Sleeve UPF, Class 3",
-   "brandLine": "Majestic"
+   "brandLine": "Majestic",
+   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5359_1200_small.jpg"
   }
  },
  "competitors": {
@@ -2249,7 +2338,7 @@
    "tapeColor": "Orange",
    "washings": "25X",
    "gender": "Unisex",
-   "name": "Oralite\u00ae All Mesh Vest",
+   "name": "Oralite® All Mesh Vest",
    "brand": "Kishigo",
    "part": "1076",
    "altParts": [
@@ -4909,7 +4998,7 @@
    "tapeType": "Segmented",
    "country": "China",
    "packed": "48/Case",
-   "name": "ANSI Type R Class 3 Short Sleeve T-Shirt with Coolmax\u00ae Technology",
+   "name": "ANSI Type R Class 3 Short Sleeve T-Shirt with Coolmax® Technology",
    "brand": "PIP",
    "part": "104CMPS"
   },
@@ -5049,7 +5138,7 @@
    "tapeType": "Segmented",
    "country": "China",
    "packed": "36/Case",
-   "name": "ANSI Type R Class 3 Long Sleeve T-Shirt with COOLMAX\u00ae Technology",
+   "name": "ANSI Type R Class 3 Long Sleeve T-Shirt with COOLMAX® Technology",
    "brand": "PIP",
    "part": "204CMPS"
   },
@@ -5816,7 +5905,7 @@
    "tapeType": "Segmented",
    "country": "Kenya",
    "packed": "36/Case",
-   "name": "ANSI Type R Class 2 Long Sleeve T-Shirt with 3M\u2122 Scotchlite\u2122 Comfort Trim",
+   "name": "ANSI Type R Class 2 Long Sleeve T-Shirt with 3M™ Scotchlite™ Comfort Trim",
    "brand": "PIP",
    "part": "202CT"
   },
@@ -6798,7 +6887,7 @@
    "stripeWidth": "2",
    "tapeType": "Segmented",
    "country": "China",
-   "name": "Reflective Apparel\u2122 EcoChill polo (302CMPS)",
+   "name": "Reflective Apparel™ EcoChill polo (302CMPS)",
    "brand": "PIP",
    "part": "302CMPS"
   },
@@ -6838,7 +6927,7 @@
    "tapeType": "Segmented",
    "gender": "Female",
    "country": "China",
-   "name": "Reflective Apparel\u2122 EcoChill polo (302WCMPS)",
+   "name": "Reflective Apparel™ EcoChill polo (302WCMPS)",
    "brand": "PIP",
    "part": "302WCMPS"
   },
@@ -9173,7 +9262,7 @@
    "bodyZone": "Gear",
    "color": "Orange",
    "price": "$159.95",
-   "name": "Arsenal 5191 BreakFree\u2122 Breakaway Hi-Vis Backpack",
+   "name": "Arsenal 5191 BreakFree™ Breakaway Hi-Vis Backpack",
    "brand": "Ergodyne",
    "part": "13192",
    "altParts": [
@@ -9198,7 +9287,7 @@
    "gender": "Female",
    "price": "$35.75",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8278BK Women\u2019s Performance Hi-Vis Long Sleeve T-Shirt - Type R, Class 2, Black Bottom",
+   "name": "GloWear 8278BK Women’s Performance Hi-Vis Long Sleeve T-Shirt - Type R, Class 2, Black Bottom",
    "brand": "Ergodyne",
    "part": "22331",
    "altParts": [
@@ -10208,7 +10297,7 @@
    "gender": "Unisex",
    "price": "$22.95",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8289-ECO Recycled Hi-Vis T-Shirt \u2013 Type R, Class 2",
+   "name": "GloWear 8289-ECO Recycled Hi-Vis T-Shirt – Type R, Class 2",
    "brand": "Ergodyne",
    "part": "21531",
    "altParts": [
@@ -10634,7 +10723,7 @@
    "gender": "Female",
    "price": "$19.75",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8274 Women\u2019s Essential Hi-Vis T-Shirt - Type R, Class 2",
+   "name": "GloWear 8274 Women’s Essential Hi-Vis T-Shirt - Type R, Class 2",
    "brand": "Ergodyne",
    "part": "22071",
    "altParts": [
@@ -10670,7 +10759,7 @@
    "gender": "Female",
    "price": "$26.75",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8374 Women\u2019s Essential Hi-Vis Long Sleeve T-Shirt - Type R, Class 3",
+   "name": "GloWear 8374 Women’s Essential Hi-Vis Long Sleeve T-Shirt - Type R, Class 3",
    "brand": "Ergodyne",
    "part": "22092",
    "altParts": [
@@ -10986,7 +11075,7 @@
    "gender": "Female",
    "price": "$33.35",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8276BK Women\u2019s Performance Hi-Vis T-Shirt - Type R, Class 2, Black Bottom",
+   "name": "GloWear 8276BK Women’s Performance Hi-Vis T-Shirt - Type R, Class 2, Black Bottom",
    "brand": "Ergodyne",
    "part": "22311",
    "altParts": [
@@ -11022,7 +11111,7 @@
    "gender": "Female",
    "price": "$37.95",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8387 Women\u2019s Performance Hi-Vis Long Sleeve T-Shirt - Type R, Class 3",
+   "name": "GloWear 8387 Women’s Performance Hi-Vis Long Sleeve T-Shirt - Type R, Class 3",
    "brand": "Ergodyne",
    "part": "22352",
    "altParts": [
@@ -11054,7 +11143,7 @@
    "tapeApplication": "Sew On",
    "gender": "Female",
    "price": "$9.65",
-   "name": "GloWear 8210HLW-S Women\u2019s Hi-Vis Vest - Type R, Class 2, Hook & Loop",
+   "name": "GloWear 8210HLW-S Women’s Hi-Vis Vest - Type R, Class 2, Hook & Loop",
    "brand": "Ergodyne",
    "part": "22402",
    "altParts": [
@@ -11086,7 +11175,7 @@
    "tapeApplication": "Sew On",
    "gender": "Female",
    "price": "$10.25",
-   "name": "GloWear 8210ZW-S Women\u2019s Hi-Vis Vest - Type R, Class 2, Zipper",
+   "name": "GloWear 8210ZW-S Women’s Hi-Vis Vest - Type R, Class 2, Zipper",
    "brand": "Ergodyne",
    "part": "22422",
    "altParts": [
@@ -11120,7 +11209,7 @@
    "gender": "Female",
    "price": "$11.65",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8215BAW-S Women\u2019s Hi-Vis Breakaway Vest - Type R, Class 2, Hook & Loop",
+   "name": "GloWear 8215BAW-S Women’s Hi-Vis Breakaway Vest - Type R, Class 2, Hook & Loop",
    "brand": "Ergodyne",
    "part": "22442",
    "altParts": [
@@ -11153,7 +11242,7 @@
    "gender": "Female",
    "price": "$17.45",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8247ZW-S Women\u2019s Hi-Vis Surveyor Vest - Type R, Class 2 Zipper",
+   "name": "GloWear 8247ZW-S Women’s Hi-Vis Surveyor Vest - Type R, Class 2 Zipper",
    "brand": "Ergodyne",
    "part": "22462",
    "altParts": [
@@ -11330,7 +11419,7 @@
    "gender": "Female",
    "price": "$80.95",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8305W Women\u2019s Performance Hi-Vis Hooded Zip-Up Sweatshirt - Type R, Class 3",
+   "name": "GloWear 8305W Women’s Performance Hi-Vis Hooded Zip-Up Sweatshirt - Type R, Class 3",
    "brand": "Ergodyne",
    "part": "22892",
    "altParts": [
@@ -11619,7 +11708,7 @@
    "gender": "Female",
    "price": "$76.95",
    "certifications": "ANSI/ISEA 107-2020",
-   "name": "GloWear 8304W Women\u2019s Performance Hi-Vis Hooded Sweatshirt - Type R, Class 3",
+   "name": "GloWear 8304W Women’s Performance Hi-Vis Hooded Sweatshirt - Type R, Class 3",
    "brand": "Ergodyne",
    "part": "23112",
    "altParts": [
@@ -13729,7 +13818,7 @@
    "pockets": "1",
    "pocketType": "Chest Pocket",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "Radwear USA Original Breezelight\u2122 II Class 2 T-Shirt",
+   "name": "Radwear USA Original Breezelight™ II Class 2 T-Shirt",
    "brand": "Radians",
    "part": "LHV-XTS-AR-P-M"
   },
@@ -14446,7 +14535,7 @@
    "tapeApplication": "Heat Transfer",
    "packed": "24/Case",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "Radians ST21 Class 3 Long Sleeve T-shirt with Max-Dri\u2122",
+   "name": "Radians ST21 Class 3 Long Sleeve T-shirt with Max-Dri™",
    "brand": "Radians",
    "part": "ST21",
    "altParts": [
@@ -14492,7 +14581,7 @@
    "pockets": "1",
    "pocketType": "Chest Pocket",
    "packed": "24/Case",
-   "name": "Radians ST21-N Non-Rated Long Sleeve T-shirt with Max-Dri\u2122",
+   "name": "Radians ST21-N Non-Rated Long Sleeve T-shirt with Max-Dri™",
    "brand": "Radians",
    "part": "ST21-N",
    "altParts": [
@@ -14542,7 +14631,7 @@
    "tapeApplication": "Heat Transfer",
    "gender": "Female",
    "packed": "24/Case",
-   "name": "Radians ST21W Women's Non Rated Hi-Vis Long Sleeve Shirt with Max-Dri\u2122",
+   "name": "Radians ST21W Women's Non Rated Hi-Vis Long Sleeve Shirt with Max-Dri™",
    "brand": "Radians",
    "part": "ST21W",
    "altParts": [
@@ -14589,7 +14678,7 @@
    "tapeType": "Segmented",
    "tapeApplication": "Heat Transfer",
    "packed": "24/Case",
-   "name": "Radians ST24-3 Class 3 High Visibility Safety T-Shirt with Rad-Shade\u00ae UV Protection",
+   "name": "Radians ST24-3 Class 3 High Visibility Safety T-Shirt with Rad-Shade® UV Protection",
    "brand": "Radians",
    "part": "ST24-3",
    "altParts": [
@@ -16158,7 +16247,7 @@
    "gender": "Female",
    "packed": "24/Case",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "Radians SV99W-M3ZGSFR 5.5 oz Women\u2019s Class 3 AR/FR Westex\u00ae DH Vest",
+   "name": "Radians SV99W-M3ZGSFR 5.5 oz Women’s Class 3 AR/FR Westex® DH Vest",
    "brand": "Radians",
    "part": "SV99W",
    "altParts": [
@@ -16295,7 +16384,7 @@
    "material": "Wicking Birdseye Polyester",
    "pockets": "1",
    "tapeType": "Segmented",
-   "name": "SHORT SLEEVE OCX\u2122 PATENTED SEGMENTED TAPE BLACK BOTTOM W-POCKET - Type R Class 3",
+   "name": "SHORT SLEEVE OCX™ PATENTED SEGMENTED TAPE BLACK BOTTOM W-POCKET - Type R Class 3",
    "brand": "OccuNomix",
    "part": "LUX-TSSP3BK",
    "altParts": [
@@ -16576,8 +16665,8 @@
    "bodyZone": "Head",
    "color": "Orange",
    "sizes": "One Size",
-   "material": "Flame Resistant Cotton/Nylon Twill, MiraCool HyperKewl\u2122 Fabric",
-   "name": "TECHNICHE\u00ae Flame Resistant Evaporative Cooling Beanie",
+   "material": "Flame Resistant Cotton/Nylon Twill, MiraCool HyperKewl™ Fabric",
+   "name": "TECHNICHE® Flame Resistant Evaporative Cooling Beanie",
    "brand": "OccuNomix",
    "part": "6522-HV-FR"
   },
@@ -16586,8 +16675,8 @@
    "compareGroup": "Non-ANSI",
    "bodyZone": "Head",
    "sizes": "M,L,2X,3X",
-   "material": "MiraCool HyperKewl\u2122 Fabric",
-   "name": "TECHNICHE\u00ae FLAME RESISTANT EVAPORATIVE COOLING NECK SHADE",
+   "material": "MiraCool HyperKewl™ Fabric",
+   "name": "TECHNICHE® FLAME RESISTANT EVAPORATIVE COOLING NECK SHADE",
    "brand": "OccuNomix",
    "part": "6525-HV-FR"
   },
@@ -16601,9 +16690,9 @@
    "sleeved": "False",
    "color": "Yellow",
    "sizes": "REG (M-XL),XL (2X-4X)",
-   "material": "Polyester exterior with MiraCool HyperKewl\u2122 fabric interior",
+   "material": "Polyester exterior with MiraCool HyperKewl™ fabric interior",
    "closure": "Hook and Loop",
-   "name": "TECHNICHE\u00ae Evaporative Cooling Vest - Traffic Safety ANSI Class 2",
+   "name": "TECHNICHE® Evaporative Cooling Vest - Traffic Safety ANSI Class 2",
    "brand": "OccuNomix",
    "part": "6538",
    "altParts": [
@@ -16616,7 +16705,7 @@
    "bodyZone": "Head",
    "color": "Yellow",
    "sizes": "S/M,L/XL,2X/3X",
-   "material": "MiraCool HyperKewl\u2122 Fabric",
+   "material": "MiraCool HyperKewl™ Fabric",
    "name": "Evaporative Cooling Ranger Hat",
    "brand": "OccuNomix",
    "part": "6591-HV"
@@ -16629,7 +16718,7 @@
    "sizes": "One Size",
    "material": "Lightweight and durable, includes mesh vents for air circulation",
    "closure": "Hook and Loop",
-   "name": "Techniche\u00ae Evaporative Cooling Hi Viz Baseball Cap",
+   "name": "Techniche® Evaporative Cooling Hi Viz Baseball Cap",
    "brand": "OccuNomix",
    "part": "6595",
    "altParts": [
@@ -16662,10 +16751,10 @@
    "sleeved": "False",
    "color": "Yellow",
    "sizes": "S/M,L/XL,2X/3X",
-   "material": "MiraCool HyperKewl\u2122 Fabric",
+   "material": "MiraCool HyperKewl™ Fabric",
    "closure": "Zipper",
    "pockets": "1",
-   "name": "Miracool\u00ae Plus Evaporative High Viz Vest",
+   "name": "Miracool® Plus Evaporative High Viz Vest",
    "brand": "OccuNomix",
    "part": "904",
    "altParts": [
@@ -17305,7 +17394,7 @@
    "sizes": "M,L,XL,2X,3X,4X,5X",
    "material": "Modacrylic",
    "tapeType": "Segmented",
-   "name": "Flame Resistant Dual Certified Navy Bottom w/OCX\u2122 Patented Segmented Reflective & Pocket",
+   "name": "Flame Resistant Dual Certified Navy Bottom w/OCX™ Patented Segmented Reflective & Pocket",
    "brand": "OccuNomix",
    "part": "FR-TM2243",
    "altParts": [
@@ -17498,7 +17587,7 @@
    "material": "Modacrylic Mesh",
    "closure": "Hook and Loop",
    "tapeType": "Segmented",
-   "name": "Flame Resistant Black Bottom OCX\u2122 Patented Segmented Dual Stripe Mesh Vest",
+   "name": "Flame Resistant Black Bottom OCX™ Patented Segmented Dual Stripe Mesh Vest",
    "brand": "OccuNomix",
    "part": "FR-VM2142",
    "altParts": [
@@ -18560,7 +18649,7 @@
    "sizes": "S,M,L,XL,2X,3X,4X,5X",
    "material": "Polyester Oxford Ripstop",
    "closure": "Zipper, Snaps",
-   "name": "2-In-1 Black Bottom Ripstop Barka\u2122 W/D-Ring Access",
+   "name": "2-In-1 Black Bottom Ripstop Barka™ W/D-Ring Access",
    "brand": "OccuNomix",
    "part": "LUX-RSDJKT",
    "altParts": [
@@ -19693,7 +19782,7 @@
    "material": "Wicking Birdseye Polyester",
    "pockets": "1",
    "tapeType": "Segmented",
-   "name": "Long Sleeve Ocx\u2122 Patented Segmented Tape T-Shirt W-Pocket",
+   "name": "Long Sleeve Ocx™ Patented Segmented Tape T-Shirt W-Pocket",
    "brand": "OccuNomix",
    "part": "LUX-TLSP3B",
    "altParts": [
@@ -19713,7 +19802,7 @@
    "material": "Wicking Birdseye Polyester",
    "pockets": "1",
    "tapeType": "Segmented",
-   "name": "Long Sleeve OCX\u2122 Patented Segmented Tape Black Bottom T-Shirt W-Pocket Class 3",
+   "name": "Long Sleeve OCX™ Patented Segmented Tape Black Bottom T-Shirt W-Pocket Class 3",
    "brand": "OccuNomix",
    "part": "LUX-TLSP3BK",
    "altParts": [
@@ -19784,7 +19873,7 @@
    "material": "Wicking Birdseye Polyester",
    "pockets": "1",
    "tapeType": "Segmented",
-   "name": "Short Sleeve Ocx\u2122 Patented Segmented Tape T-Shirt W/Pocket",
+   "name": "Short Sleeve Ocx™ Patented Segmented Tape T-Shirt W/Pocket",
    "brand": "OccuNomix",
    "part": "LUX-TSSP2B",
    "altParts": [
@@ -19804,7 +19893,7 @@
    "material": "Wicking Birdseye Polyester",
    "pockets": "1",
    "tapeType": "Segmented",
-   "name": "SHORT SLEEVE OCX\u2122 PATENTED SEGMENTED TAPE BLACK BOTTOM W-POCKET - Type R Class 2",
+   "name": "SHORT SLEEVE OCX™ PATENTED SEGMENTED TAPE BLACK BOTTOM W-POCKET - Type R Class 2",
    "brand": "OccuNomix",
    "part": "LUX-TSSP2BK",
    "altParts": [
@@ -19823,7 +19912,7 @@
    "sizes": "S,M,L,XL,2X,3X,4X,5X",
    "material": "Wicking Birdseye Polyester",
    "tapeType": "Segmented",
-   "name": "Short Sleeve Ocx\u2122 Patented Segmented Tape T-Shirt W/Pocket",
+   "name": "Short Sleeve Ocx™ Patented Segmented Tape T-Shirt W/Pocket",
    "brand": "OccuNomix",
    "part": "LUX-TSSP3B",
    "altParts": [
@@ -20160,7 +20249,7 @@
    "color": "Yellow",
    "sizes": "M,L,XL,2X,3X,4X,5X",
    "material": "Polyester Oxford",
-   "closure": "YKK\u2122 Zippers",
+   "closure": "YKK™ Zippers",
    "pockets": "6+",
    "pocketType": "Radio/Phone",
    "name": "Safety Performance Cold Weather Bib",
@@ -20236,7 +20325,7 @@
    "color": "Yellow",
    "sizes": "M,L,XL,2X,3X,4X,5X",
    "material": "Polyester Oxford",
-   "closure": "YKK\u2122 Zippers",
+   "closure": "YKK™ Zippers",
    "name": "Safety Performance Cold Weather Coverall",
    "brand": "OccuNomix",
    "part": "SP-CVL",
@@ -20458,7 +20547,7 @@
    "fabricWeight": "4 oz",
    "pockets": "1",
    "pocketType": "Left chest",
-   "name": "PERIMETER\u2122 INSECT GUARD HI-VIZ LONG SLEEVE T-SHIRT - Non-Ansi",
+   "name": "PERIMETER™ INSECT GUARD HI-VIZ LONG SLEEVE T-SHIRT - Non-Ansi",
    "brand": "OccuNomix",
    "part": "PER-UHV856",
    "altParts": [
@@ -20478,7 +20567,7 @@
    "fabricWeight": "4 oz",
    "pockets": "1",
    "pocketType": "Left chest",
-   "name": "PERIMETER\u2122 INSECT GUARD HI-VIZ SHORT SLEEVE T-SHIRT - Non-Ansi",
+   "name": "PERIMETER™ INSECT GUARD HI-VIZ SHORT SLEEVE T-SHIRT - Non-Ansi",
    "brand": "OccuNomix",
    "part": "PER-UHV866",
    "altParts": [
@@ -20496,7 +20585,7 @@
    "material": "300 Denier Polyester Oxford Ripstop w/PU coating",
    "closure": "Hook and Loop",
    "tapeType": "Reflective Accents",
-   "name": "PERIMETER\u2122 INSECT GUARD LEG GAITERS - Non-ANSI",
+   "name": "PERIMETER™ INSECT GUARD LEG GAITERS - Non-ANSI",
    "brand": "OccuNomix",
    "part": "PER-UHV888",
    "altParts": [
@@ -20513,7 +20602,7 @@
    "sleeved": "True",
    "color": "Yellow",
    "tapeType": "Segmented",
-   "name": "MIRACOOL\u00ae H2KEWL\u2122 PERFORMANCE KNIT SHORT SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 2",
+   "name": "MIRACOOL® H2KEWL™ PERFORMANCE KNIT SHORT SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 2",
    "brand": "OccuNomix",
    "part": "UHV1000"
   },
@@ -20546,7 +20635,7 @@
    "sleeved": "True",
    "color": "Yellow",
    "tapeType": "Segmented",
-   "name": "MIRACOOL\u00ae H2KEWL\u2122 PERFORMANCE KNIT LONG SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 3",
+   "name": "MIRACOOL® H2KEWL™ PERFORMANCE KNIT LONG SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 3",
    "brand": "OccuNomix",
    "part": "UHV1005",
    "altParts": [
@@ -20939,7 +21028,7 @@
    "color": "Yellow",
    "closure": "Zipper",
    "pockets": "4",
-   "name": "WARM UP\u2122 GREY BOTTOM FULL ZIP SOFTSHELL JACKET - Type R Class 3",
+   "name": "WARM UP™ GREY BOTTOM FULL ZIP SOFTSHELL JACKET - Type R Class 3",
    "brand": "OccuNomix",
    "part": "UHV828",
    "altParts": [
@@ -20998,7 +21087,7 @@
    "color": "Yellow",
    "closure": "Zipper",
    "pockets": "3",
-   "name": "WARM UP\u2122 GREY BOTTOM BOMBER JACKET - Type R Class 3",
+   "name": "WARM UP™ GREY BOTTOM BOMBER JACKET - Type R Class 3",
    "brand": "OccuNomix",
    "part": "UHV883",
    "altParts": [
@@ -21016,7 +21105,7 @@
    "color": "Yellow",
    "closure": "Zipper",
    "pockets": "5",
-   "name": "WARM UP\u2122 GREY BOTTOM 3-in-1 BOMBER JACKET - Type R Class 3",
+   "name": "WARM UP™ GREY BOTTOM 3-in-1 BOMBER JACKET - Type R Class 3",
    "brand": "OccuNomix",
    "part": "UHV887",
    "altParts": [
@@ -21034,7 +21123,7 @@
    "color": "Yellow",
    "closure": "Zipper",
    "pockets": "2",
-   "name": "WARM UP\u2122 QUILTED VEST - Type R Class 2",
+   "name": "WARM UP™ QUILTED VEST - Type R Class 2",
    "brand": "OccuNomix",
    "part": "UHV919",
    "altParts": [
@@ -21085,7 +21174,7 @@
    "sleeved": "True",
    "color": "Yellow",
    "tapeType": "Segmented",
-   "name": "MIRACOOL\u00ae H2KEWL\u2122 PERFORMANCE KNIT HOODIE T-SHIRT - Type R Class 3",
+   "name": "MIRACOOL® H2KEWL™ PERFORMANCE KNIT HOODIE T-SHIRT - Type R Class 3",
    "brand": "OccuNomix",
    "part": "UHV982",
    "altParts": [
@@ -21104,7 +21193,7 @@
    "closure": "Zipper",
    "pockets": "2",
    "gender": "Female",
-   "name": "WOMEN'S WARM UP\u2122 QUILTED VEST - Type R Class 2",
+   "name": "WOMEN'S WARM UP™ QUILTED VEST - Type R Class 2",
    "brand": "OccuNomix",
    "part": "UHV995",
    "altParts": [
@@ -21194,7 +21283,7 @@
    "color": "Other",
    "closure": "Zipper",
    "pockets": "3",
-   "name": "WARM UP\u2122 RIPSTOP BOMBER JACKET - Non-ANSI",
+   "name": "WARM UP™ RIPSTOP BOMBER JACKET - Non-ANSI",
    "brand": "OccuNomix",
    "part": "UPA889",
    "altParts": [
@@ -21244,7 +21333,7 @@
    "color": "Other",
    "closure": "Zipper",
    "pockets": "2",
-   "name": "WARM UP\u2122 QUILTED VEST - Non-ANSI",
+   "name": "WARM UP™ QUILTED VEST - Non-ANSI",
    "brand": "OccuNomix",
    "part": "UPA919",
    "altParts": [
@@ -21260,11 +21349,11 @@
    "bodyZone": "Upper",
    "sleeved": "True",
    "color": "Hi-Viz Yellow",
-   "material": "MiraCool\u00ae H2Kewl\u2122 3.9 oz Performance Knit",
+   "material": "MiraCool® H2Kewl™ 3.9 oz Performance Knit",
    "fabricWeight": "3.9 oz",
    "stripeWidth": "2",
    "tapeType": "Segmented",
-   "name": "MIRACOOL\u00ae H2KEWL\u2122 PERFORMANCE KNIT SHORT SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 2",
+   "name": "MIRACOOL® H2KEWL™ PERFORMANCE KNIT SHORT SLEEVE SEGMENTED TAPE T-SHIRT - Type R Class 2",
    "brand": "OccuNomix",
    "part": "UHV1000-720",
    "altParts": [
@@ -21325,7 +21414,7 @@
    "hooded": "True",
    "price": "$262.57",
    "certifications": "CSA Z96 Class 2, Level 2",
-   "name": "Vortex Hi Vis Rain Gear- Winter Jacket with Detachable Hood - Zip Out Fleece Liner - Double Insulated Rip Stop Polyester / PU - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Protects in Temperatures as Low as -27\u00b0 F",
+   "name": "Vortex Hi Vis Rain Gear- Winter Jacket with Detachable Hood - Zip Out Fleece Liner - Double Insulated Rip Stop Polyester / PU - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Protects in Temperatures as Low as -27° F",
    "brand": "MCR Safety",
    "part": "VT38JH",
    "altParts": [
@@ -21390,7 +21479,7 @@
    "fr": "False",
    "hooded": "True",
    "price": "$273.91 - $290.32",
-   "name": "Luminator\u00ae Hi-Visibility Rain Gear - .40mm PU / Cotton Poly Blend Stretch Fabric - 2 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Stretch Fabric Moves With You for a More Comfortable Fit",
+   "name": "Luminator® Hi-Visibility Rain Gear - .40mm PU / Cotton Poly Blend Stretch Fabric - 2 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Stretch Fabric Moves With You for a More Comfortable Fit",
    "brand": "MCR Safety",
    "part": "5182S",
    "altParts": [
@@ -21414,7 +21503,7 @@
    "closure": "Zipper",
    "hooded": "True",
    "price": "$231.63 - $309.05",
-   "name": "Luminator\u00ae Hi-Visibility Rain Gear - .40mm PU / Cotton Poly Blend Stretch Fabric - 2 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Stretch Fabric Moves With You for a More Comfortable Fit",
+   "name": "Luminator® Hi-Visibility Rain Gear - .40mm PU / Cotton Poly Blend Stretch Fabric - 2 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Stretch Fabric Moves With You for a More Comfortable Fit",
    "brand": "MCR Safety",
    "part": "5182"
   },
@@ -21432,7 +21521,7 @@
    "pocketType": "Zippered Pocket",
    "hooded": "True",
    "price": "$211.37 - $237.51",
-   "name": "Luminator\u00ae Hi Vis Rain Jacket - Breathable Polyester / PU Fabric - Zippered Front Closure - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
+   "name": "Luminator® Hi Vis Rain Jacket - Breathable Polyester / PU Fabric - Zippered Front Closure - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
    "brand": "MCR Safety",
    "part": "598RJH"
   },
@@ -21444,7 +21533,7 @@
    "bodyZone": "Lower",
    "material": "Polyester / Polyurethane",
    "price": "$174.79 - $195.83",
-   "name": "Luminator\u00ae Hi Vis Rain Gear - Elastic Waist Pants with Drawstring - Breathable Polyester / PU Fabric - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant - Expandable Zippered Ankle Gussets Fit Easily Over Shoes",
+   "name": "Luminator® Hi Vis Rain Gear - Elastic Waist Pants with Drawstring - Breathable Polyester / PU Fabric - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant - Expandable Zippered Ankle Gussets Fit Easily Over Shoes",
    "brand": "MCR Safety",
    "part": "598RPW"
   },
@@ -21457,7 +21546,7 @@
    "material": "Polyester",
    "closure": "Zipper",
    "price": "$181.65",
-   "name": "Vortex Hi-Vis Rainwear - Winter Pants - Insulated Rip-Stop Polyester/PU - Easy Release Suspenders - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant Bib Pant - Protects in Temperatures as Low as -27\u00b0 F",
+   "name": "Vortex Hi-Vis Rainwear - Winter Pants - Insulated Rip-Stop Polyester/PU - Easy Release Suspenders - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant Bib Pant - Protects in Temperatures as Low as -27° F",
    "brand": "MCR Safety",
    "part": "VT38BP"
   },
@@ -21480,7 +21569,7 @@
    "waterResistance": "Water Resistant",
    "hooded": "True",
    "price": "$190.22",
-   "name": "UltraTech\u00ae Hi-Vis Rain Jacket - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Jacket with Hideaway Attached Hood - Zippered Mesh Underarm Vents - Zippered Front Closure",
+   "name": "UltraTech® Hi-Vis Rain Jacket - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Jacket with Hideaway Attached Hood - Zippered Mesh Underarm Vents - Zippered Front Closure",
    "brand": "MCR Safety",
    "part": "UT38JH",
    "altParts": [
@@ -21503,7 +21592,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "price": "$167.65 - $188.09",
-   "name": "Luminator\u00ae Hi Vis Rain Gear - Hi-Vis Long Waterproof Raincoat - .40mm PU / Cotton Poly Blend - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Lightweight Stretch Fabric Moves With You for a More Comfortable Fit",
+   "name": "Luminator® Hi Vis Rain Gear - Hi-Vis Long Waterproof Raincoat - .40mm PU / Cotton Poly Blend - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Lightweight Stretch Fabric Moves With You for a More Comfortable Fit",
    "brand": "MCR Safety",
    "part": "518C"
   },
@@ -21515,7 +21604,7 @@
    "bodyZone": "Lower",
    "material": "Polyester",
    "closure": "Zipper",
-   "name": "UltraTech\u00ae Hi Vis Rain Pants - Meets ANSI/ISEA 107 2020 Standards - Class E Compliant - Bib Style Pants with Zippered Front - Full Elastic Adjustable Suspenders - Inner Knee Pad Pockets",
+   "name": "UltraTech® Hi Vis Rain Pants - Meets ANSI/ISEA 107 2020 Standards - Class E Compliant - Bib Style Pants with Zippered Front - Full Elastic Adjustable Suspenders - Inner Knee Pad Pockets",
    "brand": "MCR Safety",
    "part": "UT38BP"
   },
@@ -21547,7 +21636,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "price": "$134.47 - $160.22",
-   "name": "Luminator\u00ae Series Reflective Rain Gear - .35mm PVC / Polyester Rainwear - 3 Piece Waterproof Orange Rain Suit - Jacket with Detachable Hood and Bib Pants",
+   "name": "Luminator® Series Reflective Rain Gear - .35mm PVC / Polyester Rainwear - 3 Piece Waterproof Orange Rain Suit - Jacket with Detachable Hood and Bib Pants",
    "brand": "MCR Safety",
    "part": "2013R"
   },
@@ -21562,7 +21651,7 @@
    "material": "Polyester / Polyurethane",
    "hooded": "True",
    "price": "$131.94",
-   "name": "Luminator\u00ae Hi Vis Rain Gear - Lightweight Rain Jacket - Lime Polyester / Polyurethane Material - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
+   "name": "Luminator® Hi Vis Rain Gear - Lightweight Rain Jacket - Lime Polyester / Polyurethane Material - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
    "brand": "MCR Safety",
    "part": "500RJH"
   },
@@ -21582,7 +21671,7 @@
    "tapeColor": "Silver",
    "hooded": "True",
    "price": "$110.70",
-   "name": "Luminator\u00ae Series - Hi-Vis Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Insulated Rain Jacket - Fluorescent Lime/Black - Silver Reflective Stripes",
+   "name": "Luminator® Series - Hi-Vis Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Insulated Rain Jacket - Fluorescent Lime/Black - Silver Reflective Stripes",
    "brand": "MCR Safety",
    "part": "VBBCL3L"
   },
@@ -21599,7 +21688,7 @@
    "pockets": "1",
    "pocketType": "Zippered Pocket",
    "hooded": "True",
-   "name": "Luminator\u00ae Hi-Vis Rain Gear Jacket - Breathable Polyester / PU Hi-Vis Clothing - Zippered Front Closure - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
+   "name": "Luminator® Hi-Vis Rain Gear Jacket - Breathable Polyester / PU Hi-Vis Clothing - Zippered Front Closure - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant",
    "brand": "MCR Safety",
    "part": "591SJH"
   },
@@ -21614,7 +21703,7 @@
    "material": "Polyester",
    "hooded": "True",
    "price": "$136.04 - $170.84",
-   "name": "Luminator\u00ae Hi-Visibility Rain Gear - .38mm PVC Polyester PVC - 3 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Jacket with Detachable Hood and Bib Pants",
+   "name": "Luminator® Hi-Visibility Rain Gear - .38mm PVC Polyester PVC - 3 Piece Hi Vis Reflective Rain Suit - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Jacket with Detachable Hood and Bib Pants",
    "brand": "MCR Safety",
    "part": "2083SR"
   },
@@ -21627,7 +21716,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "price": "$141.37 - $149.84",
-   "name": "Luminator\u00ae Series - Hi-Vis Reflective Rain Gear - .54mm Nylon / PVC - PVC / Nylon - Premium Waterproof Raincoat - Reversible Coat Lime to Black",
+   "name": "Luminator® Series - Hi-Vis Reflective Rain Gear - .54mm Nylon / PVC - PVC / Nylon - Premium Waterproof Raincoat - Reversible Coat Lime to Black",
    "brand": "MCR Safety",
    "part": "7368CR"
   },
@@ -21639,7 +21728,7 @@
    "material": "Polyester",
    "waterResistance": "Waterproof",
    "hooded": "True",
-   "name": "Luminator\u00ae Series Reflective Rain Gear - .35mm PVC / Polyester 3 Piece Rain Suit - Waterproof Yellow - Jacket with Corduroy Collar & Detachable Hood - Bib Pants with Fly Front",
+   "name": "Luminator® Series Reflective Rain Gear - .35mm PVC / Polyester 3 Piece Rain Suit - Waterproof Yellow - Jacket with Corduroy Collar & Detachable Hood - Bib Pants with Fly Front",
    "brand": "MCR Safety",
    "part": "2403R"
   },
@@ -21658,7 +21747,7 @@
    "insulated": "True",
    "hooded": "True",
    "price": "$90.44",
-   "name": "Luminator\u00ae Series - Two Tone Value Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Quilted Rain Jacket with Silver Reflective Stripes - Quilted Liner Adds Warmth and Comfort",
+   "name": "Luminator® Series - Two Tone Value Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Quilted Rain Jacket with Silver Reflective Stripes - Quilted Liner Adds Warmth and Comfort",
    "brand": "MCR Safety",
    "part": "VBBQCL3O"
   },
@@ -21694,7 +21783,7 @@
    "insulated": "True",
    "hooded": "True",
    "price": "$90.44",
-   "name": "Luminator\u00ae Series - Two Tone Value Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Quilted Rain Jacket with Silver Reflective Stripes - Quilted Liner Adds Warmth and Comfort",
+   "name": "Luminator® Series - Two Tone Value Bomber Jacket - Meets ANSI/ISEA 107 2020 Standards - Type R Class 3 Compliant - Quilted Rain Jacket with Silver Reflective Stripes - Quilted Liner Adds Warmth and Comfort",
    "brand": "MCR Safety",
    "part": "VBBQCL3L"
   },
@@ -21726,7 +21815,7 @@
    "tapeColor": "Silver",
    "hooded": "True",
    "price": "$82.77",
-   "name": "Luminator\u00ae Series Hi-Visibility Hooded Sweatshirt - Silver Reflective Stripes - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Built In Insulating Neck Gaiter for Additional Comfort",
+   "name": "Luminator® Series Hi-Visibility Hooded Sweatshirt - Silver Reflective Stripes - Meets ANSI/ISEA 107 2020 Standard - Type R Class 3 Compliant - Built In Insulating Neck Gaiter for Additional Comfort",
    "brand": "MCR Safety",
    "part": "SSCL3LP"
   },
@@ -21755,7 +21844,7 @@
    "standard": "Class E",
    "bodyZone": "Lower",
    "material": "Polyester / Polyurethane",
-   "name": "Luminator\u00ae Hi Vis Rain Gear - Durable Lightweight Elastic Waist Rain Pants - Lime Polyester / Polyurethane Material - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant",
+   "name": "Luminator® Hi Vis Rain Gear - Durable Lightweight Elastic Waist Rain Pants - Lime Polyester / Polyurethane Material - Meets ANSI/ISEA 107 2020 Standard - Class E Compliant",
    "brand": "MCR Safety",
    "part": "500RPW"
   },
@@ -21872,7 +21961,7 @@
    "fabricConstruction": "Mesh",
    "pockets": "1",
    "pocketType": "Chest Pocket",
-   "name": "Luminator\u00ae Series - Hi-Vis Safety Work T-Shirts - Long Sleeve and Tagless Design - ANSI/ISEA 107 Type R Class 3 Compliant - Breathable, Soft and Light with Wicking Properties",
+   "name": "Luminator® Series - Hi-Vis Safety Work T-Shirts - Long Sleeve and Tagless Design - ANSI/ISEA 107 Type R Class 3 Compliant - Breathable, Soft and Light with Wicking Properties",
    "brand": "MCR Safety",
    "part": "LSTSCL3ML"
   },
@@ -22012,7 +22101,7 @@
    "fabricConstruction": "Mesh",
    "stripeWidth": "1.375",
    "tapeColor": "White",
-   "name": "Florescent Lime Mesh Safety Vest - 1\u215c Inch White Reflective Stripes - Light Weight Polyester Mesh Fabric - General Purpose, Non-ANSI Rated",
+   "name": "Florescent Lime Mesh Safety Vest - 1⅜ Inch White Reflective Stripes - Light Weight Polyester Mesh Fabric - General Purpose, Non-ANSI Rated",
    "brand": "MCR Safety",
    "part": "S220WR"
   },
@@ -22198,7 +22287,7 @@
    "fabricConstruction": "Mesh",
    "stripeWidth": "0.75",
    "tapeColor": "White",
-   "name": "General Purpose Safety Vest - Lime Polyester Mesh Material - \u00be Inch White Reflective Stripes - Hi-Visibility Safety Vest for Non-ANSI Applications",
+   "name": "General Purpose Safety Vest - Lime Polyester Mesh Material - ¾ Inch White Reflective Stripes - Hi-Visibility Safety Vest for Non-ANSI Applications",
    "brand": "MCR Safety",
    "part": "V210WR"
   },
@@ -22213,7 +22302,7 @@
    "fabricConstruction": "Mesh",
    "stripeWidth": "0.75",
    "tapeColor": "Lime",
-   "name": "Orange General Purpose Mesh Safety Vest - \u00be Inch Lime Reflective Stripes - Light Weight Breathable Polyester Mesh Fabric - Non-ANSI Rated - Hi-Vis Reflective Safety Vest",
+   "name": "Orange General Purpose Mesh Safety Vest - ¾ Inch Lime Reflective Stripes - Light Weight Breathable Polyester Mesh Fabric - Non-ANSI Rated - Hi-Vis Reflective Safety Vest",
    "brand": "MCR Safety",
    "part": "V211R"
   },
@@ -22338,7 +22427,7 @@
    "material": "Polyester",
    "fabricConstruction": "Mesh",
    "stripeWidth": "2",
-   "name": "Luminator\u00ae Series - Hi-Vis Reflective Lime Safety Vest - ANSI/ISEA 107 2020 Type R Class 2 - Mesh Fabric with 2 Inch Silver Stripes - Hook and Loop Front Closure - Treated to be Limited Flammability",
+   "name": "Luminator® Series - Hi-Vis Reflective Lime Safety Vest - ANSI/ISEA 107 2020 Type R Class 2 - Mesh Fabric with 2 Inch Silver Stripes - Hook and Loop Front Closure - Treated to be Limited Flammability",
    "brand": "MCR Safety",
    "part": "VCL2MLFR"
   },
@@ -22502,7 +22591,7 @@
    "closure": "Zipper",
    "pockets": "1",
    "pocketType": "Chest Pocket",
-   "name": "Luminator\u00ae Series Hi-Vis Reflective Lime Safety Vest - Zipper Front Closure - Meets ANSI/ISEA 107 Hi-Vis Standard - Type R Class 3 Compliant - Breathable Mesh Material helps Keep you Cooler in Warmer Environments",
+   "name": "Luminator® Series Hi-Vis Reflective Lime Safety Vest - Zipper Front Closure - Meets ANSI/ISEA 107 Hi-Vis Standard - Type R Class 3 Compliant - Breathable Mesh Material helps Keep you Cooler in Warmer Environments",
    "brand": "MCR Safety",
    "part": "VCL3MLZ"
   },
@@ -22549,7 +22638,7 @@
    "fabricConstruction": "Mesh",
    "closure": "Zipper",
    "stripeWidth": "3.5",
-   "name": "Luminator\u00ae Series - Hi-Vis Reflective Lime Safety Vest - 3.5 Inch Orange Silver Stripes - Meets ANSI/ISEA 107 2020 Standard - Type R Class 2 Compliant - Limited Flammability - Dielectric / Non-Conductive - Zipper Front Closure",
+   "name": "Luminator® Series - Hi-Vis Reflective Lime Safety Vest - 3.5 Inch Orange Silver Stripes - Meets ANSI/ISEA 107 2020 Standard - Type R Class 2 Compliant - Limited Flammability - Dielectric / Non-Conductive - Zipper Front Closure",
    "brand": "MCR Safety",
    "part": "VWCCL2LFR"
   },
@@ -23016,7 +23105,7 @@
    "color": "Fluorescent Orange-Red / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "210D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "3.75",
    "closure": "Zipper",
    "pockets": "8",
@@ -23046,7 +23135,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "210D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "3.75",
    "closure": "Zipper",
    "pockets": "8",
@@ -23074,7 +23163,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on Polyester",
-   "fabricWeight": "11 oz/yd\u00b2",
+   "fabricWeight": "11 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -23084,7 +23173,7 @@
    "fr": "True",
    "waterResistance": "Waterproof",
    "packed": "12 each",
-   "name": "Class E Comfort-Brite\u00ae Overall",
+   "name": "Class E Comfort-Brite® Overall",
    "brand": "Tingley",
    "part": "O53122"
   },
@@ -24179,7 +24268,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1013"
   },
@@ -24201,7 +24290,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1014"
   },
@@ -24223,7 +24312,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1015"
   },
@@ -24245,7 +24334,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1016"
   },
@@ -24267,7 +24356,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1017"
   },
@@ -24289,7 +24378,7 @@
    "stripeWidth": "2",
    "certifications": "ANSI/ISEA 107-2020 Class 2",
    "dataNotes": "Type R assumed (source stated class only, no type)",
-   "name": "GSS ECO, REPREVE\u00ae RECYCLED POLYESTER COLORED CLASS 2 VEST",
+   "name": "GSS ECO, REPREVE® RECYCLED POLYESTER COLORED CLASS 2 VEST",
    "brand": "GSS Safety",
    "part": "1019"
   },
@@ -24834,7 +24923,7 @@
    "fabricConstruction": "Mesh",
    "pockets": "2",
    "pocketType": "Chest Pocket, Pen Pocket, Phone Pocket",
-   "certifications": "Non-ANSI Certified \u26a0 WARNING: Cancer and reproductive harm \u2013 California residents click here. NON-ANSI NEW DESIGNED LIGHTWEIGHT RIP STOP BOTTOM DOWN SHIRT W/SPF 50+ SKU: 7507",
+   "certifications": "Non-ANSI Certified ⚠ WARNING: Cancer and reproductive harm – California residents click here. NON-ANSI NEW DESIGNED LIGHTWEIGHT RIP STOP BOTTOM DOWN SHIRT W/SPF 50+ SKU: 7507",
    "name": "NON-ANSI NEW DESIGNED LIGHTWEIGHT RIP STOP BOTTOM DOWN SHIRT W/SPF 50+",
    "brand": "GSS Safety",
    "part": "7507"
@@ -29794,7 +29883,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29852,7 +29941,7 @@
    "color": "Fluorescent Yellow-Green.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X",
    "material": "PVC on non",
-   "fabricWeight": "11.3 oz/yd\u00b2",
+   "fabricWeight": "11.3 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29876,7 +29965,7 @@
    "color": "Fluorescent Orange-Red.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X",
    "material": "PVC on non",
-   "fabricWeight": "10.3 oz/yd\u00b2",
+   "fabricWeight": "10.3 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29900,7 +29989,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X",
    "material": "PVC on Polyester",
-   "fabricWeight": "11 oz/yd\u00b2",
+   "fabricWeight": "11 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29910,7 +29999,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "packed": "12 each",
-   "name": "Class 3 Comfort-Brite\u00ae Coat",
+   "name": "Class 3 Comfort-Brite® Coat",
    "brand": "Tingley",
    "part": "C53122"
   },
@@ -29925,7 +30014,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 150D",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29949,7 +30038,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29973,7 +30062,7 @@
    "color": "Black / Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -29997,7 +30086,7 @@
    "color": "Fluorescent Orange-Red / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30020,7 +30109,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30066,7 +30155,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "300D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "5.90",
    "closure": "Zipper",
    "pockets": "8",
@@ -30095,7 +30184,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "210D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "3.75",
    "closure": "Zipper",
    "pocketType": "Radio Pocket, Pen Pocket, Chest Pocket",
@@ -30122,7 +30211,7 @@
    "color": "Black / Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 210D",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Zipper",
    "pocketType": "Radio Pocket, Pen Pocket, Chest Pocket",
    "stripeWidth": "2",
@@ -30148,7 +30237,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "300D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "5.90",
    "closure": "Zipper",
    "pockets": "5",
@@ -30175,7 +30264,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 210D",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Zipper",
    "pocketType": "Slash Pocket, Pen Pocket",
    "stripeWidth": "2",
@@ -30199,7 +30288,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "210D PU coated waterproof polyester",
-   "fabricWeight": "3.4 oz/yd\u00b2",
+   "fabricWeight": "3.4 oz/yd²",
    "shellWeight": "3.75",
    "closure": "Zipper",
    "pocketType": "Chest Pocket, Zipper Pocket",
@@ -30313,7 +30402,7 @@
    "color": "Fluorescent Yellow-Green.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on non",
-   "fabricWeight": "11.3 oz/yd\u00b2",
+   "fabricWeight": "11.3 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30337,7 +30426,7 @@
    "color": "Fluorescent Orange-Red.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on non",
-   "fabricWeight": "10.3 oz/yd\u00b2",
+   "fabricWeight": "10.3 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30361,7 +30450,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on Polyester",
-   "fabricWeight": "11 oz/yd\u00b2",
+   "fabricWeight": "11 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30371,7 +30460,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "packed": "12 each",
-   "name": "Class 3 Comfort-Brite\u00ae Jacket",
+   "name": "Class 3 Comfort-Brite® Jacket",
    "brand": "Tingley",
    "part": "J53122"
   },
@@ -30386,7 +30475,7 @@
    "color": "Fluorescent Orange-Red",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on Polyester",
-   "fabricWeight": "11 oz/yd\u00b2",
+   "fabricWeight": "11 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30396,7 +30485,7 @@
    "waterResistance": "Waterproof",
    "hooded": "True",
    "packed": "12 each",
-   "name": "Class 3 Comfort-Brite\u00ae Jacket",
+   "name": "Class 3 Comfort-Brite® Jacket",
    "brand": "Tingley",
    "part": "J53129"
   },
@@ -30433,7 +30522,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 150D",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30456,7 +30545,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30479,7 +30568,7 @@
    "color": "Fluorescent Orange-Red",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 300D",
-   "fabricWeight": "6 oz/yd\u00b2",
+   "fabricWeight": "6 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30557,7 +30646,7 @@
    "color": "Fluorescent Yellow-Green.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on non",
-   "fabricWeight": "11.3 oz/yd\u00b2",
+   "fabricWeight": "11.3 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30581,7 +30670,7 @@
    "color": "Fluorescent Orange-Red.",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on non",
-   "fabricWeight": "10.3 oz/yd\u00b2",
+   "fabricWeight": "10.3 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30605,7 +30694,7 @@
    "color": "Fluorescent Orange-Red",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "PVC on Polyester",
-   "fabricWeight": "11 oz/yd\u00b2",
+   "fabricWeight": "11 oz/yd²",
    "closure": "Snaps",
    "pockets": "0",
    "stripeWidth": "2",
@@ -30615,7 +30704,7 @@
    "fr": "True",
    "waterResistance": "Waterproof",
    "packed": "12 each",
-   "name": "Class E Comfort-Brite\u00ae Overall",
+   "name": "Class E Comfort-Brite® Overall",
    "brand": "Tingley",
    "part": "O53129"
   },
@@ -30628,7 +30717,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 150D",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30649,7 +30738,7 @@
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "Polyurethane on 75D",
-   "fabricWeight": "3.7 oz/yd\u00b2",
+   "fabricWeight": "3.7 oz/yd²",
    "closure": "Zipper",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30692,8 +30781,8 @@
    "sleeved": "True",
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
-   "material": "Fluorescent yellow-green material is 4.3oz/yd\u00b2 snag resistant Polyester.",
-   "fabricWeight": "4.3 oz/yd\u00b2",
+   "material": "Fluorescent yellow-green material is 4.3oz/yd² snag resistant Polyester.",
+   "fabricWeight": "4.3 oz/yd²",
    "pocketType": "Pen Pocket",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30710,8 +30799,8 @@
    "standard": "ANSI/ISEA 107 Type O Class 1",
    "color": "Black / Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
-   "material": "Black material is 4.3oz/yd\u00b2 snag resistant polyester. Fluorescent yellow-green material is",
-   "fabricWeight": "4.3 oz/yd\u00b2",
+   "material": "Black material is 4.3oz/yd² snag resistant polyester. Fluorescent yellow-green material is",
+   "fabricWeight": "4.3 oz/yd²",
    "tapeColor": "Silver",
    "tapeType": "Glass Bead",
    "tapeApplication": "Heat Transfer",
@@ -30727,8 +30816,8 @@
    "standard": "ANSI/ISEA 107 Type R Class 2",
    "color": "Fluorescent Yellow-Green / Black",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
-   "material": "Fluorescent yellow-green material is 4.3oz/yd\u00b2 snag resistant Polyester. Material meets th",
-   "fabricWeight": "4.3 oz/yd\u00b2",
+   "material": "Fluorescent yellow-green material is 4.3oz/yd² snag resistant Polyester. Material meets th",
+   "fabricWeight": "4.3 oz/yd²",
    "shellWeight": "4.3",
    "tapeColor": "Silver",
    "tapeType": "Glass Bead",
@@ -30883,7 +30972,7 @@
    "color": "Fluorescent Yellow-Green",
    "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X",
    "material": "75D ripstop Polyester",
-   "fabricWeight": "2.6 oz/yd\u00b2",
+   "fabricWeight": "2.6 oz/yd²",
    "pocketType": "Pen Pocket, Chest Pocket",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -30966,7 +31055,7 @@
    "bodyZone": "Upper",
    "sleeved": "True",
    "color": "Fluorescent Yellow-Green",
-   "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X Job Sight FR\u2122 is a trademark of Tingley Rubber Corp.",
+   "sizes": "S, M, L, XL, 2X, 3X, 4X, 5X Job Sight FR™ is a trademark of Tingley Rubber Corp.",
    "material": "Fluorescent yellow green material is 8 oz. 60% Modacrylic/40% Cotton blend.",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -31192,7 +31281,7 @@
    "standard": "ANSI/ISEA 107 Type O Class 1",
    "bodyZone": "Upper",
    "sleeved": "False",
-   "color": "Realtree EDGE\u00ae Camouflage pattern",
+   "color": "Realtree EDGE® Camouflage pattern",
    "sizes": "S-M, L-XL, 2X-3X, 4X-5X",
    "material": "100% Polyester (3.6 oz.) material meets the ANSI/ISEA 107 minimum background requirement f",
    "shellWeight": "3.6",
@@ -31648,7 +31737,7 @@
    "pocketType": "Chest, Side, Zippered",
    "waterResistance": "Waterproof (EN 343 Class 4:4)",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 2; EN 343 Class 4:4 X (WP 20,000mm, MVP 10,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 2; EN 343 Class 4:4 X (WP 20,000mm, MVP 10,000g/m²/24hrs)",
    "dataNotes": "UPC/Case UPC are for size XS; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Rain Jacket (3L)",
    "brand": "Portwest",
@@ -31680,7 +31769,7 @@
    "stripePattern": "X-Back",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; CSA-Z96 Class 2 level 2; EN 343 Class 3:1 X (WP 15,000mm ); EN 342 (0.352 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; CSA-Z96 Class 2 level 2; EN 343 Class 3:1 X (WP 15,000mm ); EN 342 (0.352 (M².K/W), 2, X)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own",
    "name": "Hi-Vis X Back 5-in-1 Traffic Jacket",
    "brand": "Portwest",
@@ -32279,7 +32368,7 @@
    "closure": "Elastic",
    "pocketType": "Rule, Back, Patch",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
-   "certifications": "ANSI/ISEA 107 Class E; CSA-Z96 Class 2 level 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Class E; CSA-Z96 Class 2 level 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Contrast Tape Winter Bib and Brace / Hi-Vis Contrast Tape Winter Bib; UPC/Case UPC are for size S; each size has its own",
    "name": "Hi-Vis Contrast Tape Winter Bib and Brace",
    "brand": "Portwest",
@@ -32375,7 +32464,7 @@
    "waterResistance": "Waterproof (EN 343 Class 4:1)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:1 X (WP 20,000mm,); EN 342 (0.334 (M\u00b2.K/W), 3, X); RIS 3279 TOM Issue 2 (Orange Only)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:1 X (WP 20,000mm,); EN 342 (0.334 (M².K/W), 3, X); RIS 3279 TOM Issue 2 (Orange Only)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "DX4 Hi-Vis Winter Jacket",
    "brand": "Portwest",
@@ -32839,7 +32928,7 @@
    "tapeType": "Segmented",
    "tapeApplication": "Heat Transfer",
    "waterResistance": "Waterproof (EN 343 Class 4:2)",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; EN ISO 20471 Class 2 (Size S); EN ISO 20471 Class 3 (Size M Upwards); EN 343 Class 4:2 X (WP 20,000mm MVP 20,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; EN ISO 20471 Class 2 (Size S); EN ISO 20471 Class 3 (Size M Upwards); EN 343 Class 4:2 X (WP 20,000mm MVP 20,000g/m²/24hrs)",
    "dataNotes": "EN ISO 20471 is cited at Class 2/3 on this sheet (varies by size); UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "KX3 Hi-Vis Sport Lined Bomber",
    "brand": "Portwest",
@@ -33016,7 +33105,7 @@
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "hooded": "True",
    "gender": "Female",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m²/24hrs)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Women's Breathable Rain Jacket / Hi-Vis Women's Breathable Rain; also certified Type P; compare group uses Type R; UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "Hi-Vis Women's Breathable Rain Jacket",
    "brand": "Portwest",
@@ -33236,7 +33325,7 @@
    "tapeType": "Segmented",
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 4:3 X (WP 11,000MM, MVP 50,000 G/M\u00b2/24HRS); EN 14404: 2004 + A1: 2010 Type 2 (Level 0 (WHEN USED IN COMBINATION WITH S156))",
+   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 4:3 X (WP 11,000MM, MVP 50,000 G/M²/24HRS); EN 14404: 2004 + A1: 2010 Type 2 (Level 0 (WHEN USED IN COMBINATION WITH S156))",
    "dataNotes": "UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Extreme Rain Pants",
    "brand": "Portwest",
@@ -33262,7 +33351,7 @@
    "pocketType": "Rule, Back, Zippered, Knee Pad",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.356 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.356 (M².K/W), 2, X)",
    "dataNotes": "UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Winter Pants",
    "brand": "Portwest",
@@ -33292,7 +33381,7 @@
    "tapeType": "Segmented",
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 11,000mm MVP 50,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 11,000mm MVP 50,000g/m²/24hrs)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Extreme Rain Jacket",
    "brand": "Portwest",
@@ -33358,7 +33447,7 @@
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000MM, MVP 10,000 G/M\u00b2/24HRS); EN 342 (0.399 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000MM, MVP 10,000 G/M²/24HRS); EN 342 (0.399 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: PW3 Hi-Vis Breathable 5-in-1 Jacket / PW3 Hi-Vis Breathable 5-in-1; also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Breathable 5-in-1 Jacket",
    "brand": "Portwest",
@@ -33389,7 +33478,7 @@
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.356 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.356 (M².K/W), 2, X)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Winter Parka Jacket",
    "brand": "Portwest",
@@ -33543,7 +33632,7 @@
    "tapeApplication": "Heat Transfer",
    "waterResistance": "Water Resistant",
    "gender": "Female",
-   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 2 Waterproof/Breathability (WP 8,000mm, MVP 3.000g/M\u00b2/24hr)",
+   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 2 Waterproof/Breathability (WP 8,000mm, MVP 3.000g/M²/24hr)",
    "dataNotes": "Sheet prints two different titles: PW3 Hi-Vis Women's Softshell (3L) / PW3 Hi-Vis Women's Softshell; UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "PW3 Hi-Vis Women's Softshell (3L)",
    "brand": "Portwest",
@@ -33573,7 +33662,7 @@
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
    "gender": "Female",
-   "certifications": "ANSI/ISEA 107 Type R Class 2; ANSI/ISEA 107 TYPE P CLASS 2; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.323 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 2; ANSI/ISEA 107 TYPE P CLASS 2; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.323 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: PW3 Hi-Vis Women's Winter Jacket / PW3 Hi-Vis Women's Winter; also certified Type P; compare group uses Type R; UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "PW3 Hi-Vis Women's Winter Jacket",
    "brand": "Portwest",
@@ -34474,7 +34563,7 @@
    "pocketType": "Phone",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M².K/W), 2, X)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Contrast Winter Coverall",
    "brand": "Portwest",
@@ -34531,7 +34620,7 @@
    "pocketType": "Rule, Back, Phone, Patch",
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m²/24hrs)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Breathable Contrast Rain Bib Overall / Hi-Vis Breathable Contrast Rain; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Breathable Contrast Rain Bib Overall",
    "brand": "Portwest",
@@ -34558,7 +34647,7 @@
    "closure": "Elastic",
    "pocketType": "Rule, Back, Patch",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
-   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 2; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.341 (M².K/W), 2, X)",
    "dataNotes": "UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Contrast Winter Bib Overall",
    "brand": "Portwest",
@@ -34584,7 +34673,7 @@
    "sizes": "XS-5XL",
    "tapeApplication": "Heat Transfer",
    "waterResistance": "Waterproof (EN 343 Class 3:2)",
-   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 1; EN 343 Class 3:2 X (WP 5,000mm MVP 3,000g/m\u00b2/24hrs)",
+   "certifications": "ANSI/ISEA 107 CLASS E; EN ISO 20471 Class 1; EN 343 Class 3:2 X (WP 5,000mm MVP 3,000g/m²/24hrs)",
    "dataNotes": "UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "Sealtex Ultra Hi-Vis Rain Pants",
    "brand": "Portwest",
@@ -34694,7 +34783,7 @@
    "waterResistance": "Waterproof (EN 343 Class 4:1)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 2; EN 343 Class 4:1 X (WP 20,000mm); EN 342 (0.357 (M\u00b2.K/W)); EN ISO 20471 Class 2",
+   "certifications": "ANSI/ISEA 107 Type R Class 2; EN 343 Class 4:1 X (WP 20,000mm); EN 342 (0.357 (M².K/W)); EN ISO 20471 Class 2",
    "dataNotes": "UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "PW3 Hi-Vis Winter Jacket",
    "brand": "Portwest",
@@ -34726,7 +34815,7 @@
    "insulated": "True",
    "hooded": "True",
    "gender": "Female",
-   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 1 (Size XS and S); EN ISO 20471 Class 2 (Size M upwards); EN 343 Class 4:1 X (WP 20,000mm); EN 342 (0.343(M\u00b2.K/W))",
+   "certifications": "ANSI/ISEA 107 Type R Class 2; EN ISO 20471 Class 1 (Size XS and S); EN ISO 20471 Class 2 (Size M upwards); EN 343 Class 4:1 X (WP 20,000mm); EN 342 (0.343(M².K/W))",
    "dataNotes": "EN ISO 20471 is cited at Class 1/2 on this sheet (varies by size); UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "PW3 Hi-Vis Women's Winter Jacket",
    "brand": "Portwest",
@@ -34914,7 +35003,7 @@
    "tapeApplication": "Sew On",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 (WP 15,000mm); EN 342 (0.323 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 (WP 15,000mm); EN 342 (0.323 (M².K/W), 2, X)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size XS; each size has its own; Case Weight is for size XS",
    "name": "PW3 Hi-Vis Winter Jacket",
    "brand": "Portwest",
@@ -35109,7 +35198,7 @@
    "pocketType": "Phone",
    "waterResistance": "Water Resistant",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.344 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.344 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis 3-in-1 Contrast Bomber Jacket / Hi-Vis 3-in-1 Contrast Bomber; also certified Type P; compare group uses Type R; UPC/Case UPC are for size M; each size has its own; Case Weight is for size M",
    "name": "Hi-Vis 3-in-1 Contrast Bomber Jacket",
    "brand": "Portwest",
@@ -35139,7 +35228,7 @@
    "pockets": "8",
    "pocketType": "Phone, ID, Zippered",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.344 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.344 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis 3-in-1 Contrast Winter Bomber Jacket / Hi-Vis 3-in-1 Contrast Winter; also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis 3-in-1 Contrast Winter Bomber Jacket",
    "brand": "Portwest",
@@ -35542,7 +35631,7 @@
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; ASTM F2732 (-32 \u00b0F to 32 \u00b0F ); EN 343 Class 3:1 X (WP 15,000mm)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; ASTM F2732 (-32 °F to 32 °F ); EN 343 Class 3:1 X (WP 15,000mm)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Contrast Winter Bomber Jacket / Hi-Vis Contrast Winter Bomber; also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Contrast Winter Bomber Jacket",
    "brand": "Portwest",
@@ -36472,7 +36561,7 @@
    "pocketType": "Phone",
    "waterResistance": "Waterproof (EN 343 Class 4:3)",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m\u00b2/24hrs); EN 342 (0.341 (M\u00b2.K/W), 3, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 4:3 X (WP 10,000mm, MVP 10,000g/m²/24hrs); EN 342 (0.341 (M².K/W), 3, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Breathable 7-in-1 Traffic Jacket / Hi-Vis Breathable 7-in-1 Traffic; also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Breathable 7-in-1 Traffic Jacket",
    "brand": "Portwest",
@@ -36502,7 +36591,7 @@
    "pocketType": "Chest, Side, Zippered, Inside",
    "washings": "50X",
    "waterResistance": "Waterproof",
-   "certifications": "ANSI/ISEA 107 Type R Class 2 (Bodywarmer Vest); ANSI/ISEA 107 Type R Class 3 (Full Jacket); ANSI/ISEA 107 TYPE P CLASS 2 (Bodywarmer Vest); ANSI/ISEA 107 TYPE P CLASS 3 (Full Jacket); EN ISO 20471 Class 2 (Bodywarmer Vest); EN ISO 20471 Class 3 (Full Jacket) Waterproof/Breathability (WP 8,000mm, MVP 3,000g/M\u00b2/24hr)",
+   "certifications": "ANSI/ISEA 107 Type R Class 2 (Bodywarmer Vest); ANSI/ISEA 107 Type R Class 3 (Full Jacket); ANSI/ISEA 107 TYPE P CLASS 2 (Bodywarmer Vest); ANSI/ISEA 107 TYPE P CLASS 3 (Full Jacket); EN ISO 20471 Class 2 (Bodywarmer Vest); EN ISO 20471 Class 3 (Full Jacket) Waterproof/Breathability (WP 8,000mm, MVP 3,000g/M²/24hr)",
    "dataNotes": "also certified Type P; compare group uses Type R; ANSI/ISEA 107 is cited at Class 2/3 on this sheet (varies by size); EN ISO 20471 is cited at Class 2/3 on this sheet (varies by size); UPC/Case UPC are for size M; each size has its own; Case Weight is for size M",
    "name": "Hi-Vis 2-in-1 Softshell (3L)",
    "brand": "Portwest",
@@ -36530,7 +36619,7 @@
    "pockets": "4",
    "pocketType": "Side, Zippered, Inside",
    "waterResistance": "Waterproof",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3 Waterproof/Breathability (WP 8,000mm, MVP 3,000g/M\u00b2/24hr)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3 Waterproof/Breathability (WP 8,000mm, MVP 3,000g/M²/24hr)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Contrast Softshell (3L)",
    "brand": "Portwest",
@@ -36562,7 +36651,7 @@
    "pocketType": "Chest, Phone, Inside",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.336 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.336 (M².K/W), 2, X)",
    "dataNotes": "also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Winter Bomber Jacket",
    "brand": "Portwest",
@@ -36594,7 +36683,7 @@
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
    "hooded": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; ASTM F2732 (-31 \u00b0F to 32 \u00b0F ); EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.345 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; ASTM F2732 (-31 °F to 32 °F ); EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.345 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Contrast Winter Traffic Jacket / Hi-Vis Contrast Winter Traffic; also certified Type P; compare group uses Type R",
    "name": "Hi-Vis Contrast Winter Traffic Jacket",
    "brand": "Portwest",
@@ -36616,7 +36705,7 @@
    "washings": "50X",
    "waterResistance": "Waterproof (EN 343 Class 3:1)",
    "insulated": "True",
-   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.345 (M\u00b2.K/W), 2, X)",
+   "certifications": "ANSI/ISEA 107 Type R Class 3; ANSI/ISEA 107 TYPE P CLASS 3; EN ISO 20471 Class 3; EN 343 Class 3:1 X (WP 15,000mm); EN 342 (0.345 (M².K/W), 2, X)",
    "dataNotes": "Sheet prints two different titles: Hi-Vis Contrast Winter Traffic Jacket / Hi-Vis Contrast Winter Traffic; also certified Type P; compare group uses Type R; UPC/Case UPC are for size S; each size has its own; Case Weight is for size S",
    "name": "Hi-Vis Contrast Winter Traffic Jacket",
    "brand": "Portwest",
@@ -37443,7 +37532,7 @@
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
-   "standard": "Class 3, ANSI / ISEA 107 with 2\" 3M\u2122 Scotchlite tape",
+   "standard": "Class 3, ANSI / ISEA 107 with 2\" 3M™ Scotchlite tape",
    "bodyZone": "Upper",
    "sleeved": "True",
    "color": "Lime / Blue, Lime / Black",
@@ -37523,7 +37612,7 @@
    "pocketType": "Slash, Chest, Lower",
    "price": "59.00",
    "dataNotes": "UPC/Case UPC and pack weight are for the Lime / Pink colourway; each colour has its own; name is the page description, not a title; Type R assumed (source stated class only, no type)",
-   "name": "Class 3 Lightweight Windbreaker w/ NitGlo\u2122 Reflective Fabric",
+   "name": "Class 3 Lightweight Windbreaker w/ NitGlo™ Reflective Fabric",
    "brand": "Ironwear",
    "part": "6440",
    "altParts": [
@@ -37715,7 +37804,7 @@
    "gender": "Female",
    "price": "19.30",
    "dataNotes": "source page yielded no product name",
-   "name": "Elastex Women\u2019s Short Sleeve V-Neck Performance T-Shirt",
+   "name": "Elastex Women’s Short Sleeve V-Neck Performance T-Shirt",
    "brand": "Ironwear",
    "part": "7100",
    "altParts": [
@@ -37735,7 +37824,7 @@
    "gender": "Female",
    "price": "31.90",
    "dataNotes": "source page yielded no product name",
-   "name": "Elastex Women\u2019s Class 2 Hi Vis Short Sleeve V-Neck T-Shirt w/ GeoFlect Reflective Tape",
+   "name": "Elastex Women’s Class 2 Hi Vis Short Sleeve V-Neck T-Shirt w/ GeoFlect Reflective Tape",
    "brand": "Ironwear",
    "part": "7102",
    "altParts": [
@@ -37754,7 +37843,7 @@
    "gender": "Female",
    "price": "35.10",
    "dataNotes": "source page yielded no product name",
-   "name": "Elastex Women\u2019s Lightweight Long Sleeve Performance Hoodie",
+   "name": "Elastex Women’s Lightweight Long Sleeve Performance Hoodie",
    "brand": "Ironwear",
    "part": "7110",
    "altParts": [
@@ -37772,7 +37861,7 @@
    "gender": "Female",
    "price": "32.10",
    "dataNotes": "source page yielded no product name",
-   "name": "Elastex Women\u2019s Breathable V-Neck Long Sleeve T-Shirt",
+   "name": "Elastex Women’s Breathable V-Neck Long Sleeve T-Shirt",
    "brand": "Ironwear",
    "part": "7120",
    "altParts": [
@@ -38090,7 +38179,7 @@
    "price": "51.90",
    "certifications": "ANSI / ISEA 107",
    "dataNotes": "name is the page description, not a title",
-   "name": "49\u201d Poly/PU Hi Vis Raincoat w/ Zipper Front & Tuckaway Hood",
+   "name": "49” Poly/PU Hi Vis Raincoat w/ Zipper Front & Tuckaway Hood",
    "brand": "Ironwear",
    "part": "9520"
   },
@@ -38142,7 +38231,7 @@
    "sizes": "Small/Medium, Large/XL, 2XL/3XL, 4XL/5XL",
    "material": "100% Polyester",
    "fabricConstruction": "Mesh front, Knit back",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Zipper",
    "pockets": "6",
    "tapeColor": "Silver",
@@ -38190,7 +38279,7 @@
    "color": "Green, Yellow",
    "sizes": "S-6XL regular, S-6XL tall",
    "material": "100% Cotton",
-   "fabricWeight": "12 oz/yd\u00b2",
+   "fabricWeight": "12 oz/yd²",
    "closure": "Snaps",
    "stripeWidth": "2",
    "tapeColor": "Silver",
@@ -38299,7 +38388,7 @@
    "sleeved": "True",
    "color": "Blue",
    "material": "88% Cotton, 12% Nylon",
-   "fabricWeight": "7 oz/yd\u00b2",
+   "fabricWeight": "7 oz/yd²",
    "closure": "Button",
    "pockets": "2",
    "pocketType": "Chest",
@@ -38337,7 +38426,7 @@
    "color": "Orange",
    "material": "100% Polyester",
    "fabricConstruction": "Mesh",
-   "fabricWeight": "3.5 oz/yd\u00b2",
+   "fabricWeight": "3.5 oz/yd²",
    "closure": "Zipper",
    "pockets": "3",
    "tapeColor": "Silver",
@@ -38389,7 +38478,7 @@
    "color": "Orange",
    "material": "100% Polyester",
    "fabricConstruction": "Mesh",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Hook and Loop",
    "pockets": "3",
    "tapeColor": "Silver",
@@ -38406,7 +38495,7 @@
    "sleeved": "True",
    "color": "Navy, Blue, Yellow",
    "sizes": "S-5XL",
-   "fabricWeight": "8.5 oz/yd\u00b2",
+   "fabricWeight": "8.5 oz/yd²",
    "closure": "Hook and Loop",
    "tapeApplication": "Sew On",
    "fr": "True",
@@ -38431,7 +38520,7 @@
    "bodyZone": "Upper",
    "sleeved": "True",
    "color": "Navy, Yellow",
-   "fabricWeight": "10 oz/yd\u00b2",
+   "fabricWeight": "10 oz/yd²",
    "closure": "Hook and Loop",
    "price": "264.90",
    "name": "OAJ1035NHV Navy 10 Oz. Oasis Jacket With Silver/Yellow Triple Trim Reflective Pattern",
@@ -38519,7 +38608,7 @@
    "sizes": "Small/Medium, Large/XL, 2XL/3XL, 4XL/5XL",
    "material": "100% Polyester",
    "fabricConstruction": "Mesh",
-   "fabricWeight": "4 oz/yd\u00b2",
+   "fabricWeight": "4 oz/yd²",
    "closure": "Zipper",
    "tapeColor": "Silver",
    "packed": "50",
@@ -38550,7 +38639,7 @@
    "sizes": "Small/Medium, Large/XL, 2XL/3XL, 4XL/5XL",
    "material": "100% Polyester",
    "fabricConstruction": "Mesh",
-   "fabricWeight": "3.5 oz/yd\u00b2",
+   "fabricWeight": "3.5 oz/yd²",
    "closure": "Zipper",
    "packed": "50",
    "dataNotes": "stripe counts stated without saying which face; left unsplit; Type R assumed (source stated class only, no type)",
@@ -39548,7 +39637,7 @@
    "bodyZone": "Upper",
    "sleeved": "False",
    "color": "Hi-Vis Yellow",
-   "tapeBrand": "Oralite\u00ae",
+   "tapeBrand": "Oralite®",
    "packed": "25",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -39569,7 +39658,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size S; the page shows one size at a time",
@@ -39590,7 +39679,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -39631,7 +39720,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -39652,7 +39741,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40011,7 +40100,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size S; the page shows one size at a time",
@@ -40032,7 +40121,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "Silver",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "20",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size One-Size; the page shows one size at a time",
@@ -40087,7 +40176,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 2, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40128,7 +40217,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "Silver",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40149,7 +40238,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Orange",
    "tapeBrand": "Silver",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40253,7 +40342,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "3M",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40274,7 +40363,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "Silver",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40295,7 +40384,7 @@
    "sleeved": "True",
    "color": "Hi-Vis Yellow",
    "tapeBrand": "Silver",
-   "hooded": "\u2713",
+   "hooded": "✓",
    "packed": "10",
    "certifications": "ANSI/ISEA 107:2020 Class 3, Type R",
    "dataNotes": "SKU, colours, dimensions and weights are for the selected size M; the page shows one size at a time",
@@ -40660,7 +40749,7 @@
    "packed": "24",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "per-size case weights on the sheet are scrambled by the PDF export; not imported",
-   "name": "Cor-Brite, Self-Extinguishing Type R, Class 2 Safety Vest, Lime Polyester Mesh, 2\u201d Reflective Tape, Breakaway",
+   "name": "Cor-Brite, Self-Extinguishing Type R, Class 2 Safety Vest, Lime Polyester Mesh, 2” Reflective Tape, Breakaway",
    "brand": "Cordova",
    "part": "PVB221PFR"
   },
@@ -40785,7 +40874,7 @@
    "packed": "50",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "sheet lists 1 item and 1 case barcodes with no size labels; the first of each is stored; per-size case weights on the sheet are scrambled by the PDF export; not imported",
-   "name": "Non-Rated Mesh Vest, 1\u201d Reflective Stripe, Hook & Loop Closure, One Size Fits Most",
+   "name": "Non-Rated Mesh Vest, 1” Reflective Stripe, Hook & Loop Closure, One Size Fits Most",
    "brand": "Cordova",
    "part": "V111W"
   },
@@ -40803,7 +40892,7 @@
    "packed": "24",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "sheet lists 8 item and 8 case barcodes with no size labels; the first of each is stored; per-size case weights on the sheet are scrambled by the PDF export; not imported",
-   "name": "Hi-Vis Clothing, Non\u2010Rated, Orange Color, Birdseye 100% Polyester Shirts, Chest Pocket",
+   "name": "Hi-Vis Clothing, Non‐Rated, Orange Color, Birdseye 100% Polyester Shirts, Chest Pocket",
    "brand": "Cordova",
    "part": "V130"
   },
@@ -41374,7 +41463,7 @@
    "packed": "24",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "sheet lists 7 item and 7 case barcodes with no size labels; the first of each is stored; per-size case weights on the sheet are scrambled by the PDF export; not imported",
-   "name": "Cor-Brite, Type R, Class III, Lime Moisture, Wicking T-Shirt, Long Sleeves, Attached Hood, 2\u201d Silver Reflectiv",
+   "name": "Cor-Brite, Type R, Class III, Lime Moisture, Wicking T-Shirt, Long Sleeves, Attached Hood, 2” Silver Reflectiv",
    "brand": "Cordova",
    "part": "V611",
    "altParts": [
@@ -41496,7 +41585,7 @@
    "packed": "24",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "sheet lists 8 item and 8 case barcodes with no size labels; the first of each is stored; per-size case weights on the sheet are scrambled by the PDF export; not imported; Type R assumed (source stated class only, no type)",
-   "name": "Cor-Brite, Class II Mesh Orange Safety Vests, Surveyors Vest, Zipper Closure, 2\u201d Silver Contrasting Stripes, F",
+   "name": "Cor-Brite, Class II Mesh Orange Safety Vests, Surveyors Vest, Zipper Closure, 2” Silver Contrasting Stripes, F",
    "brand": "Cordova",
    "part": "VS272P"
   },
@@ -41610,7 +41699,7 @@
    "packed": "24",
    "certifications": "FDA-approved materials for food contact",
    "dataNotes": "sheet lists 2 item and 2 case barcodes with no size labels; the first of each is stored; per-size case weights on the sheet are scrambled by the PDF export; not imported; name is a spec string with no garment word, so garment type and compare group could not be derived",
-   "name": "Expandable, Lime 100% Polyester Mesh Fabric, Zipper Closure, 2\u201d Silver on 4.5\u201d Orange Contrast Stripe, Three O",
+   "name": "Expandable, Lime 100% Polyester Mesh Fabric, Zipper Closure, 2” Silver on 4.5” Orange Contrast Stripe, Three O",
    "brand": "Cordova",
    "part": "VS291P"
   },
