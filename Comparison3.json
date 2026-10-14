@@ -2,18 +2,19 @@
  "_README": {
   "purpose": "Competitor-to-Majestic high-visibility apparel cross-reference. A rep enters a competitor part number; the tool returns the three closest Majestic garments as Good / Better / Best.",
   "structure": "Two tables, matching the glove dataset. 'majestic' is the pool of Majestic hi-vis products. 'competitors' is keyed by part number and carries its specs plus override fields.",
-  "hard_gate": "Compare Group is a HARD filter, not a score. A Type R Class 2 upper garment is only ever matched against another Type R Class 2 upper garment — ANSI 107 classes are not interchangeable. Garment Type is the second gate (a vest is not a t-shirt).",
-  "matching_logic": "Match #1 comes from 'overrideBestMatch' (human-verified). Matches #2 and #3 are scored at runtime against the Majestic pool within the gate, excluding #1.",
+  "hard_gate": "Compare Group is a hard filter, not a score: a garment is only matched against Majestic garments in the same ANSI/ISEA 107 group, upper body against upper body and lower against lower. Two exceptions, both stated on the page, and both only ever go up a class. Where Majestic makes nothing in the group, the tool matches against the closest group it does make: Type O Class 1 against Type R Class 2; Type P, full-body sets, coveralls and accessories against Type R in the same class; a garment rated Class 2 and Class 3 against either. And where the match would be in Class 2 but Majestic makes nothing like the garment in Class 2 (a jacket, parka, coat or sweatshirt), it goes to Class 3, which exceeds the rating it replaces. A row with no group is read from its stated type and class (a class with no type as Type R). Non-ANSI is only matched against non-ANSI.",
+  "matching_logic": "Match #1 is the overrideBestMatch in comparison-overrides.json where one is set; otherwise all three are scored by the tool. The score weights add up to 100: garment type 30, color 20, pockets 15, D-ring pass-through 15, closure 10, material 10. Garment type is always scored, and the D-ring only when the searched garment has a pass-through. Any other spec the searched garment doesn't publish drops out, the rest scale up in proportion, and 2.5 points come off for each one missing, so a thin comparison can't read as a perfect match. A spec it publishes that the Majestic garment doesn't scores 35 of 100. Color is scored by family (Lime, Hi-Vis Green and Hi-Vis Yellow are all fluorescent yellow-green), with the black two-tone a smaller difference. Below 40% the page says there is no like-for-like match and still shows the three closest garments.",
   "overrides": "Curated #1 pins are NOT stored in this file. This file is regenerated from the source spreadsheets whenever a brand is added, so anything kept here is destroyed on the next rebuild. They live in comparison-overrides.json, which no script writes.",
   "altParts": "Size and colour SKUs that resolve to the same style row, so a rep can type any of them.",
   "dataNotes": "Where a source sheet was ambiguous the row carries a note rather than a guessed value. Surface these in the UI, do not hide them.",
   "counts": {
-   "majestic": 88,
+   "majestic": 70,
    "competitors": 1862
   },
   "images": "Majestic product image, taken from the PIM's Product Images export: the lowest sort order among rows that carry a Small Image path. Rows of type 360 carry no still and are skipped.",
   "derivedFeatures": "dRing, idPocket and micTab are derived, not scraped, by clean_hivis_catalog.py. Majestic comes from the PIM export's name, bullet points and callouts; competitors from pocketType and the product name, the only scraped fields these can appear in. dRing and idPocket are 'Yes' or absent; micTab is the number of tabs where the source states one, otherwise 'Yes'. Absent on a competitor means not published, not absent from the garment. Only dRing affects matching: when the searched garment states a D-ring pass-through it is scored as a fit requirement, because a garment worn over a fall-protection harness needs one. idPocket and micTab are shown in the spec table but not scored (of 533 competitor Type R Class 2 vests, 10% state a mic tab and 9% an ID pocket).",
-  "wording": "Spec wording is aligned across both tables by clean_hivis_catalog.py so the spec table compares like with like: one format for the ANSI/ISEA 107 designation (edition year kept where stated, never added); Majestic PIM material codes written out, with the code kept in pimMaterial; competitor material text tidied but not shortened; fabric weight carried for Majestic from the PIM with units, and GSM also given in oz/yd². No specifics are dropped: anything that was in the wrong field was moved to the right one. With material in words on both sides it now counts in the match (it compared 'PEM' with 'Polyester' before and never scored); the tool scores it on the fabric words the competitor names. Majestic color comes from the part numbering, not the PIM (which has no color field): the odd part of a pair is hi-vis yellow and the next even part the same garment in hi-vis orange; '/Black' marks the black two-tone named in the bullets. The 71- rain suits sit outside that numbering and carry no color. Majestic tape brand '3M' from the PIM is corrected to 'Majestic': Majestic hi-vis does not use 3M tape."
+  "wording": "Spec wording is aligned across both tables by clean_hivis_catalog.py so the spec table compares like with like: one format for the ANSI/ISEA 107 designation (edition year kept where stated, never added); Majestic PIM material codes written out, with the code kept in pimMaterial; competitor material text tidied but not shortened; fabric weight carried for Majestic from the PIM with units, and GSM also given in oz/yd². No specifics are dropped: anything that was in the wrong field was moved to the right one. With material in words on both sides it now counts in the match (it compared 'PEM' with 'Polyester' before and never scored); the tool scores it on the fabric words the competitor names. Majestic color comes from the part numbering, not the PIM (which has no color field): the odd part of a pair is hi-vis yellow and the next even part the same garment in hi-vis orange; '/Black' marks the black two-tone named in the bullets. The 71- rain suits sit outside that numbering and carry no color. Majestic tape brand '3M' from the PIM is corrected to 'Majestic': Majestic hi-vis does not use 3M tape. Garment type 'Hoodie' is filed as 'Sweatshirt' with hooded 'True', so a hooded and a plain sweatshirt are the same garment type and the hood stays a spec of its own.",
+  "unpublished": "Majestic products whose PIM status is 'nopublish' are removed by clean_hivis_catalog.py: the tool neither finds nor recommends them."
  },
  "majestic": {
   "75-3239": {
@@ -727,30 +728,6 @@
    "pimMaterial": "PUPoly",
    "fabricWeight": "175 GSM (5.2 oz/yd²)"
   },
-  "75-3283": {
-   "garmentType": "Vest",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "False",
-   "material": "Solid Polyester Knit",
-   "shellWeight": "3.4",
-   "closure": "Hook and Loop",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "country": "China",
-   "packed": "50EA",
-   "name": "Self Extinguishing High Visibility Safety Vest, ANSI 2",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/28/75-3283_Front_small.jpg",
-   "color": "Hi-Vis Yellow",
-   "pimMaterial": "PolyKnit",
-   "fabricWeight": "3.4 oz/yd²"
-  },
   "75-1303": {
    "garmentType": "Parka",
    "compareGroup": "Type R Class 3",
@@ -1208,79 +1185,6 @@
    "fabricWeight": "3.2 oz/yd²",
    "micTab": "Yes"
   },
-  "75-3256": {
-   "garmentType": "Vest",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "False",
-   "material": "Polyester Mesh",
-   "closure": "Hook and Loop",
-   "pockets": "0",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Dot",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "50EA",
-   "name": "Hi Vis Breakaway Mesh Vest, Orange",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/25/75-3256_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "PEM"
-  },
-  "75-5326": {
-   "garmentType": "Sweatshirt",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Polyester Fleece",
-   "shellWeight": "8.25",
-   "closure": "Zipper",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "hooded": "True",
-   "country": "Bangladesh",
-   "packed": "10EA",
-   "name": "High Visibility Hooded Sweatshirt with Zipper Closure, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/32/75-5326_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "POF",
-   "fabricWeight": "8.25 oz/yd²"
-  },
-  "75-1314": {
-   "garmentType": "Jacket",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "PU-Coated Polyester Oxford",
-   "closure": "Zipper",
-   "pockets": "3",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "hooded": "True",
-   "country": "Bangladesh",
-   "packed": "10EA",
-   "name": "High Visibility Waterproof Jacket with Quilted Liner, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1314_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "PUPoly;POF;Oxford",
-   "fabricWeight": "175 GSM (5.2 oz/yd²)"
-  },
   "75-1373": {
    "garmentType": "Jacket",
    "compareGroup": "Type R Class 3",
@@ -1303,56 +1207,6 @@
    "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/37/75-1373_1200_small.jpg",
    "color": "Hi-Vis Yellow/Black",
    "pimMaterial": "POY;POF"
-  },
-  "75-3240": {
-   "garmentType": "Vest",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "False",
-   "material": "Polyester Mesh",
-   "shellWeight": "3.5",
-   "closure": "Zipper",
-   "pockets": "6",
-   "tapeApplication": "Heat Transfer",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Dot",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "50EA",
-   "name": "High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/24/75-3240_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "PEM",
-   "fabricWeight": "3.5 oz/yd²",
-   "idPocket": "Yes",
-   "micTab": "2"
-  },
-  "75-5258": {
-   "garmentType": "Shirt",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Polyester Birdseye Mesh",
-   "shellWeight": "3.8",
-   "tapeApplication": "Heat Transfer",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High visibility long sleeve shirt with reflective chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/25/75-5258_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "BE",
-   "fabricWeight": "3.8 oz/yd²"
   },
   "75-3202": {
    "garmentType": "Vest",
@@ -1379,29 +1233,6 @@
    "pimMaterial": "PEM",
    "fabricWeight": "3.4 oz/yd²",
    "micTab": "1"
-  },
-  "75-5218": {
-   "garmentType": "Shirt",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Snag-Resistant Stretch Fabric",
-   "shellWeight": "4",
-   "tapeApplication": "Heat Transfer",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High Visibility Snag Resistant Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5218_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "Snag",
-   "fabricWeight": "4 oz/yd²"
   },
   "75-3257": {
    "garmentType": "Vest",
@@ -1452,28 +1283,6 @@
    "color": "Hi-Vis Orange/Black",
    "pimMaterial": "POF",
    "fabricWeight": "10 oz/yd²"
-  },
-  "75-2352": {
-   "garmentType": "Pants",
-   "compareGroup": "Class E supplemental",
-   "ansiClass": "E",
-   "standard": "ANSI/ISEA 107-2020 Class E",
-   "bodyZone": "Lower",
-   "material": "PU-Coated Polyester Oxford",
-   "closure": "Snaps",
-   "pockets": "2",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Double",
-   "washings": "25X",
-   "country": "China",
-   "packed": "20EA",
-   "name": "High Visibility Waterproof Rain Pants, ANSI E",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2352_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "PUPoly;Oxford",
-   "fabricWeight": "150 Denier"
   },
   "75-3302": {
    "garmentType": "Vest",
@@ -1553,47 +1362,6 @@
    "fabricWeight": "175 GSM (5.2 oz/yd²)",
    "idPocket": "Yes",
    "micTab": "Yes"
-  },
-  "71-2040": {
-   "garmentType": "Set",
-   "compareGroup": "Non-ANSI",
-   "hvsaType": "Non-ANSI",
-   "standard": "Non-ANSI",
-   "bodyZone": "Full",
-   "sleeved": "True",
-   "material": "PVC-Coated Polyester",
-   "closure": "Zipper",
-   "pockets": "4",
-   "country": "China",
-   "packed": "10EA",
-   "name": "2-Piece Hooded Waterproof Rain Suit",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/71/-2/04/71-2040_1_1200_small.jpg",
-   "pimMaterial": "PVCcoat"
-  },
-  "75-5216": {
-   "garmentType": "Shirt",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Polyester Birdseye Mesh",
-   "shellWeight": "3.8",
-   "pockets": "1",
-   "tapeApplication": "Heat Transfer",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High Visibility Short Sleeve Shirt with Reflective Chainsaw Striping, ANSI 2, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/21/75-5213_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "BE",
-   "fabricWeight": "3.8 oz/yd²"
   },
   "75-3255": {
    "garmentType": "Vest",
@@ -1692,73 +1460,6 @@
    "pimMaterial": "POT",
    "fabricWeight": "3.8 oz/yd²"
   },
-  "75-1384": {
-   "garmentType": "Jacket",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "PU-Coated Polyester Oxford, Polyester Fleece",
-   "closure": "Zipper",
-   "pockets": "5",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "hooded": "True",
-   "country": "Bangladesh",
-   "packed": "10EA",
-   "name": "High Visibility 8-in-1 Waterproof Jacket with High Visibility Liner, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/38/75-1384_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "PUPoly;POF;Oxford",
-   "fabricWeight": "175 GSM (5.2 oz/yd²)",
-   "idPocket": "Yes",
-   "micTab": "Yes"
-  },
-  "75-5356": {
-   "garmentType": "Shirt",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Polyester Birdseye Mesh",
-   "shellWeight": "3.8",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High Visibility Long Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5356_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "BE",
-   "fabricWeight": "3.8 oz/yd²"
-  },
-  "71-2010": {
-   "garmentType": "Set",
-   "compareGroup": "Non-ANSI",
-   "hvsaType": "Non-ANSI",
-   "standard": "Non-ANSI",
-   "bodyZone": "Full",
-   "sleeved": "True",
-   "material": "PVC-Coated Polyester",
-   "closure": "Zipper",
-   "pockets": "4",
-   "country": "China",
-   "packed": "10EA",
-   "name": "2-Piece Hooded Waterproof Rain Suit",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/71/-2/01/71-2010_1200_small.jpg",
-   "pimMaterial": "PVCcoat"
-  },
   "75-2355": {
    "garmentType": "Bib",
    "compareGroup": "Class E supplemental",
@@ -1832,122 +1533,6 @@
    "fabricWeight": "3.5 oz/yd²",
    "idPocket": "Yes",
    "micTab": "Yes"
-  },
-  "75-5306": {
-   "garmentType": "Shirt",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "Polyester Birdseye Mesh",
-   "shellWeight": "3.8",
-   "pockets": "1",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Double",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High Visibility Short Sleeve Shirt, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-5/30/75-5306_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "BE",
-   "fabricWeight": "3.8 oz/yd²"
-  },
-  "75-1312": {
-   "garmentType": "Jacket",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "PU-Coated Polyester, Polyester Fleece",
-   "closure": "Zipper",
-   "pockets": "5",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Single",
-   "washings": "25X",
-   "hooded": "True",
-   "country": "Bangladesh",
-   "packed": "10EA",
-   "name": "High Visibility Waterproof Jacket with Removable Fleece Liner, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/31/75-1312-Single_1200_small.jpg",
-   "color": "Hi-Vis Orange/Black",
-   "pimMaterial": "PUPoly;POF;Oxford",
-   "fabricWeight": "175 GSM (5.2 oz/yd²)"
-  },
-  "75-3236": {
-   "garmentType": "Vest",
-   "compareGroup": "Type R Class 2",
-   "hvsaType": "Type R",
-   "ansiClass": "2",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 2",
-   "bodyZone": "Upper",
-   "sleeved": "False",
-   "material": "Oxford, Polyester Mesh Back",
-   "closure": "Zipper",
-   "pockets": "9",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Dot",
-   "washings": "25X",
-   "country": "Bangladesh",
-   "packed": "25EA",
-   "name": "High Visibility Heavy Duty Surveyors Vest with Two-Tone DOT Striping, ANSI 2, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3236_new_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "PEM;Oxford",
-   "fabricWeight": "300 Denier",
-   "idPocket": "Yes",
-   "micTab": "2"
-  },
-  "75-1352": {
-   "garmentType": "Jacket",
-   "compareGroup": "Type R Class 3",
-   "hvsaType": "Type R",
-   "ansiClass": "3",
-   "standard": "ANSI/ISEA 107-2020 Type R, Class 3",
-   "bodyZone": "Upper",
-   "sleeved": "True",
-   "material": "PU-Coated Polyester Oxford",
-   "closure": "Snaps",
-   "pockets": "2",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Double",
-   "washings": "25X",
-   "country": "China",
-   "packed": "20EA",
-   "name": "High Visibility Waterproof Rain Jacket, ANSI 3, R",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-1/35/75-1352-Single_1200_small.jpg",
-   "color": "Hi-Vis Orange",
-   "pimMaterial": "PUPoly;POF;Oxford",
-   "fabricWeight": "150 Denier"
-  },
-  "75-2392": {
-   "garmentType": "Gaiter",
-   "compareGroup": "Non-ANSI",
-   "bodyZone": "Lower",
-   "material": "Polyester Mesh",
-   "tapeApplication": "Sew On",
-   "tapeBrand": "Majestic",
-   "stripePattern": "Double",
-   "washings": "25X",
-   "country": "China",
-   "packed": "50PR",
-   "name": "High Visibility Gaiters, Orange",
-   "brandLine": "Majestic",
-   "img_url": "https://majesticglove.com/UserFiles/Product/Images/75/-2/39/75-2392_1200_small.jpg",
-   "color": "Orange",
-   "pimMaterial": "PEM"
   },
   "75-3003 / 75-3004": {
    "garmentType": "Vest",
@@ -3469,7 +3054,7 @@
    "part": "JS144"
   },
   "JS150": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -3486,10 +3071,11 @@
    "gender": "Unisex",
    "name": "Hoodie Sweatshirt with Zipper",
    "brand": "Kishigo",
-   "part": "JS150"
+   "part": "JS150",
+   "hooded": "True"
   },
   "JS102": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -3509,10 +3095,11 @@
    "part": "JS102",
    "altParts": [
     "JS103"
-   ]
+   ],
+   "hooded": "True"
   },
   "JS154": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -3528,7 +3115,8 @@
    "gender": "Unisex",
    "name": "Pullover Hoodie",
    "brand": "Kishigo",
-   "part": "JS154"
+   "part": "JS154",
+   "hooded": "True"
   },
   "JS135": {
    "garmentType": "Jacket",
@@ -3551,7 +3139,7 @@
    "part": "JS135"
   },
   "B310": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type O Class 1",
    "hvsaType": "Type O",
    "ansiClass": "1",
@@ -3568,10 +3156,11 @@
    "gender": "Unisex",
    "name": "Enhanced Visibility Heavyweight Hoodie",
    "brand": "Kishigo",
-   "part": "B310"
+   "part": "B310",
+   "hooded": "True"
   },
   "JS142": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -3587,7 +3176,8 @@
    "gender": "Unisex",
    "name": "Heavyweight Pullover Hoodie",
    "brand": "Kishigo",
-   "part": "JS142"
+   "part": "JS142",
+   "hooded": "True"
   },
   "JS137": {
    "garmentType": "Jacket",
@@ -3882,7 +3472,7 @@
    "part": "F506"
   },
   "F507": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -3902,7 +3492,8 @@
    "gender": "Unisex",
    "name": "FR Hoodie",
    "brand": "Kishigo",
-   "part": "F507"
+   "part": "F507",
+   "hooded": "True"
   },
   "F3934": {
    "garmentType": "Balaclava",
@@ -3987,7 +3578,7 @@
    "part": "1822"
   },
   "9189": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -4003,7 +3594,8 @@
    "gender": "Male",
    "name": "Cool Touch Long Sleeve Hoodie T-Shirt, Class 3",
    "brand": "Kishigo",
-   "part": "9189"
+   "part": "9189",
+   "hooded": "True"
   },
   "9222": {
    "garmentType": "Polo",
@@ -13775,7 +13367,7 @@
    "part": "42320"
   },
   "DSJ32-3": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -17786,7 +17378,7 @@
    ]
   },
   "FR-SM2213": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -17803,10 +17395,11 @@
    "part": "FR-SM2213",
    "altParts": [
     "FR-SM2213-YS"
-   ]
+   ],
+   "hooded": "True"
   },
   "FR-SM2313": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "bodyZone": "Upper",
    "sleeved": "True",
@@ -17819,7 +17412,8 @@
    "part": "FR-SM2313",
    "altParts": [
     "FR-SM2313-YM"
-   ]
+   ],
+   "hooded": "True"
   },
   "FR-TM2112": {
    "garmentType": "T-Shirt",
@@ -18296,7 +17890,7 @@
    ]
   },
   "LUX-CSWHBK": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -18315,7 +17909,8 @@
    "part": "LUX-CSWHBK",
    "altParts": [
     "LUX-CSWHBK-YS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-CSWT": {
    "garmentType": "Sweatshirt",
@@ -18682,7 +18277,7 @@
    ]
   },
   "LUX-HZSWT": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -18700,10 +18295,11 @@
    "part": "LUX-HZSWT",
    "altParts": [
     "LUX-HZSWT-OS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-HZSWTBX": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -18721,7 +18317,8 @@
    "part": "LUX-HZSWTBX",
    "altParts": [
     "LUX-HZSWTBX-OS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-LSET2B": {
    "garmentType": "T-Shirt",
@@ -19918,7 +19515,7 @@
    ]
   },
   "LUX-SWTHZBK": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -19936,7 +19533,8 @@
    "part": "LUX-SWTHZBK",
    "altParts": [
     "LUX-SWTHZBK-OS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-SWTL": {
    "garmentType": "Sweatshirt",
@@ -19959,7 +19557,7 @@
    ]
   },
   "LUX-SWTLH": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -19976,10 +19574,11 @@
    "part": "LUX-SWTLH",
    "altParts": [
     "LUX-SWTLH-YS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-SWTLHZ": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -19996,7 +19595,8 @@
    "part": "LUX-SWTLHZ",
    "altParts": [
     "LUX-SWTLHZ-YS"
-   ]
+   ],
+   "hooded": "True"
   },
   "LUX-TBIB/FR": {
    "garmentType": "Bib",
@@ -21151,7 +20751,7 @@
    ]
   },
   "UHV424": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -21166,10 +20766,11 @@
    "part": "UHV424",
    "altParts": [
     "UHV424-001"
-   ]
+   ],
+   "hooded": "True"
   },
   "UHV425": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -21183,7 +20784,8 @@
    "part": "UHV425",
    "altParts": [
     "UHV425-013"
-   ]
+   ],
+   "hooded": "True"
   },
   "UHV427": {
    "garmentType": "Jacket",
@@ -21509,7 +21111,7 @@
    ]
   },
   "UHV829": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -21527,7 +21129,8 @@
    "part": "UHV829",
    "altParts": [
     "UHV829-720"
-   ]
+   ],
+   "hooded": "True"
   },
   "UHV869": {
    "garmentType": "T-Shirt",
@@ -21604,7 +21207,7 @@
    ]
   },
   "UHV970": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -21618,7 +21221,8 @@
    "part": "UHV970",
    "altParts": [
     "UHV970-013"
-   ]
+   ],
+   "hooded": "True"
   },
   "UHV973": {
    "garmentType": "Pants",
@@ -21638,7 +21242,7 @@
    ]
   },
   "UHV982": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -21652,7 +21256,8 @@
    "part": "UHV982",
    "altParts": [
     "UHV982-720"
-   ]
+   ],
+   "hooded": "True"
   },
   "UHV995": {
    "garmentType": "Vest",
@@ -25364,7 +24969,7 @@
    "part": "7014"
   },
   "7023": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "bodyZone": "Upper",
    "sleeved": "True",
@@ -25378,7 +24983,8 @@
    "certifications": "Non-ANSI Certified",
    "name": "MULTI-COLOR FULL ZIPPER HOODIE",
    "brand": "GSS Safety",
-   "part": "7023"
+   "part": "7023",
+   "hooded": "True"
   },
   "7505": {
    "garmentType": "Shirt",
@@ -25507,7 +25113,7 @@
    "part": "7523"
   },
   "7552": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "bodyZone": "Upper",
    "sleeved": "True",
@@ -25522,10 +25128,11 @@
    "name": "ONYX ENHANCED VISIBILITY FLEECE FULL ZIP HOODIE",
    "brand": "GSS Safety",
    "part": "7552",
+   "hooded": "True",
    "idPocket": "Yes"
   },
   "7553": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "bodyZone": "Upper",
    "sleeved": "True",
@@ -25537,6 +25144,7 @@
    "name": "ONYX ENHANCED VISIBILITY FLEECE FULL ZIP HOODIE",
    "brand": "GSS Safety",
    "part": "7553",
+   "hooded": "True",
    "idPocket": "Yes"
   },
   "8013": {
@@ -27305,7 +26913,7 @@
    "part": "FR6111"
   },
   "RLPH110NS": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "standard": "Non-ANSI",
    "bodyZone": "Upper",
@@ -27319,10 +26927,11 @@
    "washings": "25X",
    "name": "RLPH1NS Series Hi-Vis Lime Hoodie",
    "brand": "Pyramex",
-   "part": "RLPH110NS"
+   "part": "RLPH110NS",
+   "hooded": "True"
   },
   "RLPH112NS": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "standard": "Non-ANSI",
    "bodyZone": "Upper",
@@ -27336,10 +26945,11 @@
    "washings": "25X",
    "name": "RLPH1NS Series Gray Hoodie",
    "brand": "Pyramex",
-   "part": "RLPH112NS"
+   "part": "RLPH112NS",
+   "hooded": "True"
   },
   "RLPH120NS": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "standard": "Non-ANSI",
    "bodyZone": "Upper",
@@ -27353,7 +26963,8 @@
    "washings": "25X",
    "name": "RLPH1NS Series Hi-Vis Orange Hoodie",
    "brand": "Pyramex",
-   "part": "RLPH120NS"
+   "part": "RLPH120NS",
+   "hooded": "True"
   },
   "RJ3110H": {
    "garmentType": "Jacket",
@@ -28302,7 +27913,7 @@
    "part": "RLP1NS"
   },
   "RLPH110": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -28316,10 +27927,11 @@
    "fr": "False",
    "name": "RLPH1 Series Hoodie",
    "brand": "Pyramex",
-   "part": "RLPH110"
+   "part": "RLPH110",
+   "hooded": "True"
   },
   "RLPH120": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -28333,7 +27945,8 @@
    "fr": "False",
    "name": "RLPH1 Series Hoodie",
    "brand": "Pyramex",
-   "part": "RLPH120"
+   "part": "RLPH120",
+   "hooded": "True"
   },
   "RLTS22B": {
    "garmentType": "Shirt",
@@ -32396,7 +32009,7 @@
    ]
   },
   "KX303": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -32462,7 +32075,7 @@
    ]
   },
   "B304": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -32775,7 +32388,7 @@
    ]
   },
   "CA170": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -35606,7 +35219,7 @@
    ]
   },
   "UB315": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -35640,7 +35253,7 @@
    ]
   },
   "UB316": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -35675,7 +35288,7 @@
    ]
   },
   "UB320": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -35710,7 +35323,7 @@
    ]
   },
   "UB327": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "standard": "ANSI/ISEA 107",
    "bodyZone": "Upper",
@@ -37960,7 +37573,7 @@
    "part": "1915-L"
   },
   "6300": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 3",
    "hvsaType": "Type R",
    "ansiClass": "3",
@@ -37978,7 +37591,8 @@
    "altParts": [
     "6300-L",
     "6300-O"
-   ]
+   ],
+   "hooded": "True"
   },
   "6320": {
    "garmentType": "Sweatshirt",
@@ -38397,7 +38011,7 @@
    ]
   },
   "7110": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Non-ANSI",
    "bodyZone": "Upper",
    "sleeved": "True",
@@ -38412,7 +38026,8 @@
    "part": "7110",
    "altParts": [
     "7110-L"
-   ]
+   ],
+   "hooded": "True"
   },
   "7120": {
    "garmentType": "T-Shirt",
@@ -38617,7 +38232,7 @@
    ]
   },
   "7152": {
-   "garmentType": "Hoodie",
+   "garmentType": "Sweatshirt",
    "compareGroup": "Type R Class 2",
    "hvsaType": "Type R",
    "ansiClass": "2",
@@ -38634,7 +38249,8 @@
    "altParts": [
     "7152-L",
     "7152-O"
-   ]
+   ],
+   "hooded": "True"
   },
   "7153": {
    "garmentType": "Shirt",
