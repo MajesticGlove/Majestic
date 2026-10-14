@@ -835,7 +835,7 @@
     <img
   id="info-photo"
   class="rep-photo is-empty"
-  src=""
+  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
   alt=""
 />
     <div class="rep-profile-text">
@@ -864,7 +864,7 @@
     <a
       id="contact-cta"
       class="contact-btn"
-      href="https://form.jotform.com/252043751845154"
+      href="https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a"
       rel="noopener noreferrer"
     >
       Contact Sales
@@ -1459,6 +1459,13 @@
   const infoSupported = document.getElementById("info-supported");
   const supportCard = document.getElementById("support-card");
   const infoPhoto = document.getElementById("info-photo");
+  /* Transparent placeholder: an empty src shows a broken-image icon,
+     this shows the circle as plain white instead. Also used if a
+     rep photo URL fails to load. */
+  const BLANK_PHOTO = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+  infoPhoto.addEventListener("error", () => {
+    if (infoPhoto.src !== BLANK_PHOTO) infoPhoto.src = BLANK_PHOTO;
+  });
   const infoRepName = document.getElementById("info-rep-name");
   const infoRepRegion = document.getElementById("info-rep-region");
   const contactCard = document.getElementById("contact-card");
@@ -1469,11 +1476,38 @@
   const supportCard2 = document.getElementById("support-card-2");
   const states = document.querySelectorAll("#svg path[data-name]");
 
-  function buildJotformUrl(repName) {
-    const baseUrl = "https://form.jotform.com/252043751845154";
-    const message = `I’m interested in connecting with ${repName} to discuss how Majestic can support our safety needs.`;
-    return `${baseUrl}?whatChallenges=${encodeURIComponent(message)}`;
+  /* Contact form: the Dynamics "Connect with Our Team" form.
+     The link carries:
+       rep      → the form fills its hidden "Majestic Sales Rep" field with it
+       message  → the form prefills "What can we help you with?"
+       utm_* / landing_page / referrer → passed through from this page's URL
+                  (GTM sets these upstream) so lead attribution survives. */
+  const FORM_URL = "https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a";
+  const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "landing_page", "referrer"];
+
+  function attributionParams() {
+    const out = new URLSearchParams();
+    try {
+      const incoming = new URLSearchParams(window.location.search);
+      ATTRIBUTION_KEYS.forEach((k) => {
+        const v = incoming.get(k);
+        if (v) out.set(k, v);
+      });
+    } catch (e) { /* load the form without attribution */ }
+    return out;
   }
+
+  function buildFormUrl(repName) {
+    const params = attributionParams();
+    if (repName) {
+      params.set("rep", repName);
+      params.set("message", `I’m interested in connecting with ${repName} to discuss how Majestic can support our safety needs.`);
+    }
+    const qs = params.toString();
+    return qs ? `${FORM_URL}?${qs}` : FORM_URL;
+  }
+
+  contactCta.href = buildFormUrl();
 
   states.forEach((state) => {
     state.classList.add("state");
@@ -1503,7 +1537,7 @@
         if (data.photo) {
   infoPhoto.src = data.photo;
 } else {
-  infoPhoto.src = "";
+  infoPhoto.src = BLANK_PHOTO;
 }
 infoPhoto.alt = "";
 
@@ -1541,13 +1575,13 @@ infoPhoto.alt = "";
           contactTitle.textContent = `Get in touch with ${data.rep}`;
           contactText.textContent = `Share how we can support your business, and we’ll connect you with ${data.rep}, your Majestic representative for ${data.name}.`;
           contactCta.textContent = "Get in Touch";
-          contactCta.href = buildJotformUrl(data.rep);
+          contactCta.href = buildFormUrl(data.rep);
         } else {
           contactCard.style.display = "none";
           contactTitle.textContent = "Get in touch";
           contactText.textContent = "";
           contactCta.textContent = "Contact Sales";
-          contactCta.href = "https://form.jotform.com/252043751845154";
+          contactCta.href = buildFormUrl();
         }
       } else {
         infoTitle.textContent = fallbackName;
@@ -1559,7 +1593,7 @@ infoPhoto.alt = "";
         contactCard.style.display = "none";
         infoSupported.innerHTML = "";
         infoSupported2.innerHTML = "";
-        infoPhoto.src = "";
+        infoPhoto.src = BLANK_PHOTO;
         infoPhoto.alt = "";
       }
     };
