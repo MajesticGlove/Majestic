@@ -95,7 +95,7 @@
   animation: mjr-fadeSlideIn .3s ease forwards;
 }
 
-/* ── iframe heights — JotForm (distributor) ──────────────── */
+/* ── iframe heights — JotForm (general inquiries) ────────── */
 .mjr-form-wrap iframe {
   width: 100%;
   border: none;
@@ -112,7 +112,7 @@
   .mjr-form-wrap iframe { height: 1400px; }
 }
 
-/* ── iframe heights — Dynamics form (general inquiries) ──── */
+/* ── iframe heights — Dynamics form (become a distributor) */
 /* Cross-origin, so it can't auto-size. Heights measured from the form
    at each panel width, plus ~60px headroom for font differences.
    The form stacks its fields whenever the iframe is 640px or narrower,
@@ -261,22 +261,22 @@
       <!-- ── PANEL ── -->
       <div class="mjr-panel" id="mjr-panel">
 
-        <!-- Distributor form (JotForm) -->
-        <div class="mjr-form-wrap mjr-active" data-jotform="distributor">
+        <!-- Distributor form (Dynamics 365) -->
+        <div class="mjr-form-wrap mjr-dyn mjr-active" data-jotform="distributor">
           <iframe
-            data-src="https://form.jotform.com/252043751845154"
+            data-src="https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a"
             title="Become a Distributor"
             scrolling="no"
-            allow="geolocation; microphone; camera; fullscreen"
           ></iframe>
         </div>
 
-        <!-- General inquiries form (Dynamics 365) -->
-        <div class="mjr-form-wrap mjr-dyn" data-jotform="general">
+        <!-- General inquiries form (JotForm) -->
+        <div class="mjr-form-wrap" data-jotform="general">
           <iframe
-            data-src="https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a"
+            data-src="https://form.jotform.com/232485816121050"
             title="General Inquiries"
             scrolling="no"
+            allow="geolocation; microphone; camera; fullscreen"
           ></iframe>
         </div>
 
