@@ -1,0 +1,2475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Majestic Competitor Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Pinned: "@4" floated to whatever 4.x shipped next. Same file it served on 2026-10-29. -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.1/dist/chart.umd.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+  <style>
+
+    :root{
+      --brand:#ab1f2d; --brand-press:#8a1923; --brand-tint:#fbeaec; --brand-tint-2:#f6d8db;
+      --ink:#16181d; --ink-mute:#6c7480; --ink-soft:#9aa1ab;
+      --steel:#5b6573;
+      --paper:#f4f5f6; --surface:#ffffff;
+      --line:#e4e6ea; --line-strong:#d2d6dd;
+      /* Rank as intensity: the top match is the brand; alternates are graphite. */
+      --best:var(--brand); --better:#4a5564; --good:#7e8893;
+      --font:"Nunito Sans", Arial, Helvetica, sans-serif;
+      --shadow-card:0 1px 2px rgba(16,18,29,.05), 0 1px 1px rgba(16,18,29,.03);
+      --shadow-lift:0 16px 34px -18px rgba(16,18,29,.30);
+      --shadow-hero:0 18px 40px -20px rgba(171,31,45,.38);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      font-family:"Nunito Sans", Arial, Helvetica, sans-serif;
+      background:var(--paper); color:var(--ink); margin:0; -webkit-font-smoothing:antialiased;
+    }
+    canvas{ display:block; width:100% !important; }
+    #gaugeChart{ height:96px; }
+
+    /* Masthead */
+    .masthead{ background:var(--surface); border-bottom:1px solid var(--line); }
+    .masthead-inner{ display:flex; align-items:center; gap:.65rem; padding:.95rem 0; }
+    .brandmark{ display:flex; align-items:center; gap:.65rem; }
+    .brandmark .word{ font-weight:900; font-size:1.3rem; letter-spacing:.02em; color:var(--brand); line-height:1; }
+    .brandmark .word sup{ font-size:.5em; font-weight:800; top:-.75em; }
+    .brandmark .rule{ width:1px; height:1.3rem; background:var(--line-strong); }
+    .brandmark .sub{ font-weight:700; font-size:.82rem; color:var(--ink); letter-spacing:.01em; }
+    .brand-accent{ height:6px; background:#ab1f2d; box-shadow:0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1); }
+
+    /* Hero / search (centered) */
+    .hero{ padding:2.5rem 0 2rem; text-align:center; }
+    .hero h1{ font-size:clamp(1.55rem, 1.1rem + 1.7vw, 2.15rem); font-weight:900; letter-spacing:-.012em; line-height:1.1; margin:0 0 .5rem; color:var(--ink); }
+    .hero h1 em{ font-style:normal; color:var(--brand); }
+    .hero .lede{ color:var(--ink-mute); font-size:.96rem; line-height:1.5; margin:0 auto 1.3rem; max-width:34rem; }
+
+    .hero .autocomplete-wrapper{ margin-left:auto; margin-right:auto; }
+    .search{ position:relative; display:flex; gap:.55rem; width:100%; }
+    .search-box{ position:relative; flex:1; min-width:0; }
+    .search-ic{ position:absolute; left:.9rem; top:50%; transform:translateY(-50%); width:1.05rem; height:1.05rem; color:var(--ink-soft); pointer-events:none; }
+    .search-field{
+      width:100%; font:inherit; font-weight:700; color:var(--ink); text-align:left;
+      padding:.74rem .9rem .74rem 2.6rem; border:1.5px solid var(--line-strong); border-radius:.6rem;
+      background:var(--surface); transition:border-color .15s ease, box-shadow .15s ease;
+    }
+    .search-field::placeholder{ font-family:var(--font); font-weight:500; color:var(--ink-soft); }
+    .search-field:focus-visible{ outline:none; border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-tint); }
+
+    .btn{ font:inherit; font-weight:800; letter-spacing:.01em; border:none; border-radius:.6rem; cursor:pointer; white-space:nowrap; transition:background .15s ease, transform .05s ease; }
+    .btn:disabled{ opacity:.55; cursor:default; }
+    .btn--primary{ background:var(--brand); color:#fff; padding:.74rem 1.35rem; }
+    .btn--primary:hover:not(:disabled){ background:var(--brand-press); }
+    .btn--primary:active:not(:disabled){ transform:translateY(1px); }
+    .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--brand-tint); }
+
+    .field-error{ font-size:.83rem; color:var(--brand); font-weight:700; margin:.7rem 0 0; }
+    .examples{ display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.4rem; margin-top:1rem; }
+    .examples .lbl{ font-size:.68rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+    .example-chip{ font-family:var(--font); font-size:.78rem; font-weight:600; color:var(--ink); background:var(--surface);
+      border:1px solid var(--line-strong); padding:.22rem .6rem; border-radius:.42rem; cursor:pointer;
+      transition:border-color .15s ease, color .15s ease, background .15s ease; }
+    .example-chip:hover{ border-color:var(--brand); color:var(--brand); background:var(--brand-tint); }
+    .example-chip:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--brand-tint); border-color:var(--brand); }
+    .did-you-mean{ color:var(--brand); text-decoration:underline; text-underline-offset:2px; font-weight:800; cursor:pointer; background:none; border:none; padding:0; font:inherit; }
+
+    /* Panels */
+    .panel{ background:var(--surface); border:1px solid var(--line); border-radius:.7rem; box-shadow:var(--shadow-card); }
+    .panel-pad{ padding:1.35rem 1.4rem; }
+    .section-title{ font-size:.95rem; font-weight:800; color:var(--ink); margin:0 0 .85rem; }
+    .panel-sub{ font-weight:600; color:var(--ink-soft); font-size:.8rem; font-family:var(--font); }
+
+    /* Competitor identity bar (centered) */
+    .cmp-bar{ display:flex; flex-direction:column; align-items:center; text-align:center; gap:.6rem; }
+    .cmp-name{ font-size:1.34rem; font-weight:900; color:var(--steel); line-height:1.18; margin:0; }
+    .cmp-sku{ font-size:.9rem; font-weight:600; color:var(--ink-mute); margin:.25rem 0 0; }
+    /* This was a <span> with align-items but no display, so it stayed an inline
+       box: the shield sat on the text baseline and pushed the pill out of round.
+       Sized to sit level with .cat-pill, which it always appears beside. */
+    .impact-badge{ display:inline-flex; align-items:center; gap:.45rem; font-size:.68rem; font-weight:800;
+      letter-spacing:.08em; text-transform:uppercase; line-height:1;
+      color:#8a4b00; background:#fdf2e3; border:1px solid #f1d6ac;
+      padding:.42rem .78rem; border-radius:999px; vertical-align:middle; }
+    .impact-badge svg{ width:.95rem; height:.95rem; flex:none; }
+
+    /* Tier cards */
+    .tier-good{ --tier:var(--good); } .tier-better{ --tier:var(--better); } .tier-best{ --tier:var(--best); }
+    .tier-card{ position:relative; background:var(--surface); border:1px solid var(--line); border-radius:.7rem;
+      padding:1.15rem 1.2rem 1.25rem; box-shadow:var(--shadow-card); cursor:pointer; overflow:hidden;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .tier-card::before{ content:''; position:absolute; left:0; right:0; top:0; height:3px; background:var(--tier); }
+    .tier-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-lift); }
+    .tier-card:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--brand-tint), var(--shadow-lift); }
+    .tier-card.selected{ border-color:var(--tier); box-shadow:0 0 0 1.5px var(--tier), var(--shadow-lift); }
+    .tier-card--best{ background:linear-gradient(180deg, var(--brand-tint) 0, var(--surface) 70px); }
+    .tier-card--best::before{ height:4px; }
+    .tier-card--best.selected{ box-shadow:0 0 0 1.5px var(--brand), var(--shadow-hero); }
+
+    .tier-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:.5rem; margin-bottom:.95rem; }
+    .tier-headl{ display:flex; align-items:center; gap:.1rem; flex-wrap:wrap; min-width:0; }
+    .tier-label{ font-size:.64rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; color:var(--tier); }
+
+    .match-ring{ --pct:0; --size:50px; width:var(--size); height:var(--size); border-radius:50%; flex:none;
+      background:conic-gradient(var(--tier) calc(var(--pct)*1%), var(--line) 0); display:grid; place-items:center; position:relative; }
+    .match-ring::after{ content:''; position:absolute; inset:4.5px; background:var(--surface); border-radius:50%; }
+    .match-ring > span{ position:relative; z-index:1; font-weight:800; font-size:.8rem; color:var(--tier); font-variant-numeric:tabular-nums; }
+    .tier-card--best .match-ring::after{ background:#fff; }
+
+    .tier-prod{ display:flex; align-items:center; gap:.75rem; margin-bottom:.2rem; }
+    /* One tile size whether or not there is a photo. Every Majestic hi-vis
+       product has an image path today, but one that fails to load is swapped
+       for this tile, so a row never shows two thumbnails and a gap. The
+       empty state is a plain tile, not a stand-in graphic: it holds the row
+       straight without implying a photo exists. */
+    .tier-thumb{ height:3.4rem; width:3.4rem; object-fit:contain; border-radius:.42rem;
+      background:#fff; border:1px solid var(--line); flex:none; display:block; }
+    .tier-thumb--none{ background:var(--paper); border-style:dashed; }
+    .tier-part{ font-family:var(--font); font-weight:700; font-size:.98rem; color:var(--brand); line-height:1.1; margin:0; }
+    .tier-pname{ font-size:.82rem; color:var(--ink); line-height:1.28; margin:.14rem 0 0;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .tier-price{ font-size:.74rem; color:var(--ink-mute); margin:.2rem 0 0; font-variant-numeric:tabular-nums; }
+
+    .wins{ list-style:none; margin:.95rem 0 0; padding:.9rem 0 0; border-top:1px dashed var(--line); display:grid; gap:.45rem; }
+    .win{ display:flex; align-items:flex-start; gap:.45rem; font-size:.78rem; font-weight:600; color:var(--ink); }
+    .win svg{ width:.95rem; height:.95rem; color:var(--tier); flex:none; margin-top:.06rem; }
+    .win span{ font-variant-numeric:tabular-nums; }
+
+    .pin-badge{ display:inline-flex; align-items:center; gap:.26rem; margin-left:.45rem; vertical-align:middle;
+      font-size:.58rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#fff; background:var(--brand);
+      padding:.16rem .44rem; border-radius:999px; }
+    .pin-badge svg{ width:.66rem; height:.66rem; }
+
+    /* Spec table — plain, Majestic header in brand red (no column highlight) */
+    .spec{ width:100%; border-collapse:collapse; }
+    .spec thead th{ font-size:.66rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; text-align:left;
+      padding:0 .85rem .7rem; color:var(--ink-mute); border-bottom:1.5px solid var(--line-strong); }
+    .spec thead th.h-comp{ color:var(--steel); }
+    .spec thead th.h-maj{ color:var(--brand); }
+    .spec tbody td{ padding:.62rem .85rem; font-size:.83rem; border-bottom:1px solid var(--line); vertical-align:top; }
+    .spec tbody tr:last-child td{ border-bottom:none; }
+    .spec .f{ font-weight:700; color:var(--ink); width:42%; }
+    /* Long values ("Hi-Vis Yellow/Black", "ANSI/ISEA 107-2020") had no break
+       point and were cut off on phones. Slashes get one (see show()), and
+       anything still too long may wrap rather than run off the edge. */
+    .spec tbody td{ overflow-wrap:anywhere; }
+    @media (max-width:560px){
+      .spec thead th{ padding:0 .45rem .6rem; }
+      .spec tbody td{ padding:.55rem .45rem; }
+      .spec .f{ width:34%; }
+    }
+    .spec .v-comp{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+    .spec .v-maj{ color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+
+    /* Why panel + CTA (centered) */
+    .why{ text-align:center; }
+    .why h2{ font-size:1.32rem; font-weight:900; color:var(--brand); margin:0 0 .75rem; }
+    .why h2 .p{ font-family:var(--font); font-weight:800; font-size:.9em; }
+    #whyMajestic{ color:var(--ink); font-size:.95rem; line-height:1.65; margin:0 auto 1.4rem; max-width:46rem; }
+    .cta{ display:inline-flex; align-items:center; gap:.5rem; background:var(--brand); color:#fff; font-weight:800;
+      padding:.74rem 1.3rem; border-radius:.6rem; text-decoration:none; transition:background .15s ease, transform .05s ease; }
+    .cta:hover{ background:var(--brand-press); }
+    .cta:active{ transform:translateY(1px); }
+    .cta:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--brand-tint); }
+    .cta svg{ width:1rem; height:1rem; }
+
+    .disclaimer{ font-size:.74rem; color:var(--ink-soft); line-height:1.55; padding-top:.5rem; text-align:center; max-width:52rem; margin:0 auto; }
+
+    /* Data notice banner */
+    .notice{ border-radius:.6rem; border:1px solid; padding:.72rem .9rem; font-size:.84rem; font-weight:600; }
+    .notice--warn{ background:#fdf2e3; color:#8a4b00; border-color:#f1d6ac; }
+    .notice--info{ background:var(--brand-tint); color:var(--brand-press); border-color:var(--brand-tint-2); }
+    .notice code{ font-family:var(--font); font-size:.82em; background:rgba(0,0,0,.05); padding:.05rem .3rem; border-radius:.25rem; }
+
+    /* Autocomplete */
+    .autocomplete-wrapper{ position:relative; }
+    #autocompleteList{ position:absolute; top:calc(100% + .35rem); left:0; right:0; z-index:50; background:var(--surface);
+      border:1px solid var(--line-strong); border-radius:.55rem; box-shadow:var(--shadow-lift); max-height:14rem; overflow-y:auto; padding:.25rem; list-style:none; margin:0; text-align:left; }
+    #autocompleteList.hidden{ display:none !important; }
+    #autocompleteList li{ padding:.5rem .65rem; cursor:pointer; border-radius:.42rem; transition:background .12s ease; font-size:.85rem; }
+    #autocompleteList li:hover, #autocompleteList li.bg-gray-100{ background:var(--paper) !important; }
+    #autocompleteList li .p{ font-family:var(--font); font-weight:700; color:var(--ink); }
+    #autocompleteList li .n{ color:var(--ink-mute); font-size:.82rem; }
+
+    /* Motion + reveal */
+    .fade-in{ opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
+    .fade-in.show{ opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{ animation-duration:.001ms !important; transition-duration:.001ms !important; }
+      .fade-in{ opacity:1; transform:none; }
+    }
+  
+
+    /* .hidden is a Tailwind utility, and the tool uses it to hide the whole
+       dashboard, the badges and the disambiguation panel. If the CDN is slow,
+       blocked or versioned away, every one of those appears at once. Defining
+       it locally makes hiding a property of this file, not of a CDN. */
+    .hidden{ display:none !important; }
+
+    /* ========================================================================
+       HI-VIS ADDITIONS
+       Built on the same tokens as the glove view. Nothing above this line
+       changes, so both categories read as one tool.
+    ======================================================================== */
+
+    /* Category pill on results and in the autocomplete */
+    /* Sized to the gate badge it sits beside on a hi-vis result. All three
+       identity chips — category, gate, impact — share one set of metrics so a
+       row of them reads as one control, not three near-misses. */
+    .cat-pill{ display:inline-flex; align-items:center; gap:.45rem; font-size:.68rem; font-weight:800;
+      letter-spacing:.08em; text-transform:uppercase; padding:.42rem .78rem; border-radius:999px;
+      border:1px solid var(--line-strong); color:var(--ink-mute); background:var(--paper); }
+    .cat-pill--glove{ color:#2f5d50; background:#eaf4f0; border-color:#c9e2d8; }
+    .cat-pill--hivis{ color:#7a5800; background:#fdf6e3; border-color:#eddfb4; }
+    /* Chips carry no icons; these rules remain only for the gap property. */
+    .cat-pill svg{ width:.95rem; height:.95rem; flex:none; }
+    .cat-pill{ line-height:1; vertical-align:middle; }
+
+    /* The compare-group gate: the single most important fact on a hi-vis result */
+    .gate-badge{ display:inline-flex; align-items:center; gap:.45rem; font-size:.68rem; font-weight:800;
+      letter-spacing:.08em; text-transform:uppercase; color:#2f4858; background:#eef4f8;
+      border:1px solid #cfe0ea; padding:.42rem .78rem; border-radius:999px; }
+    .gate-badge svg{ width:.95rem; height:.95rem; flex:none; }
+    .gate-badge{ line-height:1; vertical-align:middle; }
+
+    /* Compliance panel — replaces the glove ratings chart */
+    .gate-grid{ display:grid; gap:.55rem; }
+    .gate-row{ display:grid; grid-template-columns:minmax(6.5rem,auto) 1fr auto 1fr; align-items:center;
+      gap:.6rem; padding:.55rem .1rem; border-bottom:1px solid var(--line); }
+    .gate-row:last-child{ border-bottom:none; }
+    .gate-key{ font-size:.7rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
+    .gate-val{ font-size:.86rem; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
+    .gate-val--comp{ color:var(--steel); }
+    .gate-val--maj{ color:var(--ink); }
+    .gate-mark{ width:1.25rem; height:1.25rem; border-radius:50%; display:grid; place-items:center; flex:none; }
+    .gate-mark svg{ width:.8rem; height:.8rem; }
+    .gate-mark--ok{ background:#e8f3ee; color:#2f7a5a; }
+    .gate-mark--diff{ background:#fdf2e3; color:#8a4b00; }
+    .gate-mark--none{ background:var(--paper); color:var(--ink-soft); }
+    .gate-legend{ font-size:.74rem; color:var(--ink-soft); margin:.85rem 0 0; line-height:1.5; }
+
+    /* Reflective/tape panel — hi-vis's distinguishing axis */
+    .tape-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.7rem; }
+    .tape-cell{ border:1px solid var(--line); border-radius:.55rem; padding:.7rem .75rem; background:var(--paper); }
+    .tape-cell .k{ font-size:.62rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); }
+    .tape-cell .v{ font-size:.95rem; font-weight:800; color:var(--ink); margin-top:.25rem; font-variant-numeric:tabular-nums; }
+    .tape-cell .v.muted{ color:var(--ink-soft); font-weight:700; }
+    .tape-cell .c{ font-size:.7rem; color:var(--ink-mute); margin-top:.15rem; font-weight:600; }
+
+    /* Stripe preview: a literal swatch of the garment's tape */
+    .stripe-demo{ height:2.4rem; border-radius:.45rem; border:1px solid var(--line-strong);
+      display:flex; align-items:center; overflow:hidden; margin-top:.55rem; }
+    .stripe-demo .band{ flex:1; height:100%; }
+
+    /* Data-quality note surfaced rather than hidden */
+    .data-note{ display:flex; gap:.5rem; align-items:flex-start; font-size:.78rem; line-height:1.5;
+      color:#8a4b00; background:#fdf2e3; border:1px solid #f1d6ac; border-radius:.55rem; padding:.6rem .75rem; }
+    .data-note svg{ width:.95rem; height:.95rem; flex:none; margin-top:.12rem; }
+
+    /* Ambiguous part number: the 0.17% that live in both catalogs */
+    .disambig{ display:grid; gap:.6rem; }
+    .disambig-opt{ display:flex; align-items:center; justify-content:space-between; gap:.8rem; width:100%;
+      text-align:left; background:var(--surface); border:1.5px solid var(--line-strong); border-radius:.6rem;
+      padding:.8rem .95rem; cursor:pointer; font:inherit; transition:border-color .15s ease, background .15s ease; }
+    .disambig-opt:hover{ border-color:var(--brand); background:var(--brand-tint); }
+    .disambig-opt:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--brand-tint); border-color:var(--brand); }
+    .disambig-opt .nm{ font-weight:800; color:var(--ink); font-size:.9rem; }
+    .disambig-opt .mt{ font-size:.78rem; color:var(--ink-mute); font-weight:600; margin-top:.15rem; }
+
+    /* Curator mode (pin buttons, export textarea, toggle switch) was removed:
+       it put a one-click dump of the whole competitive catalog in front of every
+       visitor. Overrides are still applied and shown, just not editable here. */
+
+    /* Suppress the glove-only panels when hi-vis is showing, and vice versa */
+    [data-cat="hivis"] .glove-only{ display:none !important; }
+    [data-cat="glove"] .hivis-only{ display:none !important; }
+
+    /* Match confidence — how much was actually comparable */
+    .conf{ font-size:.62rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+      color:var(--ink-soft); margin:.35rem 0 0; text-align:right; white-space:nowrap; }
+    .conf--thin{ color:#8a4b00; }
+
+    /* The hi-vis list is documentation, not a superiority claim — label it. */
+    .wins-lbl{ font-size:.6rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+      color:var(--ink-soft); list-style:none; margin:0 0 .1rem; }
+
+  </style>
+</head>
+
+<body>
+  <div class="brand-accent"></div>
+
+  <!-- Search / hero -->
+  <section class="max-w-6xl mx-auto px-6 hero">
+    <div>
+      <p class="lede">Enter a competitor part number, or a Majestic part, to see up to three Majestic products, ranked by how their specs line up.</p>
+
+      <div class="autocomplete-wrapper" style="max-width:30rem">
+        <div class="search">
+          <div class="search-box">
+            <svg class="search-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="productInput" type="text" placeholder="e.g. 34-8743 or GLO-096" autocomplete="off" autofocus
+              role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="autocompleteList"
+              aria-label="Competitor part number" class="search-field" />
+          </div>
+          <button id="searchBtn" type="button" class="btn btn--primary">Search</button>
+        </div>
+        <ul id="autocompleteList" class="hidden" role="listbox" aria-label="Matching competitor parts"></ul>
+      </div>
+
+      <p id="searchError" class="field-error hidden" role="alert">Enter a part number to compare.</p>
+      <div id="exampleChips" class="examples"></div>
+    </div>
+  </section>
+
+  <!-- One part number, two catalogs: the rare collision is resolved here -->
+  <section id="disambig" class="hidden max-w-6xl mx-auto px-6 pb-8">
+    <div class="panel panel-pad">
+      <p class="section-title">That part number is in both catalogs</p>
+      <p class="panel-sub" style="margin:-.5rem 0 1rem">Pick the one you meant.</p>
+      <div id="disambigList" class="disambig"></div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <main id="dashboard" class="hidden max-w-6xl mx-auto px-6 pb-14 space-y-5" data-cat="glove">
+
+    <!-- Competitor identity -->
+    <section class="fade-in panel panel-pad cmp-bar">
+      <div>
+        <p class="cmp-name" id="competitorName">&mdash;</p>
+        <p class="cmp-sku">Part&nbsp;#<span id="competitorPart">&mdash;</span></p>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:.45rem; justify-content:center; align-items:center">
+        <span id="categoryPill" class="cat-pill"></span>
+        <span id="impactBadge" class="impact-badge hidden">
+Impact rated
+        </span>
+        <span id="gateBadge" class="gate-badge hivis-only hidden">
+          <span id="gateBadgeText"></span>
+        </span>
+      </div>
+    </section>
+
+    <!-- Honest note when the competitor publishes almost nothing -->
+    <div id="thinWarn" class="data-note hidden fade-in show" role="status"></div>
+
+    <!-- Tier cards -->
+    <section id="tierCards" class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in"></section>
+
+    <!-- Detail -->
+    <section id="detailSection" class="grid grid-cols-1 lg:grid-cols-2 gap-5 fade-in">
+      <div class="flex flex-col gap-5">
+
+        <!-- GLOVES: ANSI 105 ratings + gauge -->
+        <div class="panel panel-pad flex-1 flex flex-col min-h-0 glove-only">
+          <p class="section-title">ANSI/ISEA 105-2024 Ratings <span id="barChartSub" class="panel-sub"></span></p>
+          <div class="flex-1 min-h-[210px]"><canvas id="barChart"></canvas></div>
+          <p id="barChartNote" class="gate-legend hidden">A missing bar means no published rating.</p>
+        </div>
+        <div id="gaugeChartSection" class="panel panel-pad glove-only">
+          <p class="section-title">Glove Gauge</p>
+          <div class="h-[96px]"><canvas id="gaugeChart"></canvas></div>
+          <p id="gaugeChartNote" class="gate-legend hidden">A missing bar means no gauge is listed.</p>
+        </div>
+
+        <!-- HI-VIS: the compliance gate, then the tape -->
+        <div class="panel panel-pad hivis-only">
+          <p class="section-title">Compliance Match <span id="gateSub" class="panel-sub"></span></p>
+          <div id="gateGrid" class="gate-grid"></div>
+          <p class="gate-legend" id="gateLegend"></p>
+        </div>
+        <div class="panel panel-pad hivis-only" id="tapePanel">
+          <p class="section-title">Reflective Tape <span id="tapeSub" class="panel-sub"></span></p>
+          <div id="tapeGrid" class="tape-grid"></div>
+          <div id="stripeDemo" class="stripe-demo hidden" aria-hidden="true"></div>
+          <p class="gate-legend" id="tapeLegend"></p>
+        </div>
+      </div>
+
+      <aside class="panel panel-pad">
+        <p class="section-title">Product Specs <span id="specSub" class="panel-sub"></span></p>
+        <div style="overflow-x:auto">
+          <table class="spec">
+            <thead>
+              <tr><th class="f">Specification</th><th class="h-comp" id="specCompHead">Competitor</th><th class="h-maj">Majestic</th></tr>
+            </thead>
+            <tbody id="specTableBody"></tbody>
+          </table>
+        </div>
+        <div id="dataNote" class="data-note hidden" style="margin-top:1rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          <span id="dataNoteText"></span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Why this match -->
+    <section class="fade-in panel panel-pad why">
+      <h2>Why <span class="p" id="whyPart">Majestic</span>?</h2>
+      <p id="whyMajestic">&mdash;</p>
+      <a id="learnMoreLink" href="https://majesticglove.com" class="cta" target="_blank" rel="noopener">
+        <span id="ctaLabel">View on majesticglove.com</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </section>
+
+    <p class="disclaimer" id="disclaimer"></p>
+  </main>
+
+
+  <script>
+  /* Offline fallback ONLY — used when the hosted JSON can't be fetched
+     (e.g. opened from disk rather than over http). */
+  window.DEMO = {"glove":{"majestic":{"35-7465":{"part":"35-7465","name":"Cut-Less Korplex\u00ae Glove with Foam Nitrile Palm, 18g, ANSI A4","ratings":{"cut":"A4","abrasion":5,"puncture":3},"coating":"Foam Nitrile","gauge":18,"material":"Korplex\u00ae Knit","country":"Vietnam","features":["Sanitized by Actifresh Treatment","Reinforced Thumb Crotch","Touchscreen Compatible"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-7/46/35-7465_Front-Back_small.jpg"},"35-1500":{"part":"35-1500","name":"Cut-Less Korplex\u00ae Glove with Polyurethane Palm, 13g, ANSI A5","ratings":{"cut":"A5","abrasion":6,"puncture":4},"coating":"Polyurethane","gauge":13,"material":"Korplex\u00ae Knit","country":"Vietnam","features":["Touchscreen Compatible"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-1/50/35-1500_1200_small.jpg"},"31-1365":{"part":"31-1365","name":"Cut-Less Kevlar Glove with Micro Foam Nitrile Palm, 18g, ANSI A4","ratings":{"cut":"A4","abrasion":4,"puncture":2},"coating":"Foam Nitrile","gauge":18,"material":"Kevlar\u00ae Knit, Steel","country":"Pakistan","features":["Sanitized by Actifresh Treatment"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/31/-1/36/31-1365_1200_small.jpg"},"1555WRK":{"part":"1555WRK","name":"Cut-Less Goatskin Oil & Water-Resistant Drivers","ratings":{"cut":"A4","abrasion":3,"puncture":2},"material":"Goatskin Leather","country":"Pakistan","features":["PPE Level 3 Arc Resistance"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/15/55/WR/1555WRK_1200_small.jpg"},"35-7765":{"part":"35-7765","name":"Cut-Less Korplex\u00ae Glove","ratings":{"cut":"A7","abrasion":6,"puncture":3},"coating":"Foam Nitrile","gauge":18,"material":"Korplex\u00ae Knit","country":"Malaysia","features":["Touchscreen Compatible"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-7/76/35-7765_1200_small.jpg"},"35-7505":{"part":"35-7505","name":"Cut-Less Korplex\u00ae Glove with Polyurethane Palm, 18g, ANSI A5","ratings":{"cut":"A5","abrasion":4,"puncture":3},"coating":"Polyurethane","gauge":18,"material":"Korplex\u00ae Knit","country":"Sri Lanka","features":["Touchscreen Compatible"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-7/50/35-7505_1200_small.jpg"},"35-7665":{"part":"35-7665","name":"Cut-Less Korplex\u00ae","ratings":{"cut":"A6","abrasion":5,"puncture":4},"coating":"Foam Nitrile","gauge":18,"material":"Korplex\u00ae Knit","country":"Mexico","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-7/66/35-7665_1200_small.jpg"},"35-7467":{"part":"35-7467","name":"Cut-Less Korplex\u00ae Glove","ratings":{"cut":"A4","abrasion":5,"puncture":3},"coating":"Dotted Foam Nitrile","gauge":18,"material":"Korplex\u00ae Knit","country":"Vietnam","img_url":"https://majesticglove.com/UserFiles/Product/Images/35/-7/46/35-7467_new_1200_small.jpg"},"33-7705":{"part":"33-7705","name":"Cut-Less Korplex\u00ae Glove with Polyurethane Palm, 13g, ANSI A7","ratings":{"cut":"A7","puncture":4},"coating":"Polyurethane","gauge":13,"material":"Korplex\u00ae Knit","country":"Malaysia","features":["Touchscreen Compatible"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/33/-7/70/33-7705_1200_small.jpg"},"21475BK":{"part":"21475BK","name":"Knucklehead Cut Resistant Mechanics Glove with D3O Impact Protection & Palm Padding A5","ratings":{"cut":"A5","puncture":3,"impact":2},"material":"ArmorSkin\u2122, Korplex\u00ae Knit","country":"China","features":["ANSI/ISEA 138-2019 Impact 2"],"img_url":"https://majesticglove.com/UserFiles/Product/Images/21/47/5B/21475BK_1200_small.jpg"}},"competitors":{"34-8743":{"brand":"PIP","part":"34-8743","ratings":{"cut":"A2","abrasion":3,"puncture":2},"coating":"Nitrile","gauge":18,"linerMaterial":"Engineered Yarn","country":"Sri Lanka","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7465","overrideSummary":"Majestic\u2019s 35-7465 offers higher cut protection with added features like a Sanitized\u00ae by Actifresh treatment to help workers stay comfortable and protected.","overrideDescription":"Compared to the 34-8743, Majestic\u2019s 35-7465 delivers higher cut protection (A4 vs A2), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."},"44-3745":{"brand":"PIP","part":"44-3745","ratings":{"cut":"A3","abrasion":3,"puncture":3},"coating":"Nitrile","gauge":15,"linerMaterial":"Engineered Yarn","country":"Sri Lanka","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7465","overrideSummary":"Majestic\u2019s 35-7465 offers higher cut protection with added features like a Sanitized\u00ae by Actifresh treatment to help workers stay comfortable and protected.","overrideDescription":"Compared to the 44-3745, Majestic\u2019s 35-7465 delivers higher cut protection (A4 vs A3), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."},"16-560":{"brand":"PIP","part":"16-560","ratings":{"cut":"A4","abrasion":4,"puncture":4},"coating":"Polyurethane","gauge":13,"linerMaterial":"PolyKor","country":"China","overrideBestMatch":"35-1500","overrideSummary":"Majestic\u2019s 35-1500 offers higher cut protection with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.","overrideDescription":"Compared to the 16-560, Majestic\u2019s 35-1500 delivers higher cut protection (A5 vs A4), better abrasion durability, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."},"16-541":{"brand":"PIP","part":"16-541","ratings":{"cut":"A4","abrasion":3,"puncture":2},"coating":"Polyurethane","gauge":21,"linerMaterial":"PolyKor/HPPE","country":"China","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7465","overrideSummary":"Majestic\u2019s 35-7465 offers better abrasion durability with added features like a Sanitized\u00ae by Actifresh treatment to help workers stay comfortable and protected.","overrideDescription":"Compared to the 16-541, Majestic\u2019s 35-7465 delivers equal cut level (A4), better abrasion durability, stronger puncture resistance, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves."},"34-1743":{"brand":"PIP","part":"34-1743","ratings":{"cut":"A4","abrasion":3,"puncture":2},"coating":"Nitrile","gauge":15,"linerMaterial":"Kevlar/Polyester","country":"Sri Lanka","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"31-1365","overrideSummary":"Majestic\u2019s 31-1365 offers better abrasion durability with added features like a Sanitized\u00ae by Actifresh treatment to help workers stay comfortable and protected.","overrideDescription":"Compared to the 34-1743, Majestic\u2019s 31-1365 delivers equal cut level (A4), better abrasion durability, with added features, like a sanitized by Actifresh treatment, to help keep the gloves cleaner for longer, extending the lifespan of each pair of gloves, and a foam nitrile palm for better breathability and grip in wet or oily conditions."},"9110":{"brand":"PIP","part":"9110","ratings":{"cut":"A4","puncture":3},"linerMaterial":"Sheepskin Leather","country":"Pakistan","overrideBestMatch":"1555WRK","overrideSummary":"Majestic\u2019s 1555WRK offers better abrasion durability with added features like PPE Level 3 arc resistance to help workers stay protected.","overrideDescription":"Compared to the 9110, Majestic\u2019s 1555WRK delivers equal cut level (A4), better abrasion durability, and the added advantage of PPE Level 3 arc resistance, helping protect workers from electrical hazards."},"09-K1600":{"brand":"PIP","part":"09-K1600","ratings":{"cut":"A7","abrasion":4,"puncture":2},"coating":"Nitrile","gauge":13,"linerMaterial":"Kevlar","country":"China","overrideBestMatch":"35-7765","overrideSummary":"Majestic\u2019s 35-7765 offers better abrasion durability with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.","overrideDescription":"Compared to the 09-K1600, Majestic\u2019s 35-7765 delivers equal cut level (A7), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves, and a foam nitrile palm for better breathability and grip in wet or oily conditions."},"16-351":{"brand":"PIP","part":"16-351","ratings":{"cut":"A5","abrasion":4,"puncture":3},"coating":"Nitrile","gauge":21,"linerMaterial":"PolyKor/HPPE","country":"China","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7505","overrideSummary":"Majestic\u2019s 35-7505 offers a more advanced overall design with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.","overrideDescription":"Compared to the 16-351, Majestic\u2019s 35-7505 delivers equal cut level (A5), with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."},"16-361":{"brand":"PIP","part":"16-361","ratings":{"cut":"A6","abrasion":4,"puncture":2},"coating":"Nitrile","gauge":21,"linerMaterial":"PolyKor/HPPE","country":"China","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7665","overrideSummary":"Majestic\u2019s 35-7665 offers better abrasion durability with added features like touchscreen compatibility, helping workers perform daily tasks without removing their gloves.","overrideDescription":"Compared to the 16-361, Majestic\u2019s 35-7665 delivers equal cut level (A6), better abrasion durability, stronger puncture resistance, with added features like touchscreen-compatible fingertips so workers can perform all their daily tasks without removing their gloves."},"34-8443":{"brand":"PIP","part":"34-8443","ratings":{"cut":"A2","abrasion":4,"puncture":2},"coating":"Nitrile","gauge":18,"linerMaterial":"Engineered Yarn","country":"Sri Lanka","features":["Touchscreen Compatible","Reinforced Thumb Crotch"],"overrideBestMatch":"35-7467","overrideSummary":"Majestic\u2019s 35-7467 offers a similar feel to the 34-8443, but with a foam nitrile palm for better breathability and grip in oily or wet conditions.","overrideDescription":"Compared to the 34-8443, Majestic\u2019s 35-7467 delivers higher cut protection (A4 vs A2), better abrasion durability, stronger puncture resistance. In addition, the foam nitrile palm of this glove is breathable and offers better grip in oily and wet conditions."}}},"hivis":{"majestic":{"75-3239":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.5","closure":"Zipper","pockets":"6","tapeApplication":"Heat Transfer","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Mesh Vest with DOT Reflective Chainsaw Striping, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/23/75-3239_Front_small.jpg","color":"Hi-Vis Yellow/Black","pimMaterial":"PEM","fabricWeight":"3.5 oz/yd\u00b2","idPocket":"Yes","micTab":"2"},"75-3213":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.4","closure":"Zipper","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Single","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Mesh Vest with Black Bottom, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3213_Front_small.jpg","color":"Hi-Vis Yellow/Black","pimMaterial":"PEM","fabricWeight":"3.4 oz/yd\u00b2","micTab":"1"},"75-3209":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.2","closure":"Zipper","pockets":"8","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Mesh Vest with DOT Striping, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3209_Updated_1200_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PEM","fabricWeight":"3.2 oz/yd\u00b2","micTab":"Yes"},"75-5303":{"garmentType":"Shirt","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"Polyester Birdseye Mesh","shellWeight":"3.8","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Single","washings":"25X","country":"Bangladesh","packed":"25EA","name":"High Visibility Short Sleeve Shirt, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-5/30/75-5303_Front_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"BE","fabricWeight":"3.8 oz/yd\u00b2"},"75-5003":{"garmentType":"Shirt","compareGroup":"Non-ANSI","hvsaType":"Non-ANSI","standard":"Non-ANSI","bodyZone":"Upper","sleeved":"True","material":"Polyester Birdseye Mesh","shellWeight":"3.8","country":"Bangladesh","packed":"25EA","name":"Site Safety Short Sleeve Shirt","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-5/00/75-5003_Front_small.jpg","color":"Yellow","pimMaterial":"BE","fabricWeight":"3.8 oz/yd\u00b2"},"75-5325":{"garmentType":"Sweatshirt","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"Polyester Fleece","shellWeight":"8.25","closure":"Zipper","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Single","washings":"25X","hooded":"True","country":"Bangladesh","packed":"10EA","name":"High Visibility Hooded Sweatshirt with Zipper Closure, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-5/32/75-5325_Front_small.jpg","color":"Hi-Vis Yellow/Black","pimMaterial":"POF","fabricWeight":"8.25 oz/yd\u00b2"},"75-3225":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.4","closure":"Zipper","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Vest with Two-Tone DOT Striping and D-Ring Pass Thru, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/22/75-3225_Front_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"POS","fabricWeight":"3.4 oz/yd\u00b2","idPocket":"Yes","micTab":"2","dRing":"Yes"},"75-3207":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.2","closure":"Snaps","pockets":"8","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Double","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Heavy Duty Mesh Vest, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/20/75-3207_Front_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PEM","fabricWeight":"3.2 oz/yd\u00b2","idPocket":"Yes"},"75-5331":{"garmentType":"Sweatshirt","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"Polyester Fleece","shellWeight":"10","closure":"Zipper","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Single","washings":"25X","country":"China","packed":"10EA","name":"High Visibility Hooded Sweatshirt with non-PFAS Fabric Protector, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-5/33/75-5331_Front_small.jpg","color":"Hi-Vis Yellow/Black","pimMaterial":"POF","fabricWeight":"10 oz/yd\u00b2"},"75-3217":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2020 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester Mesh","shellWeight":"3.2","closure":"Zipper","pockets":"2","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"Bangladesh","packed":"50EA","name":"High Visibility Mesh Vest with DOT Striping, ANSI 2, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-3/21/75-3217_Front_1200_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PEM","fabricWeight":"3.2 oz/yd\u00b2"},"75-1351":{"garmentType":"Jacket","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"PU-Coated Polyester Oxford","closure":"Snaps","pockets":"2","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Double","washings":"25X","hooded":"True","country":"Bangladesh","packed":"20EA","name":"High Visibility Waterproof Rain Jacket, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-1/35/75-1351_Front_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PUPoly;Oxford","fabricWeight":"150 Denier"},"75-7351":{"garmentType":"Pants","compareGroup":"Class E supplemental","ansiClass":"E","standard":"ANSI/ISEA 107-2020 Class E","bodyZone":"Lower","material":"PU-Coated Polyester","closure":"Snaps","pockets":"2","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"China","packed":"20EA","name":"High Visibility Waterproof Rain Waist Pants with DOT Striping, ANSI E","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-7/35/75-7351_1200_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PUPoly"},"75-2353":{"garmentType":"Bib","compareGroup":"Class E supplemental","ansiClass":"E","standard":"ANSI/ISEA 107-2020 Class E","bodyZone":"Lower","material":"PU-Coated Polyester","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Double","washings":"25X","country":"China","packed":"20EA","name":"High Visibility Waterproof Bib Overall, ANSI E","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-2/35/75-2353_Updated_1200_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PUPoly","fabricWeight":"175 GSM (5.2 oz/yd\u00b2)"},"75-7303":{"garmentType":"Coat","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"PU-Coated Polyester","closure":"Snaps","pockets":"2","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Dot","washings":"25X","country":"China","packed":"20EA","name":"High Visibility Waterproof Rain Coat with DOT Striping, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-7/30/75-7303_1200_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"PUPoly"},"75-5355":{"garmentType":"Shirt","compareGroup":"Type R Class 3","hvsaType":"Type R","ansiClass":"3","standard":"ANSI/ISEA 107-2020 Type R, Class 3","bodyZone":"Upper","sleeved":"True","material":"Polyester Birdseye Mesh","shellWeight":"3.8","tapeApplication":"Sew On","tapeBrand":"Majestic","stripePattern":"Single","washings":"25X","country":"Bangladesh","packed":"25EA","name":"High Visibility Long Sleeve Shirt, ANSI 3, R","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/75/-5/35/75-5355_Front_small.jpg","color":"Hi-Vis Yellow","pimMaterial":"BE","fabricWeight":"3.8 oz/yd\u00b2"},"71-2000":{"garmentType":"Set","compareGroup":"Non-ANSI","hvsaType":"Non-ANSI","standard":"Non-ANSI","bodyZone":"Full","sleeved":"True","material":"PVC-Coated Polyester","closure":"Zipper","pockets":"2","hooded":"True","country":"China","packed":"10EA","name":"2-Piece Hooded Waterproof Rain Suit","brandLine":"Majestic","img_url":"https://majesticglove.com/UserFiles/Product/Images/71/-2/00/71-2000_1_1200_small.jpg","pimMaterial":"PVCcoat"}},"competitors":{"S5002":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Knit","closure":"Zipper","pockets":"9","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Surveyors Vest","brand":"Kishigo","part":"S5002","altParts":["S5003","S5702"]},"S5021":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Knit","closure":"Zipper","pockets":"8","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Female","name":"Women's Heavy Duty Surveyors Vest","brand":"Kishigo","part":"S5021","altParts":["S5022"]},"1543":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh","closure":"Zipper","pockets":"5","stripeWidth":"1","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Ultimate Reflective Vest","brand":"Kishigo","part":"1543","altParts":["1544"]},"1515":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107-2015 Type R, Class 2","bodyZone":"Upper","sleeved":"False","color":"Lime","sizes":"SM-5XL","fabricConstruction":"Twill","closure":"Zipper","pockets":"6","pocketType":"Chest Pocket, Inside Pocket, Outside Pocket, Patch Pocket","stripeWidth":"2","certifications":"ANSI/ISEA 107-2015 Type R Class 2 Certification:","name":"ONYX STANDARD SAFETY VEST W/CONTRASTING TRIM","brand":"GSS Safety","part":"1515"},"1513":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","bodyZone":"Upper","sleeved":"False","color":"Black","sizes":"SM-5XL","fabricConstruction":"Ripstop","closure":"Zipper","pockets":"8","pocketType":"Chest Pocket, Inside Pocket, Outside Pocket, Patch Pocket, Flap Pocket","stripeWidth":"2","dataNotes":"Type R assumed (source stated class only, no type)","name":"ONYX CLASS 2 SURVEYOR'S SAFETY VEST","brand":"GSS Safety","part":"1513"},"1820":{"garmentType":"Polo","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","bodyZone":"Upper","sleeved":"True","color":"Lime","sizes":"LG-4XL","material":"Polyester","pockets":"1","pocketType":"Chest, Front","stripeWidth":"2","tapeColor":"Silver","price":"20.50","dataNotes":"Type R assumed (source stated class only, no type)","name":"Class 2 Hi Vis Reflective Short Sleeve Polo Shirt w/ Chest Pocket","brand":"Ironwear","part":"1820","altParts":["1820-L"]},"1823":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Woven","closure":"Zipper","pockets":"12","tapeColor":"Silver","washings":"25X","gender":"Male","name":"Men's Ultimate Construction Vest","brand":"Kishigo","part":"1823"},"1824":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Woven","closure":"Zipper","pockets":"12","tapeColor":"Silver","washings":"25X","gender":"Female","name":"Women's Ultimate Construction Vest","brand":"Kishigo","part":"1824"},"S5000":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Knit","closure":"Zipper","pockets":"11","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Professional Surveyors Vest","brand":"Kishigo","part":"S5000","altParts":["S5001"]},"S5004":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh","closure":"Zipper","pockets":"7","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"High Performance Surveyors Vest","brand":"Kishigo","part":"S5004","altParts":["S5005","S5704"]},"S5042":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh","closure":"Zipper","pockets":"7","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Color Contrast High Performance Surveyors Vest","brand":"Kishigo","part":"S5042","altParts":["S5043","S5044","S5046"]},"S5008Z":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh","closure":"Zipper","pockets":"8","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Surveyors Vest - Economy","brand":"Kishigo","part":"S5008Z"},"1510":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh","closure":"Zipper","pockets":"6","stripeWidth":"2","tapeColor":"Silver","washings":"50X","gender":"Unisex","name":"Heavy Duty Vest","brand":"Kishigo","part":"1510","altParts":["1511","1710"]},"1595":{"garmentType":"Vest","compareGroup":"Type R Class 2","hvsaType":"Type R","ansiClass":"2","standard":"ANSI/ISEA 107 Type R, Class 2","bodyZone":"Upper","sleeved":"False","material":"Polyester","fabricConstruction":"Mesh, Solid Woven","closure":"Zipper","pockets":"5","stripeWidth":"2","tapeColor":"Silver","washings":"25X","gender":"Unisex","name":"Reflective Color Contrast Vest","brand":"Kishigo","part":"1595","altParts":["1596","1597","1598"]}}}};
+  </script>
+  <script>
+/* ============================================================================
+   MAJESTIC COMPETITOR COMPARISON — gloves + high-visibility apparel
+   ----------------------------------------------------------------------------
+   One search box, two catalogs. A rep holding a competitor part number does not
+   think "is this hand protection or body protection" — they want the Majestic
+   equivalent. So the category is resolved from the part number, never asked for
+   up front. Of ~6,900 part numbers across both catalogs only 12 appear in both
+   (0.17%), and every one of those is a different brand in each — so those are
+   handled with a pick-one prompt rather than by taxing every other lookup.
+
+   The two categories share the search, the Good/Better/Best cards and the
+   spec table, and diverge where the products genuinely differ: gloves render
+   ANSI 105 ratings and gauge, hi-vis renders the ANSI 107 compliance gate and
+   the reflective tape.
+============================================================================ */
+
+const DATA_URL       = "https://raw.githubusercontent.com/MajesticGlove/Majestic/main/v2test.json";
+const HIVIS_DATA_URL = "https://raw.githubusercontent.com/MajesticGlove/Majestic/main/Comparison3.json";
+// The two catalogs above are pipeline output and get rebuilt. This third file is
+// hand-owned and never written by a script — see its _README.
+const OVERRIDES_URL  = "https://raw.githubusercontent.com/MajesticGlove/Majestic/main/comparison-overrides.json";
+/* WEBSITE VERSION. The button runs majesticglove.com's own product search for
+   the selected Majestic part (the contact-form version opens the Dynamics form
+   instead). A search link survives product renames, which rewrite Optimizely
+   product URLs. It opens in a new tab: inside the site's iframe, a same-tab
+   link would load the whole site inside itself, and a new tab keeps the
+   comparison open behind it.
+   SITE_SEARCH_URL is the one line to change if the site's search URL differs:
+   search a part on the site and copy everything before the part number. */
+const SITE_URL        = "https://majesticglove.com";
+const SITE_SEARCH_URL = "https://majesticglove.com/Search?query=";
+// "75-3003 / 75-3004" is one catalog row covering two parts; search the first.
+const sitePart = p => String(p || "").split(/\s*\/\s*/)[0].trim();
+
+function ctaUrl(comp, maj, majPart){
+  return majPart ? SITE_SEARCH_URL + encodeURIComponent(sitePart(majPart)) : SITE_URL;
+}
+
+let DATA  = { majestic:{}, competitors:{} };   // gloves
+let HIVIS = { majestic:{}, competitors:{} };   // high-visibility apparel
+
+/* ---------------------------------------------------------------- utilities */
+const isBlank = v => { const s = v == null ? "" : String(v).trim();
+  return s === "" || s === "—" || s === "-" || s === "--" || s.toLowerCase() === "n/a"; };
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+  ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+const norm = s => String(s == null ? "" : s).trim().toUpperCase();
+/* reps drop hyphens and spaces: GLO096 must find GLO-096 */
+const loose = s => norm(s).replace(/[^A-Z0-9]/g, "");
+const num = v => { const n = parseFloat(String(v == null ? "" : v).replace(/[^0-9.]/g, ""));
+  return Number.isFinite(n) ? n : null; };
+const titleish = s => String(s || "").replace(/\s+/g, " ").trim();
+
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>';
+const DIFF  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>';
+const DASH  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M8 12h8"/></svg>';
+
+/* ------------------------------------------------------------ search index */
+/* Every part number a rep might type, mapped to the record it resolves to.
+   altParts carries the size/colour SKUs so GLO-10-G-2IN finds its style row. */
+let INDEX = [];        // [{ key, looseKey, cat, part, brand, name }]
+
+/* A glove competitor record carries no product name — only a part number and
+   specs. Showing "Hexarmor 5033 — 5033" in the picker tells a rep nothing, so
+   a short descriptor is built from what the record does have. */
+function gloveLabel(rec){
+  const bits = [];
+  const cut = rec.ratings && rec.ratings.cut;
+  if(!isBlank(cut)) bits.push(`${cut} cut`);
+  if(!isBlank(rec.coating)) bits.push(rec.coating);
+  if(!isBlank(rec.linerMaterial)) bits.push(rec.linerMaterial);
+  else if(!isBlank(rec.material)) bits.push(rec.material);
+  // 20 records publish neither a cut rating nor a liner, but do carry an impact
+  // flag or a feature line. A named feature beats the bare word "Glove".
+  if(!bits.length){
+    const feat = Array.isArray(rec.features) ? rec.features.filter(f => !isBlank(f)) : [];
+    // "Impact rated, TPR Impact Protection" says one thing twice — prefer the
+    // feature's own wording when it already covers the flag.
+    if(feat.length) bits.push(feat[0]);
+    else if(rec.ratings && rec.ratings.impact) bits.push("Impact rated");
+  }
+  return bits.length ? bits.join(", ") : "Glove";
+}
+
+function labelFor(cat, rec, part){
+  if(cat === "hivis") return rec.name || part;
+  // The glove dataset names the field `productName`, not `name`. 584 records
+  // carry a real one; a published name beats a descriptor we assembled.
+  const given = rec.name || rec.productName;
+  return isBlank(given) ? gloveLabel(rec) : given;
+}
+
+function buildIndex(){
+  INDEX = [];
+  const push = e => INDEX.push(e);
+  for(const [part, rec] of Object.entries(DATA.competitors || {})){
+    push({ key:norm(part), looseKey:loose(part), cat:"glove", side:"competitor",
+           part, brand:rec.brand || "", name:labelFor("glove", rec, part), primary:true });
+  }
+  for(const [part, rec] of Object.entries(HIVIS.competitors || {})){
+    const base = { cat:"hivis", side:"competitor", part, brand:rec.brand || "",
+                   name:labelFor("hivis", rec, part) };
+    push({ ...base, key:norm(part), looseKey:loose(part), primary:true });
+    for(const alt of (rec.altParts || [])){
+      push({ ...base, key:norm(alt), looseKey:loose(alt), via:alt, primary:false });
+    }
+  }
+  // Majestic parts are searchable too — the hero copy invites exactly that, and
+  // a rep often has our number and wants to see what it competes with.
+  for(const [part, rec] of Object.entries(DATA.majestic || {})){
+    push({ key:norm(part), looseKey:loose(part), cat:"glove", side:"majestic",
+           part, brand:"Majestic", name:labelFor("glove", rec, part), primary:true });
+  }
+  for(const [part, rec] of Object.entries(HIVIS.majestic || {})){
+    push({ key:norm(part), looseKey:loose(part), cat:"hivis", side:"majestic",
+           part, brand:"Majestic", name:labelFor("hivis", rec, part), primary:true });
+  }
+}
+
+/* A part number can legitimately name two different products in two catalogs.
+   Return every hit and let the caller decide whether to ask. */
+function lookup(raw){
+  const exact = norm(raw), fuzzy = loose(raw);
+  let hits = INDEX.filter(e => e.key === exact);
+  if(!hits.length) hits = INDEX.filter(e => e.looseKey === fuzzy);
+  // A number can be one product's own part AND another's colour variant
+  // (1511 is a product, and also a variant of 1510). The product that owns the
+  // number wins; the variant is only offered when nothing owns it.
+  const owned = hits.filter(e => e.primary);
+  if(owned.length) hits = owned;
+  const seen = new Set(); const out = [];
+  for(const h of hits){
+    const id = h.cat + "|" + h.side + "|" + h.part;
+    if(!seen.has(id)){ seen.add(id); out.push(h); }
+  }
+  return out;
+}
+
+function suggest(raw, limit = 8){
+  const fuzzy = loose(raw);
+  if(fuzzy.length < 2) return [];
+  const starts = [], contains = [];
+  for(const e of INDEX){
+    if(e.looseKey.startsWith(fuzzy)) starts.push(e);
+    else if(e.looseKey.includes(fuzzy)) contains.push(e);
+    if(starts.length >= limit * 3) break;
+  }
+  const seen = new Set(); const out = [];
+  const rank = (a, b) => (b.primary ? 1 : 0) - (a.primary ? 1 : 0);
+  for(const e of [...starts.sort(rank), ...contains.sort(rank)]){
+    const id = e.cat + "|" + e.part;
+    if(seen.has(id)) continue;
+    seen.add(id); out.push(e);
+    if(out.length >= limit) break;
+  }
+  return out;
+}
+
+/* ============================================================================
+   HI-VIS MATCHING
+   Compare Group is a HARD GATE, not a score. ANSI 107 classes are not
+   interchangeable: a Class 2 vest is not a substitute for a Class 3 vest, and
+   offering one as a "match" would be a compliance error, not a near miss. So
+   the pool is filtered to the same compare group first, then scored. The
+   exceptions go one way only, up, and the page says so each time: a class we
+   don't make at all (Type O, Type P, full-body sets) goes to the closest group
+   we do make (HV_STEP), and a garment we make nothing like in Class 2 (a
+   jacket, parka, coat or sweatshirt) goes to Class 3, which exceeds it (HV_UP).
+============================================================================ */
+/* Five specs are stated often enough on BOTH sides to score on. Of the
+   competitor rows, 99% state a garment type, 82% a color, 64% pockets, 55% a
+   material and 53% a closure. Everything else the competitors publish —
+   stripe width, tape type, sizes — is absent from the Majestic PIM export, so
+   weighting it would score noise. Conversely Majestic states tape brand,
+   stripe pattern, tape application and wash testing on ~90% of its rows while
+   competitors almost never do; those are surfaced as differentiators rather
+   than pretended to be comparisons. The one spec scored on thin data is the
+   D-ring pass-through, because it decides whether the garment works with a
+   harness at all. */
+/* ----------------------------------------------------------------------------
+   HI-VIS SCORING
+
+   Rebuilt on the same four rules as the glove engine, because the flat version
+   produced visible ties: GLO-096 returned three 100% matches and 904 returned
+   three at 79%. Three identical numbers tell a rep nothing.
+
+     1. A spec the competitor publishes and the Majestic garment does not scores
+        HV_UNKNOWN, not "skip". Dropping the axis meant a garment that publishes
+        NOTHING scored the same as one that publishes and matches — which is
+        what produced the ties.
+     2. Garment type is ALWAYS scored, as cut is on the glove side.
+     3. Pockets are asymmetric — more than asked for is mild over-spec, fewer is
+        a shortfall.
+
+   Above all of it the ANSI compare group stays a HARD gate, which is stricter
+   than anything on the glove side and is not a score at all.
+
+   Weights add up to 100 (HV_WEIGHTS). Sizes, stripe width, tape type and
+   pocket type are deliberately absent — Majestic publishes none of them, so
+   they could only ever score UNKNOWN and would drag every garment down
+   equally. Sleeve length was dropped as a scoring axis: garment type already
+   separates a vest from a shirt, so it was largely restating a distinction the
+   primary axis had made.
+---------------------------------------------------------------------------- */
+/* The weights add up to 100, so each reads as its share of a full comparison.
+   A spec only counts when the searched garment publishes it; when it doesn't,
+   its weight drops out and the others scale up in proportion. Garment type
+   leads because a vest has to match a vest; color is next because an orange
+   vest should match an orange vest. */
+const HV_WEIGHTS = { garment:30, color:20, pockets:15, dRing:15, closure:10, material:10 };
+// The thinness penalty counts these five; the D-ring is a requirement, not a
+// spec a garment can leave blank.
+const HV_BASE = ["garment", "color", "pockets", "closure", "material"];
+const HV_AXES = HV_BASE.length;
+const HV_UNKNOWN = 35;   // competitor states it, the Majestic garment doesn't
+const HV_THIN_PENALTY = 2.5;   // per base spec the competitor never published
+// Below this, no Majestic garment is a like-for-like match. The three closest
+// still show, under a callout that says so.
+const HV_FLOOR = 40;
+// A near-duplicate of a garment already on a card (same garment, pockets,
+// closure and material; usually the other colorway) gives way to a different
+// garment scoring within this many points of it, and not to one further down.
+const HV_TWIN_MARGIN = 10;
+
+/* D-ring pass-through is a fit requirement, not a descriptor: a garment worn
+   over a fall-protection harness needs the slot the D-ring comes through, or
+   the harness has to go on top. So it is scored the way impact is on the glove
+   side, but only when the searched garment states one (18 competitor rows do,
+   12 of them PIP vests). It never adds to the thinness penalty, and the card
+   counts it as a sixth spec only when it was compared. A Majestic garment that
+   does not list a pass-through scores 0 here, not UNKNOWN, and its card says
+   "not listed" so the rep confirms rather than assumes. */
+/* One reading for the yes/no feature flags (D-ring, ID pocket, mic tabs): "Yes",
+   "True" or a count above zero ("2" mic tabs). Anything else, "No" included,
+   is not claimed. Unrecognised text reads as no, because claiming a harness
+   pass-through a garment doesn't have is worse than not mentioning one. */
+const isYes = v => {
+  const s = String(v ?? "").trim().toLowerCase();
+  return /^(yes|y|true)$/.test(s) || (/^\d+$/.test(s) && +s > 0);
+};
+const hvHasDRing = e => !!e && isYes(e.dRing);
+
+/* Color. ANSI 107 has three fluorescent background colors and every brand
+   names them its own way: Kishigo's "Lime", Radians' "Hi-Vis Green" and our
+   "Hi-Vis Yellow" are all fluorescent yellow-green. So each colorway is read
+   as a family, plus whether it has the black two-tone. Same family and same
+   two-tone scores 100; same family, one with black and one without, 80; a
+   different family 0. A competitor style listing several colorways ("Yellow,
+   Orange") is matched on whichever one ours shares. Non-hi-vis colors (navy,
+   blue, plain green, pink...) are families of their own, which we don't make. */
+function colorways(s){
+  return String(s || "").split(/\s*,\s*/).map(c => {
+    const t = c.toLowerCase();
+    const family = /yellow|lime|hi-vis green|fluorescent green/.test(t) ? "yellow"
+      : /orange/.test(t) ? "orange"
+      : /\bred\b/.test(t) ? "red"
+      : (t.match(/\b(blue|navy|royal|green|pink|purple|plum|white|gr[ae]y|khaki|tan|brown|camo\w*)\b/) || [])[1]
+        || (/black/.test(t) ? "black" : null);
+    return family ? { family, black: family !== "black" && /black/.test(t) } : null;
+  }).filter(Boolean);
+}
+function hvColorScore(maj, comp){
+  const c = colorways(comp.color), m = colorways(maj.color);
+  if(!c.length || !m.length) return null;
+  let best = 0;
+  for(const x of c) for(const y of m)
+    if(x.family === y.family) best = Math.max(best, x.black === y.black ? 100 : 80);
+  return best;
+}
+
+/* Classes we don't make. Matching only inside the searched compare group left
+   these with no result at all, so each is matched against the closest group we
+   do make, and the page says so. Non-ANSI stays as it is: a non-rated garment
+   is only matched against our non-rated ones.
+
+   "up" is the class to use instead when the nearer one has nothing of the
+   searched garment's kind. We make no jacket, parka, coat or sweatshirt in
+   Class 2, so a Type O jacket goes to our Class 3 jackets rather than to a
+   Class 2 vest; Class 3 still exceeds the rating it replaces. */
+const HV_STEP = {
+  "Type O Class 1":           { to:["Type R Class 2"], up:"Type R Class 3", kind:"o" },
+  "Type O Class 1 full":      { to:["Type R Class 2"], up:"Type R Class 3", kind:"o" },
+  "Type P Class 2":           { to:["Type R Class 2"], up:"Type R Class 3", kind:"p" },
+  "Type P Class 3":           { to:["Type R Class 3"], kind:"p" },
+  "Type R Class 2 full":      { to:["Type R Class 2"], up:"Type R Class 3", kind:"full" },
+  "Type R Class 3 full":      { to:["Type R Class 3"], kind:"full" },
+  "Class 3+E full":           { to:["Type R Class 3"], kind:"full" },
+  "Type R Class 3 accessory": { to:["Type R Class 3"], kind:"accessory" },
+  "Type R Class 2+3":         { to:["Type R Class 3", "Type R Class 2"], kind:"dual" },
+};
+/* The same move up for a class we do make. A Class 2 jacket or sweatshirt
+   used to land on a Class 2 vest as its "Top match", because Class 2 was a hard
+   gate and we make no Class 2 jacket, parka, coat or sweatshirt. Class 3
+   exceeds Class 2, so going up is a compliant substitute; going down never
+   is, which is why there is no Class 3 entry here. Only a search whose garment
+   has nothing like it in Class 2 moves; vests, shirts and T-shirts stay. */
+const HV_UP = { "Type R Class 2": "Type R Class 3" };
+
+// What the page says about a stepped search. step.up is true when it was
+// matched a class up, because the nearer class has nothing like the garment.
+function hvStepNote(step){
+  const up = !!step.up;
+  if(step.kind === "up"){
+    const g = titleish(step.garment || "").toLowerCase();
+    return `We don't make ${g ? `${/^[aeiou]/.test(g) ? "an" : "a"} Class 2 ${g}` : "this garment in Class 2"}. These are Type R Class 3, which exceeds Class 2.`;
+  }
+  return {
+    o:         up ? "We don't make Type O garments, or this garment in Class 2. These are Type R Class 3, which exceeds Class 1."
+                  : "We don't make Type O garments. These are Type R Class 2, which exceeds Class 1.",
+    p:         up ? "We don't make Type P (public safety) garments, or this garment in Class 2. These are the closest Type R Class 3 garments; confirm Type R suits the work zone."
+                  : "We don't make Type P (public safety) garments. These are the closest Type R garments in the same class; confirm Type R suits the work zone.",
+    full:      up ? "We don't make a full-body set or coverall in this class. These are the closest garments we do make, rated Class 3."
+                  : "We don't make a full-body set or coverall in this class. These are the closest garments we do make.",
+    accessory: "We don't make hi-vis accessories in this class. These are the closest garments we do make.",
+    dual:      "This garment is rated Class 2 and Class 3. These are our closest Type R garments in either class.",
+  }[step.kind] || "";
+}
+
+// Flame resistance is the hi-vis equivalent of impact: a garment specified FR
+// cannot be substituted by one that isn't, whatever else matches.
+const FR_RE = /\b(FR|flame[\s-]?resist\w*|ASTM[\s-]?F1506|NFPA[\s-]?70E|arc[\s-]?flash)\b/i;
+function hvIsFR(e){
+  if(!e) return false;
+  const flag = String(e.fr == null ? "" : e.fr).trim().toLowerCase();
+  if(flag === "true" || flag === "yes") return true;
+  if(flag === "false" || flag === "no") return false;
+  return FR_RE.test([e.name || "", e.certifications || "", e.material || ""].join(" "));
+}
+
+/* The compare group, or, where the catalog left it blank, the group the
+   garment's own rating implies. Eleven competitor rows state their rating
+   ("ANSI/ISEA 107 Type R, Class 3") but carry no group, because their names
+   have no garment word to file them under; reading it from the rating lets
+   them match like any other row. A class stated without a type is read as
+   Type R, as the catalog does for the rows it notes "Type R assumed". */
+function hvGate(comp){
+  const g = titleish(comp.compareGroup || "");
+  if(g) return g;
+  const cls = String(comp.ansiClass == null ? "" : comp.ansiClass).trim().toUpperCase();
+  if(cls === "E") return "Class E supplemental";
+  if(!/^[123]$/.test(cls)) return "";
+  const type = /type\s*([opr])\b/i.exec([comp.hvsaType, comp.standard].join(" "));
+  return `Type ${type ? type[1].toUpperCase() : "R"} Class ${cls}`;
+}
+
+/* How a compare group reads on screen. "full" (a coverall or set) and
+   "accessory" are the catalog's filing suffixes, not part of the ANSI rating,
+   and showed up in the badge as "Type R Class 3 full". */
+const hvGroupLabel = g => titleish(g).replace(/\s+(full|accessory)$/i, "");
+
+/* A full-body set or coverall is scored against the piece of it we make. A
+   set built around one garment says so in its name ("Band and Brace Vest",
+   a set listed as a "Hooded Sweatshirt"), and is scored as that garment. */
+function hvGarmentOf(e){
+  const g = titleish(e.garmentType);
+  if(!/^(set|coverall)$/i.test(g)) return g;
+  const n = String(e.name || "");
+  if(/\bvest\b/i.test(n)) return "Vest";
+  if(/\b(sweatshirt|hoodie)\b/i.test(n)) return "Sweatshirt";
+  return g;
+}
+
+function hvGarmentScore(a, b){   // a: the Majestic garment, b: the searched one
+  const x = titleish(a).toLowerCase(), y = titleish(b).toLowerCase();
+  if(!x || !y) return null;
+  if(x === y) return 100;
+  // near neighbours: a long-sleeve shirt and a tee serve the same role
+  const kin = [["shirt","t-shirt","polo"], ["sweatshirt","hoodie","fleece","mid layer"],
+               ["jacket","coat","parka","bomber"], ["pants","shorts","bib"],
+               ["vest","gilet"]];
+  if(kin.some(g => g.includes(x) && g.includes(y))) return 55;
+  // We make no rain suit or coverall in an ANSI class. Of what we do make,
+  // the closest is a jacket, coat or parka: the top half of the set.
+  if(/^(set|coverall)$/.test(y) && /^(jacket|coat|parka|bomber)$/.test(x)) return 55;
+  return 0;
+}
+
+/* More pockets than the competitor is mild over-spec and barely penalised;
+   fewer is a shortfall the rep needs to see. */
+function hvPocketScore(a, b){
+  const x = num(a), y = num(b);
+  if(x === null || y === null) return null;
+  const d = x - y;
+  if(d === 0) return 100;
+  if(d > 0)   return Math.max(70, 100 - d * 6);
+  return Math.max(10, 100 - Math.abs(d) * 20);
+}
+
+function hvTextScore(a, b){
+  const x = titleish(a).toLowerCase(), y = titleish(b).toLowerCase();
+  if(!x || !y) return null;
+  if(x === y) return 100;
+  const xs = new Set(x.split(/[^a-z0-9]+/).filter(t => t.length > 2));
+  const ys = new Set(y.split(/[^a-z0-9]+/).filter(t => t.length > 2));
+  if(!xs.size || !ys.size) return null;
+  let shared = 0;
+  xs.forEach(t => { if(ys.has(t)) shared++; });
+  return Math.round((shared / Math.max(xs.size, ys.size)) * 100);
+}
+
+/* Material is scored on the fabric the competitor names, not on how many
+   words either side uses. Until the catalog wrote Majestic's PIM codes out in
+   words this axis compared "PEM" with "Polyester" and scored 0 every time.
+   Now that both sides use words, two rules keep it honest:
+     - weights, deniers and percentages ("105 GSM", "100%") are not fabrics, so
+       only fabric words count;
+     - a longer, more specific description of ours must not score lower than a
+       short one, so the score is the share of the COMPETITOR's fabric words our
+       garment also has. "Polyester" is matched by any polyester garment.
+   The competitor's fabric construction counts as part of its description:
+   Kishigo puts "Polyester" in one field and "Mesh, Solid Knit" in the other. */
+const FABRIC_WORD = { polyester:"polyester", poly:"polyester", mesh:"mesh", solid:"solid",
+  fleece:"fleece", birdseye:"birdseye", oxford:"oxford", knit:"knit", ripstop:"ripstop",
+  tricot:"tricot", twill:"twill", woven:"woven", jersey:"jersey", softshell:"softshell",
+  cotton:"cotton", nylon:"nylon", modacrylic:"modacrylic", aramid:"aramid",
+  stretch:"stretch", spandex:"stretch", elastane:"stretch",
+  pu:"pu", polyurethane:"pu", tpu:"pu", coated:"coated", coating:"coated", pvc:"pvc", snag:"snag" };
+const fabricWords = s => new Set((String(s || "").toLowerCase().match(/[a-z]+/g) || [])
+  .map(w => FABRIC_WORD[w]).filter(Boolean));
+
+function hvMaterialScore(maj, comp){
+  const c = fabricWords([comp.material, comp.fabricConstruction].join(" "));
+  const m = fabricWords(maj.material);
+  if(!c.size || !m.size) return null;
+  let hit = 0;
+  c.forEach(w => { if(m.has(w)) hit++; });
+  return Math.round(100 * hit / c.size);
+}
+
+function hvComputeMatch(maj, comp){
+  const dims = {};
+  /* Compare across every spec the COMPETITOR publishes. A spec it doesn't list
+     isn't part of the match; a spec it lists and the Majestic garment lacks
+     counts against the score rather than vanishing from it. */
+  const add = (name, weight, compHas, majHas, subFn) => {
+    if(!compHas) return;
+    if(!majHas){ dims[name] = { w: weight, sub: HV_UNKNOWN, unknown: true }; return; }
+    const s = subFn();
+    dims[name] = s === null ? { w: weight, sub: HV_UNKNOWN, unknown: true } : { w: weight, sub: s };
+  };
+
+  // Garment type is always scored — it is the axis that decides whether these
+  // are the same kind of product at all.
+  const gm = !isBlank(maj.garmentType), gc = !isBlank(comp.garmentType);
+  dims.garment = { w: HV_WEIGHTS.garment,
+    sub: gc ? (gm ? (hvGarmentScore(maj.garmentType, hvGarmentOf(comp)) ?? HV_UNKNOWN) : HV_UNKNOWN)
+            : (gm ? 60 : 100),
+    unknown: gc && !gm };
+
+  add("color",    HV_WEIGHTS.color,    colorways(comp.color).length > 0, colorways(maj.color).length > 0,
+      () => hvColorScore(maj, comp));
+  add("pockets",  HV_WEIGHTS.pockets,  num(comp.pockets) !== null,    num(maj.pockets) !== null,
+      () => hvPocketScore(maj.pockets, comp.pockets));
+  add("closure",  HV_WEIGHTS.closure,  !isBlank(comp.closure),        !isBlank(maj.closure),
+      () => hvTextScore(maj.closure, comp.closure));
+  add("material", HV_WEIGHTS.material,
+      fabricWords([comp.material, comp.fabricConstruction].join(" ")).size > 0,
+      fabricWords(maj.material).size > 0,
+      () => hvMaterialScore(maj, comp));
+
+  // Fall protection: scored only when the searched garment has a pass-through.
+  if(hvHasDRing(comp))
+    dims.dRing = { w: HV_WEIGHTS.dRing, sub: hvHasDRing(maj) ? 100 : 0, extra: true };
+
+  let total = 0, wsum = 0;
+  for(const k in dims){ total += dims[k].w * dims[k].sub; wsum += dims[k].w; }
+  let score = wsum ? total / wsum : 0;
+
+  /* A thinness penalty, so a part-comparison cannot reach 100%.
+
+     The score above is an average over the axes that could be compared, which
+     means a competitor publishing only a garment type scored a flat 100 —
+     technically "matched everything we could check", but it reads as a verdict
+     when it is really two facts agreeing. HV_THIN_PENALTY docks a little for
+     each axis the competitor never published, so the number carries how much
+     was behind it:
+
+        5 of 5 compared   no penalty       up to 100%
+        4 of 5            -2.5             up to  98%
+        3 of 5            -5               up to  95%
+        2 of 5            -7.5             up to  93%
+        1 of 5            -10              up to  90%
+
+     Only base axes the competitor left blank are counted. An axis the
+     competitor published and Majestic did not has already scored HV_UNKNOWN
+     inside the average, and docking it twice would punish the same gap at both
+     ends. The D-ring axis is not a base axis: a competitor that never mentions
+     a pass-through has not left anything blank. */
+  const stated = Object.keys(dims).filter(k => !dims[k].extra).length;
+  score -= Math.max(0, HV_AXES - stated) * HV_THIN_PENALTY;
+  score = Math.round(score);
+
+  // How much of this was a real comparison rather than an absence, reported
+  // alongside the number so a thin result never reads as a considered verdict.
+  const compared = Object.values(dims).filter(d => !d.unknown).length;
+  const axes = HV_AXES + Object.values(dims).filter(d => d.extra).length;
+  const detail = {};
+  for(const k in dims) if(!dims[k].unknown) detail[k] = dims[k].sub;
+
+  // Safety, not score: an FR garment cannot be substituted by one that isn't.
+  const frGap = hvIsFR(comp) && !hvIsFR(maj);
+  // Fit, flagged on the card: the searched garment has a D-ring pass-through
+  // and this one does not list one.
+  const dRingGap = hvHasDRing(comp) && !hvHasDRing(maj);
+  return { score: Math.max(0, Math.min(100, score)), detail, compared, axes,
+           confidence: compared / axes, frGap, dRingGap };
+}
+
+/* Hi-vis has no equivalent of "cut A6 beats A4". Majestic's distinguishing
+   fields (stripe pattern, tape application) are DESCRIPTORS, not evidence of
+   being better, so they are never dressed up as wins. Three things are
+   claimed here: a fit requirement both garments meet (the D-ring
+   pass-through), a genuine numeric comparison where both sides state a value,
+   and a factual specification the competitor has not published. */
+function hvWins(maj, comp){
+  const wins = [];
+
+  // A rep matching a fall-protection garment needs to see the match keeps the
+  // pass-through. That is parity, not a claim of being better, so it leads only
+  // when the searched garment has one too; otherwise it is an extra below.
+  if(hvHasDRing(comp) && hvHasDRing(maj)) wins.push("D-ring pass-through");
+
+  // real comparisons first
+  const mp = num(maj.pockets), cp = num(comp.pockets);
+  if(mp !== null && cp !== null && mp > cp) wins.push(`${mp} pockets vs ${cp}`);
+  const mw = num(maj.washings), cw = num(comp.washings);
+  if(mw !== null && cw !== null && mw > cw) wins.push(`${mw} washes vs ${cw}`);
+  // micTab carries a count where the source states one ("2"), else "Yes"
+  const mm = num(maj.micTab), cm = num(comp.micTab);
+  if(mm !== null && cm !== null && mm > cm) wins.push(`${mm} mic tabs vs ${cm}`);
+
+  // Tape brand and stripe pattern are not shown or claimed. Our tape brand is
+  // always "Majestic" (and branded-vs-generic was ruled out as a claim), and
+  // our stripe patterns (Dot/Single/Double) and competitors' (Harness/X-Back)
+  // use different words, so neither ever made a real comparison.
+
+  /* Specifications Majestic publishes where the competitor has published
+     nothing. These state the Majestic value on its own, with no note about
+     what the competitor left blank — the same way the glove side handles it
+     ("Cut A2", never "Cut A2 (competitor not stated)"). The competitor's
+     silence is not evidence of anything, so naming it reads as a dig; the
+     "Majestic specifies" heading above the list already says these are
+     documentation rather than a claim of superiority. */
+  /* The three derived features, claimed only where we state one and the
+     competitor has not. These come before the tape and stripe fields below
+     because they are features an end user asks for by name, where a stripe
+     pattern is a descriptor nobody specifies a garment on. */
+  const micLabel = v => { const n = num(v);
+    return n === null ? "Mic tabs" : `${n} mic tab${n === 1 ? "" : "s"}`; };
+  const EXTRAS = [
+    ["dRing",    () => "D-ring pass-through"],
+    ["idPocket", () => "ID pocket"],
+    ["micTab",   micLabel],
+  ];
+  for(const [key, label] of EXTRAS){
+    if(wins.length >= 3) break;
+    if(isYes(maj[key]) && isBlank(comp[key])) wins.push(label(maj[key]));
+  }
+
+  if(wins.length < 3 && mw !== null && cw === null)
+    wins.push(`Wash-tested to ${titleish(maj.washings)}`);
+  if(wins.length < 3 && !isBlank(maj.tapeApplication) && isBlank(comp.tapeApplication))
+    wins.push(`${titleish(maj.tapeApplication)} tape`);
+  // A search matched to a class we do make (HV_STEP) is not the same class.
+  if(wins.length < 3 && !isBlank(maj.garmentType)
+     && titleish(maj.garmentType) === titleish(comp.garmentType))
+    wins.push(hvGate(maj) === hvGate(comp)
+      ? `Same garment type and ANSI class` : `Same garment type`);
+  return wins.slice(0, 3);
+}
+
+function hvGetRecommendations(comp, selfPart){
+  const gate = hvGate(comp);
+  const all = Object.entries(HIVIS.majestic)
+    .filter(([part]) => part !== selfPart)
+    .map(([part, data]) => ({ part, data, ...hvComputeMatch(data, comp) }));
+
+  /* HARD GATE — same compare group only, with two exceptions the page always
+     states: a class we don't make goes to the closest one we do (HV_STEP), and
+     a garment we don't make in its class goes up one (HV_UP). Never down.
+
+     Body zone is checked separately because the group does not carry it:
+     "Non-ANSI" and "Class E supplemental" hold upper- and lower-body garments
+     alike, so a vest and a pair of trousers shared one gate. The score caught
+     it — a vest against pants ran 9-19% — but a bad
+     match that still occupies one of three cards is a bad match on screen.
+     Upper and lower body are different products, exactly as sleeves and gloves
+     are on the other side. */
+  const zone = d => {
+    const z = String((d && d.bodyZone) || "").toLowerCase();
+    return z.includes("upper") ? "upper" : z.includes("lower") ? "lower" : "";
+  };
+  const compZone = zone(comp);
+  const zoneOK = d => { const mz = zone(d); return !compZone || !mz || compZone === mz; };
+  // A class we don't make is matched against the closest one we do (HV_STEP),
+  // and a search goes up a class (HV_STEP's "up", or HV_UP) when the class it
+  // would use has nothing of the garment's kind: the same garment type, or a
+  // near neighbour (a polo for a T-shirt).
+  const step = HV_STEP[gate] || null;
+  const base = step ? step.to : [gate];
+  const upTo = step ? step.up : HV_UP[gate];
+  const garment = hvGarmentOf(comp);
+  let targets = base;
+  let up = false;
+  if(upTo){
+    const fits = cls => all.some(s => hvGate(s.data) === cls && zoneOK(s.data)
+      && (hvGarmentScore(s.data.garmentType, garment) || 0) >= 55);
+    if(!base.some(fits) && fits(upTo)){ targets = [upTo]; up = true; }
+  }
+  let pool = all.filter(s => gate && targets.includes(hvGate(s.data)))
+                .filter(s => zoneOK(s.data));
+  let gateApplied = true;
+  if(!pool.length){ pool = []; gateApplied = false; }   // no eligible Majestic product
+
+  // Same score on one attribute is not the same as the same score on four,
+  // so evidence breaks the tie before the part number does.
+  const sorted = [...pool].sort((a, b) =>
+    b.score - a.score || b.compared - a.compared || a.part.localeCompare(b.part));
+  const ov = comp.overrideBestMatch;
+  // A curated pin must not override the compliance gate or body-zone filter.
+  const ovRow = ov ? sorted.find(s => s.part === ov) || null : null;
+
+  /* Tie-diversification.
+
+     Most hi-vis competitors publish very little — GLO-096 states a garment type
+     and nothing else — so every eligible Majestic garment matches what there is
+     to match and genuinely ties. That tie is the honest answer and must not be
+     broken by inventing a ranking.
+
+     What it must not do is fill all three cards with the same garment. Majestic
+     has 70 hi-vis products but only 48 distinct spec profiles: 75-3201, -3202
+     and -3203 are all "High Visibility Mesh Vest, ANSI 2, R", differing by
+     colour and closure. Three copies of one vest tells a rep nothing.
+
+     So within a tied score, prefer a garment that DIFFERS from what has already
+     been picked. Same score, real alternatives. A near-duplicate is held back
+     only while a different garment scores within HV_TWIN_MARGIN of it: the
+     orange/black colorway of a sweatshirt at 90% is a better third card than
+     a parka at 0%. */
+  const profile = d => [d.garmentType, d.pockets, d.closure, d.material]
+    .map(v => titleish(v).toLowerCase()).join("|");
+
+  const diversify = (list, taken, n) => {
+    const out = [], seen = new Set(taken.map(t => profile(t.data)));
+    const held = [];
+    for(const s of list){
+      // A held near-duplicate comes back once the different garments fall too
+      // far below it.
+      while(held.length && out.length < n && held[0].score - s.score > HV_TWIN_MARGIN)
+        out.push(held.shift());
+      if(out.length >= n) break;
+      const key = profile(s.data);
+      if(seen.has(key)){ held.push(s); continue; }   // a near-duplicate — hold it back
+      seen.add(key); out.push(s);
+    }
+    // If distinct options ran out, fall back to the held ones in score order so
+    // the card set is never short.
+    for(const s of held){ if(out.length >= n) break; out.push(s); }
+    // The cards read best, better, good, so they stay in score order.
+    return out.sort((a, b) =>
+      b.score - a.score || b.compared - a.compared || a.part.localeCompare(b.part));
+  };
+
+  let picks = [];
+  if(ovRow){
+    // Off-gate means outside the groups searched: the searched (or stepped-to)
+    // group and, when the search went up a class, that one too. Those are
+    // covered by the callout already.
+    const first = { ...ovRow, pinned:true };
+    picks = [first, ...diversify(sorted.filter(s => s.part !== ov), [first], 2)];
+  } else {
+    const first = sorted[0] ? { ...sorted[0], pinned:false } : null;
+    picks = first ? [first, ...diversify(sorted.slice(1), [first], 2)] : [];
+  }
+  const labels = ["best", "better", "good"];
+  return { recs: picks.slice(0, 3).map((s, i) => ({ ...s, tier: labels[i] })),
+           gate, gateApplied, eligible: pool.length,
+           step: step ? { kind: step.kind, to: targets, up }
+               : up ? { kind: "up", to: targets, up, garment }
+               : null };
+}
+
+function hvPitch(rec, comp){
+  if(rec.pinned){
+    const d = comp.overrideDescription || comp.overrideSummary;
+    if(typeof d === "string" && d.trim().length >= 40) return esc(d.trim());
+  }
+  const m = rec.data;
+  const who = `the ${esc(comp.brand || "competitor")} ${esc(comp.part)}`;
+  const mine = `Majestic&rsquo;s ${esc(rec.part)}`;
+
+  /* The compliance opening stays branched by group, because it is the one
+     sentence that can be factually wrong: a Non-ANSI garment meets no ANSI 107
+     requirement at all, and a Class E garment carries its rating only when worn
+     WITH a Class 2 or Class 3 garment. */
+  const group = hvGate(comp);
+  const plainGroup = esc(group.replace(/\s+(upper|lower|full|accessory)$/i, ""));
+  const majGroup = esc(hvGate(m));
+  const step = HV_STEP[group];
+  let opening;
+  if(step){
+    /* A class we don't make (HV_STEP). "Carries the same rating" would be
+       false here, so the opening says what ours is rated instead. */
+    opening = {
+      o:         `${mine} is an ANSI/ISEA&nbsp;107 ${majGroup} garment, which exceeds the Type&nbsp;O Class&nbsp;1 rating of ${who}.`,
+      p:         `${mine} is an ANSI/ISEA&nbsp;107 ${majGroup} garment. ${who.charAt(0).toUpperCase() + who.slice(1)} is Type&nbsp;P, built for public safety work, so confirm Type&nbsp;R suits the work zone.`,
+      full:      `We don't make a full-body garment rated ${plainGroup}; ${mine} is the closest we do make, rated ANSI/ISEA&nbsp;107 ${majGroup}.`,
+      accessory: `We don't make a hi-vis accessory rated ${plainGroup}; ${mine} is the closest we do make, rated ANSI/ISEA&nbsp;107 ${majGroup}.`,
+      dual:      `${mine} is rated ANSI/ISEA&nbsp;107 ${majGroup}, one of the two classes ${who} carries.`,
+    }[step.kind];
+  } else if(hvGate(m) !== group){
+    /* A garment from another class: one class up, because we make nothing like
+       the searched garment in its class (HV_UP), or a curated pin. Either way
+       "carries the same rating" would be false. */
+    const num = g => Number((g.match(/Class (\d)/i) || [])[1]) || 0;
+    opening = num(group) && num(hvGate(m)) > num(group)
+      ? `${mine} is rated ANSI/ISEA&nbsp;107 ${majGroup}, which exceeds the ${plainGroup} rating of ${who}.`
+      : `${mine} is rated ${majGroup}, where ${who} is rated ${plainGroup}; confirm it suits the work zone.`;
+  } else if(/non-ansi/i.test(group)){
+    opening = `${mine} and ${who} are both non-rated high-visibility garments, so the two compare on how they are built rather than on an ANSI&nbsp;107 class.`;
+  } else if(/class e/i.test(group)){
+    opening = `Like ${who}, ${mine} is an ANSI/ISEA&nbsp;107 Class&nbsp;E supplemental garment, which carries its rating only when it is worn with a Class&nbsp;2 or Class&nbsp;3 garment.`;
+  } else {
+    opening = `${mine} carries the same ANSI/ISEA&nbsp;107 ${plainGroup} rating as ${who}, so it meets the same visibility requirement.`;
+  }
+
+  /* Everything below reads as sentences rather than a list of stubs. The
+     earlier version emitted "It carries 2 pockets against 1. The tape is tested
+     to 25X washes. Shell is PEM." — each fact true, none of it written. */
+  const brand = esc(comp.brand || "the competitor");
+  const feature = [];          // what this garment offers
+  const construction = [];     // how it is made
+
+  // "2 pockets to OccuNomix's 1" is a spec line; "two pockets to OccuNomix's
+  // one" is a sentence. Only the small numbers that actually occur are spelled.
+  const WORD = ["no", "one", "two", "three", "four", "five", "six",
+                "seven", "eight", "nine", "ten"];
+  const spell = n => (n >= 0 && n < WORD.length) ? WORD[n] : String(n);
+  const mp = num(m.pockets), cp = num(comp.pockets);
+  if(mp !== null && cp !== null && mp > cp){
+    feature.push(cp === 0
+      ? `${spell(mp)} pocket${mp === 1 ? "" : "s"} where ${brand}&rsquo;s has none`
+      : `${spell(mp)} pockets to ${brand}&rsquo;s ${spell(cp)}`);
+  }
+  /* "Zipper, Snaps" already includes a zipper, so a zipper is not "rather than"
+     it. The closure names are catalog labels ("Snaps", "Snap/Button, Zipper"),
+     so each is written the way a sentence says it, and a closure with no
+     natural wording (drawstring, cinch, elastic) is left to the spec table. */
+  const one = s => s.replace(/\bsnaps\b/g, "snap").replace(/\bbuttons\b/g, "button").replace(/\bzippers\b/g, "zipper");
+  const THEIRS = { "zipper":"a zipper", "zippers":"a zipper", "ykk™ zippers":"a zipper", "snaps":"snaps",
+    "snap":"snaps", "buttons":"buttons", "button":"buttons", "hook and loop":"hook and loop",
+    "breakaway hook and loop":"breakaway hook and loop", "pullover":"a pullover design" };
+  const mc = one(titleish(m.closure).toLowerCase());
+  const cParts = titleish(comp.closure).toLowerCase().split(/\s*[,/]\s*/).filter(Boolean);
+  const theirs = cParts.map(p => THEIRS[p]);
+  if(mc && cParts.length && theirs.every(Boolean)
+     && !cParts.some(p => one(p).includes(mc) || mc.includes(one(p)))){
+    const list = theirs.length === 1 ? theirs[0]
+      : theirs.slice(0, -1).join(", ") + " and " + theirs[theirs.length - 1];
+    feature.push(`a ${esc(mc)} closure rather than ${esc(list)}`);
+  }
+  if(String(m.hooded).toLowerCase() === "true" && String(comp.hooded).toLowerCase() !== "true")
+    feature.push(`a hood`);
+  // Said whether or not the competitor has one: where it does, this is the
+  // sentence that tells the reader the harness still fits.
+  if(hvHasDRing(m))
+    feature.push(`a D-ring pass-through for a fall-protection harness`);
+
+  // "25X" is how the source states it; "25 washes" is how a person says it.
+  const washes = String(m.washings == null ? "" : m.washings).replace(/x$/i, "").trim();
+  if(washes) construction.push(`its reflective tape is wash-tested to ${esc(washes)} cycles`);
+  if(!isBlank(m.material)){
+    /* The catalog writes material for the spec table ("PU-Coated Polyester
+       Oxford, Polyester Fleece"). In a sentence only the first part is the
+       shell — the rest is a back panel, lining or trim — and it reads in lower
+       case apart from acronyms (PU, 300D) and Oxford, which is a name. */
+    const shell = titleish(m.material).split(/\s*[,;]\s*/)[0]
+      .replace(/\b[A-Z][a-z]+\b/g, w => w === "Oxford" ? w : w.toLowerCase());
+    construction.push(`the shell is ${esc(shell)}`);
+  }
+  if(String(m.fr).toLowerCase() === "true") construction.push(`it is flame resistant`);
+
+  const join = list => list.length <= 1 ? (list[0] || "")
+    : list.slice(0, -1).join(", ") + " and " + list[list.length - 1];
+
+  const out = [opening];
+  if(feature.length) out.push(`It offers ${join(feature)}.`);
+  if(construction.length){
+    // No connective filler. "In use, the shell is PEM" was a phrase looking for
+    // a sentence; the clause stands on its own once it is capitalised.
+    const body = join(construction);
+    out.push(body.charAt(0).toUpperCase() + body.slice(1) + ".");
+  }
+  return out.join(" ");
+}
+
+/* ============================================================================
+   OVERRIDES — read-only
+
+   Curator mode used to live here: a localStorage pin store plus an "Export
+   overrides" button that dumped the whole dataset into a textarea. That put a
+   download of the entire competitive catalog one click away for anyone who
+   opened the tool, so the editing side is gone. Curation now happens by editing
+   comparison-overrides.json directly.
+
+   What remains is the half that serves a rep: a committed override is applied
+   and shown as the #1 match, with its written copy.
+============================================================================ */
+let FILE_PINS = { glove:0, hivis:0 };
+
+/* Merge comparison-overrides.json into the loaded catalogs.
+
+   Precedence is: overrides file > whatever is still inline on the record. That
+   ordering is what lets the catalogs be swapped or rebuilt without a flag day.
+   If the file 404s the catalogs still work; the pins are simply the inline ones. */
+function applyOverrides(ov){
+  if(!ov) return;
+  for(const [cat, store] of [["glove", DATA], ["hivis", HIVIS]]){
+    const table = ov[cat];
+    if(!table || typeof table !== "object") continue;
+    let applied = 0;
+    for(const [part, entry] of Object.entries(table)){
+      const rec = store.competitors && store.competitors[part];
+      if(!rec || !entry || typeof entry !== "object") continue;
+      if(!isBlank(entry.bestMatch)){
+        rec.overrideBestMatch = entry.bestMatch;
+        applied++;
+      }
+      if(!isBlank(entry.summary))     rec.overrideSummary     = entry.summary;
+      if(!isBlank(entry.description)) rec.overrideDescription = entry.description;
+      if(!isBlank(entry.comparison))  rec.overrideComparison  = entry.comparison;
+    }
+    FILE_PINS[cat] = applied;
+  }
+}
+/* ============================================================================
+   GLOVE SCORING
+
+   Ported from the live cross-reference tool rather than reimplemented. The
+   earlier version here used the same weights but a flattened scoring model, and
+   it produced visibly worse matches: searching Hexarmor's 5675 (an A8 cut glove)
+   returned Majestic's 1510 — a Grade A cowhide driver with no cut rating — in
+   third place at 60%. Four rules the live engine has and that version lacked:
+
+     1. scoreCloseness is ASYMMETRIC. An exact cut level is ideal; over-spec is
+        penalised by distance, under-spec harder still. A flat "meets or beats"
+        test let an A9 tie with an A8 on the axis that matters most.
+     2. A spec the competitor publishes and the Majestic glove does not scores
+        UNKNOWN (35), not "skip". Skipping let a glove win by publishing less.
+     3. Cut is ALWAYS scored. The ABSENCE of a cut rating is itself a signal —
+        it means general-purpose — so skipping the axis let high-cut gloves win
+        on coating alone.
+     4. Gauge carries glove TYPE. No gauge means leather/coated rather than
+        knit, so knit-vs-leather is a hard mismatch in both directions. That
+        single rule is what keeps a cowhide driver away from an A8 knit.
+
+   Plus two hard filters and a safety gate: sleeves never cross-match with
+   gloves, impact is symmetric (impact gloves match impact gloves, period), and
+   options that meet the competitor's cut level are preferred over those that
+   don't whenever at least three exist.
+============================================================================ */
+const SPEC_WEIGHTS = { cut:30, coating:25, gauge:18, material:12, features:8, abrasion:4, puncture:3 };
+const IMPACT_WEIGHT = 20;   // scores as an axis AND is enforced as a hard filter
+// Impact signal: the literal words, plus "back-of-hand" (any hyphen/spacing) and
+// "ANSI/ISEA 138" — the impact standard, including "Level N" phrasings that omit
+// the word "impact" entirely.
+const IMPACT_RE = /(impact|tpr|back[\s-]?of[\s-]?hand|knuckle|(?:ansi|isea)[\s\/]*138)/i;
+
+// Some records carry a placeholder ("-", "", "N/A") rather than a value. Those are
+// NOT a gauge, and treating them as one produced NaN scores. 0 = no gauge (leather).
+const gaugeNum = g => {
+  const n = parseInt(String(g == null ? "" : g).replace(/[^0-9]/g, ""), 10);
+  return Number.isFinite(n) && n > 0 ? n : 0;
+};
+
+/* Pull the numeric level out of any rating format: "A4", "4", or a full standard
+   string like "ANSI/ISEA 105-2024 Cut Level A4" (ignoring the 105/138/year digits). */
+function levelFromString(r){
+  const s = String(r || "").toUpperCase();
+  const a = s.match(/A(\d+)/);                 // explicit ANSI cut code, e.g. A4
+  if(a) return parseInt(a[1], 10);
+  const nums = (s.match(/\d+/g) || []).filter(n => !["105","138"].includes(n) && n.length < 4);
+  return nums.length ? parseInt(nums[nums.length - 1], 10) : 0;
+}
+
+/* Resolve a rating: the structured `ratings` object first, then a full-string
+   short_description (cut only). Null-safe. */
+function rawRating(entry, axis){
+  const r = entry && entry.ratings ? entry.ratings[axis] : undefined;
+  if(!isBlank(r)) return String(r).trim();
+  const sd = (entry && entry.short_description) || "";
+  if(axis === "cut" && /cut\s*level\s*a\d/i.test(sd)) return sd.trim();
+  return "";
+}
+const getRating = (entry, axis) => levelFromString(rawRating(entry, axis));
+
+function getRatingDisplay(entry, axis){
+  const raw = rawRating(entry, axis);
+  if(isBlank(raw)) return "";
+  const lvl = levelFromString(raw);
+  if(!lvl) return "";
+  return axis === "cut" ? "A" + lvl : String(lvl);
+}
+
+function hasImpact(e){
+  const lvl = e && e.ratings ? e.ratings.impact : undefined;
+  if(lvl != null && !/^(?:|0|no|false|n\/a|-)$/i.test(String(lvl).trim())) return true;
+  // Several impact gloves (the X-15 and Knucklehead lines) carry the signal only
+  // in the product name — no feature tag, no structured rating.
+  const hay = [(e.name || e.productName || ""), ((e.features || []).join(" ")),
+               (e.short_description || "")].join(" ");
+  return IMPACT_RE.test(hay);
+}
+
+/* Sleeves are arm protection — a different product category. Every Majestic
+   sleeve carries "Sleeve" in its name and no glove does, so the name is a
+   reliable, variant-proof signal. */
+function isSleeve(e){
+  return String((e && (e.name || e.productName)) || "").toLowerCase().includes("sleeve");
+}
+
+function coatingFamily(c){
+  const s = String(c || "").toLowerCase();
+  if(s.includes("nitrile")) return "nitrile";
+  if(s.includes("polyurethane") || /\bpu\b/.test(s)) return "pu";
+  if(s.includes("latex")) return "latex";
+  if(s.includes("pvc")) return "pvc";
+  if(s.includes("leather")) return "leather";
+  if(!s) return "none";
+  return s;
+}
+
+/* Closeness on a 0-N safety axis. Exact is ideal (100). Over-spec is penalised by
+   distance — an A9 glove for an A2 competitor is a different protection class, so
+   it scores low even though it "clears". Under-spec is penalised harder, so a
+   meet-or-exceed option is preferred. */
+function scoreCloseness(m, c){
+  // No published cut rating on the competitor = a GENERAL-PURPOSE glove. The right
+  // match is another general-purpose glove (unrated, or A1-A2) — not a high-cut
+  // glove that happens to share a coating.
+  if(!c) return m ? Math.max(0, 100 - m * 16) : 100;
+  const d = m - c;
+  if(d === 0) return 100;
+  if(d > 0)   return Math.max(0, 100 - d * 12 - (d > 2 ? (d - 2) * 16 : 0));
+  return Math.max(5, 100 - Math.abs(d) * 22);
+}
+
+/* Secondary ratings (abrasion, puncture). Exceeding is desirable and barely
+   penalised; falling short is penalised. Low weight either way. */
+function scoreSafetySecondary(m, c){
+  const d = m - c;
+  if(d === 0) return 100;
+  if(d > 0)   return Math.max(75, 100 - d * 5);
+  return Math.max(15, 100 - Math.abs(d) * 18);
+}
+
+function scoreCoating(maj, comp){
+  if(!maj || !comp) return 0;
+  if(String(maj).toLowerCase().trim() === String(comp).toLowerCase().trim()) return 100;
+  return coatingFamily(maj) === coatingFamily(comp) ? 60 : 0;
+}
+
+/* What share of the competitor's listed features does the Majestic glove also
+   have? Matched fuzzily on significant tokens. */
+function scoreFeatures(maj, comp){
+  const cf = (comp.features || []).map(f => String(f).toLowerCase()).filter(Boolean);
+  if(cf.length === 0) return 100;
+  const mf = (maj.features || []).map(f => String(f).toLowerCase()).join(" | ");
+  let hits = 0;
+  for(const f of cf){
+    const tokens = f.split(/[^a-z0-9]+/).filter(t => t.length > 3);
+    if(tokens.length && tokens.some(t => mf.includes(t))) hits++;
+  }
+  return Math.round((hits / cf.length) * 100);
+}
+
+function scoreGauge(maj, comp){
+  if(!maj || !comp) return 0;
+  const d = maj - comp;   // higher gauge = finer knit, treated as matching-or-exceeding
+  if(d === 0) return 100;
+  if(d > 0)   return Math.max(60, 100 - d * 5);
+  return Math.max(25, 100 - Math.abs(d) * 10);
+}
+
+function scoreMaterial(majMat, compMat){
+  const a = String(majMat || "").toLowerCase().trim();
+  const b = String(compMat || "").toLowerCase().trim();
+  if(!a || !b) return 0;
+  if(a === b) return 100;
+  const tokens = b.split(/[^a-z]+/).filter(t => t.length > 3);
+  return tokens.some(t => a.includes(t)) ? 60 : 0;
+}
+
+function scoreImpact(maj, comp){
+  const m = hasImpact(maj), c = hasImpact(comp);
+  if(c && m) return 100;
+  if(c && !m) return 0;     // competitor needs impact, Majestic lacks it → critical miss
+  if(!c && m) return 80;    // mild over-spec
+  return 100;
+}
+
+function gvComputeMatch(maj, comp){
+  const compImpact = hasImpact(comp);
+  const has = (e, axis) => !isBlank(rawRating(e, axis));
+  const UNKNOWN = 35;   // competitor publishes this spec, the Majestic glove doesn't
+
+  /* Compare across every spec the COMPETITOR publishes. 100% means the Majestic
+     glove matches all of them exactly. A spec the competitor doesn't list isn't
+     part of the match; a spec it lists but the Majestic glove lacks counts
+     against the score. */
+  const dims = {};
+  const add = (name, weight, compHas, majHas, subFn) => {
+    if(compHas) dims[name] = { w: weight, sub: majHas ? subFn() : UNKNOWN };
+  };
+  dims.cut = { w: SPEC_WEIGHTS.cut,
+    sub: has(comp, "cut")
+      ? (has(maj, "cut") ? scoreCloseness(getRating(maj, "cut"), getRating(comp, "cut")) : UNKNOWN)
+      : scoreCloseness(getRating(maj, "cut"), 0) };
+  add("coating", SPEC_WEIGHTS.coating, !!comp.coating, !!maj.coating,
+      () => scoreCoating(maj.coating, comp.coating));
+  // Gauge also signals glove TYPE: no gauge generally means a leather/coated glove
+  // rather than a knit. Both knit → compare values; both gauge-less → same type,
+  // no penalty; one of each → a big mismatch in both directions.
+  const majKnit = !!gaugeNum(maj.gauge), compKnit = !!gaugeNum(comp.gauge);
+  dims.gauge = { w: SPEC_WEIGHTS.gauge,
+    sub: (majKnit && compKnit) ? scoreGauge(gaugeNum(maj.gauge), gaugeNum(comp.gauge))
+       : (!majKnit && !compKnit) ? 100
+       : 12 };
+  add("abrasion", SPEC_WEIGHTS.abrasion, has(comp, "abrasion"), has(maj, "abrasion"),
+      () => scoreSafetySecondary(getRating(maj, "abrasion"), getRating(comp, "abrasion")));
+  add("puncture", SPEC_WEIGHTS.puncture, has(comp, "puncture"), has(maj, "puncture"),
+      () => scoreSafetySecondary(getRating(maj, "puncture"), getRating(comp, "puncture")));
+  add("material", SPEC_WEIGHTS.material, !!comp.linerMaterial, !!maj.material,
+      () => scoreMaterial(maj.material, comp.linerMaterial));
+  const compFeatures = (comp.features || []).filter(f => String(f).trim());
+  if(compFeatures.length) dims.features = { w: SPEC_WEIGHTS.features, sub: scoreFeatures(maj, comp) };
+  if(compImpact)          dims.impact   = { w: IMPACT_WEIGHT,        sub: scoreImpact(maj, comp) };
+
+  let total = 0, wsum = 0;
+  for(const k in dims){ total += dims[k].w * dims[k].sub; wsum += dims[k].w; }
+  const score = wsum ? Math.round(total / wsum) : 0;
+
+  const safetyMet = getRating(maj, "cut") >= getRating(comp, "cut")
+                    && (!compImpact || hasImpact(maj));
+  return { score, safetyMet, dims, compImpact, compared: Object.keys(dims).length };
+}
+
+/* Win pills — concise advantages of this Majestic option over the competitor */
+function gvWins(maj, comp){
+  const wins = [];
+  const noData = (e, axis) => isBlank(rawRating(e, axis));
+  const cM = getRating(maj, "cut"), cC = getRating(comp, "cut");
+  if(!noData(maj, "cut")){
+    if(noData(comp, "cut"))  wins.push(`Cut A${cM}`);
+    else if(cM > cC)         wins.push(`Cut A${cM} vs A${cC}`);
+    else if(cM === cC)       wins.push(`Matches A${cM} cut`);
+  }
+  if(hasImpact(comp) && hasImpact(maj)) wins.push("Impact protection");
+  if(maj.coating && comp.coating
+     && String(maj.coating).toLowerCase() === String(comp.coating).toLowerCase())
+    wins.push("Same coating");
+  const aM = getRating(maj, "abrasion"), aC = getRating(comp, "abrasion");
+  if(!noData(maj, "abrasion")){
+    if(noData(comp, "abrasion")) wins.push(`Abrasion ${aM}`);
+    else if(aM > aC)             wins.push(`Abrasion ${aM} vs ${aC}`);
+  }
+  const pM = getRating(maj, "puncture"), pC = getRating(comp, "puncture");
+  if(!noData(maj, "puncture")){
+    if(noData(comp, "puncture")) wins.push(`Puncture ${pM}`);
+    else if(pM > pC)             wins.push(`Puncture ${pM} vs ${pC}`);
+  }
+  return wins.slice(0, 3);
+}
+
+/* Auto-generated pitch — an at-a-glance summary of the differences */
+function generatePitch(maj, comp){
+  const who = maj.name || maj.productName || "this glove";
+  const compName = comp.__self
+    ? `Majestic ${comp.part}`
+    : (`${comp.brand || ""}${comp.name ? " " + comp.name
+        : (comp.part ? " " + comp.part : "")}`).trim() || "the competitor";
+  const A105 = "ANSI/ISEA 105-2024";
+  const A138 = "ANSI/ISEA 138-2019";
+
+  const cM = getRating(maj, "cut"),      cC = getRating(comp, "cut");
+  const aM = getRating(maj, "abrasion"), aC = getRating(comp, "abrasion");
+  const pM = getRating(maj, "puncture"), pC = getRating(comp, "puncture");
+  const mI = hasImpact(maj), cI = hasImpact(comp);
+  const gM = gaugeNum(maj.gauge), gC = gaugeNum(comp.gauge);
+  const feats = (maj.features || []).map(f => String(f).toLowerCase());
+
+  // 1) CUT headline. A lower Majestic cut is framed constructively, never as a shortfall.
+  let headline = "";
+  if(cM && cC){
+    if(cM > cC)        headline = `The ${who} offers higher cut resistance than the ${compName} (${A105} A${cM} vs A${cC}), for greater protection against cuts.`;
+    else if(cM === cC) headline = `The ${who} matches the ${compName}'s ${A105} A${cM} cut rating.`;
+    else               headline = `The ${who} has a lower cut rating than the ${compName} (${A105} A${cM} vs A${cC}); confirm A${cM} meets the task's requirements.`;
+  } else if(cM){
+    headline = `The ${who} carries an ${A105} A${cM} cut rating.`;
+  } else if(cC){
+    // Saying nothing here read as parity with a cut-rated glove.
+    headline = `The ${who} has no published ${A105} cut rating, where the ${compName} is rated A${cC}; confirm it meets the task's requirements.`;
+  }
+
+  // 2) ADVANTAGES — differentiators, each with the practical worker benefit.
+  const hasF = sub => feats.some(f => f.includes(sub));
+  const adv = [];
+  if(gM && gC && gM > gC) adv.push(`Its ${gM}-gauge construction provides enhanced dexterity and comfort for precision handling tasks.`);
+  if(hasF("touchscreen")) adv.push(`It also features touchscreen-compatible fingertips, allowing workers to operate mobile devices and scanners without removing their gloves.`);
+  if(hasF("sanitized")) adv.push(`The glove includes a Sanitized® by Actifresh® treatment to help prevent the buildup of bacteria and maintain freshness during extended wear.`);
+  if(hasF("thumb")) adv.push(`The reinforced thumb crotch improves durability in high-wear areas, helping extend glove life.`);
+  const abrUp = aM && aC && aM > aC, puncUp = pM && pC && pM > pC;
+  if(abrUp && puncUp) adv.push(`It also carries higher abrasion and puncture ratings (${A105} Level ${aM} vs ${aC} and Level ${pM} vs ${pC}) for added durability.`);
+  else if(abrUp) adv.push(`It also carries a higher abrasion rating (${A105} Level ${aM} vs ${aC}) for added durability and longer wear life.`);
+  else if(puncUp) adv.push(`It also provides a higher puncture rating (${A105} Level ${pM} vs ${pC}) for added puncture protection.`);
+  if(hasF("visib")) adv.push(`Its hi-vis coloration improves worker visibility on busy and low-light worksites.`);
+  if(mI && !cI) adv.push(`It adds ${A138} impact protection to help guard against back-of-hand impacts.`);
+  else if(mI && cI) adv.push(`It also provides matching ${A138} impact protection.`);
+  if(hasF("winter")) adv.push(`The winter lining adds warmth and comfort for cold-weather work.`);
+  if(hasF("waterproof")) adv.push(`Its waterproof construction keeps hands dry in wet conditions.`);
+  else if(hasF("water resist") || hasF("water repel") || hasF("water and oil")) adv.push(`It also offers water-resistant protection for damp handling.`);
+  if(hasF("oil resist") || hasF("oil repel") || hasF("water and oil")) adv.push(`Its oil-resistant grip helps maintain control in oily environments.`);
+  if(hasF("antimicrob")) adv.push(`An antimicrobial treatment helps reduce odor and bacteria during extended wear.`);
+  if(hasF("needlestick")) adv.push(`It also provides ASTM F2878 needlestick resistance for added protection against sharps.`);
+  if(hasF("arc") || hasF("nfpa")) adv.push(`It also offers arc-flash protection for electrical work.`);
+  if(hasF("en 511") || hasF("en511") || hasF("contact cold")) adv.push(`It also offers EN 511 contact-cold protection for cold-environment handling.`);
+  if(hasF("padded")) adv.push(`Its padded palm helps reduce vibration and impact for added comfort.`);
+  if(hasF("hook")) adv.push(`A hook-and-loop wrist closure provides a secure, adjustable fit.`);
+  if(hasF("silicone") && hasF("free")) adv.push(`Its silicone-free construction suits paint, finishing, and cleanroom environments.`);
+  if(hasF("dot")) adv.push(`Textured grip dots improve control of small or slippery parts.`);
+
+  // 3) Assemble — advantages first. Lower ratings are mentioned only when there is
+  //    nothing more compelling to highlight.
+  const out = [];
+  if(headline) out.push(headline);
+  // A missing impact rating is a safety fact, so it is always said, not only
+  // when there is nothing more compelling to highlight.
+  if(cI && !mI) out.push(`${out.length ? "Note that it" : `The ${who}`} does not carry the ${compName}'s ${A138} impact rating.`);
+  if(adv.length){
+    const picked = adv.slice(0, 4);
+    // "also" only makes sense following another statement.
+    if(!out.length) picked[0] = picked[0].replace(/^It also /, "It ");
+    out.push(...picked);
+  } else {
+    if(aM && aC && aM < aC) out.push(`It carries a lower abrasion rating (${A105} Level ${aM} vs ${aC}).`);
+    if(pM && pC && pM < pC) out.push(`It carries a lower puncture rating (${A105} Level ${pM} vs ${pC}).`);
+  }
+  if(!out.length) return `The ${who} matches the ${compName} on the specifications available.`;
+  return out.join(" ");
+}
+
+/* ----------------------------------------------------------------------------
+   RECOMMENDATIONS
+   #1 = overrideBestMatch when the pinned glove meets the searched glove's cut
+        level and impact rating, else the top-ranked glove.
+   #2 and #3 = next-best ranked, excluding #1. Ranking puts gloves that meet the
+        cut level ahead of those that don't, then sorts by score.
+---------------------------------------------------------------------------- */
+function gvGetRecommendations(comp, selfPart){
+  const allScored = Object.entries(DATA.majestic)
+    .filter(([part]) => part !== selfPart)
+    .map(([part, data]) => ({ part, data, ...gvComputeMatch(data, comp) }));
+
+  // Sleeves and gloves are different product categories and must never
+  // cross-match. The override tells us which one this competitor is: if it pins
+  // a sleeve, recommend only sleeves; otherwise only gloves.
+  const ov = comp.overrideBestMatch;
+  const wantSleeve = isSleeve(comp)
+    || !!(ov && DATA.majestic[ov] && isSleeve(DATA.majestic[ov]));
+  const scored = allScored.filter(s => isSleeve(s.data) === wantSleeve);
+
+  // Never widen to gloves without the searched glove's impact protection.
+  let eligible = scored.filter(s => hasImpact(s.data) === hasImpact(comp));
+
+  // General purpose is its own class. A NON-IMPACT competitor with no published
+  // cut rating is a general-purpose glove (unrated, A1 or A2) — keep the match in
+  // that class instead of offering an A9. An IMPACT glove with no cut rating is a
+  // mechanics glove with missing data, not general-purpose; the impact filter
+  // already scopes it. Require at least 3 so narrowing never shortens the cards.
+  if(!hasImpact(comp) && isBlank(rawRating(comp, "cut"))){
+    const gp = eligible.filter(s => getRating(s.data, "cut") <= 2);
+    if(gp.length >= 3) eligible = gp;
+  }
+  // Gloves that meet the searched glove's cut level rank ahead of gloves that
+  // don't, whatever their score. Lower-cut gloves only fill cards nothing
+  // better can, and each one says so on its card. (Ranking by score alone let
+  // an A3 at 80% sit above an A4 at 60% for an A4 search.)
+  const sorted = [...eligible].sort((a, b) =>
+    (b.safetyMet ? 1 : 0) - (a.safetyMet ? 1 : 0)
+    || b.score - a.score || a.part.localeCompare(b.part));
+
+  /* #1 is the curated pin when the pinned glove meets the searched glove's
+     requirements: at least its cut level, and impact protection when it has
+     it. A pin that over-delivers (an impact glove, a higher cut) still leads;
+     it was chosen by hand and protects at least as well. A pin that falls
+     short does not lead, its written copy is not used, and it is ranked like
+     any other glove. */
+  const ovRow = (ov && ov !== selfPart && DATA.majestic[ov])
+    ? (scored.find(s => s.part === ov)
+       || { part:ov, data:DATA.majestic[ov], ...gvComputeMatch(DATA.majestic[ov], comp) })
+    : null;
+  const pinOK = !!ovRow && ovRow.safetyMet;
+  const pos1 = pinOK ? { ...ovRow, pinned:true }
+                     : (sorted[0] ? { ...sorted[0], pinned:false } : null);
+  if(!pos1) return { recs: [] };
+
+  const rest = sorted.filter(s => s.part !== pos1.part).slice(0, 2);
+  const labels = ["best", "better", "good"];
+  return { recs: [pos1, ...rest].slice(0, 3).map((s, i) => ({ ...s, tier: labels[i] })) };
+}
+
+/* What a glove gives up against the searched one, in a phrase for its card.
+   Empty when it meets the searched glove's cut level and impact rating. */
+function gvShortfall(maj, comp){
+  const cc = getRating(comp, "cut"), cm = getRating(maj, "cut");
+  if(cc && cm < cc)
+    return cm ? `A${cm} cut, below the A${cc} searched.` : `No published cut rating; the searched glove is A${cc}.`;
+  if(hasImpact(comp) && !hasImpact(maj)) return "Not impact-rated; the searched glove is.";
+  return "";
+}
+
+/* Curated copy is used only while it still agrees with the catalog. It was
+   written against earlier data: 40 pins said "higher cut protection (A3 vs
+   A4)" for a glove that is lower, others claimed better abrasion or puncture
+   than the ratings show, one paragraph named a different Majestic part, and
+   one was a stray fragment ("AC122)"). Every check here is a contradiction
+   with the data, never a matter of style: a claim the data can't confirm
+   either way is left alone. */
+const reEsc = s => String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+function gvCopyOK(text, rec, comp){
+  const t = typeof text === "string" ? text.trim() : "";
+  if(t.length < 40) return false;
+  const maj = rec.data;
+  const cm = getRating(maj, "cut"), cc = getRating(comp, "cut");
+  for(const [, a, b] of t.matchAll(/\(A(\d+)\s+vs\.?\s+A(\d+)\)/gi))
+    if(+a !== cm || +b !== cc) return false;
+  for(const [, a] of t.matchAll(/\b(?:equal|same|matching|matches)\b[^.()]{0,30}\bcut\b[^.()]{0,20}\(A(\d+)\)/gi))
+    if(+a !== cm || cm !== cc) return false;
+  const UP = "(?:higher|greater|better|stronger|more|improved|superior)";
+  const claims = (axis) => new RegExp(`\\b${UP}\\s+${axis}`, "i").test(t);
+  if(claims("cut") && !(cm > cc)) return false;
+  if(/\b(?:equal|same|matching)\s+cut\b/i.test(t) && !(cm && cm === cc)) return false;
+  for(const axis of ["abrasion", "puncture"]){
+    const a = getRating(maj, axis), b = getRating(comp, axis);
+    if(a && b && claims(axis) && !(a > b)) return false;
+  }
+  // A re-pin that kept the old paragraph names the part it was written for.
+  for(const part of Object.keys(DATA.majestic)){
+    if(part === rec.part || part === comp.part || part.length < 4) continue;
+    if(new RegExp(`(^|[^A-Za-z0-9-])${reEsc(part)}(?![A-Za-z0-9-])`).test(t)) return false;
+  }
+  return true;
+}
+
+/* Plain text; the caller escapes it. */
+function gvPitch(rec, comp){
+  if(rec.pinned){
+    for(const text of [comp.overrideDescription, comp.overrideComparison, comp.overrideSummary])
+      if(gvCopyOK(text, rec, comp)) return text.trim();
+  }
+  return generatePitch(rec.data, comp);
+}
+
+/* ============================================================================
+   RENDER
+============================================================================ */
+let STATE = { cat:null, comp:null, compPart:null, recs:[], selected:0, meta:{} };
+const charts = {};
+const destroyCharts = () => Object.values(charts).forEach(c => { try{ c?.destroy(); }catch(e){} });
+
+// No icons on the identity chips. A hand, a shield and a vest in the same row
+// read as three unrelated pictures rather than one interface; the labels alone
+// are unambiguous.
+const CAT_ICON = { glove:"", hivis:"" };
+const CAT_LABEL = { glove:"Gloves", hivis:"Hi-Vis Apparel" };
+
+function setCategory(cat){
+  STATE.cat = cat;
+  document.getElementById("dashboard").setAttribute("data-cat", cat);
+  const pill = document.getElementById("categoryPill");
+  pill.className = `cat-pill cat-pill--${cat}`;
+  pill.innerHTML = `${CAT_ICON[cat]}${CAT_LABEL[cat]}`;
+  document.getElementById("disclaimer").innerHTML = cat === "hivis" ? HIVIS_DISCLAIMER : GLOVE_DISCLAIMER;
+}
+
+/* ------------------------------------------------------------- tier cards */
+function renderTierCards(){
+  const { recs, cat, comp } = STATE;
+  const host = document.getElementById("tierCards");
+  // The live tool's wording. "Good / Better / Best" reads as a quality ladder
+  // for the Majestic product; these describe the strength of the MATCH, which is
+  // what the number beside them actually measures.
+  const TIER_LABELS = { best:"Top match", better:"Strong match", good:"Alternative" };
+  host.innerHTML = recs.map((r, i) => {
+    const wins = cat === "hivis" ? hvWins(r.data, comp) : gvWins(r.data, comp);
+    // Under HV_FLOOR no garment is a like-for-like match, and the callout above
+    // the cards says so; "Top match" or "Strong match" on a 12% card would
+    // contradict it.
+    const weak = cat === "hivis" && !r.pinned && (r.score || 0) < HV_FLOOR;
+    // What this glove gives up against the searched one, if anything. The
+    // searched glove's rating is what was asked for, not necessarily what the
+    // task requires, so the wording states the gap rather than a verdict.
+    const short = cat === "glove" ? gvShortfall(r.data, comp) : "";
+    const label = cat === "hivis" && r.frGap ? "Visibility comparison only"
+      : short ? (/impact/i.test(short) ? "Not impact-rated" : "Lower cut level")
+      : r.pinned ? "Recommended"
+      : weak ? (i === 0 ? "Closest option" : "Alternative")
+      : (TIER_LABELS[r.tier] || r.tier);
+    const name = r.data.name || "";
+    const sub = cat === "hivis"
+      ? [r.data.garmentType, r.data.compareGroup].filter(Boolean).map(esc).join(" &middot; ")
+      : [r.data.coating, r.data.ratings?.cut].filter(Boolean).map(esc).join(" &middot; ");
+    // A pinned #1 already reads "Recommended" instead of "Top match", so a
+    // second badge beside it said the same thing twice.
+    const pinned = "";
+    // Shown when a curated pick sits outside the competitor's ANSI class. The
+    // earlier wording ("Outside the compare group — pinned by hand") was written
+    // for us; a customer needs the compliance caveat, not how it got there.
+    const offGate = r.offGate ? `<p class="tier-price" style="color:#8a4b00">Different ANSI 107 class. Confirm it suits the work zone.</p>` : "";
+    // The searched garment has a D-ring pass-through and this one does not list
+    // one. Said on the card, beside the score it lowered, so the gap is seen
+    // before the spec table is opened.
+    const ringGap = cat === "hivis" && r.dRingGap
+      ? `<p class="tier-price" style="color:#8a4b00">No D-ring pass-through listed. Confirm harness compatibility.</p>` : "";
+    const cutGap = short
+      ? `<p class="tier-price" style="color:#8a4b00">${esc(short)} Not a like-for-like substitute.</p>` : "";
+    // A 100% match on one attribute is not a considered verdict. Say how much
+    // was actually comparable, right under the number.
+    let conf = "";
+    if(cat === "hivis" && typeof r.compared === "number"){
+      const thin = r.compared <= 1;
+      conf = `<p class="conf${thin ? " conf--thin" : ""}">${r.compared} of ${r.axes || HV_AXES} specs compared</p>`;
+    }
+
+    return `
+      <article class="tier-card tier-${r.tier}${r.tier === "best" ? " tier-card--best" : ""}${i === STATE.selected ? " selected" : ""}"
+               data-idx="${i}" tabindex="0" role="button" aria-pressed="${i === STATE.selected}"
+               aria-label="${esc(label)}: Majestic ${esc(r.part)}, ${r.score} percent spec similarity${r.frGap ? "; not flame resistant" : ""}${short ? "; " + esc(short) : ""}">
+        <div class="tier-head">
+          <div class="tier-headl"><span class="tier-label">${esc(label)}</span>${pinned}</div>
+          <div style="text-align:right">
+            <div class="match-ring" style="--pct:${r.score}"><span>${r.score}%</span></div>
+            ${conf}
+          </div>
+        </div>
+        <div class="tier-prod">
+          ${isBlank(r.data.img_url)
+            ? `<span class="tier-thumb tier-thumb--none" aria-hidden="true"></span>`
+            : `<img class="tier-thumb" src="${esc(r.data.img_url)}" alt="" loading="lazy"
+                 onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'tier-thumb tier-thumb--none'}))"/>`}
+          <div style="min-width:0">
+            <p class="tier-part">${esc(r.part)}</p>
+            <p class="tier-pname">${esc(name)}</p>
+            ${sub ? `<p class="tier-price">${sub}</p>` : ""}
+            ${offGate}${ringGap}${cutGap}
+          </div>
+        </div>
+        ${wins.length ? `<ul class="wins">${cat === "hivis" ? `<li class="wins-lbl">Majestic specifies</li>` : ""}${wins.map(w => `<li class="win">${CHECK}<span>${esc(w)}</span></li>`).join("")}</ul>` : ""}
+      </article>`;
+  }).join("");
+
+  host.querySelectorAll(".tier-card").forEach(card => {
+    const pick = () => selectRec(parseInt(card.dataset.idx, 10));
+    card.addEventListener("click", pick);
+    card.addEventListener("keydown", e => {
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); pick(); }
+    });
+  });
+}
+
+function selectRec(idx){
+  STATE.selected = idx;
+  document.querySelectorAll("#tierCards .tier-card").forEach((c, i) => {
+    const on = i === idx;
+    c.classList.toggle("selected", on);
+    c.setAttribute("aria-pressed", on);
+  });
+  renderDetail();
+}
+
+/* ------------------------------------------------- hi-vis: compliance gate */
+const GATE_ROWS = [
+  ["HVSA Type", "hvsaType"],
+  ["ANSI Class", "ansiClass"],
+  ["Garment", "garmentType"],
+  ["Body Zone", "bodyZone"],
+];
+
+function renderGate(comp, maj){
+  const host = document.getElementById("gateGrid");
+  host.innerHTML = GATE_ROWS.map(([label, key]) => {
+    const c = comp[key], m = maj[key];
+    let mark, cls;
+    if(isBlank(c) || isBlank(m)){ mark = DASH; cls = "none"; }
+    else if(titleish(c).toLowerCase() === titleish(m).toLowerCase()){ mark = CHECK; cls = "ok"; }
+    else { mark = DIFF; cls = "diff"; }
+    return `<div class="gate-row">
+      <span class="gate-key">${esc(label)}</span>
+      <span class="gate-val gate-val--comp">${isBlank(c) ? "&mdash;" : esc(c)}</span>
+      <span class="gate-mark gate-mark--${cls}">${mark}</span>
+      <span class="gate-val gate-val--maj">${isBlank(m) ? "&mdash;" : esc(m)}</span>
+    </div>`;
+  }).join("");
+  document.getElementById("gateSub").textContent = `${STATE.comp.brand || "Competitor"} vs Majestic`;
+  /* The eligible-pool count and the wording about how the gate works were
+     written for us while building it. A customer needs to know the comparison
+     is like-for-like, not how many rows cleared an internal filter. */
+  const eligible = STATE.meta.eligible || 0;
+  const g = titleish(STATE.meta.gate || "");
+  const step = STATE.meta.step;
+  document.getElementById("gateLegend").innerHTML = !eligible
+    ? `Majestic does not currently offer a garment in this ANSI&nbsp;107 class.`
+    : step
+      ? esc(hvStepNote(step))
+      : /non-ansi/i.test(g)
+        ? `Both garments are non-rated high-visibility items, compared on construction.`
+        : `Compared only against Majestic garments of the same ANSI&nbsp;107 type and class.`;
+}
+
+/* ------------------------------------------------------ hi-vis: tape panel */
+const TAPE_COLOR = { silver:"#c7ccd1", yellow:"#e8d63f", orange:"#e8873f", lime:"#c8e04a",
+                     white:"#f2f4f6", black:"#2b2f36", red:"#c0392b" };
+
+function renderTape(comp, maj){
+  const cells = [
+    ["Width", "stripeWidth", v => `${v}"`],
+    ["Tape Type", "tapeType", v => v],
+    ["Application", "tapeApplication", v => v],
+    ["Washes Tested", "washings", v => v],
+  ];
+  /* Neither side states anything about tape on roughly one lookup in ten —
+     rain suits, aprons, non-rated pieces. A panel of six dashes under the
+     heading "Reflective Tape" is worse than no panel: it reads as missing data
+     about a garment rather than a garment with nothing to say. */
+  const panel = document.getElementById("tapePanel");
+  const anyTape = cells.some(([, key]) => !isBlank(maj[key]) || !isBlank(comp[key]));
+  if(panel) panel.classList.toggle("hidden", !anyTape);
+  if(!anyTape){ document.getElementById("tapeGrid").innerHTML = ""; return; }
+
+  document.getElementById("tapeGrid").innerHTML = cells.map(([label, key, fmt]) => {
+    const m = maj[key], c = comp[key];
+    const shown = isBlank(m) ? null : fmt(titleish(m));
+    // Where the competitor states nothing, say nothing. "Not published by
+    // competitor" pointed at their silence, which the reader cannot act on and
+    // which reads as a dig — the same reason the win pills dropped their
+    // "(competitor not stated)" tags.
+    const note = isBlank(c) ? "" : `${esc(STATE.comp.brand || "Competitor")}: ${esc(fmt(titleish(c)))}`;
+    return `<div class="tape-cell">
+      <div class="k">${esc(label)}</div>
+      <div class="v${shown ? "" : " muted"}">${shown ? esc(shown) : "&mdash;"}</div>
+      <div class="c">${note}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("tapeSub").textContent = `Majestic ${STATE.recs[STATE.selected]?.part || ""}`;
+
+  // a literal swatch of the tape, when the colour is known
+  const demo = document.getElementById("stripeDemo");
+  const tc = String(maj.tapeColor || "").toLowerCase();
+  const base = TAPE_COLOR[Object.keys(TAPE_COLOR).find(k => tc.includes(k))] || null;
+  if(base){
+    const twoTone = /two[\s-]?tone/i.test(String(maj.tapeType || ""));
+    const fluo = "#d9e021";
+    demo.innerHTML = twoTone
+      ? `<span class="band" style="background:${fluo}"></span><span class="band" style="background:${base};flex:2"></span><span class="band" style="background:${fluo}"></span>`
+      : `<span class="band" style="background:${base}"></span>`;
+    demo.classList.remove("hidden");
+  } else {
+    demo.classList.add("hidden");
+  }
+  document.getElementById("tapeLegend").textContent = base
+    ? "Swatch is indicative of the stated tape colour and type, not a product image."
+    : "";
+}
+
+/* ------------------------------------------------------ glove: the charts */
+function renderGloveCharts(comp, maj, majPart){
+  destroyCharts();
+  const note = document.getElementById("barChartNote");
+  if(!window.Chart){
+    document.getElementById("barChart").parentElement.classList.add("hidden");
+    note.classList.add("hidden");
+    document.getElementById("gaugeChartSection").classList.add("hidden");
+    document.getElementById("barChartSub").textContent = "Chart unavailable; ratings are listed in Product Specs.";
+    return;
+  }
+  document.getElementById("barChart").parentElement.classList.remove("hidden");
+  // Set before the gauge chart's early return below, which used to leave the
+  // previous search's names here whenever neither glove had a gauge.
+  document.getElementById("barChartSub").textContent = `${comp.brand || "Competitor"} vs Majestic ${majPart}`;
+  const axes = ["cut", "abrasion", "puncture"];
+  // An unpublished rating is drawn as no bar, which can read as a zero.
+  note.classList.toggle("hidden", !axes.some(a => isBlank(rawRating(comp, a)) || isBlank(rawRating(maj, a))));
+  const ctx = document.getElementById("barChart");
+  if(ctx && window.Chart){
+    charts.bar = new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: ["Cut", "Abrasion", "Puncture"],
+        datasets: [
+          { label: comp.brand || "Competitor", data: axes.map(a => isBlank(rawRating(comp, a)) ? null : getRating(comp, a)), backgroundColor:"#5b6573", borderRadius:4 },
+          { label: `Majestic ${majPart}`, data: axes.map(a => isBlank(rawRating(maj, a)) ? null : getRating(maj, a)), backgroundColor:"#ab1f2d", borderRadius:4 },
+        ],
+      },
+      options: { responsive:true, maintainAspectRatio:false,
+        scales:{ y:{ beginAtZero:true, ticks:{ precision:0 } } },
+        plugins:{ legend:{ position:"bottom", labels:{ boxWidth:12, font:{ family:"Nunito Sans", weight:"700" } } } } },
+    });
+  }
+  const g = document.getElementById("gaugeChartSection");
+  const cg = gaugeNum(comp.gauge), mg = gaugeNum(maj.gauge);
+  if(!cg && !mg){ g.classList.add("hidden"); return; }
+  g.classList.remove("hidden");
+  document.getElementById("gaugeChartNote").classList.toggle("hidden", !!(cg && mg));
+  const gctx = document.getElementById("gaugeChart");
+  if(gctx && window.Chart){
+    charts.gauge = new Chart(gctx, {
+      type: "bar",
+      data: { labels:[""], datasets:[
+        { label: comp.brand || "Competitor", data:[cg || null], backgroundColor:"#5b6573", borderRadius:4 },
+        { label:`Majestic ${majPart}`, data:[mg || null], backgroundColor:"#ab1f2d", borderRadius:4 } ] },
+      options:{ indexAxis:"y", responsive:true, maintainAspectRatio:false,
+        scales:{ x:{ beginAtZero:true } },
+        plugins:{ legend:{ position:"bottom", labels:{ boxWidth:12, font:{ family:"Nunito Sans", weight:"700" } } } } },
+    });
+  }
+}
+
+/* --------------------------------------------------------- the spec table */
+const HIVIS_SPEC_ROWS = [
+  ["Garment Type","garmentType"], ["ANSI 107 Class", e => hvGroupLabel(e.compareGroup)], ["Standard","standard"],
+  ["Body Zone","bodyZone"], ["Color","color"],
+  // Sizes removed: a size run is a purchasing detail, not a reason one garment
+  // substitutes for another. The field stays in the dataset, just unrendered.
+  // Several brands split one fact across two fields — Kishigo's material is
+  // "Polyester" and its construction "Mesh, Solid Knit" — while ours is one
+  // phrase ("Polyester Mesh"). The cell joins the two so the row compares like
+  // with like, and adds the construction only when it says something new.
+  ["Material", e => {
+    const m = titleish(e.material), c = titleish(e.fabricConstruction);
+    if(!c || !m) return m || c;
+    const said = fabricWords(m);
+    return [...fabricWords(c)].some(w => !said.has(w)) ? `${m} (${c})` : m;
+  }],
+  ["Fabric Construction","fabricConstruction"], ["Fabric Weight","fabricWeight"],
+  ["Closure","closure"], ["Pockets","pockets"], ["Pocket Type","pocketType"],
+  /* Derived rather than scraped, and asymmetric by nature: ours come from PIM
+     prose, theirs only from a pocket list half of them publish and the product
+     name. A blank on the competitor side means unpublished. Mic Tabs shows the
+     count where the source gives one, "Yes" where it does not. The D-ring
+     pass-through is scored when the searched garment has one (HV_DRING_WEIGHT);
+     the other two are shown, never scored. */
+  ["D-Ring Pass-Through","dRing"], ["ID Pocket","idPocket"], ["Mic Tabs","micTab"],
+  ["Stripe Width (in)","stripeWidth"], ["Tape Color","tapeColor"], ["Tape Type","tapeType"],
+  ["Tape Application","tapeApplication"],
+  ["Washes Tested","washings"], ["Flame Resistant","fr"], ["ATPV (cal/cm²)","atpv"],
+  ["Water Resistance","waterResistance"], ["Insulated","insulated"], ["Hooded","hooded"],
+  // Gender only when the garment is cut for women. Hi-vis is unisex by default
+  // (173 competitor rows say so outright), so "Unisex" states the default and
+  // tells a rep nothing. A women's cut is a real difference worth surfacing.
+  ["Gender", e => /female|women/i.test(String(e.gender || "")) ? e.gender : ""],
+  ["Country of Origin","country"],
+  // Case Pack removed: how a brand boxes its goods says nothing about whether
+  // the garment is a match. The field stays in the dataset, just unrendered.
+];
+const GLOVE_SPEC_ROWS = [
+  // Carried over from the live tool: same rows, same order, full standard names.
+  // The version here split Liner and Material into two rows that usually
+  // repeated each other, and added an Impact row the Features row already
+  // covered — Ironwear's 4895 states "TPR Impact Protection" as a feature.
+  ["Country of Origin", e => e.country],
+  ["Liner Material", e => e.linerMaterial || e.material],
+  ["Coating", e => e.coating],
+  ["Cut Resistance (ANSI/ISEA 105-2024)", e => getRatingDisplay(e, "cut")],
+  ["Abrasion (ANSI/ISEA 105-2024)", e => getRatingDisplay(e, "abrasion")],
+  ["Puncture (ANSI/ISEA 105-2024)", e => getRatingDisplay(e, "puncture")],
+  ["Gauge", e => e.gauge],
+  ["Features", e => Array.isArray(e.features) ? e.features.filter(Boolean).join(", ") : e.features],
+];
+
+function renderSpecTable(comp, maj){
+  // Both tables accept either a field name or a function, so a row can carry a
+  // condition (see Gender) without needing a second code path.
+  const cell = (spec, e) => typeof spec === "function" ? spec(e) : e[spec];
+  const src = STATE.cat === "hivis" ? HIVIS_SPEC_ROWS : GLOVE_SPEC_ROWS;
+  const rows = src.map(([label, spec]) => [label, cell(spec, comp), cell(spec, maj)]);
+
+  /* A row earns its place only when MAJESTIC has something to compare. A row
+     that reads "Pocket Type | ID Pocket, Radio Pocket, Tablet Pocket… | —" is
+     not a comparison; it is a column of blanks that makes our range look
+     undocumented when the truth is only that we do not publish that field.
+
+     The exceptions are safety and fit. Hiding "Flame Resistant: Yes | —"
+     would remove the very spec the tool warns about two panels up, and a
+     D-ring pass-through on the searched garment is one a harness depends on.
+     A rep needs to see either gap in the table as well as in the warning. */
+  const SAFETY_ALWAYS = new Set(["Flame Resistant", "ATPV (cal/cm²)", "D-Ring Pass-Through"]);
+  // The catalog stores flags as "True"/"False" (hooded, flame resistant,
+  // insulated) and the derived features as "Yes". One word for one idea.
+  const show = v => {
+    if(isBlank(v)) return "&mdash;";
+    const s = String(v).trim();
+    return esc(/^true$/i.test(s) ? "Yes" : /^false$/i.test(s) ? "No" : s).replace(/\//g, "/<wbr>");
+  };
+  document.getElementById("specTableBody").innerHTML = rows
+    .filter(([f, c, m]) => SAFETY_ALWAYS.has(f)
+      ? (!isBlank(c) || !isBlank(m))
+      : !isBlank(m))
+    .map(([f, c, m]) => `<tr><td class="f">${esc(f)}</td>
+      <td class="v-comp">${show(c)}</td>
+      <td class="v-maj">${show(m)}</td></tr>`)
+    .join("");
+  document.getElementById("specCompHead").textContent =
+    STATE.isOwn ? "Searched" : (comp.brand || "Competitor");
+  document.getElementById("specSub").textContent = `Majestic ${STATE.recs[STATE.selected]?.part || ""}`;
+
+  /* The data notes are parser bookkeeping, not product information: all 129
+     distinct notes are things we wrote for ourselves while collecting
+     ("Type R assumed (source stated class only, no type)", "name is the page
+     description, not a title", which size a UPC belongs to). They stay in the
+     dataset, where they are useful to us, and no longer render here. */
+  document.getElementById("dataNote").classList.add("hidden");
+}
+
+function renderDetail(){
+  const rec = STATE.recs[STATE.selected];
+  if(!rec) return;
+  const comp = STATE.comp, maj = rec.data;
+  if(STATE.cat === "hivis"){ renderGate(comp, maj); renderTape(comp, maj); }
+  else { renderGloveCharts(comp, maj, rec.part); }
+  renderSpecTable(comp, maj);
+  document.getElementById("whyPart").textContent = rec.part;
+  document.getElementById("whyMajestic").innerHTML =
+    STATE.cat === "hivis"
+      ? (rec.frGap ? "<strong>Visibility comparison only: not suitable where flame resistance is required.</strong> " : "") + hvPitch(rec, comp)
+      : esc(gvPitch(rec, comp));
+  document.getElementById("learnMoreLink").href = ctaUrl(comp, maj, rec.part);
+  document.getElementById("ctaLabel").textContent = `View ${sitePart(rec.part)} on majesticglove.com`;
+}
+
+/* ============================================================================
+   SEARCH FLOW
+============================================================================ */
+function runSearch(part, cat, keepSelection, side){
+  const source = cat === "hivis" ? HIVIS : DATA;
+  // A Majestic part is a valid thing to type: the rep has our number and wants
+  // to see the nearest alternatives. It is used as the subject and excluded
+  // from its own results.
+  const isOwn = side === "majestic" || (!source.competitors[part] && source.majestic[part]);
+  const comp = isOwn ? source.majestic[part] : source.competitors[part];
+  if(!comp) return;
+
+  setCategory(cat);
+  STATE.comp = { ...comp, part, brand: isOwn ? "Majestic" : (comp.brand || "") };
+  STATE.compPart = part;
+  STATE.isOwn = !!isOwn;
+
+  const selfPart = isOwn ? part : null;
+  const result = cat === "hivis"
+    ? hvGetRecommendations(STATE.comp, selfPart)
+    : gvGetRecommendations(STATE.comp, selfPart);
+  STATE.recs = result.recs || [];
+  if(cat === "glove" && STATE.recs[0] && isSleeve(STATE.recs[0].data))
+    document.getElementById("categoryPill").textContent = "Sleeves";
+  STATE.meta = result;
+  if(!keepSelection || STATE.selected >= STATE.recs.length) STATE.selected = 0;
+
+  /* Brand, then part number, then the category pill. Nothing else.
+
+     Product names went in and came back out: hi-vis publishes them and gloves
+     mostly don't, so including them gave the two categories different-shaped
+     headers, and the glove side had to invent a descriptor from its specs to
+     fill the gap. The brand is what a rep actually matched on, the specs are
+     laid out in the table below, and the header's job is just to confirm what
+     was looked up. */
+  const brand = STATE.isOwn ? "Majestic" : titleish(comp.brand || "");
+  document.getElementById("competitorName").textContent = brand || part;
+  document.getElementById("competitorPart").textContent =
+    part;   // the heading already says whose part this is
+
+  const impact = document.getElementById("impactBadge");
+  impact.classList.toggle("hidden", !(cat === "glove" && hasImpact(comp)));
+
+  const gate = document.getElementById("gateBadge");
+  if(cat === "hivis" && result.gate){
+    document.getElementById("gateBadgeText").textContent = hvGroupLabel(result.gate);
+    gate.classList.remove("hidden");
+  } else {
+    gate.classList.add("hidden");
+  }
+
+  document.getElementById("disambig").classList.add("hidden");
+  const dash = document.getElementById("dashboard");
+  dash.classList.remove("hidden");
+
+  document.getElementById("detailSection").classList.toggle("hidden", !STATE.recs.length);
+  if(!STATE.recs.length){
+    destroyCharts();
+    document.getElementById("tierCards").innerHTML =
+      `<div class="panel panel-pad" style="grid-column:1/-1">
+         <p class="section-title" style="margin:0">No like-for-like Majestic match</p>
+         <p class="panel-sub" style="margin:.4rem 0 0">
+           ${cat === "hivis" ? `No Majestic garment is available in a suitable comparison group for ${esc(result.gate || "this product")}.`
+             : "No Majestic glove meets the required product type and impact protection."}
+           Our team can help you find the right alternative.</p>
+       </div>`;
+    /* Clear everything keyed to a recommendation. Without this the "Why
+       Majestic?" paragraph, the spec table and the compliance panel kept the
+       PREVIOUS search's content, so a page saying "no match" still explained
+       why some unrelated garment was a good one. */
+    document.getElementById("learnMoreLink").href = ctaUrl(STATE.comp, null, null);
+    document.getElementById("ctaLabel").textContent = "Browse majesticglove.com";
+    document.getElementById("whyPart").textContent = "Majestic";
+    document.getElementById("whyMajestic").textContent =
+      "We have no like-for-like match today. Browse the full range on majesticglove.com.";
+    document.getElementById("specTableBody").innerHTML = "";
+    document.getElementById("gateGrid").innerHTML = "";
+    document.getElementById("tapeGrid").innerHTML = "";
+    document.getElementById("stripeDemo").classList.add("hidden");
+    ["gateSub", "tapeSub", "specSub", "tapeLegend"].forEach(id => {
+      const el = document.getElementById(id); if(el) el.textContent = "";
+    });
+    document.getElementById("gateLegend").innerHTML =
+      `Majestic does not currently offer a garment in this ANSI&nbsp;107 class.`;
+    document.getElementById("dataNote").classList.add("hidden");
+    const tw = document.getElementById("thinWarn");
+    if(tw) tw.classList.add("hidden");
+  } else {
+    renderTierCards();
+    renderDetail();
+    /* Callouts, safety first. Each is its own line, so a flame-resistant Type P
+       vest with no close match says all three things rather than the first. */
+    const notes = [];
+    /* Gloves that meet the searched cut level always rank first, so a top card
+       that falls short means nothing comparable reaches it. Cards further down
+       that fall short carry their own caveat, so they need no banner. */
+    if(cat === "glove" && gvShortfall(STATE.recs[0].data, STATE.comp)){
+      const cc = getRating(STATE.comp, "cut");
+      const noun = isSleeve(STATE.recs[0].data) ? "sleeve" : "glove";
+      notes.push(cc && getRating(STATE.recs[0].data, "cut") < cc
+        ? `<strong>No comparable Majestic ${noun} reaches the A${cc} cut level searched.</strong>
+           The closest options are shown below; confirm they meet the task&rsquo;s cut-protection requirement.`
+        : `<strong>The searched ${noun} is impact-rated. The options below are not.</strong>
+           Confirm they meet the task&rsquo;s requirements.`);
+    }
+    if(cat === "hivis"){
+      /* An FR garment cannot be substituted by one that isn't, and Majestic
+         publishes no FR high-visibility apparel at all. The earlier wording
+         added "they meet the same ANSI 107 class", which is false for the 14
+         FR garments that carry no class at all. */
+      if(STATE.recs.every(r => r.frGap))
+        notes.push(`<strong>This garment is flame-resistant. The matches below are not.</strong>
+          They are high-visibility equivalents only, and should not be used where
+          flame resistance is required.`);
+      // A class we don't make, matched against the closest one we do (HV_STEP).
+      if(result.step) notes.push(esc(hvStepNote(result.step)));
+      if((STATE.recs[0].score || 0) < HV_FLOOR)
+        notes.push(`<strong>We don't have a like-for-like match for this product.</strong>
+          These are the closest Majestic options.`);
+      /* Neutral, and about the comparison rather than about the brand. Naming
+         whose datasheet is thin reads as a dig at a competitor, and the reader
+         cannot act on it either way. */
+      else if(STATE.recs.every(r => (r.compared || 0) <= 1))
+        notes.push(`<strong>Limited specifications published for this product.</strong>
+          ${STATE.recs.every(r => r.score === STATE.recs[0].score)
+            ? `${STATE.recs.length === 3 ? "All three options" : "The available options"} are equally close matches. ` : ``}Our team can help you choose.`);
+    }
+    const warn = document.getElementById("thinWarn");
+    const ALERT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>`;
+    if(warn){
+      warn.classList.toggle("hidden", !notes.length);
+      warn.innerHTML = notes.length
+        ? `${ALERT}<span>${notes.map((n, i) => `<span style="display:block${i ? ";margin-top:.35rem" : ""}">${n}</span>`).join("")}</span>`
+        : "";
+    }
+  }
+  requestAnimationFrame(() => dash.querySelectorAll(".fade-in").forEach(el => el.classList.add("show")));
+  dash.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+function handleSearch(raw){
+  const q = String(raw || "").trim();
+  const err = document.getElementById("searchError");
+  if(!q){ err.textContent = "Enter a part number to compare."; err.classList.remove("hidden"); return; }
+  if(!READY){
+    PENDING_QUERY = q;
+    err.textContent = "Product data is still loading. Your search will run as soon as it's ready.";
+    err.classList.remove("hidden");
+    return;
+  }
+  PENDING_QUERY = "";
+  const hits = lookup(q);
+  if(!hits.length){
+    // During a data outage a miss proves nothing, so don't send them hunting.
+    err.textContent = LOAD_WARN.length
+      ? `We can't look up “${q}” right now because some product data didn't load. Please refresh and try again.`
+      : `No match for “${q}”. Check the part number, or try a partial one.`;
+    err.classList.remove("hidden");
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("disambig").classList.add("hidden");
+    return;
+  }
+  err.classList.add("hidden");
+  if(hits.length === 1){ runSearch(hits[0].part, hits[0].cat, false, hits[0].side); return; }
+
+  // The 0.17% case: the same number in both catalogs, always different brands.
+  document.getElementById("dashboard").classList.add("hidden");
+  const wrap = document.getElementById("disambig");
+  // The same number can clash inside one catalog too, so the heading has to
+  // describe what actually happened rather than assume a cross-catalog case.
+  const cats = new Set(hits.map(h => h.cat));
+  const head = wrap.querySelector(".section-title");
+  if(head) head.textContent = cats.size > 1
+    ? "That part number is in both catalogs"
+    : "More than one product uses that part number";
+  document.getElementById("disambigList").innerHTML = hits.map(h =>
+    `<button type="button" class="disambig-opt" data-part="${esc(h.part)}" data-cat="${esc(h.cat)}" data-side="${esc(h.side || "competitor")}">
+       <span><span class="nm">${esc(h.brand)} ${esc(h.part)}</span>
+       <span class="mt">${esc(h.name)}</span></span>
+       <span class="cat-pill cat-pill--${esc(h.cat)}">${CAT_ICON[h.cat]}${CAT_LABEL[h.cat]}</span>
+     </button>`).join("");
+  wrap.classList.remove("hidden");
+  wrap.querySelectorAll(".disambig-opt").forEach(b =>
+    b.addEventListener("click", () => runSearch(b.dataset.part, b.dataset.cat, false, b.dataset.side)));
+  wrap.scrollIntoView({ behavior:"smooth", block:"start" });
+}
+
+/* --------------------------------------------------------- autocomplete */
+function wireAutocomplete(){
+  const input = document.getElementById("productInput");
+  const list = document.getElementById("autocompleteList");
+  let active = -1;
+
+  const close = () => {
+    list.classList.add("hidden");
+    input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant");
+    active = -1;
+  };
+  const open = items => {
+    if(!items.length) return close();
+    list.innerHTML = items.map((e, i) =>
+      // No category pill here. Floated right, it pushed long product names onto
+      // a second line and made the list feel crowded — and the category is
+      // obvious from the product name the row already shows. The 14 part numbers
+      // that genuinely live in both catalogs are still resolved by the
+      // disambiguation prompt after the search, which is where the question
+      // actually needs answering.
+      `<li id="suggestion-${i}" role="option" aria-selected="false" data-part="${esc(e.part)}" data-cat="${esc(e.cat)}" data-side="${esc(e.side || "competitor")}" data-i="${i}">
+         <span class="p">${esc(e.via || e.part)}</span>
+         <span class="n"> &mdash; ${esc(e.brand)} ${esc(String(e.name || "").slice(0, 46))}</span>
+       </li>`).join("");
+    list.classList.remove("hidden");
+    input.setAttribute("aria-expanded", "true");
+    input.removeAttribute("aria-activedescendant");
+    list.querySelectorAll("li").forEach(li => li.addEventListener("mousedown", ev => {
+      ev.preventDefault();
+      input.value = li.dataset.part;
+      document.getElementById("searchError").classList.add("hidden");
+      close();
+      runSearch(li.dataset.part, li.dataset.cat, false, li.dataset.side);
+    }));
+  };
+
+  input.addEventListener("input", () => { active = -1; open(suggest(input.value)); });
+  input.addEventListener("blur", () => setTimeout(close, 120));
+  input.addEventListener("keydown", e => {
+    const items = [...list.querySelectorAll("li")];
+    if(e.key === "ArrowDown" || e.key === "ArrowUp"){
+      if(!items.length) return;
+      e.preventDefault();
+      active = e.key === "ArrowDown" ? Math.min(active + 1, items.length - 1) : Math.max(active - 1, 0);
+      items.forEach((li, i) => {
+        li.classList.toggle("bg-gray-100", i === active);
+        li.setAttribute("aria-selected", i === active ? "true" : "false");
+      });
+      input.setAttribute("aria-activedescendant", items[active].id);
+      items[active].scrollIntoView({ block:"nearest" });
+    } else if(e.key === "Enter"){
+      e.preventDefault();
+      if(active >= 0 && items[active]){
+        input.value = items[active].dataset.part;
+        document.getElementById("searchError").classList.add("hidden");
+        close();
+        runSearch(items[active].dataset.part, items[active].dataset.cat, false, items[active].dataset.side);
+      } else { close(); handleSearch(input.value); }
+    } else if(e.key === "Escape") close();
+  });
+}
+
+/* Two gloves and two hi-vis, chosen rather than taken by array position.
+
+   The old version indexed into the catalogs (g[0], h[200]) and landed on
+   whatever happened to sit there — 6813 among them, a GSS rain pant whose
+   result set reads 84% / 9% / 0%. A demo chip is the first thing a rep clicks,
+   so each of these returns three cards that are visibly ranked, all with
+   photos, from a brand they will recognise:
+
+     90780     MCR            99 / 95 / 89   a tight, confident set
+     GL3002CK  Pyramex        98 / 81 / 58   leads with a curated #1
+     302-0212  PIP            99 / 93 / 90
+     25522     Ergodyne       87 / 77 / 73
+
+   None of the four is one of the 15 part numbers that exist in both catalogs,
+   so each resolves straight to a result. If the data moves and a part is no
+   longer there, the position-based picks below fill the gap. */
+const EXAMPLE_PARTS = [
+  { part:"90780",    cat:"glove" },
+  { part:"GL3002CK", cat:"glove" },
+  { part:"302-0212", cat:"hivis" },
+  { part:"25522",    cat:"hivis" },
+];
+
+function renderExamples(){
+  const host = document.getElementById("exampleChips");
+  const g = Object.keys(DATA.competitors || {});
+  const h = Object.keys(HIVIS.competitors || {});
+  const has = p => (p.cat === "glove" ? DATA.competitors : HIVIS.competitors)[p.part];
+  const picks = EXAMPLE_PARTS.filter(has);
+
+  // Fallback, per category, so a chip row is never short after a data change.
+  const want = { glove:2, hivis:2 };
+  for(const p of picks) want[p.cat]--;
+  const spare = { glove:[g[0], g[40], g[80]], hivis:[h[0], h[200], h[400]] };
+  for(const cat of ["glove", "hivis"]){
+    for(const part of spare[cat]){
+      if(want[cat] <= 0) break;
+      if(!part || picks.some(x => x.part === part)) continue;
+      picks.push({ part, cat }); want[cat]--;
+    }
+  }
+  if(!picks.length) return;
+  host.innerHTML = `<span class="lbl">Try</span>` + picks.map(p =>
+    `<button type="button" class="example-chip" data-part="${esc(p.part)}" data-cat="${esc(p.cat)}">${esc(p.part)}</button>`).join("");
+  host.querySelectorAll(".example-chip").forEach(b => b.addEventListener("click", () => {
+    document.getElementById("productInput").value = b.dataset.part;
+    document.getElementById("searchError").classList.add("hidden");
+    runSearch(b.dataset.part, b.dataset.cat, false, b.dataset.side);
+  }));
+}
+
+/* ============================================================================
+   BOOT
+============================================================================ */
+const GLOVE_DISCLAIMER = "Comparison data comes from publicly available manufacturer sources and is for reference only; confirm specs against the manufacturer&rsquo;s current datasheet before purchasing. Published ratings reflect standardized lab tests, not a guarantee of protection, and choosing the right glove for the hazard is the user&rsquo;s responsibility. Third&#8209;party brand names and part numbers belong to their owners and are used for identification only. Majestic Glove assumes no responsibility for errors or omissions.";
+const HIVIS_DISCLAIMER = "Comparison data comes from publicly available manufacturer sources and is for reference only; confirm specs against the manufacturer&rsquo;s current datasheet before purchasing. If we don&rsquo;t offer the same ANSI/ISEA&nbsp;107 type and class, a labeled alternative may be shown. It may not be a compliant substitute, and choosing the right garment for the work zone is the user&rsquo;s responsibility. Sizes are not compared. Third&#8209;party brand names and part numbers belong to their owners and are used for identification only. Majestic Glove assumes no responsibility for errors or omissions.";
+
+let LOAD_WARN = [];
+let READY = false;          // catalogs loaded and indexed
+let PENDING_QUERY = "";     // a search made before then, run once they are
+// A catalog request that never answers used to leave search silently dead.
+// GitHub normally answers in well under a second (each file is ~100 KB
+// compressed), so this only ever fires on a real outage.
+const FETCH_TIMEOUT_MS = 15000;
+
+/* The catalogs are rebuilt by a script, so a list field can come back as text
+   ("Touchscreen Compatible, Reinforced Thumb Crotch") instead of a list. Code
+   that calls .join or .map on features would throw on text, and altParts as
+   text would index each character as a part number. Lists are coerced here,
+   once, and rows that are not records are dropped. Today's data needs none of
+   it; this is for the next rebuild. */
+const asList = v => (Array.isArray(v) ? v : String(v ?? "").split(/\s*[,;|]\s*/))
+  .filter(x => !isBlank(x)).map(x => String(x).trim());
+function normalizeCatalogs(){
+  for(const store of [DATA, HIVIS]) for(const side of ["majestic", "competitors"]){
+    const rows = store[side] || (store[side] = {});
+    for(const [part, rec] of Object.entries(rows)){
+      if(!rec || typeof rec !== "object" || Array.isArray(rec)){ delete rows[part]; continue; }
+      for(const k of ["features", "altParts"]) if(k in rec) rec[k] = asList(rec[k]);
+    }
+  }
+  /* Majestic's hi-vis line is certified to ANSI/ISEA 107-2026, and the PIM
+     export still says 107-2020 until that change lands. Majestic rows only: a
+     competitor's edition is whatever it declares. Once the catalog itself says
+     2026 this changes nothing, and it can be deleted. */
+  for(const rec of Object.values(HIVIS.majestic || {}))
+    if(typeof rec.standard === "string")
+      rec.standard = rec.standard.replace(/\b107-2020\b/g, "107-2026");
+}
+
+async function boot(){
+  // Wired first, so a search typed while the catalogs load gets an answer.
+  wireAutocomplete();
+  document.getElementById("searchBtn").addEventListener("click",
+    () => handleSearch(document.getElementById("productInput").value));
+
+  const grab = async url => {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), FETCH_TIMEOUT_MS);
+    try{
+      const r = await fetch(url, { cache:"no-store", signal: ctl.signal });
+      if(!r.ok) throw new Error(r.status);
+      return await r.json();
+    }catch(e){ return null; }
+    finally{ clearTimeout(timer); }
+  };
+  const [g, h, ov] = await Promise.all([
+    grab(DATA_URL), grab(HIVIS_DATA_URL), grab(OVERRIDES_URL)]);
+  // Fall back PER CATALOG. An all-or-nothing fallback meant that when one file
+  // loaded and the other did not, the missing catalog stayed silently empty and
+  // every part number in it answered "no match" — a false negative that reads
+  // as a missing product rather than a missing file.
+  const missing = [];
+  if(g && g.majestic && g.competitors && Object.keys(g.majestic).length && Object.keys(g.competitors).length)
+    DATA = { majestic:g.majestic, competitors:g.competitors };
+  else if(window.DEMO){ DATA = { ...DEMO.glove }; missing.push("gloves"); }
+  else missing.push("gloves");
+  if(h && h.majestic && h.competitors && Object.keys(h.majestic).length && Object.keys(h.competitors).length)
+    HIVIS = { majestic:h.majestic, competitors:h.competitors };
+  else if(window.DEMO){ HIVIS = { ...DEMO.hivis }; missing.push("hi-vis apparel"); }
+  else missing.push("hi-vis apparel");
+  LOAD_WARN = missing;
+
+  // Curated pins merge in after both catalogs are in place. A missing overrides
+  // file is not a failure — the catalogs still carry their inline pins, so this
+  // is the one fetch that is allowed to come back empty without a warning.
+  normalizeCatalogs();
+  applyOverrides(ov);
+
+  buildIndex();
+  READY = true;
+  renderExamples();
+
+  if(LOAD_WARN.length){
+    const host = document.querySelector(".hero > div");
+    const el = document.createElement("div");
+    el.className = "notice notice--warn";
+    el.style.cssText = "margin:1rem auto 0; max-width:34rem; text-align:left";
+    // Visitors see what it means for them; the URLs are for whoever maintains it.
+    el.textContent = `Some product data couldn't be loaded, so search results are incomplete right now. `
+      + `Please refresh the page or try again later.`;
+    host.appendChild(el);
+    console.warn(`Comparison tool: the ${LOAD_WARN.join(" and ")} catalog failed to load; using the built-in sample.`,
+      { DATA_URL, HIVIS_DATA_URL });
+  }
+  const counts = `${Object.keys(DATA.competitors).length.toLocaleString()} glove and ${Object.keys(HIVIS.competitors).length.toLocaleString()} hi-vis competitor products`;
+  const lede = document.querySelector(".hero .lede");
+  if(lede) lede.innerHTML = `Enter a competitor part number, or a Majestic part, to see up to three Majestic products, ranked by how their specs line up. <span style="display:block;margin-top:.35rem;font-size:.86rem;color:var(--ink-soft)">${counts} indexed.</span>`;
+  if(PENDING_QUERY) handleSearch(PENDING_QUERY);
+}
+
+document.addEventListener("DOMContentLoaded", boot);
+
+  </script>
+</body>
+</html>
