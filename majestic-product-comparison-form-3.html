@@ -460,7 +460,10 @@ function ctaUrl(comp, maj, majPart){
   const params = new URLSearchParams();
   try {
     const incoming = new URLSearchParams(window.location.search);
-    CTA_ATTRIBUTION_KEYS.forEach(k => { const v = incoming.get(k); if(v) params.set(k, v); });
+    CTA_ATTRIBUTION_KEYS.forEach(k => {
+      const v = incoming.get(k);          if(v)  params.set(k, v);
+      const mv = incoming.get("mg_" + k); if(mv) params.set("mg_" + k, mv);   // from GTM's CJI Tag
+    });
   } catch(e){ /* open the form without attribution */ }
   const compLabel = `${comp.brand ? comp.brand + " " : ""}${comp.part || ""}`.trim();
   if(compLabel && maj && majPart){
