@@ -454,7 +454,7 @@ const OVERRIDES_URL  = "https://raw.githubusercontent.com/MajesticGlove/Majestic
 // The form's script reads ?message= into "What can we help you with?" and the
 // utm_* / landing_page / referrer params into its hidden attribution fields.
 const CTA_URL        = "https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a";
-const CTA_ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "landing_page", "referrer"];
+const CTA_ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "landing_page", "referrer", "activity"];
 
 function ctaUrl(comp, maj, majPart){
   const params = new URLSearchParams();
@@ -2102,6 +2102,18 @@ function runSearch(part, cat, keepSelection, side){
   if(cat === "glove" && STATE.recs[0] && isSleeve(STATE.recs[0].data))
     document.getElementById("categoryPill").textContent = "Sleeves";
   STATE.meta = result;
+
+  /* Tell majesticglove.com what was compared, for the lead's Activity line
+     (GTM "Touchpoint Log"). Part numbers only. */
+  try {
+    if(window.parent !== window){
+      const top = STATE.recs[0];
+      const from = STATE.isOwn ? `Majestic ${part}` : `${titleish(comp.brand || "")} ${part}`.trim();
+      window.parent.postMessage({ type:"mg_activity", kind:"Compared",
+        text: top ? `${from} → ${top.part}` : `${from} (no match)` }, "https://www.majesticglove.com");
+    }
+  } catch(e){}
+
   if(!keepSelection || STATE.selected >= STATE.recs.length) STATE.selected = 0;
 
   /* Brand, then part number, then the category pill. Nothing else.
