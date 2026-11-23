@@ -1483,7 +1483,7 @@
        utm_* / landing_page / referrer → passed through from this page's URL
                   (GTM sets these upstream) so lead attribution survives. */
   const FORM_URL = "https://assets1-usa.mkt.dynamics.com/fbbe6fc6-4ab7-ef11-b8e4-002248326118/digitalassets/standaloneforms/cc0ce809-e885-f111-ab0f-7ced8dd7240a";
-  const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "landing_page", "referrer"];
+  const ATTRIBUTION_KEYS = ["utm_source", "utm_medium", "utm_campaign", "landing_page", "referrer", "activity"];
 
   function attributionParams() {
     const out = new URLSearchParams();
@@ -1610,5 +1610,3 @@ infoPhoto.alt = "";
 </script>
 </body>
 </html>
-
-
