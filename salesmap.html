@@ -1490,13 +1490,13 @@
     try {
       const incoming = new URLSearchParams(window.location.search);
       ATTRIBUTION_KEYS.forEach((k) => {
-        const v = incoming.get(k);
-        if (v) out.set(k, v);
+        const v = incoming.get(k);          if (v)  out.set(k, v);
+        const mv = incoming.get("mg_" + k); if (mv) out.set("mg_" + k, mv);   // from GTM's CJI Tag
       });
     } catch (e) { /* load the form without attribution */ }
     return out;
   }
-
+  
   function buildFormUrl(repName) {
     const params = attributionParams();
     if (repName) {
@@ -1610,3 +1610,4 @@ infoPhoto.alt = "";
 </script>
 </body>
 </html>
+
