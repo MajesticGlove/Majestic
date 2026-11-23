@@ -286,14 +286,16 @@
    means a real source can get overwritten by a placeholder.
    ───────────────────────────────────────────────────────── */
 (function () {
-  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'landing_page', 'referrer'];
+  // "activity" is the visitor's activity line from GTM's Touchpoint Log.
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'landing_page', 'referrer', 'activity'];
   var qs = '';
 
   try {
     var incoming = new URLSearchParams(window.location.search);
     var out = new URLSearchParams();
     KEYS.forEach(function (k) {
-      var v = incoming.get(k);
+      // Plain names come from the JotForm Stamp, mg_ names from CJI Tag.
+      var v = incoming.get(k) || incoming.get('mg_' + k);
       if (v) out.set(k, v);
     });
     qs = out.toString();
